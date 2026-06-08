@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan Manuel Belgrano — Cáñamo Industrial · Neuquén · Patagonia</title>
+<title>Plan Manuel Belgrano — 230 años esperando este momento</title>
 <meta name="description" content="En 1796 Manuel Belgrano le dijo al Virreinato que cultivara cáñamo. 230 años después lo ejecutamos en Neuquén. €9,2M en créditos de carbono soberanos para YPF Argentina LNG.">
-<meta property="og:title" content="Plan Manuel Belgrano — La ventaja es del que produce primero">
+<meta property="og:title" content="Plan Manuel Belgrano — 230 años esperando este momento">
 <meta property="og:description" content="Producir créditos de carbono hoy es como minar Bitcoin en 2010. El activo existe. El mercado llega. Flora Cáñamo Neuquino SRL, Neuquén, Patagonia.">
 <meta property="og:image" content="https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054933_89194daa-d6f3-4ad1-bd60-3c2eff4066ac.png">
 <meta property="og:url" content="https://planmanuelbelgrano.com.ar">
@@ -22,7 +22,7 @@
 
 <style>
 /* ═══════════════════════════════════════════════════
-   RESET + TOKENS
+   TOKENS
 ═══════════════════════════════════════════════════ */
 *, *::before, *::after {
   margin: 0;
@@ -31,14 +31,16 @@
 }
 
 :root {
-  --negro:      #080806;
-  --crema:      #F0EDE4;
-  --verde:      #2D5A2E;
-  --verde-luz:  #56C25A;
-  --dorado:     #C8A45A;
-  --gris:       #7A7468;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans:  'Inter', system-ui, sans-serif;
+  --negro:     #080806;
+  --sepia:     #F4E4C1;
+  --sepia-osc: #D4BC80;
+  --crema:     #F0EDE4;
+  --verde:     #2D5A2E;
+  --verde-luz: #56C25A;
+  --dorado:    #C8A45A;
+  --gris:      #7A7468;
+  --font-serif:'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
 }
 
 html {
@@ -52,862 +54,765 @@ body {
   font-family: var(--font-sans);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
-
 /* ═══════════════════════════════════════════════════
-   FADE-IN — IntersectionObserver
+   NAV — siempre fija, aparece al scrollear
 ═══════════════════════════════════════════════════ */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.delay-1 { transition-delay: 0.15s; }
-.delay-2 { transition-delay: 0.30s; }
-.delay-3 { transition-delay: 0.45s; }
-.delay-4 { transition-delay: 0.60s; }
-
-/* ═══════════════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════════════ */
-nav {
+#nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  padding: 1.5rem 2.5rem;
+  z-index: 200;
+  padding: 1.25rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, background 0.4s ease;
 }
-nav.scrolled {
-  background: rgba(8,8,6,0.88);
+#nav.visible {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(8,8,6,0.9);
 }
 .nav-logo {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(240,237,228,0.5);
+  color: rgba(240,237,228,0.45);
   text-decoration: none;
 }
 .nav-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.4rem;
+  padding: 0.55rem 1.3rem;
   background: var(--crema);
   color: var(--negro);
   font-family: var(--font-sans);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
   text-decoration: none;
   transition: background 0.2s;
 }
 .nav-cta:hover { background: var(--verde-luz); }
 
 /* ═══════════════════════════════════════════════════
-   HERO — Terrence Malick
+   ESCENA BASE
 ═══════════════════════════════════════════════════ */
-.hero {
+.escena {
   position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.hero-bg {
+/* ═══════════════════════════════════════════════════
+   ESCENA 0 — Negro absoluto / Fade-in inicial
+═══════════════════════════════════════════════════ */
+#escena-0 {
+  background: #000;
+}
+.e0-badge {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(240,237,228,0.35);
+  text-align: center;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.6s forwards;
+}
+.e0-titulo {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  text-align: center;
+  color: #fff;
+  max-width: 820px;
+  margin-top: 2rem;
+  opacity: 0;
+  animation: fadeUp 1.2s ease 1.2s forwards;
+}
+.e0-scroll {
   position: absolute;
-  inset: 0;
-  background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054933_89194daa-d6f3-4ad1-bd60-3c2eff4066ac.png');
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease 2.2s forwards;
+}
+.e0-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: rgba(240,237,228,0.25);
+  animation: scrollLine 2s ease-in-out 3s infinite;
+}
+.e0-scroll-txt {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(240,237,228,0.2);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollLine {
+  0%,100% { transform: scaleY(1) translateY(0); opacity: 0.25; }
+  50%      { transform: scaleY(0.5) translateY(10px); opacity: 0.6; }
 }
 
-.hero-overlay {
+/* ═══════════════════════════════════════════════════
+   ESCENA 1 — 1796, Pergamino
+═══════════════════════════════════════════════════ */
+#escena-1 {
+  background: radial-gradient(ellipse at 60% 40%, #D4BC80 0%, #F4E4C1 45%, #C8A870 100%);
+  position: relative;
+}
+/* Noise SVG filter aplicado via CSS */
+#escena-1::before {
+  content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(8,8,6,0.3) 0%,
-    rgba(8,8,6,0.1) 40%,
-    rgba(8,8,6,0.7) 80%,
-    rgba(8,8,6,1) 100%
-  );
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  pointer-events: none;
 }
-
-.hero-inner {
+#escena-1::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 70%, rgba(180,140,60,0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,200,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+.e1-inner {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: 8rem 2.5rem 6rem;
-  min-height: 100vh;
+  padding: 5rem 2.5rem;
+  max-width: 760px;
 }
-
-.hero-badge {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(240,237,228,0.55);
-  margin-bottom: 2.5rem;
-}
-
-.hero-h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 7vw, 6.5rem);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.1;
-  color: #ffffff;
-  text-shadow: 0 2px 40px rgba(8,8,6,0.4);
-  max-width: 900px;
-  margin-bottom: 2rem;
-}
-
-.hero-sub {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.4rem;
-  font-weight: 300;
-  line-height: 1.6;
-  color: rgba(240,237,228,0.8);
-  max-width: 600px;
-  margin-bottom: 4rem;
-}
-
-.scroll-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-.scroll-chevron {
-  width: 24px;
-  height: 24px;
-  color: rgba(240,237,228,0.35);
-  animation: bounce 2s ease-in-out infinite;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); opacity: 0.35; }
-  50%       { transform: translateY(8px); opacity: 0.7; }
-}
-
-/* ═══════════════════════════════════════════════════
-   BELGRANO — fondo negro, dos columnas
-═══════════════════════════════════════════════════ */
-.belgrano {
-  background: var(--negro);
-  padding: 10rem 0;
+.reveal-line {
+  display: block;
   overflow: hidden;
 }
-.belgrano-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 7rem;
-  align-items: center;
-  position: relative;
+.reveal-line span {
+  display: block;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
-.belgrano-img-wrap {
-  position: relative;
+.reveal-line span.in {
+  opacity: 1;
+  transform: translateY(0);
 }
-.belgrano-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  filter: sepia(0.3) contrast(0.9);
-}
-.belgrano-right {
-  position: relative;
-  z-index: 1;
-}
-.belgrano-año-bg {
-  position: absolute;
-  left: -1rem;
-  top: -3rem;
-  font-family: var(--font-serif);
-  font-size: clamp(8rem, 16vw, 14rem);
-  font-weight: 300;
-  color: rgba(240,237,228,0.04);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
-.belgrano-cita {
+.e1-cita {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 300;
-  line-height: 1.45;
-  color: var(--crema);
-  margin-bottom: 2.5rem;
-  position: relative;
-  z-index: 1;
+  line-height: 1.6;
+  color: #2A1E0A;
+  margin-bottom: 0.5rem;
 }
-.belgrano-cita::before {
-  content: '"';
-  font-size: 4rem;
-  line-height: 0;
-  color: var(--dorado);
-  display: block;
-  margin-bottom: 1rem;
-  font-style: normal;
-}
-.belgrano-cita-fuente {
-  display: block;
+.e1-fuente {
   font-family: var(--font-sans);
-  font-style: normal;
   font-size: 0.6rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(240,237,228,0.3);
-  margin-top: 1.25rem;
-}
-.belgrano-texto {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(240,237,228,0.55);
-  position: relative;
-  z-index: 1;
-}
-.belgrano-cierre {
+  color: rgba(42,30,10,0.45);
   margin-top: 2rem;
+}
+.e1-nadie {
+  margin-top: 4rem;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2vw, 1.4rem);
   font-weight: 300;
-  color: rgba(240,237,228,0.4);
-  position: relative;
+  color: rgba(42,30,10,0.5);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1.1s ease 0.3s, transform 1.1s ease 0.3s;
+}
+.e1-nadie.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Borde envejecido */
+#escena-1 .e1-marco {
+  position: absolute;
+  inset: 2rem;
+  border: 1px solid rgba(120,90,30,0.2);
+  pointer-events: none;
   z-index: 1;
 }
+#escena-1 .e1-marco::before,
+#escena-1 .e1-marco::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(120,90,30,0.35);
+  border-style: solid;
+}
+#escena-1 .e1-marco::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+#escena-1 .e1-marco::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
 /* ═══════════════════════════════════════════════════
-   STATS — franja crema sobre negro
+   ESCENA 2 — El silencio
 ═══════════════════════════════════════════════════ */
-.stats {
-  background: var(--crema);
-  padding: 5rem 0;
-}
-.stats-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2.5rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.stat-item {
-  padding: 2rem 2.5rem;
-  text-align: center;
-  border-right: 1px solid rgba(8,8,6,0.1);
-}
-.stat-item:last-child { border-right: none; }
-.stat-num {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  color: var(--verde);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-.stat-num sub {
-  font-size: 0.5em;
-  vertical-align: super;
-}
-.stat-lbl {
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gris);
-  line-height: 1.5;
-}
-
-/* ═══════════════════════════════════════════════════
-   EARLY MINER — fondo negro
-═══════════════════════════════════════════════════ */
-.early-miner {
+#escena-2 {
   background: var(--negro);
-  padding: 10rem 0;
 }
-.early-miner-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2.5rem;
+.e2-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5rem 2.5rem;
+  max-width: 760px;
+  width: 100%;
+  gap: 0;
 }
-.section-label {
+.e2-linea {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(240,237,228,0.8);
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(240,237,228,0.06);
+  width: 100%;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.8s ease, transform 0.8s ease, color 0.6s ease;
+}
+.e2-linea.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+.e2-linea.past {
+  opacity: 0.2;
+  color: rgba(240,237,228,0.4);
+}
+.e2-linea:last-child { border-bottom: none; }
+.e2-linea strong {
+  font-weight: 600;
+  color: var(--verde-luz);
+}
+.e2-linea .e2-año {
   font-family: var(--font-sans);
   font-size: 0.6rem;
   font-weight: 500;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--verde-luz);
+  color: rgba(240,237,228,0.25);
   display: block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.3rem;
 }
-.early-miner-h2 {
+.e2-linea.resalto strong {
+  color: var(--verde-luz);
+}
+
+/* ═══════════════════════════════════════════════════
+   ESCENA 3 — La ruptura (foto campos + parallax)
+═══════════════════════════════════════════════════ */
+#escena-3 {
+  position: relative;
+}
+.e3-bg {
+  position: absolute;
+  inset: -15%;
+  background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054933_89194daa-d6f3-4ad1-bd60-3c2eff4066ac.png');
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+.e3-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,6,0.65);
+}
+.e3-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 2.5rem;
+  max-width: 900px;
+}
+.e3-verso {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(2.2rem, 5.5vw, 5rem);
   font-weight: 300;
   line-height: 1.25;
-  color: var(--crema);
-  max-width: 780px;
+  color: #fff;
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.e3-verso.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════
+   ESCENA 4 — Números con count-up
+═══════════════════════════════════════════════════ */
+#escena-4 {
+  background: var(--negro);
+}
+.e4-inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  max-width: 960px;
+  width: 100%;
+  border: 1px solid rgba(240,237,228,0.07);
+}
+.e4-stat {
+  padding: 4rem 3rem;
+  border-right: 1px solid rgba(240,237,228,0.07);
+  border-bottom: 1px solid rgba(240,237,228,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.e4-stat.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.e4-stat:nth-child(2n) { border-right: none; }
+.e4-stat:nth-child(3),
+.e4-stat:nth-child(4)  { border-bottom: none; }
+.e4-num {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--verde-luz);
+  display: block;
   margin-bottom: 1rem;
 }
-.early-miner-sub {
+.e4-lbl {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 300;
-  line-height: 1.75;
-  color: rgba(240,237,228,0.45);
-  max-width: 540px;
-  margin-bottom: 5rem;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240,237,228,0.4);
+  line-height: 1.6;
 }
-.compare-grid {
+
+/* ═══════════════════════════════════════════════════
+   ESCENA 5 — Bitcoin / Early Miner
+═══════════════════════════════════════════════════ */
+#escena-5 {
+  background: #060606;
+}
+.e5-inner {
+  max-width: 960px;
+  width: 100%;
+  padding: 5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.e5-frase {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--crema);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.e5-frase.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.e5-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  margin-bottom: 4rem;
 }
-.compare-card {
+.e5-card {
   padding: 2.5rem;
-  border: 1px solid rgba(240,237,228,0.1);
+  border: 1px solid rgba(240,237,228,0.09);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
-.compare-card.acento {
-  border-color: rgba(86,194,90,0.3);
+.e5-card.in {
+  opacity: 1;
+  transform: translateY(0);
 }
-.compare-era {
+.e5-card.acento {
+  border-color: rgba(86,194,90,0.25);
+}
+.e5-era {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(240,237,228,0.3);
+  color: rgba(240,237,228,0.28);
   display: block;
   margin-bottom: 0.75rem;
 }
-.compare-card.acento .compare-era {
-  color: var(--verde-luz);
-}
-.compare-title {
+.e5-card.acento .e5-era { color: var(--verde-luz); }
+.e5-titulo {
   font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 600;
   color: var(--crema);
+  line-height: 1.35;
   margin-bottom: 2rem;
-  line-height: 1.3;
+  display: block;
 }
-.compare-rows {
+.e5-filas {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.7rem;
 }
-.compare-row {
+.e5-fila {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(240,237,228,0.06);
-}
-.compare-row:last-child { border-bottom: none; padding-bottom: 0; }
-.compare-key {
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(240,237,228,0.05);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 300;
-  color: rgba(240,237,228,0.35);
-  flex-shrink: 0;
+  font-size: 0.8rem;
 }
-.compare-val {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  font-weight: 400;
-  color: rgba(240,237,228,0.65);
-  text-align: right;
-}
-.compare-card.acento .compare-val {
-  color: rgba(86,194,90,0.85);
-}
-.early-miner-declaracion {
+.e5-fila:last-child { border-bottom: none; padding-bottom: 0; }
+.e5-fila-key  { color: rgba(240,237,228,0.3); font-weight: 300; flex-shrink: 0; }
+.e5-fila-val  { color: rgba(240,237,228,0.65); font-weight: 400; text-align: right; }
+.e5-card.acento .e5-fila-val { color: rgba(86,194,90,0.85); }
+.e5-cierre {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
   font-weight: 300;
   line-height: 1.55;
   color: rgba(240,237,228,0.5);
-  max-width: 760px;
+  border-top: 1px solid rgba(240,237,228,0.07);
   padding-top: 3rem;
-  border-top: 1px solid rgba(240,237,228,0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
 }
-.early-miner-declaracion strong {
+.e5-cierre.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.e5-cierre strong {
   font-style: normal;
   font-weight: 600;
   color: var(--crema);
 }
 
 /* ═══════════════════════════════════════════════════
-   FOTO HEMPCRETE — full bleed
+   ESCENA 6 — Hempcrete silencio (foto full bleed)
 ═══════════════════════════════════════════════════ */
-.foto-hempcrete {
-  width: 100%;
-  height: 60vh;
-  overflow: hidden;
-}
-.foto-hempcrete img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  will-change: transform;
-}
-
-/* ═══════════════════════════════════════════════════
-   SISTEMA — 3 columnas, fondo negro con tinte verde
-═══════════════════════════════════════════════════ */
-.sistema {
-  background: #060D06;
-  padding: 10rem 0;
-}
-.sistema-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2.5rem;
-}
-.sistema-header {
-  margin-bottom: 5rem;
-}
-.sistema-h2 {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 300;
-  line-height: 1.3;
-  color: var(--crema);
-  max-width: 600px;
-}
-.sistema-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(240,237,228,0.07);
-  border: 1px solid rgba(240,237,228,0.07);
-}
-.sistema-col {
-  background: #060D06;
-  padding: 3rem 2.5rem;
-}
-.sistema-num {
-  font-family: var(--font-serif);
-  font-size: 3.5rem;
-  font-weight: 300;
-  color: var(--verde-luz);
-  line-height: 1;
-  display: block;
-  margin-bottom: 1.5rem;
-}
-.sistema-col-title {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--crema);
-  margin-bottom: 0.75rem;
-  display: block;
-}
-.sistema-col-desc {
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 300;
-  line-height: 1.75;
-  color: rgba(240,237,228,0.5);
-}
-.sistema-col-data {
-  display: block;
-  margin-top: 2rem;
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--verde-luz);
-}
-
-/* ═══════════════════════════════════════════════════
-   ROADMAP — timeline vertical
-═══════════════════════════════════════════════════ */
-.roadmap {
-  background: #1A1A14;
-  padding: 10rem 0;
-}
-.roadmap-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2.5rem;
-}
-.roadmap-h2 {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 300;
-  color: var(--crema);
-  max-width: 600px;
-  margin-bottom: 5rem;
-}
-.roadmap-track {
-  position: relative;
-  padding-left: 2rem;
-  border-left: 1px solid var(--verde-luz);
-}
-.roadmap-item {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 3rem;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(240,237,228,0.06);
+#escena-6 {
   position: relative;
 }
-.roadmap-item:last-child { border-bottom: none; }
-.roadmap-item::before {
-  content: '';
+.e6-bg {
   position: absolute;
-  left: -2.375rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--negro);
-  border: 2px solid rgba(240,237,228,0.2);
-  z-index: 1;
-}
-.roadmap-item.active::before {
-  border-color: var(--verde-luz);
-  background: var(--verde-luz);
-}
-.roadmap-año {
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: rgba(240,237,228,0.25);
-  line-height: 1;
-  display: block;
-  padding-top: 0.2rem;
-}
-.roadmap-item.active .roadmap-año {
-  color: var(--verde-luz);
-}
-.roadmap-hito {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--verde-luz);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.roadmap-titulo {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--crema);
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-  display: block;
-}
-.roadmap-desc {
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 300;
-  line-height: 1.7;
-  color: rgba(240,237,228,0.45);
-}
-
-/* ═══════════════════════════════════════════════════
-   FOTO AÉREA — separador visual full bleed
-═══════════════════════════════════════════════════ */
-.foto-aerea {
-  width: 100%;
-  height: 50vh;
-  overflow: hidden;
-}
-.foto-aerea img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  will-change: transform;
-}
-
-/* ═══════════════════════════════════════════════════
-   EQUIPO — fondo negro
-═══════════════════════════════════════════════════ */
-.equipo {
-  background: var(--negro);
-  padding: 10rem 0;
-}
-.equipo-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2.5rem;
-}
-.equipo-h2 {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 300;
-  color: var(--crema);
-  max-width: 600px;
-  margin-bottom: 4rem;
-}
-.equipo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 5rem;
-}
-.equipo-card {
-  padding: 2.5rem;
-  border: 1px solid rgba(240,237,228,0.1);
-}
-.equipo-iniciales {
-  width: 48px;
-  height: 48px;
-  border: 1px solid rgba(240,237,228,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--dorado);
-  margin-bottom: 1.5rem;
-}
-.equipo-nombre {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--crema);
-  display: block;
-  margin-bottom: 0.25rem;
-}
-.equipo-rol {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--verde-luz);
-  display: block;
-  margin-bottom: 1.5rem;
-}
-.equipo-detalle {
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 300;
-  line-height: 1.75;
-  color: rgba(240,237,228,0.5);
-}
-.equipo-contacto {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(240,237,228,0.07);
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.equipo-contacto a {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: rgba(240,237,228,0.4);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.2s;
-}
-.equipo-contacto a:hover { color: var(--crema); }
-
-/* Hitos */
-.hitos-label {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(240,237,228,0.3);
-  display: block;
-  margin-bottom: 1.5rem;
-}
-.hitos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid rgba(240,237,228,0.08);
-  overflow: hidden;
-}
-.hito-item {
-  padding: 1.5rem;
-  border-right: 1px solid rgba(240,237,228,0.08);
-  border-bottom: 1px solid rgba(240,237,228,0.08);
-}
-.hito-item:nth-child(3n) { border-right: none; }
-.hito-item:nth-last-child(-n+3) { border-bottom: none; }
-.hito-fecha {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--verde-luz);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.hito-desc {
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: rgba(240,237,228,0.6);
-}
-
-/* ═══════════════════════════════════════════════════
-   CTA FINAL
-═══════════════════════════════════════════════════ */
-.cta-final {
-  position: relative;
-  background: var(--negro);
-  padding: 12rem 0 10rem;
-  overflow: hidden;
-}
-.cta-final-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054933_89194daa-d6f3-4ad1-bd60-3c2eff4066ac.png');
+  inset: -15%;
+  background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054937_ba01884a-b393-4639-8df5-5870aab01691.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.12;
+  will-change: transform;
 }
-.cta-inner {
+.e6-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,6,0.45);
+}
+.e6-inner {
   position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 2.5rem 6rem;
+  min-height: 100vh;
+  width: 100%;
+}
+.e6-texto {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.e6-texto.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════
+   ESCENA 7 — Roadmap (timeline que se pinta)
+═══════════════════════════════════════════════════ */
+#escena-7 {
+  background: #0A0A08;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8rem 0;
+}
+.e7-inner {
+  max-width: 880px;
+  width: 100%;
   padding: 0 2.5rem;
 }
-.cta-eyebrow {
+.e7-header {
+  margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.e7-header.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.e7-label {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--verde-luz);
   display: block;
-  margin-bottom: 2rem;
-}
-.cta-titulo {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
-  font-weight: 300;
-  line-height: 1.2;
-  color: var(--crema);
-  max-width: 800px;
   margin-bottom: 1rem;
 }
-.cta-titulo em {
+.e7-h2 {
+  font-family: var(--font-serif);
   font-style: italic;
-  color: var(--verde-luz);
-}
-.cta-sub {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 300;
-  line-height: 1.75;
-  color: rgba(240,237,228,0.45);
-  max-width: 520px;
-  margin-bottom: 3rem;
+  line-height: 1.3;
+  color: var(--crema);
 }
-.cta-oferta {
-  border: 1px solid rgba(240,237,228,0.08);
-  padding: 2rem 2.5rem;
-  margin-bottom: 3rem;
-  max-width: 680px;
+
+/* Track vertical */
+.timeline-wrap {
+  position: relative;
+  padding-left: 2rem;
 }
-.cta-oferta-label {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(240,237,228,0.25);
+.timeline-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(240,237,228,0.08);
+  overflow: hidden;
+}
+.timeline-paint {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--verde-luz);
+  transition: height 0.05s linear;
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(240,237,228,0.05);
+  position: relative;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.tl-item.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-dot {
+  position: absolute;
+  left: -2.37rem;
+  top: 2.9rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #0A0A08;
+  border: 1.5px solid rgba(240,237,228,0.18);
+  z-index: 1;
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+.tl-item.active .tl-dot {
+  border-color: var(--verde-luz);
+  background: var(--verde-luz);
+}
+.tl-año {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: rgba(240,237,228,0.2);
+  line-height: 1;
   display: block;
-  margin-bottom: 1.25rem;
+  padding-top: 0.15rem;
+  transition: color 0.4s ease;
 }
-.cta-oferta ul {
-  list-style: none;
+.tl-item.active .tl-año { color: var(--verde-luz); }
+.tl-hito {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(86,194,90,0.7);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.tl-titulo {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--crema);
+  margin-bottom: 0.4rem;
+  display: block;
+  line-height: 1.3;
+}
+.tl-desc {
+  font-family: var(--font-sans);
+  font-size: 0.83rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(240,237,228,0.42);
+}
+
+/* ═══════════════════════════════════════════════════
+   ESCENA 8 — Vista aérea + CTA
+═══════════════════════════════════════════════════ */
+#escena-8 {
+  position: relative;
+}
+.e8-bg {
+  position: absolute;
+  inset: -15%;
+  background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054938_e59da2e1-928e-4d7b-98a3-1c410169a99c.png');
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+.e8-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(8,8,6,0.35) 0%, rgba(8,8,6,0.7) 100%);
+}
+.e8-inner {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2.5rem;
+}
+.e8-contenido {
+  max-width: 820px;
+  width: 100%;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  align-items: center;
+  gap: 0;
 }
-.cta-oferta li {
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
+.e8-linea1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.35rem);
   font-weight: 300;
-  line-height: 1.5;
-  color: rgba(240,237,228,0.6);
-  display: flex;
-  gap: 0.75rem;
-  align-items: baseline;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
-.cta-oferta li::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--verde-luz);
-  flex-shrink: 0;
-  margin-top: 0.5rem;
+.e8-linea1.in { opacity: 1; transform: translateY(0); }
+.e8-linea2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.03em;
+  margin-top: 0.6rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
 }
-.cta-acciones {
+.e8-linea2.in { opacity: 1; transform: translateY(0); }
+.e8-linea3 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--verde-luz);
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+}
+.e8-linea3.in { opacity: 1; transform: translateY(0); }
+.e8-acciones {
+  margin-top: 3.5rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  align-items: center;
-  margin-bottom: 2rem;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.9s ease 0.8s, transform 0.9s ease 0.8s;
 }
-.btn-primary {
+.e8-acciones.in { opacity: 1; transform: translateY(0); }
+.btn-p {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -915,43 +820,44 @@ nav.scrolled {
   background: var(--crema);
   color: var(--negro);
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
   text-decoration: none;
   transition: background 0.2s;
 }
-.btn-primary:hover { background: var(--verde-luz); }
-.btn-outline {
+.btn-p:hover { background: var(--verde-luz); }
+.btn-o {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  border: 1px solid rgba(240,237,228,0.2);
-  color: var(--crema);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 300;
   text-decoration: none;
   transition: border-color 0.2s;
 }
-.btn-outline:hover { border-color: rgba(240,237,228,0.5); }
-.cta-contacto {
+.btn-o:hover { border-color: rgba(255,255,255,0.6); }
+.e8-datos {
+  margin-top: 1.5rem;
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 300;
-  color: rgba(240,237,228,0.3);
-  line-height: 1.7;
+  color: rgba(255,255,255,0.3);
+  opacity: 0;
+  transition: opacity 0.9s ease 1s;
 }
-.cta-contacto a {
-  color: rgba(240,237,228,0.5);
+.e8-datos.in { opacity: 1; }
+.e8-datos a {
+  color: rgba(255,255,255,0.5);
   text-decoration: none;
-  transition: color 0.2s;
 }
-.cta-contacto a:hover { color: var(--crema); }
-
+.e8-datos a:hover { color: #fff; }
 .btn-icon {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
 }
 
@@ -961,28 +867,28 @@ nav.scrolled {
 footer {
   background: var(--negro);
   border-top: 1px solid rgba(240,237,228,0.06);
-  padding: 2.5rem;
+  padding: 2rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
 }
-.footer-datos {
+.footer-legal {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 300;
   line-height: 1.7;
   color: rgba(240,237,228,0.2);
 }
-.footer-datos strong { color: rgba(240,237,228,0.35); font-weight: 500; }
-.footer-cita {
+.footer-legal strong { color: rgba(240,237,228,0.35); font-weight: 500; }
+.footer-belgrano {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 0.85rem;
-  color: rgba(240,237,228,0.15);
+  font-size: 0.82rem;
+  color: rgba(240,237,228,0.14);
+  max-width: 280px;
   text-align: right;
-  max-width: 320px;
   line-height: 1.5;
 }
 
@@ -990,74 +896,55 @@ footer {
    RESPONSIVE
 ═══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  nav { padding: 1rem 1.25rem; }
+  #nav { padding: 1rem 1.25rem; }
   .nav-cta { display: none; }
 
-  .hero-h1 { font-size: 2.8rem; }
-  .hero-sub { font-size: 1.1rem; }
-  .hero-inner { padding: 6rem 1.25rem 5rem; }
+  .e0-titulo { font-size: 2.2rem; padding: 0 1.5rem; }
 
-  .belgrano { padding: 6rem 0; }
-  .belgrano-inner {
+  #escena-1 .e1-marco { inset: 1rem; }
+  .e1-inner { padding: 4rem 1.5rem; }
+
+  .e2-inner { padding: 4rem 1.5rem; }
+  .e2-linea { font-size: 1.05rem; }
+
+  .e3-inner { padding: 4rem 1.5rem; }
+  .e3-verso { font-size: 2rem; }
+
+  .e4-inner {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 0 1.25rem;
+    border: none;
+    gap: 1px;
   }
-  .belgrano-img { aspect-ratio: 4/3; }
-  .belgrano-año-bg { font-size: 7rem; }
-
-  .stats { padding: 3rem 0; }
-  .stats-inner {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 1.25rem;
+  .e4-stat {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(240,237,228,0.07) !important;
+    padding: 2.5rem 1.5rem;
   }
-  .stat-item:nth-child(2) { border-right: none; }
-  .stat-item:nth-child(3),
-  .stat-item:nth-child(4) { border-top: 1px solid rgba(8,8,6,0.1); }
+  .e4-stat:last-child { border-bottom: none !important; }
 
-  .early-miner { padding: 6rem 0; }
-  .early-miner-inner { padding: 0 1.25rem; }
-  .compare-grid { grid-template-columns: 1fr; }
+  .e5-inner { padding: 4rem 1.5rem; gap: 2.5rem; }
+  .e5-cards { grid-template-columns: 1fr; }
 
-  .foto-hempcrete { height: 45vh; }
+  #escena-7 { padding: 6rem 0; }
+  .e7-inner { padding: 0 1.5rem; }
+  .tl-item { grid-template-columns: 70px 1fr; gap: 1.5rem; }
 
-  .sistema { padding: 6rem 0; }
-  .sistema-inner { padding: 0 1.25rem; }
-  .sistema-grid { grid-template-columns: 1fr; }
-
-  .roadmap { padding: 6rem 0; }
-  .roadmap-inner { padding: 0 1.25rem; }
-  .roadmap-item { grid-template-columns: 80px 1fr; gap: 1.5rem; }
-
-  .foto-aerea { height: 35vh; }
-
-  .equipo { padding: 6rem 0; }
-  .equipo-inner { padding: 0 1.25rem; }
-  .equipo-grid { grid-template-columns: 1fr; }
-  .hitos-grid { grid-template-columns: 1fr 1fr; }
-  .hito-item:nth-child(2n) { border-right: none; }
-  .hito-item:nth-last-child(-n+2) { border-bottom: none; }
-  .hito-item:nth-last-child(-n+3) { border-bottom: 1px solid rgba(240,237,228,0.08); }
-  .hito-item:last-child { border-bottom: none; }
-  .hito-item:nth-child(3n) { border-right: 1px solid rgba(240,237,228,0.08); }
-
-  .cta-final { padding: 7rem 0 6rem; }
-  .cta-inner { padding: 0 1.25rem; }
-  .cta-acciones { flex-direction: column; align-items: flex-start; }
+  .e8-inner { padding: 4rem 1.5rem; }
+  .e8-acciones { flex-direction: column; align-items: center; }
 
   footer {
     flex-direction: column;
     align-items: flex-start;
     padding: 1.5rem 1.25rem;
   }
-  .footer-cita { text-align: left; max-width: 100%; }
+  .footer-belgrano { text-align: left; max-width: 100%; }
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="main-nav">
+<nav id="nav">
   <a class="nav-logo" href="#">Plan Manuel Belgrano · Flora Cáñamo Neuquino</a>
   <a class="nav-cta" href="mailto:nqnguille@gmail.com?subject=Plan%20Manuel%20Belgrano%20%E2%80%94%20Solicitud%20de%20reuni%C3%B3n">
     Solicitar reunión
@@ -1068,163 +955,174 @@ footer {
 </nav>
 
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-bg" id="hero-bg"></div>
-  <div class="hero-overlay"></div>
-
-  <div class="hero-inner">
-    <p class="hero-badge fade-in">· Neuquén · Patagonia · 1796 ·</p>
-
-    <h1 class="hero-h1 fade-in delay-1">
-      El mismo suelo<br>
-      que produce petróleo<br>
-      puede producir<br>
-      el futuro.
-    </h1>
-
-    <p class="hero-sub fade-in delay-2">
-      Manuel Belgrano lo supo en 1796.<br>
-      Nosotros lo ejecutamos en 2026.
-    </p>
-
-    <div class="scroll-indicator fade-in delay-3">
-      <svg class="scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M6 9l6 6 6-6"/>
-      </svg>
-    </div>
+<!-- ESCENA 0 — Negro absoluto -->
+<section class="escena" id="escena-0">
+  <p class="e0-badge">· Neuquén · Patagonia · 1796 ·</p>
+  <h1 class="e0-titulo">230 años esperando este momento.</h1>
+  <div class="e0-scroll">
+    <div class="e0-scroll-line"></div>
+    <span class="e0-scroll-txt">Scroll</span>
   </div>
 </section>
 
 
-<!-- BELGRANO 1796 -->
-<section class="belgrano">
-  <div class="belgrano-inner">
+<!-- ESCENA 1 — 1796, Pergamino -->
+<section class="escena" id="escena-1">
+  <div class="e1-marco" aria-hidden="true"></div>
+  <div class="e1-inner">
 
-    <div class="belgrano-img-wrap fade-in">
-      <img
-        class="belgrano-img"
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054935_9659efe9-2464-4ff4-922b-fb486d8ecf69.png"
-        alt="Manuscrito de Manuel Belgrano, 1796"
-        loading="lazy"
-      >
+    <div class="e1-cita">
+      <span class="reveal-line" data-delay="0">
+        <span>"El cultivo del cáñamo y del lino</span>
+      </span>
+      <span class="reveal-line" data-delay="180">
+        <span>es el más a propósito</span>
+      </span>
+      <span class="reveal-line" data-delay="360">
+        <span>para hacer feliz a estos países."</span>
+      </span>
     </div>
 
-    <div class="belgrano-right fade-in delay-1">
-      <span class="belgrano-año-bg" aria-hidden="true">1796</span>
+    <p class="e1-fuente reveal-line" data-delay="620">
+      <span>Manuel Belgrano — Memoria sobre agricultura y comercio, 1796</span>
+    </p>
 
-      <blockquote class="belgrano-cita">
-        El cultivo del cáñamo y del lino es el más a propósito para hacer feliz a estos países.
-        <cite class="belgrano-cita-fuente">Manuel Belgrano — Memoria sobre agricultura y comercio, 1796</cite>
-      </blockquote>
+    <p class="e1-nadie">Nadie lo escuchó.</p>
+  </div>
+</section>
 
-      <p class="belgrano-texto">
-        No era un prócer de bronce. Era un economista formado en Salamanca que entendía
-        lo que el territorio podía dar. Escribió en su Memoria sobre agricultura y comercio
-        que el cáñamo traería prosperidad real — producción soberana, no dependencia
-        disfrazada de progreso. El Virreinato lo ignoró.
-      </p>
-      <p class="belgrano-texto" style="margin-top:1rem;">
-        230 años después, la misma planta que nombró es la que convierte CO₂ en activo
-        financiero certificado. La que produce hempcrete — material de construcción con
-        500 años de vida útil documentada. La que genera los créditos de carbono que
-        Argentina LNG necesita para cruzar el Atlántico.
-      </p>
 
-      <p class="belgrano-cierre">Doscientos años después, el suelo sigue esperando.</p>
+<!-- ESCENA 2 — El silencio -->
+<section class="escena" id="escena-2">
+  <div class="e2-inner">
+
+    <div class="e2-linea" data-seq="0">
+      <span class="e2-año">1810</span>
+      Revolución de Mayo. Nadie plantó cáñamo.
+    </div>
+
+    <div class="e2-linea" data-seq="1">
+      <span class="e2-año">1853</span>
+      Constitución Nacional. Nadie plantó cáñamo.
+    </div>
+
+    <div class="e2-linea" data-seq="2">
+      <span class="e2-año">1943</span>
+      Prohibición global. Silencio total.
+    </div>
+
+    <div class="e2-linea" data-seq="3">
+      <span class="e2-año">2022</span>
+      <strong>Decreto 883. Argentina habilita el cultivo.</strong>
+    </div>
+
+    <div class="e2-linea resalto" data-seq="4">
+      <span class="e2-año">2024</span>
+      <strong>Licencia ARICCAME. Nosotros la obtuvimos.</strong>
     </div>
 
   </div>
 </section>
 
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat-item fade-in">
-      <span class="stat-num">8–15 t</span>
-      <span class="stat-lbl">CO₂/ha/año<br>capturado en cultivo</span>
-    </div>
-    <div class="stat-item fade-in delay-1">
-      <span class="stat-num">4.000 ha</span>
-      <span class="stat-lbl">Canal Mari Menuco<br>Barreales · Neuquén</span>
-    </div>
-    <div class="stat-item fade-in delay-2">
-      <span class="stat-num">€9,2M</span>
-      <span class="stat-lbl">Portafolio acumulado<br>proyección 2030</span>
-    </div>
-    <div class="stat-item fade-in delay-3">
-      <span class="stat-num">+500 años</span>
-      <span class="stat-lbl">Vida útil hempcrete<br>EN 16101 · validado</span>
-    </div>
+<!-- ESCENA 3 — La ruptura -->
+<section class="escena" id="escena-3">
+  <div class="e3-bg" id="e3-bg"></div>
+  <div class="e3-overlay"></div>
+  <div class="e3-inner">
+    <span class="e3-verso" data-seq="0">El mismo suelo</span>
+    <span class="e3-verso" data-seq="1">que produce petróleo</span>
+    <span class="e3-verso" data-seq="2">puede producir</span>
+    <span class="e3-verso" data-seq="3">el futuro.</span>
   </div>
-</div>
+</section>
 
 
-<!-- EARLY MINER -->
-<section class="early-miner">
-  <div class="early-miner-inner">
+<!-- ESCENA 4 — Números -->
+<section class="escena" id="escena-4">
+  <div class="e4-inner">
 
-    <span class="section-label fade-in">La lógica del early miner</span>
+    <div class="e4-stat" data-count="true">
+      <span class="e4-num" data-val="15" data-prefix="8–" data-suffix=" t CO₂">8–15 t CO₂</span>
+      <span class="e4-lbl">por ha / año<br>capturado en cultivo</span>
+    </div>
 
-    <h2 class="early-miner-h2 fade-in delay-1">
-      Producir créditos de carbono hoy es como minar Bitcoin en 2010.
-    </h2>
+    <div class="e4-stat" data-count="true">
+      <span class="e4-num" data-val="4000" data-suffix=" ha">4.000 ha</span>
+      <span class="e4-lbl">Canal Mari Menuco<br>Barreales · Neuquén</span>
+    </div>
 
-    <p class="early-miner-sub fade-in delay-2">
-      La diferencia no fue tecnología. No fue inteligencia.
-      Fue timing — estar en la posición correcta antes de que el mercado formalizara el precio.
-    </p>
+    <div class="e4-stat" data-count="true">
+      <span class="e4-num" data-val="9.2" data-prefix="€" data-suffix="M">€9,2M</span>
+      <span class="e4-lbl">portafolio acumulado<br>proyección 2030</span>
+    </div>
 
-    <div class="compare-grid">
-      <div class="compare-card fade-in">
-        <span class="compare-era">Bitcoin · 2010</span>
-        <h3 class="compare-title">El activo que nadie entendía.<br>Hasta que llegó tarde.</h3>
-        <div class="compare-rows">
-          <div class="compare-row">
-            <span class="compare-key">Precio de entrada</span>
-            <span class="compare-val">USD 0,01 / BTC</span>
+    <div class="e4-stat" data-count="true">
+      <span class="e4-num" data-val="500" data-prefix="+" data-suffix=" años">+500 años</span>
+      <span class="e4-lbl">vida útil hempcrete<br>EN 16101 · validado</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ESCENA 5 — Bitcoin / Early Miner -->
+<section class="escena" id="escena-5">
+  <div class="e5-inner">
+
+    <blockquote class="e5-frase">
+      "Producir créditos de carbono hoy es como minar Bitcoin en 2010."
+    </blockquote>
+
+    <div class="e5-cards">
+      <div class="e5-card">
+        <span class="e5-era">Bitcoin · 2010</span>
+        <span class="e5-titulo">El activo que nadie entendía.<br>Hasta que llegó tarde.</span>
+        <div class="e5-filas">
+          <div class="e5-fila">
+            <span class="e5-fila-key">Precio de entrada</span>
+            <span class="e5-fila-val">USD 0,01 / BTC</span>
           </div>
-          <div class="compare-row">
-            <span class="compare-key">Precio en 2021</span>
-            <span class="compare-val">USD 60.000 / BTC</span>
+          <div class="e5-fila">
+            <span class="e5-fila-key">Precio en 2021</span>
+            <span class="e5-fila-val">USD 60.000 / BTC</span>
           </div>
-          <div class="compare-row">
-            <span class="compare-key">Marco regulatorio</span>
-            <span class="compare-val">Inexistente · oportunidad abierta</span>
+          <div class="e5-fila">
+            <span class="e5-fila-key">Marco regulatorio</span>
+            <span class="e5-fila-val">Inexistente · ventana abierta</span>
           </div>
-          <div class="compare-row">
-            <span class="compare-key">Ventaja decisiva</span>
-            <span class="compare-val">Producir antes de la escasez</span>
+          <div class="e5-fila">
+            <span class="e5-fila-key">Ventaja decisiva</span>
+            <span class="e5-fila-val">Producir antes de la escasez</span>
           </div>
         </div>
       </div>
 
-      <div class="compare-card acento fade-in delay-1">
-        <span class="compare-era">Créditos CO₂ · 2026</span>
-        <h3 class="compare-title">El activo que el mercado<br>aún está aprendiendo a pagar.</h3>
-        <div class="compare-rows">
-          <div class="compare-row">
-            <span class="compare-key">Costo de entrada</span>
-            <span class="compare-val">Cultivo + certificación</span>
+      <div class="e5-card acento">
+        <span class="e5-era">Créditos CO₂ · 2026</span>
+        <span class="e5-titulo">El activo que el mercado<br>aún está aprendiendo a pagar.</span>
+        <div class="e5-filas">
+          <div class="e5-fila">
+            <span class="e5-fila-key">Costo de entrada</span>
+            <span class="e5-fila-val">Cultivo + certificación</span>
           </div>
-          <div class="compare-row">
-            <span class="compare-key">Precio en 2029</span>
-            <span class="compare-val">??? escasez regulatoria</span>
+          <div class="e5-fila">
+            <span class="e5-fila-key">Precio en 2029</span>
+            <span class="e5-fila-val">??? escasez regulatoria</span>
           </div>
-          <div class="compare-row">
-            <span class="compare-key">Marco regulatorio</span>
-            <span class="compare-val">CRCF 2026 · CBAM activo</span>
+          <div class="e5-fila">
+            <span class="e5-fila-key">Marco regulatorio</span>
+            <span class="e5-fila-val">CRCF 2026 · CBAM activo</span>
           </div>
-          <div class="compare-row">
-            <span class="compare-key">Ventaja decisiva</span>
-            <span class="compare-val">Producir hoy · portafolio soberano</span>
+          <div class="e5-fila">
+            <span class="e5-fila-key">Ventaja decisiva</span>
+            <span class="e5-fila-val">Producir hoy · portafolio soberano</span>
           </div>
         </div>
       </div>
     </div>
 
-    <p class="early-miner-declaracion fade-in">
+    <p class="e5-cierre">
       El CRCF europeo entró en vigor en 2026. El CBAM también.
       Los compradores de GNL ya exigen créditos por contrato.
       Argentina LNG exporta hacia 2030.
@@ -1235,143 +1133,77 @@ footer {
 </section>
 
 
-<!-- FOTO HEMPCRETE — full bleed, sin texto -->
-<div class="foto-hempcrete" id="foto-hempcrete">
-  <img
-    src="https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054937_ba01884a-b393-4639-8df5-5870aab01691.png"
-    alt="Manos trabajando con hempcrete, cáñamo industrial Neuquén"
-    loading="lazy"
-    id="img-hempcrete"
-  >
-</div>
-
-
-<!-- SISTEMA -->
-<section class="sistema">
-  <div class="sistema-inner">
-
-    <div class="sistema-header fade-in">
-      <span class="section-label">El modelo</span>
-      <h2 class="sistema-h2">Tres pasos. Un portafolio de carbono soberano.</h2>
-    </div>
-
-    <div class="sistema-grid">
-      <div class="sistema-col fade-in delay-1">
-        <span class="sistema-num">01</span>
-        <span class="sistema-col-title">Cultivar</span>
-        <p class="sistema-col-desc">
-          Cáñamo industrial en las 4.000 ha del Canal Mari Menuco / Barreales.
-          Captura activa de CO₂ desde el primer ciclo. La planta lo hace sola,
-          a un ritmo 6 veces superior al de un bosque.
-        </p>
-        <span class="sistema-col-data">8–15 t CO₂/ha/año · desde el primer ciclo</span>
-      </div>
-
-      <div class="sistema-col fade-in delay-2">
-        <span class="sistema-num">02</span>
-        <span class="sistema-col-title">Construir</span>
-        <p class="sistema-col-desc">
-          La biomasa se convierte en hempcrete — hormigón de cáñamo con vida útil
-          documentada de más de 500 años. Fija el carbono capturado de forma
-          permanente en infraestructura real. 650 viviendas proyectadas para 2028.
-        </p>
-        <span class="sistema-col-data">110–165 kg CO₂/m³ fijado permanentemente</span>
-      </div>
-
-      <div class="sistema-col fade-in delay-3">
-        <span class="sistema-num">03</span>
-        <span class="sistema-col-title">Certificar</span>
-        <p class="sistema-col-desc">
-          Certificación ISO 14064-2 convierte la captura en crédito verificado y
-          negociable. El CRCF europeo entró en vigor en 2026. Los compradores de GNL
-          ya los exigen por contrato. Portafolio disponible antes del pico de demanda.
-        </p>
-        <span class="sistema-col-data">ISO 14064-2 · CRCF 2026 · CBAM compliance</span>
-      </div>
-    </div>
-
+<!-- ESCENA 6 — Hempcrete silencio -->
+<section class="escena" id="escena-6">
+  <div class="e6-bg" id="e6-bg"></div>
+  <div class="e6-overlay"></div>
+  <div class="e6-inner">
+    <p class="e6-texto">Cultivar. Construir. Certificar.</p>
   </div>
 </section>
 
 
-<!-- ROADMAP -->
-<section class="roadmap">
-  <div class="roadmap-inner">
+<!-- ESCENA 7 — Roadmap -->
+<section class="escena" id="escena-7">
+  <div class="e7-inner">
 
-    <div class="fade-in">
-      <span class="section-label">Roadmap 2026–2030</span>
-      <h2 class="roadmap-h2">De Neuquén a Europa. Cinco hitos. Un portafolio soberano.</h2>
+    <div class="e7-header">
+      <span class="e7-label">Roadmap 2026–2030</span>
+      <h2 class="e7-h2">De Neuquén a Europa.<br>Cinco hitos. Un portafolio soberano.</h2>
     </div>
 
-    <div class="roadmap-track">
+    <div class="timeline-wrap">
+      <div class="timeline-rail">
+        <div class="timeline-paint" id="tl-paint"></div>
+      </div>
 
-      <div class="roadmap-item active fade-in delay-1">
+      <div class="tl-item active" id="tl-0">
+        <div class="tl-dot"></div>
+        <div><span class="tl-año">2026</span></div>
         <div>
-          <span class="roadmap-año">2026</span>
-        </div>
-        <div>
-          <span class="roadmap-hito">En curso</span>
-          <span class="roadmap-titulo">Benchmark de cultivares · 10 ha</span>
-          <p class="roadmap-desc">
-            Selección varietal bajo condiciones patagónicas reales.
-            Base agronómica para la escala. Datos verificables de captura por hectárea.
-          </p>
+          <span class="tl-hito">En curso</span>
+          <span class="tl-titulo">Benchmark de cultivares · 10 ha</span>
+          <p class="tl-desc">Selección varietal bajo condiciones patagónicas reales. Base agronómica para la escala. Datos verificables de captura por hectárea.</p>
         </div>
       </div>
 
-      <div class="roadmap-item fade-in delay-2">
+      <div class="tl-item" id="tl-1">
+        <div class="tl-dot"></div>
+        <div><span class="tl-año">2027</span></div>
         <div>
-          <span class="roadmap-año">2027</span>
-        </div>
-        <div>
-          <span class="roadmap-hito">Escala industrial</span>
-          <span class="roadmap-titulo">Primer cultivo a escala · 4.000 ha</span>
-          <p class="roadmap-desc">
-            ~46.000 t CO₂ capturadas. Inicio de certificación ISO 14064-2.
-            Cosecha y procesamiento de biomasa para hempcrete.
-          </p>
+          <span class="tl-hito">Escala industrial</span>
+          <span class="tl-titulo">Primer cultivo a escala · 4.000 ha</span>
+          <p class="tl-desc">~46.000 t CO₂ capturadas. Inicio de certificación ISO 14064-2. Cosecha y procesamiento de biomasa para hempcrete.</p>
         </div>
       </div>
 
-      <div class="roadmap-item fade-in delay-3">
+      <div class="tl-item" id="tl-2">
+        <div class="tl-dot"></div>
+        <div><span class="tl-año">2028</span></div>
         <div>
-          <span class="roadmap-año">2028</span>
-        </div>
-        <div>
-          <span class="roadmap-hito">Construcción</span>
-          <span class="roadmap-titulo">Primeras viviendas hempcrete · 650 unidades</span>
-          <p class="roadmap-desc">
-            Personal YPF o mercado hipotecario. ~179.000 t CO₂ fijado permanentemente
-            en estructura con vida útil documentada de más de 500 años.
-          </p>
+          <span class="tl-hito">Construcción</span>
+          <span class="tl-titulo">Primeras viviendas hempcrete · 650 unidades</span>
+          <p class="tl-desc">Personal YPF o mercado hipotecario. ~179.000 t CO₂ fijado permanentemente en estructura con vida útil de más de 500 años.</p>
         </div>
       </div>
 
-      <div class="roadmap-item fade-in delay-4">
+      <div class="tl-item" id="tl-3">
+        <div class="tl-dot"></div>
+        <div><span class="tl-año">2029</span></div>
         <div>
-          <span class="roadmap-año">2029</span>
-        </div>
-        <div>
-          <span class="roadmap-hito">Activo financiero</span>
-          <span class="roadmap-titulo">Primeros bonos certificados · €2,8–4,6M</span>
-          <p class="roadmap-desc">
-            Créditos verificados listos para el mercado.
-            Portafolio disponible antes del pico de demanda de Argentina LNG.
-          </p>
+          <span class="tl-hito">Activo financiero</span>
+          <span class="tl-titulo">Primeros bonos certificados · €2,8–4,6M</span>
+          <p class="tl-desc">Créditos verificados listos para el mercado. Portafolio disponible antes del pico de demanda de Argentina LNG.</p>
         </div>
       </div>
 
-      <div class="roadmap-item fade-in delay-4">
+      <div class="tl-item" id="tl-4">
+        <div class="tl-dot"></div>
+        <div><span class="tl-año">2030</span></div>
         <div>
-          <span class="roadmap-año">2030</span>
-        </div>
-        <div>
-          <span class="roadmap-hito">Posición global</span>
-          <span class="roadmap-titulo">Portafolio soberano · €5,6–9,2M</span>
-          <p class="roadmap-desc">
-            YPF exporta GNL con portafolio de carbono propio producido en Neuquén.
-            Primera empresa de Oil & Gas del mundo en lograrlo desde su territorio de operación.
-          </p>
+          <span class="tl-hito">Posición global</span>
+          <span class="tl-titulo">Portafolio soberano · €5,6–9,2M</span>
+          <p class="tl-desc">YPF exporta GNL con portafolio de carbono propio producido en Neuquén. Primera empresa de Oil & Gas del mundo en lograrlo desde su territorio de operación.</p>
         </div>
       </div>
 
@@ -1380,217 +1212,223 @@ footer {
 </section>
 
 
-<!-- FOTO AÉREA — separador full bleed -->
-<div class="foto-aerea" id="foto-aerea">
-  <img
-    src="https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054938_e59da2e1-928e-4d7b-98a3-1c410169a99c.png"
-    alt="Vista aérea de Añelo, Neuquén, Patagonia"
-    loading="lazy"
-    id="img-aerea"
-  >
-</div>
+<!-- ESCENA 8 — Vista aérea + CTA -->
+<section class="escena" id="escena-8">
+  <div class="e8-bg" id="e8-bg"></div>
+  <div class="e8-overlay"></div>
+  <div class="e8-inner">
+    <div class="e8-contenido">
+      <p class="e8-linea1">Belgrano lo escribió en 1796.</p>
+      <p class="e8-linea2">Nosotros lo ejecutamos en 2026.</p>
+      <p class="e8-linea3">Horacio, sumate.</p>
 
-
-<!-- EQUIPO -->
-<section class="equipo">
-  <div class="equipo-inner">
-
-    <div class="fade-in">
-      <span class="section-label">Quiénes ejecutan</span>
-      <h2 class="equipo-h2">Tres años de ejecución antes de esta reunión.</h2>
-    </div>
-
-    <div class="equipo-grid">
-      <div class="equipo-card fade-in delay-1">
-        <div class="equipo-iniciales">GS</div>
-        <span class="equipo-nombre">Guillermo Sandoval</span>
-        <span class="equipo-rol">Fundador · 50%</span>
-        <p class="equipo-detalle">
-          Neuquén, Patagonia. Primer ciclo de cultivo exterior de cáñamo industrial
-          en la provincia. Licencia ARICCAME obtenida en enero de 2024.
-          Tres años de ejecución real en territorio patagónico.
-        </p>
-        <div class="equipo-contacto">
-          <a href="mailto:nqnguille@gmail.com">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="1" y="3" width="12" height="9" rx="1"/>
-              <path d="M1 4l6 4 6-4"/>
-            </svg>
-            nqnguille@gmail.com
-          </a>
-          <a href="https://wa.me/542994229436" target="_blank" rel="noopener">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-              <path d="M7 0C3.13 0 0 3.13 0 7c0 1.23.32 2.39.89 3.4L0 14l3.72-.97A6.95 6.95 0 007 14c3.87 0 7-3.13 7-7s-3.13-7-7-7zm3.45 9.67c-.15.42-.86.8-1.18.85-.3.04-.67.06-1.08-.07-.39-.13-.89-.3-.98-.36-.83-.38-1.82-1.89-1.9-1.98-.08-.1-.73-.96-.73-1.83s.46-1.31.62-1.49c.16-.17.35-.22.46-.22l.34.01c.1.01.25-.04.39.3.15.35.5 1.22.54 1.31.04.09.07.2.01.31-.06.11-.09.18-.18.28-.09.1-.18.22-.25.29-.09.09-.18.18-.08.35.1.17.46.76.98 1.23.68.6 1.24.79 1.42.87.18.09.28.07.38-.04.1-.11.44-.51.56-.69.11-.18.23-.15.38-.09.16.06 1 .47 1.17.55.18.09.29.13.33.2.03.08.03.44-.12.86z"/>
-            </svg>
-            +54 299 422 9436
-          </a>
-        </div>
+      <div class="e8-acciones">
+        <a href="mailto:nqnguille@gmail.com?subject=Plan%20Manuel%20Belgrano%20%E2%80%94%20Solicitud%20de%20reuni%C3%B3n&body=Hola%20Guillermo%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20Plan%20Manuel%20Belgrano." class="btn-p">
+          Solicitar reunión
+          <svg class="btn-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/542994229436?text=Hola%20Guillermo%2C%20vi%20el%20Plan%20Manuel%20Belgrano%20y%20me%20interesa%20conversar." class="btn-o" target="_blank" rel="noopener">
+          <svg class="btn-icon" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 1.41.37 2.73 1.01 3.88L0 16l4.25-1.11A7.94 7.94 0 008 16c4.42 0 8-3.58 8-8s-3.58-8-8-8zm3.94 11.06c-.17.48-.98.92-1.35.97-.34.05-.77.07-1.24-.08a11.3 11.3 0 01-1.12-.41C6.5 10.7 5.25 8.9 5.15 8.78c-.1-.13-.83-1.1-.83-2.1s.52-1.5.71-1.7c.18-.2.4-.25.53-.25l.38.01c.12.01.29-.05.45.34.17.4.57 1.4.62 1.5.05.1.08.22.01.35-.07.13-.1.21-.2.32-.1.11-.2.25-.29.33-.1.1-.2.2-.09.4.12.2.52.87 1.12 1.4.77.68 1.42.9 1.62.99.2.1.32.08.44-.05.12-.13.5-.59.64-.79.13-.2.26-.17.44-.1.18.07 1.14.54 1.34.63.2.1.33.15.38.23.04.09.04.5-.13.98z"/>
+          </svg>
+          WhatsApp directo
+        </a>
       </div>
 
-      <div class="equipo-card fade-in delay-2">
-        <div class="equipo-iniciales">HA</div>
-        <span class="equipo-nombre">Hernán Allemandi</span>
-        <span class="equipo-rol">Co-fundador · 50%</span>
-        <p class="equipo-detalle">
-          Flora Cáñamo Neuquino SRL. Brown 420, Neuquén.
-          Licencia ARICCAME activa bajo Ley 27.669 y Decreto 883/2022.
-          Convocatoria Agencia I+D+i STARTUP 2025 en proceso.
-        </p>
-      </div>
+      <p class="e8-datos">
+        <a href="mailto:nqnguille@gmail.com">nqnguille@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="tel:+542994229436">+54 299 422 9436</a>
+      </p>
     </div>
-
-    <div>
-      <span class="hitos-label fade-in">Timeline de ejecución</span>
-      <div class="hitos-grid">
-        <div class="hito-item fade-in">
-          <span class="hito-fecha">Oct 2023</span>
-          <span class="hito-desc">Primer ciclo de cultivo exterior en Neuquén</span>
-        </div>
-        <div class="hito-item fade-in delay-1">
-          <span class="hito-fecha">Ene 2024</span>
-          <span class="hito-desc">Licencia ARICCAME obtenida · primera en la provincia</span>
-        </div>
-        <div class="hito-item fade-in delay-2">
-          <span class="hito-fecha">Abr 2024</span>
-          <span class="hito-desc">Primera cosecha · datos reales de rendimiento</span>
-        </div>
-        <div class="hito-item fade-in delay-3">
-          <span class="hito-fecha">May 2024</span>
-          <span class="hito-desc">Aceites certificados · primer producto al mercado</span>
-        </div>
-        <div class="hito-item fade-in delay-4">
-          <span class="hito-fecha">Q3 2025</span>
-          <span class="hito-desc">Ensayo hempcrete · Cantera Añelo · validación de formulación</span>
-        </div>
-        <div class="hito-item fade-in delay-4">
-          <span class="hito-fecha">Q4 2025</span>
-          <span class="hito-desc">Ladrillos hempcrete producidos en Neuquén · INTI en proceso</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- CTA FINAL -->
-<section class="cta-final">
-  <div class="cta-final-bg" aria-hidden="true"></div>
-  <div class="cta-inner">
-
-    <span class="cta-eyebrow fade-in">La invitación</span>
-
-    <h2 class="cta-titulo fade-in delay-1">
-      Belgrano lo escribió en 1796.<br>
-      Nosotros lo ejecutamos en 2026.<br>
-      <em>Horacio, sumate.</em>
-    </h2>
-
-    <p class="cta-sub fade-in delay-2">
-      Tenemos licencia, trayectoria demostrable y modelo financiero completo para 4.000 ha
-      en Canal Mari Menuco / Barreales. Pedimos una reunión.
-    </p>
-
-    <div class="cta-oferta fade-in delay-3">
-      <span class="cta-oferta-label">Lo que traemos a esa reunión</span>
-      <ul>
-        <li>Modelo financiero completo para 4.000 ha — proyección de portafolio 2027–2030</li>
-        <li>Protocolo agronómico validado bajo condiciones patagónicas reales</li>
-        <li>Estructura legal activa — Ley 27.669, Decreto 883/2022, licencia ARICCAME</li>
-        <li>Roadmap de certificación ISO 14064-2 con cronograma de emisión de créditos</li>
-        <li>Propuesta de estructuración: joint venture, licencia de suelo o modelo de offtake</li>
-      </ul>
-    </div>
-
-    <div class="cta-acciones fade-in delay-4">
-      <a href="mailto:nqnguille@gmail.com?subject=Plan%20Manuel%20Belgrano%20%E2%80%94%20Solicitud%20de%20reuni%C3%B3n&body=Hola%20Guillermo%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20Plan%20Manuel%20Belgrano." class="btn-primary">
-        Solicitar reunión
-        <svg class="btn-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M3 8h10M9 4l4 4-4 4"/>
-        </svg>
-      </a>
-      <a href="https://wa.me/542994229436?text=Hola%20Guillermo%2C%20vi%20el%20Plan%20Manuel%20Belgrano%20y%20me%20interesa%20conversar." class="btn-outline" target="_blank" rel="noopener">
-        <svg class="btn-icon" viewBox="0 0 16 16" fill="currentColor">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 1.41.37 2.73 1.01 3.88L0 16l4.25-1.11A7.94 7.94 0 008 16c4.42 0 8-3.58 8-8s-3.58-8-8-8zm3.94 11.06c-.17.48-.98.92-1.35.97-.34.05-.77.07-1.24-.08a11.3 11.3 0 01-1.12-.41C6.5 10.7 5.25 8.9 5.15 8.78c-.1-.13-.83-1.1-.83-2.1s.52-1.5.71-1.7c.18-.2.4-.25.53-.25l.38.01c.12.01.29-.05.45.34.17.4.57 1.4.62 1.5.05.1.08.22.01.35-.07.13-.1.21-.2.32-.1.11-.2.25-.29.33-.1.1-.2.2-.09.4.12.2.52.87 1.12 1.4.77.68 1.42.9 1.62.99.2.1.32.08.44-.05.12-.13.5-.59.64-.79.13-.2.26-.17.44-.1.18.07 1.14.54 1.34.63.2.1.33.15.38.23.04.09.04.5-.13.98z"/>
-        </svg>
-        WhatsApp directo
-      </a>
-    </div>
-
-    <div class="cta-contacto fade-in delay-4">
-      <a href="mailto:nqnguille@gmail.com">nqnguille@gmail.com</a> ·
-      <a href="tel:+542994229436">+54 299 422 9436</a>
-    </div>
-
   </div>
 </section>
 
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-datos">
+  <div class="footer-legal">
     <p><strong>Flora Cáñamo Neuquino SRL</strong> · Brown 420, Neuquén, Patagonia</p>
     <p>Licencia ARICCAME activa · planmanuelbelgrano.com.ar · Documento confidencial · Junio 2026</p>
   </div>
-  <div class="footer-cita">
+  <div class="footer-belgrano">
     Cultivar el suelo es servir a la patria.<br>— Manuel Belgrano, 1796
   </div>
 </footer>
 
 
-<!-- JS: IntersectionObserver + Nav + Parallax -->
 <script>
 (function () {
-  // Fade-in on scroll
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  'use strict';
 
-  document.querySelectorAll('.fade-in').forEach(function (el) {
-    observer.observe(el);
-  });
-
-  // Nav scroll
-  var nav = document.getElementById('main-nav');
+  /* ─── NAV ─────────────────────────────────────── */
+  var nav = document.getElementById('nav');
   window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 80);
+    nav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.4);
   }, { passive: true });
 
-  // Parallax suave — hero bg y fotos full bleed
-  var heroBg  = document.getElementById('hero-bg');
-  var imgHC   = document.getElementById('img-hempcrete');
-  var imgAe   = document.getElementById('img-aerea');
+  /* ─── INTERSECTION OBSERVER GENÉRICO ─────────── */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
-  function getOffset(el) {
-    var rect = el.getBoundingClientRect();
-    return rect.top;
+  /* Elementos que reciben clase .in al entrar */
+  var selectores = [
+    '.e5-frase', '.e5-card', '.e5-cierre',
+    '.e6-texto',
+    '.e7-header',
+    '.e8-linea1', '.e8-linea2', '.e8-linea3', '.e8-acciones', '.e8-datos'
+  ].join(',');
+  document.querySelectorAll(selectores).forEach(function (el) { io.observe(el); });
+
+  /* ─── ESCENA 1 — reveal líneas ───────────────── */
+  var ioE1 = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var section = e.target;
+
+      /* lines de cita */
+      var lines = section.querySelectorAll('.reveal-line span');
+      lines.forEach(function (span) {
+        var delay = parseInt(span.closest('.reveal-line').dataset.delay || 0, 10);
+        setTimeout(function () { span.classList.add('in'); }, delay);
+      });
+
+      /* "Nadie lo escuchó" — extra delay */
+      var nadie = section.querySelector('.e1-nadie');
+      if (nadie) {
+        setTimeout(function () { nadie.classList.add('in'); }, 1100);
+      }
+
+      ioE1.unobserve(section);
+    });
+  }, { threshold: 0.25 });
+  var e1 = document.getElementById('escena-1');
+  if (e1) ioE1.observe(e1);
+
+  /* ─── ESCENA 2 — líneas secuenciales ─────────── */
+  var e2Lines = document.querySelectorAll('.e2-linea');
+  var e2Active = -1;
+
+  function activarE2(idx) {
+    e2Lines.forEach(function (l, i) {
+      if (i < idx)       l.classList.add('in', 'past');
+      else if (i === idx) { l.classList.add('in'); l.classList.remove('past'); }
+    });
+    e2Active = idx;
   }
+
+  var ioE2 = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var idx = parseInt(e.target.dataset.seq || '0', 10);
+      activarE2(idx);
+    });
+  }, { threshold: 0.5 });
+  e2Lines.forEach(function (l) { ioE2.observe(l); });
+
+  /* ─── ESCENA 3 — versos con scroll ───────────── */
+  var e3Versos = document.querySelectorAll('.e3-verso');
+  var ioE3 = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var idx = parseInt(e.target.dataset.seq || '0', 10);
+      setTimeout(function () { e.target.classList.add('in'); }, idx * 220);
+    });
+  }, { threshold: 0.4 });
+  e3Versos.forEach(function (v) { ioE3.observe(v); });
+
+  /* ─── ESCENA 4 — count-up ────────────────────── */
+  var e4Stats = document.querySelectorAll('.e4-stat');
+  var ioE4 = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+
+      var numEl = e.target.querySelector('.e4-num');
+      if (!numEl || numEl.dataset.animated) return;
+      numEl.dataset.animated = '1';
+
+      var finalText = numEl.textContent;
+      /* Animamos solo el valor para props especiales */
+      var prefix = numEl.dataset.prefix || '';
+      var suffix = numEl.dataset.suffix || '';
+      var rawVal  = numEl.dataset.val;
+
+      /* Si no hay rawVal, lo dejamos estático y animamos opacidad */
+      if (!rawVal) return;
+
+      var isDecimal = rawVal.indexOf('.') !== -1;
+      var target = parseFloat(rawVal);
+      var duration = 1600;
+      var start = null;
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var current = easeOut(progress) * target;
+        var display = isDecimal
+          ? current.toFixed(1).replace('.', ',')
+          : Math.round(current).toLocaleString('es-AR');
+        numEl.textContent = prefix + display + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else numEl.textContent = finalText; /* restaurar texto exacto */
+      }
+      requestAnimationFrame(step);
+      ioE4.unobserve(e.target);
+    });
+  }, { threshold: 0.3 });
+  e4Stats.forEach(function (s) { ioE4.observe(s); });
+
+  /* ─── ESCENA 7 — timeline que se pinta ───────── */
+  var tlItems = document.querySelectorAll('.tl-item');
+  var tlPaint = document.getElementById('tl-paint');
+
+  var ioTL = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+    });
+  }, { threshold: 0.35 });
+  tlItems.forEach(function (item) { ioTL.observe(item); });
+
+  /* Pintar la línea según scroll */
+  var tlWrap = document.querySelector('.timeline-wrap');
+  if (tlWrap && tlPaint) {
+    window.addEventListener('scroll', function () {
+      var rect    = tlWrap.getBoundingClientRect();
+      var visible = window.innerHeight - rect.top;
+      var pct     = Math.min(Math.max(visible / rect.height, 0), 1);
+      tlPaint.style.height = (pct * 100) + '%';
+    }, { passive: true });
+  }
+
+  /* ─── PARALLAX — escenas 3, 6, 8 ─────────────── */
+  var parallaxEls = [
+    { bg: document.getElementById('e3-bg'),  wrap: document.getElementById('escena-3') },
+    { bg: document.getElementById('e6-bg'),  wrap: document.getElementById('escena-6') },
+    { bg: document.getElementById('e8-bg'),  wrap: document.getElementById('escena-8') }
+  ];
 
   window.addEventListener('scroll', function () {
     var scrollY = window.scrollY;
-
-    // Hero bg — se mueve más lento que el scroll
-    if (heroBg) {
-      heroBg.style.transform = 'translateY(' + (scrollY * 0.35) + 'px)';
-    }
-
-    // Hempcrete parallax
-    if (imgHC) {
-      var off = imgHC.closest('.foto-hempcrete').getBoundingClientRect().top;
-      imgHC.style.transform = 'translateY(' + (off * -0.12) + 'px)';
-    }
-
-    // Aérea parallax
-    if (imgAe) {
-      var off2 = imgAe.closest('.foto-aerea').getBoundingClientRect().top;
-      imgAe.style.transform = 'translateY(' + (off2 * -0.12) + 'px)';
-    }
+    parallaxEls.forEach(function (item) {
+      if (!item.bg || !item.wrap) return;
+      var rect   = item.wrap.getBoundingClientRect();
+      var center = rect.top + rect.height / 2 - window.innerHeight / 2;
+      item.bg.style.transform = 'translateY(' + (center * 0.25) + 'px)';
+    });
   }, { passive: true });
+
 })();
 </script>
 
