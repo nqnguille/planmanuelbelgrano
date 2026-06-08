@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan Manuel Belgrano — Flora Cáñamo Neuquino</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap');
+
+    /* ─── Reset & Base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080806;
+      --cream:    #F0EDE4;
+      --gold:     #C8A96E;
+      --green:    #2D4A2E;
+      --gray:     #7A7468;
+      --line:     #2A2820;
+      --display:  'Playfair Display', Georgia, serif;
+      --body:     'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── Utility ───────────────────────────────────────────────────── */
+    .label {
+      font-family: var(--body);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 0;
+    }
+
+    .divider--gold {
+      border-color: var(--gold);
+      opacity: 0.4;
+    }
+
+    /* ─── Fade-in observer ──────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── NAV ───────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,8,6,0.88);
+      backdrop-filter: blur(12px);
+    }
+
+    nav .nav-wordmark {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+    }
+
+    nav .nav-badge {
+      font-family: var(--body);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    nav .nav-cta {
+      font-family: var(--body);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,169,110,0.4);
+      padding: 0.5rem 1.25rem;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    nav .nav-cta:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12rem 4rem 8rem;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero__ghost {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--display);
+      font-size: 30vw;
+      font-weight: 700;
+      color: var(--cream);
+      opacity: 0.035;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero__badge {
+      margin-bottom: 3rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+    }
+
+    .hero__quote {
+      position: relative;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      font-weight: 400;
+      color: var(--cream);
+      max-width: 900px;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+    }
+
+    .hero__quote-mark {
+      position: absolute;
+      top: -0.6em;
+      left: -0.4em;
+      font-size: 5em;
+      color: var(--gold);
+      opacity: 0.18;
+      font-family: var(--display);
+      line-height: 1;
+    }
+
+    .hero__divider {
+      width: 80px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+      margin: 2.5rem auto;
+    }
+
+    .hero__attribution {
+      font-family: var(--body);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .hero__attribution span {
+      color: var(--gold);
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--gray);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .hero__scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gray), transparent);
+      animation: scroll-pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes scroll-pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* ─── STATS ─────────────────────────────────────────────────────── */
+    .stats {
+      padding: 7rem 4rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stats__label {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .stats__item {
+      padding: 2rem 2.5rem;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+    .stats__item:last-child { border-right: none; }
+
+    .stats__number {
+      font-family: var(--display);
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .stats__unit {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-left: 0.15em;
+    }
+
+    .stats__label-item {
+      margin-top: 0.75rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .stats__sub {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-top: 0.35rem;
+      font-style: italic;
+    }
+
+    /* ─── NARRATIVE ─────────────────────────────────────────────────── */
+    .narrative {
+      padding: 9rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .narrative__header {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .narrative__title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .narrative__title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .narrative__cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .narrative__text {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(240,237,228,0.82);
+    }
+
+    .narrative__text + .narrative__text {
+      margin-top: 1.8rem;
+    }
+
+    .narrative__text::first-letter {
+      font-family: var(--display);
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      float: left;
+      line-height: 0.85;
+      margin-right: 0.12em;
+      margin-top: 0.08em;
+    }
+
+    .narrative__aside {
+      padding: 2.5rem;
+      border-left: 2px solid rgba(200,169,110,0.35);
+      margin-top: 2rem;
+    }
+
+    .narrative__aside-quote {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.45;
+      color: var(--cream);
+    }
+
+    .narrative__aside-source {
+      margin-top: 1.2rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ─── TIMING / BITCOIN ──────────────────────────────────────────── */
+    .timing {
+      padding: 8rem 4rem;
+      border-top: 1px solid var(--line);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timing__label {
+      margin-bottom: 4rem;
+    }
+
+    .timing__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .timing__block {
+      padding: 4rem;
+      border: 1px solid rgba(200,169,110,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timing__block::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(200,169,110,0.03);
+      pointer-events: none;
+    }
+
+    .timing__block:first-child {
+      border-right: none;
+    }
+
+    .timing__eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .timing__headline {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .timing__headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .timing__body {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(240,237,228,0.7);
+      max-width: 44ch;
+    }
+
+    .timing__figure {
+      margin-top: 2.5rem;
+      font-family: var(--display);
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--cream);
+      opacity: 0.06;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      pointer-events: none;
+    }
+
+    .timing__tag {
+      display: inline-block;
+      margin-top: 2rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 0.35rem 0.85rem;
+    }
+
+    /* ─── CTA ───────────────────────────────────────────────────────── */
+    .cta {
+      padding: 10rem 4rem;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta__ghost {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 18vw;
+      font-weight: 700;
+      color: var(--cream);
+      opacity: 0.025;
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: -0.04em;
+    }
+
+    .cta__inner {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta__title {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta__sub {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 50ch;
+      margin: 0 auto 3.5rem;
+    }
+
+    .cta__contacts {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .cta__contact-item {
+      text-align: center;
+    }
+
+    .cta__contact-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.4rem;
+    }
+
+    .cta__contact-value {
+      font-size: 0.9rem;
+      color: var(--cream);
+    }
+
+    .cta__contact-value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .cta__contact-value a:hover { color: var(--gold); }
+
+    .cta__divider-v {
+      width: 1px;
+      height: 40px;
+      background: var(--line);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      font-family: var(--body);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 1rem 2.8rem;
+      text-decoration: none;
+      transition: background 0.35s ease, color 0.35s ease;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer .footer-left {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    footer .footer-right {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ─── Responsive ────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1.25rem 1.5rem; }
+      nav .nav-badge { display: none; }
+      .hero { padding: 10rem 1.5rem 6rem; }
+      .hero__ghost { font-size: 42vw; }
+      .stats { padding: 5rem 1.5rem; }
+      .stats__grid { grid-template-columns: repeat(2, 1fr); }
+      .stats__item:nth-child(2) { border-right: none; }
+      .stats__item:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); }
+      .stats__item:nth-child(4) { border-right: none; border-top: 1px solid var(--line); }
+      .narrative { padding: 6rem 1.5rem; }
+      .narrative__cols { grid-template-columns: 1fr; gap: 2.5rem; }
+      .timing { padding: 6rem 1.5rem; }
+      .timing__grid { grid-template-columns: 1fr; }
+      .timing__block:first-child { border-right: 1px solid rgba(200,169,110,0.25); border-bottom: none; }
+      .cta { padding: 7rem 1.5rem; }
+      .cta__contacts { flex-direction: column; gap: 1.5rem; }
+      .cta__divider-v { display: none; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-wordmark">Plan Manuel Belgrano</span>
+    <span class="nav-badge">· Flora Cáñamo Neuquino · Est. 2025 ·</span>
+    <a href="#contacto" class="nav-cta">Contacto</a>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__ghost" aria-hidden="true">1796</div>
+
+    <div class="reveal" style="transition-delay: 0.1s">
+      <p class="hero__badge">· Plan Manuel Belgrano · Flora Cáñamo Neuquino ·</p>
+    </div>
+
+    <div class="reveal" style="transition-delay: 0.3s">
+      <blockquote class="hero__quote">
+        <span class="hero__quote-mark" aria-hidden="true">"</span>
+        El cultivo del cáñamo y del lino es el más a propósito para hacer feliz a estos países.
+      </blockquote>
+    </div>
+
+    <div class="hero__divider reveal" style="transition-delay: 0.55s"></div>
+
+    <div class="reveal" style="transition-delay: 0.7s">
+      <p class="hero__attribution">
+        Manuel Belgrano — <span>Memoria sobre agricultura y comercio, 1796</span>
+      </p>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+      <span class="label">Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- STATS -->
+  <section class="stats">
+    <p class="label stats__label reveal">El portafolio en números</p>
+
+    <div class="stats__grid">
+
+      <div class="stats__item reveal" style="transition-delay: 0.05s">
+        <div class="stats__number">8–15<span class="stats__unit">t</span></div>
+        <p class="stats__label-item">CO₂ capturado / ha / año</p>
+        <p class="stats__sub">Verificado — IPCC AR6</p>
+      </div>
+
+      <div class="stats__item reveal" style="transition-delay: 0.15s">
+        <div class="stats__number">4.000<span class="stats__unit">ha</span></div>
+        <p class="stats__label-item">Disponibles en Neuquén</p>
+        <p class="stats__sub">Convenio Flora — Q1 2026</p>
+      </div>
+
+      <div class="stats__item reveal" style="transition-delay: 0.25s">
+        <div class="stats__number">€9,2<span class="stats__unit">M</span></div>
+        <p class="stats__label-item">Portafolio proyectado 2030</p>
+        <p class="stats__sub">Créditos VCS + Gold Standard</p>
+      </div>
+
+      <div class="stats__item reveal" style="transition-delay: 0.35s">
+        <div class="stats__number">500<span class="stats__unit">a</span></div>
+        <p class="stats__label-item">Vida útil del hempcrete</p>
+        <p class="stats__sub">Carbono secuestrado en estructura</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- NARRATIVE -->
+  <section class="narrative">
+
+    <div class="narrative__header reveal">
+      <h2 class="narrative__title">La <em>tesis</em> es simple.</h2>
+      <hr class="divider divider--gold" style="flex: 1; margin-bottom: 0.3rem;" />
+    </div>
+
+    <div class="narrative__cols">
+
+      <div>
+        <p class="narrative__text reveal" style="transition-delay: 0.1s">
+          Producir créditos de carbono hoy es como minar Bitcoin en 2010. La ventana está abierta, la infraestructura es escasa, y la ventaja pertenece al que produce primero. El cáñamo industrial cierra ese ciclo en una sola planta: captura carbono mientras crece, construye con él cuando se cosecha, y genera retornos verificables en mercados regulados.
+        </p>
+
+        <p class="narrative__text reveal" style="transition-delay: 0.25s" style="margin-top: 2rem; --drop-cap: none;">
+          Flora Cáñamo Neuquino opera en la intersección entre una oportunidad geopolítica irrepetible —Argentina LNG, CRCF 2026— y 230 años de historia que indican exactamente qué hacer con esta tierra.
+        </p>
+      </div>
+
+      <div>
+        <div class="narrative__aside reveal" style="transition-delay: 0.15s">
+          <p class="narrative__aside-quote">
+            "La primera escala del mercado voluntario de carbono ya está en marcha. Los proyectos que se registren antes de 2027 capturan el diferencial de precio más alto de la historia del mercado."
+          </p>
+          <p class="narrative__aside-source">— Perspectiva interna · Flora Cáñamo Neuquino · 2026</p>
+        </div>
+
+        <div style="margin-top: 2.5rem; padding: 2rem; border: 1px solid var(--line);" class="reveal" style="transition-delay: 0.3s">
+          <p class="label" style="margin-bottom: 1rem;">Cronología estratégica</p>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; gap: 1.5rem; align-items: baseline;">
+              <span style="font-family: var(--display); font-style: italic; color: var(--gold); font-size: 1.1rem; min-width: 3rem;">2026</span>
+              <span style="font-size: 0.85rem; color: rgba(240,237,228,0.7);">Primera cosecha · CRCF registrado · primeros créditos emitidos</span>
+            </div>
+            <div style="display: flex; gap: 1.5rem; align-items: baseline;">
+              <span style="font-family: var(--display); font-style: italic; color: var(--gold); font-size: 1.1rem; min-width: 3rem;">2027</span>
+              <span style="font-size: 0.85rem; color: rgba(240,237,228,0.7);">Escala a 1.000 ha · primer contrato corporativo Argentina LNG</span>
+            </div>
+            <div style="display: flex; gap: 1.5rem; align-items: baseline;">
+              <span style="font-family: var(--display); font-style: italic; color: var(--gold); font-size: 1.1rem; min-width: 3rem;">2030</span>
+              <span style="font-size: 0.85rem; color: rgba(240,237,228,0.7);">Portafolio €9,2M · primer portafolio soberano carbono en O&G mundial</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- TIMING / BITCOIN -->
+  <section class="timing">
+
+    <p class="label timing__label reveal">La ventana de oportunidad</p>
+
+    <div class="timing__grid">
+
+      <div class="timing__block reveal" style="transition-delay: 0.1s">
+        <p class="timing__eyebrow">Mercado voluntario de carbono</p>
+        <h3 class="timing__headline">
+          Esto es<br /><em>Bitcoin en 2010.</em>
+        </h3>
+        <p class="timing__body">
+          Los mercados de carbono regulados exigen proyectos con historial verificable. Los proyectos que se registren en 2026 acceden a ese historial primero. El mercado recompensa la anticipación, no la escala. Quien produce primero fija el precio de referencia.
+        </p>
+        <span class="timing__tag">Ventana activa · 2026–2028</span>
+        <span class="timing__figure" aria-hidden="true">2010</span>
+      </div>
+
+      <div class="timing__block reveal" style="transition-delay: 0.22s">
+        <p class="timing__eyebrow">YPF · Argentina LNG · CRCF 2026</p>
+        <h3 class="timing__headline">
+          El primer portafolio<br /><em>soberano</em> de carbono.
+        </h3>
+        <p class="timing__body">
+          Argentina necesita compensar las emisiones de Argentina LNG para acceder a los mercados europeos. El CRCF 2026 crea el marco regulatorio. Flora Cáñamo Neuquino puede ser el primer proveedor verificado de créditos domésticos para ese mandato —antes de que haya competencia.
+        </p>
+        <span class="timing__tag">CRCF · Res. 230/2025</span>
+        <span class="timing__figure" aria-hidden="true">LNG</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta" id="contacto">
+    <div class="cta__ghost" aria-hidden="true">Belgrano</div>
+
+    <div class="cta__inner">
+
+      <div class="reveal">
+        <p class="label" style="margin-bottom: 2rem;">Sumate al proyecto</p>
+        <h2 class="cta__title">
+          La tierra está lista.<br />La ventana está abierta.
+        </h2>
+        <p class="cta__sub">
+          Si trabajás en O&G, en commodities de carbono, en construcción sostenible o querés ser parte del primer portafolio soberano de carbono de Argentina, hablemos.
+        </p>
+      </div>
+
+      <div class="cta__contacts reveal" style="transition-delay: 0.2s">
+        <div class="cta__contact-item">
+          <p class="cta__contact-label">Fundador</p>
+          <p class="cta__contact-value">Guillermo Sandoval</p>
+        </div>
+        <div class="cta__divider-v"></div>
+        <div class="cta__contact-item">
+          <p class="cta__contact-label">Email</p>
+          <p class="cta__contact-value">
+            <a href="mailto:nqnguille@gmail.com">nqnguille@gmail.com</a>
+          </p>
+        </div>
+        <div class="cta__divider-v"></div>
+        <div class="cta__contact-item">
+          <p class="cta__contact-label">WhatsApp</p>
+          <p class="cta__contact-value">
+            <a href="https://wa.me/5492994229436" target="_blank" rel="noopener">+54 299 422 9436</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay: 0.35s">
+        <a href="mailto:nqnguille@gmail.com" class="btn-outline">Escribinos</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-left">Flora Cáñamo Neuquino SRL · Neuquén, Patagonia</span>
+    <span class="footer-right">Plan Manuel Belgrano · Est. 2025</span>
+  </footer>
+
+
+  <script>
+    // Fade-in con IntersectionObserver — elegante, sin prisa
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Hero — visible de entrada sin esperar scroll
+    document.querySelectorAll('.hero .reveal').forEach((el) => {
+      setTimeout(() => el.classList.add('visible'), 80);
+    });
+  </script>
+
+</body>
+</html>

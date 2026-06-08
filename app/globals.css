@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #F7F6EB;
+  --color-green: #2D4239;
+  --color-accent: #71CE6A;
+  --color-gold: #C8A46A;
+  --color-black: #111111;
+  --color-pergamino: #EDE8D6;
+  --color-gris: #8A9080;
+  --color-sepia: #8A6C3A;
+  --color-dark: #1A1A1A;
+
+  --font-garamond: var(--font-garamond);
+  --font-hanken: var(--font-hanken);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-hanken), 'Hanken Grotesk', sans-serif;
+  background-color: #F7F6EB;
+  color: #111111;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-garamond), 'EB Garamond', serif;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #1A1A1A; }
+::-webkit-scrollbar-thumb { background: #C8A46A; border-radius: 2px; }
+
+.manuscript-bg {
+  background-color: #D4C5A0;
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(139, 105, 60, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(100, 75, 35, 0.14) 0%, transparent 55%);
+}
+
+.parchment-bg {
+  background-color: #EDE8D6;
+  background-image:
+    radial-gradient(ellipse at 10% 50%, rgba(200, 164, 106, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 20%, rgba(138, 108, 58, 0.07) 0%, transparent 50%);
+}
