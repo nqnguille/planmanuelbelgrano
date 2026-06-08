@@ -3,38 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan Manuel Belgrano — 230 años esperando este momento</title>
-<meta name="description" content="En 1796 Manuel Belgrano le dijo al Virreinato que cultivara cáñamo. 230 años después lo ejecutamos en Neuquén. €9,2M en créditos de carbono soberanos para YPF Argentina LNG.">
-<meta property="og:title" content="Plan Manuel Belgrano — 230 años esperando este momento">
-<meta property="og:description" content="Producir créditos de carbono hoy es como minar Bitcoin en 2010. El activo existe. El mercado llega. Flora Cáñamo Neuquino SRL, Neuquén, Patagonia.">
+<title>Plan Manuel Belgrano — El próximo gran recurso argentino está creciendo</title>
+<meta name="description" content="Cáñamo industrial en Neuquén. Capturamos carbono, construimos viviendas y generamos trabajo. Flora Cáñamo Neuquino SRL, Patagonia Argentina.">
+<meta property="og:title" content="Plan Manuel Belgrano — El próximo gran recurso argentino no está bajo tierra. Está creciendo.">
+<meta property="og:description" content="Cáñamo industrial en Neuquén. Capturamos carbono, construimos viviendas y generamos trabajo. Flora Cáñamo Neuquino SRL, Patagonia.">
 <meta property="og:image" content="https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054933_89194daa-d6f3-4ad1-bd60-3c2eff4066ac.png">
 <meta property="og:url" content="https://planmanuelbelgrano.com.ar">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Plan Manuel Belgrano — Cáñamo Industrial Neuquén">
-<meta name="twitter:description" content="Producir créditos de carbono hoy es como minar Bitcoin en 2010.">
+<meta name="twitter:description" content="El próximo gran recurso argentino no está bajo tierra. Está creciendo.">
 <meta name="twitter:image" content="https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054933_89194daa-d6f3-4ad1-bd60-3c2eff4066ac.png">
 <link rel="canonical" href="https://planmanuelbelgrano.com.ar">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
 /* ═══════════════════════════════════════════════════
    TOKENS
 ═══════════════════════════════════════════════════ */
 :root {
-  --navy:        #0D1520;
-  --navy-medio:  #1A2535;
-  --navy-claro:  #243044;
-  --dorado:      #C8A45A;
-  --dorado-suave:#E8C97A;
-  --crema:       #F0EDE4;
-  --blanco:      #FFFFFF;
-  --verde:       #2D5A2E;
-  --verde-luz:   #56C25A;
-  --gris:        #8A9BB0;
+  --negro:        #0A0A08;
+  --verde:        #4CAF50;
+  --verde-oscuro: #2D5A2E;
+  --pergamino:    #F5EDD8;
+  --sepia:        #6B4C2A;
+  --sepia-claro:  #A0845A;
+  --blanco:       #FFFFFF;
+  --gris:         #8A9080;
 }
 
 *, *::before, *::after {
@@ -48,7 +46,7 @@ html {
 }
 
 body {
-  background-color: var(--navy);
+  background-color: var(--negro);
   color: var(--blanco);
   font-family: 'Inter', sans-serif;
   font-weight: 300;
@@ -57,1121 +55,560 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
-   ESCENA 0 — ENTRADA
+   NAVBAR
 ═══════════════════════════════════════════════════ */
-.escena-0 {
-  height: 100vh;
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: var(--navy);
-  position: relative;
-  overflow: hidden;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  transition: background 0.3s ease;
 }
 
-.escena-0-inner {
-  text-align: center;
-  opacity: 0;
-  animation: fadeInUp 1.5s ease forwards;
-  animation-delay: 0.3s;
+.navbar.scrolled {
+  background: var(--negro);
 }
 
-.badge {
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.navbar-logo svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.navbar-nombre {
   font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--dorado);
-  margin-bottom: 2.5rem;
-}
-
-.hero-numero {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 12vw;
-  font-weight: 600;
-  line-height: 1;
   color: var(--blanco);
-  letter-spacing: -0.02em;
 }
 
-.hero-tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 4vw;
-  font-weight: 300;
-  color: var(--dorado);
-  margin-top: 0.5rem;
-  line-height: 1.2;
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 3rem;
-  background: linear-gradient(to bottom, var(--dorado), transparent);
-}
-
-.scroll-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--dorado);
-}
-
-/* ═══════════════════════════════════════════════════
-   ESCENA 1 — 1796
-═══════════════════════════════════════════════════ */
-.escena-1 {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--navy);
-  position: relative;
-  overflow: hidden;
-  padding: 6rem 2rem;
-}
-
-.escena-1-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054935_9659efe9-2464-4ff4-922b-fb486d8ecf69.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.12;
-}
-
-.anio-1796 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16vw;
-  font-weight: 600;
-  color: var(--dorado);
-  line-height: 1;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.anio-1796.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.separador-dorado {
-  width: 60px;
-  height: 1px;
-  background: var(--dorado);
-  margin: 2.5rem auto;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  transition-delay: 0.4s;
-  position: relative;
-  z-index: 1;
-}
-
-.separador-dorado.visible {
-  opacity: 1;
-}
-
-.cita-belgrano {
-  text-align: center;
-  max-width: 640px;
-  position: relative;
-  z-index: 1;
-}
-
-.cita-linea {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 2.2rem;
-  font-weight: 300;
-  color: var(--dorado);
-  line-height: 1.4;
-  display: block;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.cita-linea.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cita-fuente {
+.navbar-menu {
   font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 400;
-  color: var(--gris);
-  letter-spacing: 0.05em;
-  margin-top: 1.5rem;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.7s ease;
-  transition-delay: 0.6s;
-}
-
-.cita-fuente.visible {
-  opacity: 1;
-}
-
-.nadie-escucho {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: var(--blanco);
-  margin-top: 3rem;
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  transition-delay: 0.3s;
-  position: relative;
-  z-index: 1;
-  letter-spacing: 0.02em;
-}
-
-.nadie-escucho.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ═══════════════════════════════════════════════════
-   ESCENA 2 — EL SILENCIO
-═══════════════════════════════════════════════════ */
-.escena-2 {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--navy);
-  padding: 6rem 2rem;
-}
-
-.silencio-titulo {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--gris);
-  margin-bottom: 4rem;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.silencio-titulo.visible {
-  opacity: 1;
-}
-
-.silencio-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  max-width: 680px;
-  width: 100%;
-}
-
-.silencio-item {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  align-items: center;
-  gap: 2rem;
-  padding: 1.4rem 0;
-  border-bottom: 1px solid rgba(200, 164, 90, 0.12);
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.silencio-item:first-child {
-  border-top: 1px solid rgba(200, 164, 90, 0.12);
-}
-
-.silencio-item.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.silencio-anio {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--dorado);
-  text-align: right;
-}
-
-.silencio-texto {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: var(--gris);
-  line-height: 1.5;
-}
-
-.silencio-item.activo .silencio-anio,
-.silencio-item.activo .silencio-texto {
-  color: var(--verde-luz);
-}
-
-.silencio-item.activo .silencio-texto {
-  font-weight: 400;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 /* ═══════════════════════════════════════════════════
-   ESCENA 3 — LA RUPTURA
+   SECCIÓN 1 — HERO
 ═══════════════════════════════════════════════════ */
-.escena-3 {
+.hero {
   height: 100vh;
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 6rem;
+  align-items: center;
 }
 
-.escena-3-img {
+.hero-bg {
   position: absolute;
   inset: 0;
   background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054933_89194daa-d6f3-4ad1-bd60-3c2eff4066ac.png');
   background-size: cover;
-  background-position: center;
-  will-change: transform;
+  background-position: center right;
 }
 
-.escena-3-overlay {
+.hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(13,21,32,0.5) 0%,
-    rgba(13,21,32,0.2) 40%,
-    rgba(13,21,32,0.88) 100%
-  );
+  background: linear-gradient(to right, rgba(10,20,10,0.85) 0%, rgba(10,20,10,0.4) 60%, transparent 100%);
 }
 
-.ruptura-versos {
+.hero-contenido {
   position: relative;
   z-index: 2;
-  text-align: center;
+  padding: 0 2.5rem;
+  max-width: 640px;
 }
 
-.ruptura-verso {
+.hero-headline {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
   font-size: 4.5rem;
-  font-weight: 300;
+  font-weight: 600;
   color: var(--blanco);
-  line-height: 1.15;
-  display: block;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  line-height: 1.1;
+  margin-bottom: 1.75rem;
 }
 
-.ruptura-verso.visible {
-  opacity: 1;
-  transform: translateY(0);
+.hero-headline .acento {
+  color: var(--verde);
+  font-style: italic;
+  display: block;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.25rem;
+}
+
+.badge-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--blanco);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  background: rgba(76, 175, 80, 0.1);
+  padding: 0.45rem 0.85rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.btn-cta {
+  display: inline-block;
+  background: var(--verde);
+  color: var(--negro);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 2rem;
+  transition: background 0.2s ease;
+}
+
+.btn-cta:hover {
+  background: #5DC960;
 }
 
 /* ═══════════════════════════════════════════════════
-   ESCENA 4 — NÚMEROS
+   SECCIÓN 2 — PERGAMINO
 ═══════════════════════════════════════════════════ */
-.escena-4 {
-  min-height: 100vh;
+.pergamino {
+  background-color: var(--pergamino);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 2.5rem;
+}
+
+.pergamino::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.pergamino-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* Columna izquierda */
+.pergamino-ilustracion {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: var(--navy);
-  padding: 6rem 2rem;
+  gap: 1.25rem;
+  padding-top: 1rem;
 }
 
-.numeros-titulo {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gris);
-  margin-bottom: 4rem;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.numeros-titulo.visible {
-  opacity: 1;
-}
-
-.numeros-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 860px;
-  width: 100%;
-}
-
-.numero-cell {
-  padding: 3rem 3.5rem;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  position: relative;
-}
-
-.numero-cell::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 20%;
-  height: 60%;
-  width: 1px;
-  background: rgba(200, 164, 90, 0.3);
-}
-
-.numero-cell:nth-child(2)::after,
-.numero-cell:nth-child(4)::after {
-  display: none;
-}
-
-.numero-cell::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-  width: 80%;
-  height: 1px;
-  background: rgba(200, 164, 90, 0.3);
-}
-
-.numero-cell:nth-child(3)::before,
-.numero-cell:nth-child(4)::before {
-  display: none;
-}
-
-.numero-cell.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.numero-valor {
+.cita-manuscrita {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 6rem;
+  font-style: italic;
+  font-size: 1rem;
   font-weight: 300;
-  color: var(--blanco);
+  color: var(--sepia);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Columna derecha */
+.pergamino-documento {
+  padding-top: 0.5rem;
+}
+
+.doc-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--sepia);
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.doc-subtitulo {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--sepia-claro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+/* Módulos */
+.modulos-lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.modulo {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(107, 76, 42, 0.18);
+}
+
+.modulo:last-child {
+  border-bottom: 1px solid rgba(107, 76, 42, 0.18);
+}
+
+.modulo-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--sepia);
   line-height: 1;
   letter-spacing: -0.02em;
 }
 
-.numero-label {
+.modulo-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.modulo-titulo {
   font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dorado);
-  margin-top: 0.75rem;
-  line-height: 1.5;
-  display: block;
+  color: var(--sepia);
 }
 
-/* ═══════════════════════════════════════════════════
-   ESCENA 5 — EARLY MINER
-═══════════════════════════════════════════════════ */
-.escena-5 {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--navy-medio);
-  padding: 6rem 2rem;
-}
-
-.miner-cita {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 2.4rem;
-  font-weight: 300;
-  color: var(--blanco);
-  text-align: center;
-  max-width: 680px;
-  line-height: 1.4;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-  margin-bottom: 4rem;
-}
-
-.miner-cita.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.miner-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  max-width: 720px;
-  width: 100%;
-  margin-bottom: 3.5rem;
-}
-
-.miner-card {
-  border: 1px solid rgba(200, 164, 90, 0.3);
-  background-color: var(--navy-claro);
-  padding: 2rem 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.miner-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.miner-card.activo {
-  border-color: var(--dorado);
-}
-
-.miner-card-titulo {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gris);
-  margin-bottom: 1.25rem;
-}
-
-.miner-card.activo .miner-card-titulo {
-  color: var(--dorado);
-}
-
-.miner-card-valor {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--blanco);
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-
-.miner-card-resultado {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 300;
-  color: var(--gris);
-  line-height: 1.5;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(200, 164, 90, 0.15);
-}
-
-.miner-card.activo .miner-card-resultado {
-  color: var(--dorado-suave);
-}
-
-.miner-conclusion {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--dorado);
-  text-align: center;
-  max-width: 640px;
-  line-height: 1.35;
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  transition-delay: 0.2s;
-}
-
-.miner-conclusion.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ═══════════════════════════════════════════════════
-   ESCENA 6 — HEMPCRETE
-═══════════════════════════════════════════════════ */
-.escena-6 {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.escena-6-img {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054937_ba01884a-b393-4639-8df5-5870aab01691.png');
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
-}
-
-.escena-6-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(13, 21, 32, 0.6);
-}
-
-.hempcrete-verso {
-  position: relative;
-  z-index: 2;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 3rem;
-  font-weight: 300;
-  color: var(--blanco);
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-  padding: 0 2rem;
-}
-
-.hempcrete-verso.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ═══════════════════════════════════════════════════
-   ESCENA 7 — ROADMAP
-═══════════════════════════════════════════════════ */
-.escena-7 {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--navy);
-  padding: 6rem 2rem;
-}
-
-.roadmap-titulo {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gris);
-  margin-bottom: 4rem;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.roadmap-titulo.visible {
-  opacity: 1;
-}
-
-.roadmap-container {
-  display: grid;
-  grid-template-columns: 2px 1fr;
-  gap: 0 2.5rem;
-  max-width: 620px;
-  width: 100%;
-  position: relative;
-}
-
-.roadmap-linea-track {
-  background: rgba(200, 164, 90, 0.15);
-  position: relative;
-  border-radius: 2px;
-}
-
-.roadmap-linea-progreso {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: var(--dorado);
-  border-radius: 2px;
-  transition: height 1.8s ease;
-}
-
-.roadmap-hitos {
-  display: flex;
-  flex-direction: column;
-}
-
-.roadmap-hito {
-  display: grid;
-  grid-template-columns: 2rem 1fr;
-  gap: 1rem;
-  align-items: flex-start;
-  padding-bottom: 2.8rem;
-  opacity: 0;
-  transform: translateX(15px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.roadmap-hito:last-child {
-  padding-bottom: 0;
-}
-
-.roadmap-hito.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.roadmap-punto {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--dorado);
-  margin-top: 0.35rem;
-  flex-shrink: 0;
-  position: relative;
-  left: calc(-1rem - 1px);
-  box-shadow: 0 0 0 3px rgba(200, 164, 90, 0.2);
-}
-
-.roadmap-anio {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--dorado);
-  line-height: 1;
-  margin-bottom: 0.3rem;
-}
-
-.roadmap-hito-titulo {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: var(--blanco);
-  line-height: 1.4;
-}
-
-.roadmap-hito-desc {
+.modulo-desc {
   font-family: 'Inter', sans-serif;
   font-size: 0.78rem;
   font-weight: 300;
-  color: var(--gris);
+  color: var(--sepia-claro);
   line-height: 1.5;
-  margin-top: 0.2rem;
+}
+
+.modulo-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--verde-oscuro);
+  text-decoration: none;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.modulo-link:hover {
+  color: var(--verde);
 }
 
 /* ═══════════════════════════════════════════════════
-   ESCENA 8 — EQUIPO
+   SECCIÓN 3 — VISIÓN 2035
 ═══════════════════════════════════════════════════ */
-.escena-8 {
-  background-color: var(--navy);
-  overflow: hidden;
-}
-
-.escena-8-foto {
-  height: 50vh;
+.vision {
   position: relative;
   overflow: hidden;
+  padding: 6rem 2.5rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.escena-8-img {
+.vision-bg {
   position: absolute;
   inset: 0;
   background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054938_e59da2e1-928e-4d7b-98a3-1c410169a99c.png');
   background-size: cover;
   background-position: center;
-  will-change: transform;
 }
 
-.escena-8-overlay {
+.vision-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(13,21,32,0.15) 0%,
-    rgba(13,21,32,0.65) 100%
-  );
+  background: rgba(5, 15, 5, 0.82);
 }
 
-.escena-8-contenido {
-  padding: 5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.vision-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
 }
 
-.equipo-titulo {
+.vision-eyebrow {
   font-family: 'Inter', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gris);
-  margin-bottom: 3rem;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.equipo-titulo.visible {
-  opacity: 1;
-}
-
-.equipo-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  max-width: 640px;
-  width: 100%;
-  margin-bottom: 3.5rem;
-}
-
-.equipo-card {
-  border: 1px solid var(--dorado);
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.equipo-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.equipo-nombre {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--blanco);
-  margin-bottom: 0.3rem;
-}
-
-.equipo-rol {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--dorado);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.2rem;
-}
-
-.equipo-empresa {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 300;
-  color: var(--gris);
-}
-
-.timeline-ejecucion {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  max-width: 680px;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.timeline-ejecucion.visible {
-  opacity: 1;
-}
-
-.timeline-item {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--dorado);
-  white-space: nowrap;
-}
-
-.timeline-sep {
-  width: 24px;
-  height: 1px;
-  background: rgba(200, 164, 90, 0.35);
-  margin: 0 0.5rem;
-}
-
-/* ═══════════════════════════════════════════════════
-   ESCENA 9 — CTA FINAL
-═══════════════════════════════════════════════════ */
-.escena-9 {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--navy);
-  position: relative;
-  overflow: hidden;
-  padding: 6rem 2rem;
-}
-
-.escena-9-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://d8j0ntlcm91z4.cloudfront.net/user_3EpWXW9qhLTZowUY0tYkwH2OXOb/hf_20260608_054933_89194daa-d6f3-4ad1-bd60-3c2eff4066ac.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.08;
-}
-
-.cta-inner {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 600px;
-}
-
-.cta-linea-1 {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--gris);
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  margin-bottom: 1rem;
-}
-
-.cta-linea-2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem;
-  font-weight: 400;
-  color: var(--blanco);
-  line-height: 1.2;
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  transition-delay: 0.2s;
   margin-bottom: 0.75rem;
 }
 
-.cta-linea-3 {
+.vision-titulo {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
   font-size: 3.5rem;
   font-weight: 400;
-  color: var(--dorado);
+  color: var(--blanco);
   line-height: 1.15;
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  transition-delay: 0.4s;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
-.cta-linea-1.visible,
-.cta-linea-2.visible,
-.cta-linea-3.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid rgba(76, 175, 80, 0.15);
+  margin-bottom: 5rem;
 }
 
-.cta-botones {
+.stat-cell {
+  background: rgba(5, 15, 5, 0.6);
+  padding: 2.25rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.stat-icono {
+  margin-bottom: 0.25rem;
+  opacity: 0.7;
+}
+
+.stat-numero {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: var(--blanco);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris);
+  line-height: 1.45;
+}
+
+/* CTA cierre */
+.vision-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.vision-frase-1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+}
+
+.vision-frase-2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--blanco);
+}
+
+.vision-firma {
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.firma-svg {
+  opacity: 0.6;
+}
+
+.vision-botones {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-  transition-delay: 0.6s;
   flex-wrap: wrap;
 }
 
-.cta-botones.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.btn-primario {
+.btn-verde {
   display: inline-block;
-  background: var(--dorado);
-  color: var(--navy);
+  background: var(--verde);
+  color: var(--negro);
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1rem 2.25rem;
+  padding: 0.9rem 2rem;
   transition: background 0.2s ease;
 }
 
-.btn-primario:hover {
-  background: var(--dorado-suave);
+.btn-verde:hover {
+  background: #5DC960;
 }
 
-.btn-secundario {
+.btn-outline-verde {
   display: inline-block;
-  border: 1px solid var(--dorado);
-  color: var(--dorado);
+  border: 1px solid var(--verde);
+  color: var(--verde);
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1rem 2.25rem;
+  padding: 0.9rem 2rem;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.btn-secundario:hover {
-  background: rgba(200, 164, 90, 0.1);
+.btn-outline-verde:hover {
+  background: rgba(76, 175, 80, 0.12);
 }
 
 /* ═══════════════════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════════════════ */
 .footer {
-  background-color: var(--navy);
-  border-top: 1px solid rgba(200, 164, 90, 0.15);
-  padding: 2.5rem 2rem;
+  background: #000000;
+  padding: 2rem 2.5rem;
   text-align: center;
 }
 
-.footer-empresa {
+.footer-texto {
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
+  font-size: 0.72rem;
+  font-weight: 300;
   color: var(--gris);
-  margin-bottom: 0.75rem;
   letter-spacing: 0.05em;
 }
 
-.footer-firma {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1rem;
-  font-weight: 300;
-  color: var(--dorado);
-  opacity: 0.7;
-}
-
 /* ═══════════════════════════════════════════════════
-   ANIMACIONES BASE
+   ANIMACIONES — patrón can-animate
 ═══════════════════════════════════════════════════ */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.can-animate .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-  50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
+.can-animate .fade-in.visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ═══════════════════════════════════════════════════
-   MOBILE RESPONSIVE
+   MOBILE
 ═══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .hero-numero {
-    font-size: 20vw;
+  .navbar {
+    padding: 1rem 1.25rem;
   }
 
-  .hero-tagline {
-    font-size: 6.5vw;
-    padding: 0 1rem;
+  .hero-contenido {
+    padding: 0 1.25rem;
   }
 
-  .anio-1796 {
-    font-size: 22vw;
+  .hero-headline {
+    font-size: 2.8rem;
   }
 
-  .cita-linea {
-    font-size: 1.6rem;
+  .pergamino {
+    padding: 3.5rem 1.25rem;
   }
 
-  .ruptura-verso {
-    font-size: 2.5rem;
+  .pergamino-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
-  .numeros-grid {
+  .pergamino-ilustracion {
+    display: none;
+  }
+
+  .doc-titulo {
+    font-size: 1.75rem;
+  }
+
+  .modulo {
+    grid-template-columns: 2.75rem 1fr;
+  }
+
+  .modulo-link {
+    display: none;
+  }
+
+  .vision {
+    padding: 4rem 1.25rem;
+  }
+
+  .vision-titulo {
+    font-size: 2.4rem;
+  }
+
+  .stats-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .numero-valor {
-    font-size: 3.5rem;
-  }
-
-  .numero-cell {
-    padding: 2rem 1.5rem;
-  }
-
-  .miner-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .miner-cita {
-    font-size: 1.7rem;
-  }
-
-  .miner-conclusion {
-    font-size: 1.2rem;
-  }
-
-  .hempcrete-verso {
-    font-size: 2rem;
-  }
-
-  .equipo-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-linea-2 {
-    font-size: 1.8rem;
-  }
-
-  .cta-linea-3 {
-    font-size: 2.5rem;
-  }
-
-  .roadmap-container {
-    padding-left: 1rem;
-  }
-
-  .silencio-item {
-    grid-template-columns: 60px 1fr;
-    gap: 1rem;
-  }
-
-  .timeline-ejecucion {
-    gap: 0.25rem;
-  }
-
-  .timeline-sep {
-    width: 12px;
+  .stat-numero {
+    font-size: 2.75rem;
   }
 }
 
 @media (max-width: 480px) {
-  .numeros-grid {
-    grid-template-columns: 1fr;
+  .hero-headline {
+    font-size: 2.2rem;
   }
 
-  .numero-cell::after,
-  .numero-cell::before {
-    display: none;
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-numero {
+    font-size: 2.2rem;
+  }
+
+  .vision-titulo {
+    font-size: 2rem;
   }
 }
 </style>
@@ -1180,263 +617,275 @@ body {
 <body>
 
 <!-- ═══════════════════════════════════════════════════
-     ESCENA 0 — ENTRADA
+     NAVBAR
 ═══════════════════════════════════════════════════ -->
-<section class="escena-0">
-  <div class="escena-0-inner">
-    <p class="badge">· Neuquén · Patagonia · Junio 2026 ·</p>
-    <h1 class="hero-numero">230 AÑOS</h1>
-    <p class="hero-tagline">esperando este momento.</p>
-  </div>
-  <div class="scroll-indicator" aria-hidden="true">
-    <div class="scroll-line"></div>
-    <div class="scroll-dot"></div>
-  </div>
-</section>
+<nav class="navbar" id="navbar">
+  <a href="#" class="navbar-logo" aria-label="Plan Manuel Belgrano">
+    <!-- SVG hoja de cáñamo -->
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 2C12 2 8 5.5 8 9C8 10.8 8.8 12.4 10 13.5L9 22H12V15C12 15 12 15 12 15V22H15L14 13.5C15.2 12.4 16 10.8 16 9C16 5.5 12 2 12 2Z" fill="#4CAF50"/>
+      <path d="M7 8C7 8 3 9 2 12C3 11.5 5 11 7 11.5L6.5 14H8.5L7.5 11.5C9 11 10 10 10 8.5C9 8.2 8 8 7 8Z" fill="#4CAF50" opacity="0.8"/>
+      <path d="M17 8C17 8 21 9 22 12C21 11.5 19 11 17 11.5L17.5 14H15.5L16.5 11.5C15 11 14 10 14 8.5C15 8.2 16 8 17 8Z" fill="#4CAF50" opacity="0.8"/>
+    </svg>
+    <span class="navbar-nombre">Plan Manuel Belgrano</span>
+  </a>
+  <button class="navbar-menu" aria-label="Menú">MENU</button>
+</nav>
 
 <!-- ═══════════════════════════════════════════════════
-     ESCENA 1 — 1796
+     SECCIÓN 1 — HERO
 ═══════════════════════════════════════════════════ -->
-<section class="escena-1">
-  <div class="escena-1-bg" aria-hidden="true"></div>
+<section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
 
-  <div class="anio-1796" data-anim="fade-up">1796</div>
-  <div class="separador-dorado" data-anim="fade"></div>
+  <div class="hero-contenido">
+    <h1 class="hero-headline fade-in">
+      El próximo gran<br>
+      recurso argentino<br>
+      no está bajo tierra.
+      <span class="acento">Está creciendo.</span>
+    </h1>
 
-  <div class="cita-belgrano">
-    <span class="cita-linea" data-delay="0">"El cultivo del cáñamo y del lino</span>
-    <span class="cita-linea" data-delay="250">es el más a propósito</span>
-    <span class="cita-linea" data-delay="500">para hacer feliz a estos países."</span>
-    <span class="cita-fuente" data-anim="fade">— Manuel Belgrano · Memoria sobre agricultura y comercio · Río de la Plata, 1796</span>
-  </div>
+    <div class="hero-badges fade-in">
+      <span class="badge-pill">&#127807; Capturamos carbono</span>
+      <span class="badge-pill">&#127968; Construimos viviendas</span>
+      <span class="badge-pill">&#128119; Generamos trabajo</span>
+    </div>
 
-  <p class="nadie-escucho" data-anim="fade-up">Nadie lo escuchó.</p>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     ESCENA 2 — EL SILENCIO
-═══════════════════════════════════════════════════ -->
-<section class="escena-2">
-  <p class="silencio-titulo" data-anim="fade">230 años de historia</p>
-
-  <div class="silencio-lista">
-    <div class="silencio-item" data-delay="0">
-      <span class="silencio-anio">1810</span>
-      <span class="silencio-texto">Revolución de Mayo.&nbsp;&nbsp;Nadie plantó cáñamo.</span>
-    </div>
-    <div class="silencio-item" data-delay="150">
-      <span class="silencio-anio">1853</span>
-      <span class="silencio-texto">Constitución Nacional.&nbsp;&nbsp;Nadie plantó cáñamo.</span>
-    </div>
-    <div class="silencio-item" data-delay="300">
-      <span class="silencio-anio">1943</span>
-      <span class="silencio-texto">Prohibición global.&nbsp;&nbsp;Silencio total.</span>
-    </div>
-    <div class="silencio-item activo" data-delay="450">
-      <span class="silencio-anio">2022</span>
-      <span class="silencio-texto">Decreto 883.&nbsp;&nbsp;Argentina habilita el cultivo.</span>
-    </div>
-    <div class="silencio-item activo" data-delay="600">
-      <span class="silencio-anio">2024</span>
-      <span class="silencio-texto">Licencia ARICCAME.&nbsp;&nbsp;Nosotros la obtuvimos.</span>
-    </div>
+    <a href="#plan" class="btn-cta fade-in">DESCUBRIR EL PLAN &rarr;</a>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     ESCENA 3 — LA RUPTURA
+     SECCIÓN 2 — PERGAMINO
 ═══════════════════════════════════════════════════ -->
-<section class="escena-3">
-  <div class="escena-3-img" id="parallax-3" aria-hidden="true"></div>
-  <div class="escena-3-overlay" aria-hidden="true"></div>
+<section class="pergamino" id="plan">
+  <div class="pergamino-inner">
 
-  <div class="ruptura-versos">
-    <span class="ruptura-verso" data-delay="0">El mismo suelo</span>
-    <span class="ruptura-verso" data-delay="200">que produce petróleo</span>
-    <span class="ruptura-verso" data-delay="400">puede producir</span>
-    <span class="ruptura-verso" data-delay="600">el futuro.</span>
-  </div>
-</section>
+    <!-- Columna izquierda: ilustración botánica SVG -->
+    <div class="pergamino-ilustracion">
+      <svg width="260" height="440" viewBox="0 0 260 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustración botánica de planta de cáñamo" role="img">
+        <!-- Tallo principal -->
+        <line x1="130" y1="420" x2="130" y2="60" stroke="#6B4C2A" stroke-width="2.5" stroke-linecap="round"/>
 
-<!-- ═══════════════════════════════════════════════════
-     ESCENA 4 — NÚMEROS
-═══════════════════════════════════════════════════ -->
-<section class="escena-4">
-  <p class="numeros-titulo" data-anim="fade">El portafolio en números</p>
+        <!-- Nodo 1 — bajo (y=360) -->
+        <line x1="130" y1="360" x2="95" y2="390" stroke="#6B4C2A" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="130" y1="360" x2="165" y2="390" stroke="#6B4C2A" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Hoja izquierda nodo 1 — 5 folíolos -->
+        <path d="M95 390 Q70 365 55 340 Q75 355 90 365 Q72 345 68 320 Q84 340 93 358 Q82 335 88 310 Q98 335 98 358 Q100 330 110 312 Q108 338 102 360 Q112 340 122 330 Q114 352 95 390Z" fill="none" stroke="#6B4C2A" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- Hoja derecha nodo 1 — 5 folíolos -->
+        <path d="M165 390 Q190 365 205 340 Q185 355 170 365 Q188 345 192 320 Q176 340 167 358 Q178 335 172 310 Q162 335 162 358 Q160 330 150 312 Q152 338 158 360 Q148 340 138 330 Q146 352 165 390Z" fill="none" stroke="#6B4C2A" stroke-width="1.2" stroke-linejoin="round"/>
 
-  <div class="numeros-grid">
-    <div class="numero-cell" data-delay="0">
-      <div class="numero-valor" data-countup data-target="8" data-suffix="–15">0</div>
-      <span class="numero-label">t CO₂ por hectárea<br>por año</span>
-    </div>
-    <div class="numero-cell" data-delay="150">
-      <div class="numero-valor" data-countup data-target="4000" data-prefix="">0</div>
-      <span class="numero-label">hectáreas en<br>Canal Mari Menuco</span>
-    </div>
-    <div class="numero-cell" data-delay="300">
-      <div class="numero-valor" data-countup data-target="92" data-prefix="€" data-suffix=",2M">0</div>
-      <span class="numero-label">portafolio acumulado<br>2030</span>
-    </div>
-    <div class="numero-cell" data-delay="450">
-      <div class="numero-valor" data-countup data-target="500" data-suffix="+">0</div>
-      <span class="numero-label">años vida útil<br>del hempcrete</span>
-    </div>
-  </div>
-</section>
+        <!-- Nodo 2 — medio-bajo (y=290) -->
+        <line x1="130" y1="290" x2="88" y2="325" stroke="#6B4C2A" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="130" y1="290" x2="172" y2="325" stroke="#6B4C2A" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Hoja izquierda nodo 2 — 7 folíolos -->
+        <path d="M88 325 Q58 295 38 265 Q62 282 80 296 Q58 272 52 244 Q72 268 83 290 Q68 260 76 232 Q90 260 90 286 Q94 252 108 230 Q104 260 96 284 Q106 256 122 244 Q112 270 88 325Z" fill="none" stroke="#6B4C2A" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- Hoja derecha nodo 2 — 7 folíolos -->
+        <path d="M172 325 Q202 295 222 265 Q198 282 180 296 Q202 272 208 244 Q188 268 177 290 Q192 260 184 232 Q170 260 170 286 Q166 252 152 230 Q156 260 164 284 Q154 256 138 244 Q148 270 172 325Z" fill="none" stroke="#6B4C2A" stroke-width="1.2" stroke-linejoin="round"/>
 
-<!-- ═══════════════════════════════════════════════════
-     ESCENA 5 — EARLY MINER
-═══════════════════════════════════════════════════ -->
-<section class="escena-5">
-  <p class="miner-cita" data-anim="fade-up">
-    "Producir créditos de carbono hoy<br>es como minar Bitcoin en 2010."
-  </p>
+        <!-- Nodo 3 — medio (y=220) -->
+        <line x1="130" y1="220" x2="82" y2="258" stroke="#6B4C2A" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="130" y1="220" x2="178" y2="258" stroke="#6B4C2A" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Hoja izquierda nodo 3 — 7 folíolos grandes -->
+        <path d="M82 258 Q48 222 26 188 Q54 208 74 226 Q48 198 40 166 Q64 194 77 220 Q58 184 68 152 Q84 184 84 216 Q88 176 106 150 Q100 182 90 210 Q104 176 122 162 Q110 192 82 258Z" fill="none" stroke="#6B4C2A" stroke-width="1.2" stroke-linejoin="round"/>
+        <!-- Hoja derecha nodo 3 — 7 folíolos grandes -->
+        <path d="M178 258 Q212 222 234 188 Q206 208 186 226 Q212 198 220 166 Q196 194 183 220 Q202 184 192 152 Q176 184 176 216 Q172 176 154 150 Q160 182 170 210 Q156 176 138 162 Q150 192 178 258Z" fill="none" stroke="#6B4C2A" stroke-width="1.2" stroke-linejoin="round"/>
 
-  <div class="miner-cards">
-    <div class="miner-card" data-delay="0">
-      <p class="miner-card-titulo">Bitcoin · 2010</p>
-      <p class="miner-card-valor">$0,01 de producción</p>
-      <p class="miner-card-resultado">$60.000 en 2021. Quienes minaron al principio, acumularon el activo antes que el mercado llegara.</p>
-    </div>
-    <div class="miner-card activo" data-delay="200">
-      <p class="miner-card-titulo">CO₂ · Hoy</p>
-      <p class="miner-card-valor">Cultivo + certificación</p>
-      <p class="miner-card-resultado">??? en 2029. El mercado de carbono regulado para LNG ya tiene fecha. El activo se acumula ahora.</p>
-    </div>
-  </div>
+        <!-- Nodo 4 — alto (y=155) -->
+        <line x1="130" y1="155" x2="102" y2="180" stroke="#6B4C2A" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="130" y1="155" x2="158" y2="180" stroke="#6B4C2A" stroke-width="1.4" stroke-linecap="round"/>
+        <!-- Hojas pequeñas -->
+        <path d="M102 180 Q82 160 72 138 Q88 152 98 166 Q82 148 80 126 Q94 144 100 164 Q96 140 108 124 Q108 148 104 168 Q110 148 118 140 Q112 158 102 180Z" fill="none" stroke="#6B4C2A" stroke-width="1.1" stroke-linejoin="round"/>
+        <path d="M158 180 Q178 160 188 138 Q172 152 162 166 Q178 148 180 126 Q166 144 160 164 Q164 140 152 124 Q152 148 156 168 Q150 148 142 140 Q148 158 158 180Z" fill="none" stroke="#6B4C2A" stroke-width="1.1" stroke-linejoin="round"/>
 
-  <p class="miner-conclusion" data-anim="fade-up">
-    "YPF puede ser el minero.<br>No el comprador tardío."
-  </p>
-</section>
+        <!-- Cogollo / flores en la cima -->
+        <ellipse cx="130" cy="55" rx="12" ry="22" fill="none" stroke="#6B4C2A" stroke-width="1.5"/>
+        <!-- Brácteas del cogollo -->
+        <path d="M118 70 Q108 58 112 46 Q116 56 118 70Z" fill="none" stroke="#6B4C2A" stroke-width="1"/>
+        <path d="M142 70 Q152 58 148 46 Q144 56 142 70Z" fill="none" stroke="#6B4C2A" stroke-width="1"/>
+        <path d="M119 62 Q110 50 115 38 Q119 50 119 62Z" fill="none" stroke="#6B4C2A" stroke-width="0.8"/>
+        <path d="M141 62 Q150 50 145 38 Q141 50 141 62Z" fill="none" stroke="#6B4C2A" stroke-width="0.8"/>
+        <!-- Pistilo central -->
+        <line x1="130" y1="76" x2="130" y2="36" stroke="#6B4C2A" stroke-width="1" stroke-linecap="round"/>
+        <!-- Pequeños brotes laterales del cogollo -->
+        <ellipse cx="116" cy="72" rx="6" ry="12" fill="none" stroke="#6B4C2A" stroke-width="1" transform="rotate(-20 116 72)"/>
+        <ellipse cx="144" cy="72" rx="6" ry="12" fill="none" stroke="#6B4C2A" stroke-width="1" transform="rotate(20 144 72)"/>
 
-<!-- ═══════════════════════════════════════════════════
-     ESCENA 6 — HEMPCRETE
-═══════════════════════════════════════════════════ -->
-<section class="escena-6">
-  <div class="escena-6-img" id="parallax-6" aria-hidden="true"></div>
-  <div class="escena-6-overlay" aria-hidden="true"></div>
-  <p class="hempcrete-verso" data-anim="fade-up">
-    "Cultivar. Construir. Certificar."
-  </p>
-</section>
+        <!-- Raíces sutiles -->
+        <path d="M130 420 Q118 430 110 440" stroke="#6B4C2A" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        <path d="M130 420 Q142 430 150 440" stroke="#6B4C2A" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        <path d="M130 425 Q122 435 116 442" stroke="#6B4C2A" stroke-width="0.8" stroke-linecap="round" opacity="0.3"/>
+      </svg>
 
-<!-- ═══════════════════════════════════════════════════
-     ESCENA 7 — ROADMAP
-═══════════════════════════════════════════════════ -->
-<section class="escena-7">
-  <p class="roadmap-titulo" data-anim="fade">Hoja de ruta</p>
-
-  <div class="roadmap-container">
-    <div class="roadmap-linea-track">
-      <div class="roadmap-linea-progreso" id="roadmap-progreso"></div>
+      <p class="cita-manuscrita">
+        "La riqueza de las provincias."<br>
+        <em>&#8212; M. Belgrano</em>
+      </p>
     </div>
 
-    <div class="roadmap-hitos">
-      <div class="roadmap-hito" data-delay="0">
-        <div class="roadmap-punto" aria-hidden="true"></div>
-        <div>
-          <div class="roadmap-anio">2026</div>
-          <div class="roadmap-hito-titulo">Benchmark de cultivares</div>
-          <div class="roadmap-hito-desc">10 ha en Neuquén · Validación agronómica en suelo patagónico</div>
+    <!-- Columna derecha: documento -->
+    <div class="pergamino-documento">
+      <h2 class="doc-titulo">Plan Manuel Belgrano</h2>
+      <p class="doc-subtitulo">Cáñamo Industrial · Neuquén · Patagonia · 2026</p>
+
+      <div class="modulos-lista">
+
+        <div class="modulo fade-in">
+          <span class="modulo-num">01</span>
+          <div class="modulo-cuerpo">
+            <span class="modulo-titulo">La Semilla</span>
+            <span class="modulo-desc">Una planta extraordinaria. Rápido crecimiento, resistente y versátil. La base de una nueva industria regenerativa.</span>
+          </div>
+          <a href="#" class="modulo-link">VER MÁS &rarr;</a>
         </div>
-      </div>
 
-      <div class="roadmap-hito" data-delay="150">
-        <div class="roadmap-punto" aria-hidden="true"></div>
-        <div>
-          <div class="roadmap-anio">2027</div>
-          <div class="roadmap-hito-titulo">Primer cultivo a escala</div>
-          <div class="roadmap-hito-desc">4.000 ha Canal Mari Menuco · Primera cosecha comercial</div>
+        <div class="modulo fade-in">
+          <span class="modulo-num">02</span>
+          <div class="modulo-cuerpo">
+            <span class="modulo-titulo">La Tierra</span>
+            <span class="modulo-desc">Regiones estratégicas para el cultivo de cáñamo con impacto federal y desarrollo territorial.</span>
+          </div>
+          <a href="#" class="modulo-link">VER MÁS &rarr;</a>
         </div>
-      </div>
 
-      <div class="roadmap-hito" data-delay="300">
-        <div class="roadmap-punto" aria-hidden="true"></div>
-        <div>
-          <div class="roadmap-anio">2028</div>
-          <div class="roadmap-hito-titulo">Primeras viviendas hempcrete</div>
-          <div class="roadmap-hito-desc">~650 unidades · Construcción con fibra local procesada</div>
+        <div class="modulo fade-in">
+          <span class="modulo-num">03</span>
+          <div class="modulo-cuerpo">
+            <span class="modulo-titulo">El Carbono</span>
+            <span class="modulo-desc">Capturamos carbono, regeneramos suelos y aportamos al equilibrio climático desde la raíz. 8–15 t CO&#8322; por hectárea por año.</span>
+          </div>
+          <a href="#" class="modulo-link">VER MÁS &rarr;</a>
         </div>
-      </div>
 
-      <div class="roadmap-hito" data-delay="450">
-        <div class="roadmap-punto" aria-hidden="true"></div>
-        <div>
-          <div class="roadmap-anio">2029</div>
-          <div class="roadmap-hito-titulo">Primeros bonos certificados</div>
-          <div class="roadmap-hito-desc">Portafolio €2,8–4,6M · Certificación VCS o Gold Standard</div>
+        <div class="modulo fade-in">
+          <span class="modulo-num">04</span>
+          <div class="modulo-cuerpo">
+            <span class="modulo-titulo">La Industria</span>
+            <span class="modulo-desc">Una cadena de valor completa que transforma la fibra en soluciones sostenibles de alto impacto.</span>
+          </div>
+          <a href="#" class="modulo-link">VER MÁS &rarr;</a>
         </div>
-      </div>
 
-      <div class="roadmap-hito" data-delay="600">
-        <div class="roadmap-punto" aria-hidden="true"></div>
-        <div>
-          <div class="roadmap-anio">2030</div>
-          <div class="roadmap-hito-titulo">Portafolio soberano</div>
-          <div class="roadmap-hito-desc">Argentina LNG a Europa · Créditos soberanos verificados</div>
+        <div class="modulo fade-in">
+          <span class="modulo-num">05</span>
+          <div class="modulo-cuerpo">
+            <span class="modulo-titulo">La Vivienda</span>
+            <span class="modulo-desc">Construimos hogares sustentables, eficientes y accesibles con materiales de cáñamo procesado localmente.</span>
+          </div>
+          <a href="#" class="modulo-link">VER MÁS &rarr;</a>
         </div>
+
+        <div class="modulo fade-in">
+          <span class="modulo-num">06</span>
+          <div class="modulo-cuerpo">
+            <span class="modulo-titulo">El Trabajo</span>
+            <span class="modulo-desc">Generamos empleo digno y desarrollo local en cada región del país, desde el campo hasta la obra.</span>
+          </div>
+          <a href="#" class="modulo-link">VER MÁS &rarr;</a>
+        </div>
+
+        <div class="modulo fade-in">
+          <span class="modulo-num">07</span>
+          <div class="modulo-cuerpo">
+            <span class="modulo-titulo">Argentina Productiva</span>
+            <span class="modulo-desc">Nuestra visión 2035 para una Argentina soberana, próspera y sostenible construida desde las provincias.</span>
+          </div>
+          <a href="#vision" class="modulo-link">VER MÁS &rarr;</a>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     ESCENA 8 — VISTA AÉREA + EQUIPO
+     SECCIÓN 3 — VISIÓN 2035
 ═══════════════════════════════════════════════════ -->
-<section class="escena-8">
-  <div class="escena-8-foto">
-    <div class="escena-8-img" id="parallax-8" aria-hidden="true"></div>
-    <div class="escena-8-overlay" aria-hidden="true"></div>
-  </div>
+<section class="vision" id="vision">
+  <div class="vision-bg" aria-hidden="true"></div>
+  <div class="vision-overlay" aria-hidden="true"></div>
 
-  <div class="escena-8-contenido">
-    <p class="equipo-titulo" data-anim="fade">El equipo fundador</p>
+  <div class="vision-inner">
+    <p class="vision-eyebrow fade-in">Visión 2035</p>
+    <h2 class="vision-titulo fade-in">Argentina Productiva</h2>
 
-    <div class="equipo-cards">
-      <div class="equipo-card" data-delay="0">
-        <div class="equipo-nombre">Guillermo Sandoval</div>
-        <div class="equipo-rol">Fundador</div>
-        <div class="equipo-empresa">Flora Cáñamo Neuquino SRL</div>
+    <!-- Grid de 4 stats -->
+    <div class="stats-grid">
+
+      <div class="stat-cell fade-in">
+        <div class="stat-icono" aria-hidden="true">
+          <!-- Ícono hoja -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 3C14 3 8 8 8 13.5C8 17.5 10.5 20.5 14 22C17.5 20.5 20 17.5 20 13.5C20 8 14 3 14 3Z" stroke="#4CAF50" stroke-width="1.5" fill="none"/>
+            <line x1="14" y1="22" x2="14" y2="26" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="stat-numero" data-countup data-target="100000" data-format="100.000">100.000</span>
+        <span class="stat-label">Hectáreas<br>cultivadas</span>
       </div>
-      <div class="equipo-card" data-delay="200">
-        <div class="equipo-nombre">Hernán Allemandi</div>
-        <div class="equipo-rol">Co-Fundador</div>
-        <div class="equipo-empresa">Flora Cáñamo Neuquino SRL</div>
+
+      <div class="stat-cell fade-in">
+        <div class="stat-icono" aria-hidden="true">
+          <!-- Ícono casa -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 13L14 4L24 13V24H17V18H11V24H4V13Z" stroke="#4CAF50" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="stat-numero" data-countup data-target="100000" data-format="100.000">100.000</span>
+        <span class="stat-label">Viviendas<br>sustentables</span>
       </div>
+
+      <div class="stat-cell fade-in">
+        <div class="stat-icono" aria-hidden="true">
+          <!-- Ícono persona -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="8" r="4" stroke="#4CAF50" stroke-width="1.5" fill="none"/>
+            <path d="M6 24C6 19.6 9.6 16 14 16C18.4 16 22 19.6 22 24" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span class="stat-numero" data-countup data-target="100000" data-format="100.000">100.000</span>
+        <span class="stat-label">Empleos directos<br>e indirectos</span>
+      </div>
+
+      <div class="stat-cell fade-in">
+        <div class="stat-icono" aria-hidden="true">
+          <!-- Ícono CO2 / hoja con flecha -->
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 24C14 24 6 18 6 11C6 7.1 9.6 4 14 4C18.4 4 22 7.1 22 11C22 18 14 24 14 24Z" stroke="#4CAF50" stroke-width="1.5" fill="none"/>
+            <path d="M14 24V14M14 14L11 17M14 14L17 17" stroke="#4CAF50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="stat-numero" data-countup data-target="1000000" data-format="1.000.000">1.000.000</span>
+        <span class="stat-label">Toneladas de CO&#8322;<br>capturadas por año</span>
+      </div>
+
     </div>
 
-    <div class="timeline-ejecucion" data-anim="fade">
-      <span class="timeline-item">Oct 2023</span>
-      <div class="timeline-sep"></div>
-      <span class="timeline-item">Ene 2024</span>
-      <div class="timeline-sep"></div>
-      <span class="timeline-item">Abr 2024</span>
-      <div class="timeline-sep"></div>
-      <span class="timeline-item">May 2024</span>
-      <div class="timeline-sep"></div>
-      <span class="timeline-item">Q3 2025</span>
-      <div class="timeline-sep"></div>
-      <span class="timeline-item">Q4 2025</span>
+    <!-- CTA cierre -->
+    <div class="vision-cta fade-in">
+      <p class="vision-frase-1">Manuel Belgrano imaginó una nación productiva.</p>
+      <p class="vision-frase-2">Nosotros queremos construirla.</p>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════════════════
-     ESCENA 9 — CTA FINAL
-═══════════════════════════════════════════════════ -->
-<section class="escena-9">
-  <div class="escena-9-bg" aria-hidden="true"></div>
-
-  <div class="cta-inner">
-    <p class="cta-linea-1" data-anim="cta">Belgrano escribió esto en 1796.</p>
-    <p class="cta-linea-2" data-anim="cta">Nosotros lo ejecutamos en 2026.</p>
-    <p class="cta-linea-3" data-anim="cta">Horacio, sumate.</p>
-
-    <div class="cta-botones" data-anim="cta">
-      <a href="mailto:nqnguille@gmail.com" class="btn-primario">Solicitar reunión</a>
-      <a href="https://wa.me/542994229436" class="btn-secundario" target="_blank" rel="noopener">WhatsApp</a>
+    <!-- Firma -->
+    <div class="vision-firma fade-in">
+      <svg class="firma-svg" width="220" height="52" viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Firma Guillermo Sandoval 2026" role="img">
+        <!-- Firma estilizada manuscrita -->
+        <path d="M10 38 Q18 20 28 24 Q36 28 30 36 Q24 44 32 40 Q42 35 48 28 Q54 22 52 32 Q50 40 58 36 Q66 32 70 26 Q74 20 78 28 Q80 34 86 30 Q92 25 96 32 Q98 36 104 30 Q112 22 118 30 Q122 36 128 28 Q132 20 138 28 Q142 36 148 30 Q154 24 158 32 Q160 38 166 32 Q172 26 176 34" stroke="#4CAF50" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+        <path d="M24 44 Q30 48 36 46" stroke="#4CAF50" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+        <!-- Nombre bajo la firma -->
+        <text x="10" y="52" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="13" fill="#4CAF50" opacity="0.75">Guillermo Sandoval · 2026</text>
+      </svg>
     </div>
+
+    <!-- Botones -->
+    <div class="vision-botones fade-in">
+      <a href="mailto:nqnguille@gmail.com" class="btn-verde">Solicitar reunión</a>
+      <a href="https://wa.me/542994229436" class="btn-outline-verde" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+
   </div>
 </section>
 
@@ -1444,183 +893,81 @@ body {
      FOOTER
 ═══════════════════════════════════════════════════ -->
 <footer class="footer">
-  <p class="footer-empresa">Flora Cáñamo Neuquino SRL · Neuquén, Patagonia · planmanuelbelgrano.com.ar</p>
-  <p class="footer-firma">"Cultivar el suelo es servir a la patria." — Manuel Belgrano</p>
+  <p class="footer-texto">Flora Cáñamo Neuquino SRL &nbsp;&middot;&nbsp; Neuquén, Patagonia &nbsp;&middot;&nbsp; planmanuelbelgrano.com.ar</p>
 </footer>
 
 <!-- ═══════════════════════════════════════════════════
      JAVASCRIPT
-═══════════════════════════════════════════════════ */
+═══════════════════════════════════════════════════ -->
 <script>
 (function () {
   'use strict';
 
-  /* ─── PARALLAX ─── */
-  const parallaxEls = [
-    { el: document.getElementById('parallax-3'), factor: 0.3 },
-    { el: document.getElementById('parallax-6'), factor: 0.25 },
-    { el: document.getElementById('parallax-8'), factor: 0.2 },
-  ];
-
+  /* ─── NAVBAR SCROLL ─── */
+  var navbar = document.getElementById('navbar');
   function onScroll() {
-    const scrollY = window.scrollY;
-
-    parallaxEls.forEach(function (p) {
-      if (!p.el) return;
-      const rect = p.el.parentElement.getBoundingClientRect();
-      const offset = (rect.top + rect.height / 2 - window.innerHeight / 2);
-      p.el.style.transform = 'translateY(' + (offset * p.factor) + 'px)';
-    });
-
-    /* Roadmap line fill */
-    const roadmapEl = document.getElementById('roadmap-progreso');
-    if (roadmapEl) {
-      const track = roadmapEl.parentElement;
-      const rect = track.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.9) {
-        const progress = Math.min(1, (window.innerHeight * 0.9 - rect.top) / rect.height);
-        roadmapEl.style.height = (progress * 100) + '%';
-      }
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
     }
   }
-
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 
-  /* ─── INTERSECTION OBSERVER — GENERIC FADE/SLIDE ─── */
-  function makeObserver(callback, threshold) {
-    return new IntersectionObserver(callback, {
-      threshold: threshold || 0.15,
-      rootMargin: '0px 0px -60px 0px'
-    });
-  }
+  /* ─── CAN-ANIMATE + INTERSECTION OBSERVER ─── */
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('can-animate');
 
-  /* Elements with data-anim="fade-up" or data-anim="fade" */
-  var animEls = document.querySelectorAll('[data-anim]');
-  var genericObserver = makeObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        genericObserver.unobserve(entry.target);
-      }
-    });
-  });
-  animEls.forEach(function (el) { genericObserver.observe(el); });
+    var fadeEls = document.querySelectorAll('.fade-in');
 
-  /* ─── SEQUENTIAL LINES (data-delay on siblings) ─── */
-  /* ESCENA 1 — cita */
-  observeGroup(
-    document.querySelectorAll('.cita-linea, .cita-fuente, .nadie-escucho'),
-    'visible'
-  );
-
-  /* ESCENA 2 — silencio items */
-  observeGroup(
-    document.querySelectorAll('.silencio-titulo, .silencio-item'),
-    'visible'
-  );
-
-  /* ESCENA 3 — ruptura versos */
-  observeGroup(
-    document.querySelectorAll('.ruptura-verso'),
-    'visible'
-  );
-
-  /* ESCENA 4 — numeros */
-  observeGroup(
-    document.querySelectorAll('.numeros-titulo, .numero-cell'),
-    'visible',
-    true /* countup */
-  );
-
-  /* ESCENA 5 — miner */
-  observeGroup(
-    document.querySelectorAll('.miner-cita, .miner-card, .miner-conclusion'),
-    'visible'
-  );
-
-  /* ESCENA 6 — hempcrete */
-  observeGroup(
-    document.querySelectorAll('.hempcrete-verso'),
-    'visible'
-  );
-
-  /* ESCENA 7 — roadmap */
-  observeGroup(
-    document.querySelectorAll('.roadmap-titulo, .roadmap-hito'),
-    'visible'
-  );
-
-  /* ESCENA 8 — equipo */
-  observeGroup(
-    document.querySelectorAll('.equipo-titulo, .equipo-card, .timeline-ejecucion'),
-    'visible'
-  );
-
-  /* ESCENA 9 — CTA */
-  var ctaEls = document.querySelectorAll('.cta-linea-1, .cta-linea-2, .cta-linea-3, .cta-botones');
-  var ctaObserver = makeObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var delay = 0;
-        ctaEls.forEach(function (el, i) {
-          setTimeout(function () { el.classList.add('visible'); }, i * 200);
-        });
-        ctaObserver.unobserve(entry.target);
-      }
-    });
-  }, 0.2);
-  if (ctaEls.length) ctaObserver.observe(ctaEls[0]);
-
-  /* ESCENA 1 — año 1796 */
-  var anio1796 = document.querySelector('.anio-1796');
-  var sep = document.querySelector('.separador-dorado');
-  if (anio1796) {
-    var anioObs = makeObserver(function (entries) {
+    var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          anio1796.classList.add('visible');
-          setTimeout(function () {
-            if (sep) sep.classList.add('visible');
-          }, 400);
-          anioObs.unobserve(entry.target);
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
-    }, 0.2);
-    anioObs.observe(anio1796);
-  }
+    }, {
+      threshold: 0,
+      rootMargin: '0px 0px -60px 0px'
+    });
 
-  function observeGroup(els, cls, doCountup) {
-    if (!els.length) return;
-    var triggered = false;
+    /* Módulos: delay secuencial */
+    var modulos = document.querySelectorAll('.modulo.fade-in');
+    modulos.forEach(function (el, i) {
+      el.style.transitionDelay = (i * 80) + 'ms';
+    });
 
-    var obs = makeObserver(function (entries) {
+    /* Stats: delay secuencial */
+    var stats = document.querySelectorAll('.stat-cell.fade-in');
+    stats.forEach(function (el, i) {
+      el.style.transitionDelay = (i * 120) + 'ms';
+    });
+
+    fadeEls.forEach(function (el) {
+      observer.observe(el);
+    });
+
+    /* ─── COUNT-UP ─── */
+    var statNumbers = document.querySelectorAll('[data-countup]');
+    var countupObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting && !triggered) {
-          triggered = true;
-          els.forEach(function (el) {
-            var delay = parseInt(el.getAttribute('data-delay') || 0, 10);
-            setTimeout(function () {
-              el.classList.add(cls);
-              if (doCountup && el.hasAttribute('data-countup')) {
-                animateCountup(el);
-              }
-            }, delay);
-          });
-          obs.unobserve(entry.target);
+        if (entry.isIntersecting) {
+          animateCountup(entry.target);
+          countupObserver.unobserve(entry.target);
         }
       });
-    }, 0.1);
+    }, { threshold: 0.3 });
 
-    obs.observe(els[0]);
+    statNumbers.forEach(function (el) {
+      countupObserver.observe(el);
+    });
   }
 
-  /* ─── COUNT-UP ─── */
   function animateCountup(el) {
     var target = parseInt(el.getAttribute('data-target'), 10);
-    var prefix = el.getAttribute('data-prefix') || '';
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1600;
+    var format = el.getAttribute('data-format') || target.toLocaleString('es-AR');
+    var duration = 1800;
     var start = null;
 
     function easeOut(t) {
@@ -1631,26 +978,15 @@ body {
       if (!start) start = ts;
       var progress = Math.min((ts - start) / duration, 1);
       var value = Math.round(easeOut(progress) * target);
-      var display;
 
-      /* Special formatting */
-      if (target === 4000) {
-        display = value.toLocaleString('es-AR');
-      } else if (target === 92) {
-        /* €9,2M */
-        if (progress < 1) {
-          display = prefix + value + suffix;
-        } else {
-          display = '€9,2M';
-        }
-      } else {
-        display = prefix + value + suffix;
-      }
-
-      el.textContent = display;
+      /* Formatear con puntos como separador de miles (es-AR) */
+      var formatted = value.toLocaleString('es-AR');
+      el.textContent = formatted;
 
       if (progress < 1) {
         requestAnimationFrame(step);
+      } else {
+        el.textContent = format;
       }
     }
 
