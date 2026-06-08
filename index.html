@@ -66,7 +66,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 2.5rem;
+  padding: 1.5rem 4rem;
   transition: background 0.3s ease;
 }
 
@@ -77,19 +77,19 @@ body {
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
   text-decoration: none;
 }
 
 .navbar-logo svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
 }
 
 .navbar-nombre {
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -98,7 +98,7 @@ body {
 
 .navbar-menu {
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -114,6 +114,7 @@ body {
 ═══════════════════════════════════════════════════ */
 .hero {
   height: 100vh;
+  min-height: 700px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -137,17 +138,17 @@ body {
 .hero-contenido {
   position: relative;
   z-index: 2;
-  padding: 0 2.5rem;
-  max-width: 640px;
+  padding: 0 4rem;
+  max-width: 780px;
 }
 
 .hero-headline {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 4.5rem;
+  font-size: 6rem;
   font-weight: 600;
   color: var(--blanco);
-  line-height: 1.1;
-  margin-bottom: 1.75rem;
+  line-height: 1.05;
+  margin-bottom: 2.25rem;
 }
 
 .hero-headline .acento {
@@ -159,19 +160,19 @@ body {
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 2.25rem;
+  gap: 0.75rem;
+  margin-bottom: 2.75rem;
 }
 
 .badge-pill {
   font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.07em;
   color: var(--blanco);
   border: 1px solid rgba(76, 175, 80, 0.4);
   background: rgba(76, 175, 80, 0.1);
-  padding: 0.45rem 0.85rem;
+  padding: 0.55rem 1rem;
   border-radius: 2px;
   white-space: nowrap;
 }
@@ -181,12 +182,12 @@ body {
   background: var(--verde);
   color: var(--negro);
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.9rem 2rem;
+  padding: 1rem 2.5rem;
   transition: background 0.2s ease;
 }
 
@@ -201,7 +202,7 @@ body {
   background-color: var(--pergamino);
   position: relative;
   overflow: hidden;
-  padding: 5rem 2.5rem;
+  padding: 7rem 4rem;
 }
 
 .pergamino::before {
@@ -216,9 +217,9 @@ body {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 35% 65%;
-  gap: 4rem;
-  max-width: 1100px;
+  grid-template-columns: 30% 70%;
+  gap: 6rem;
+  max-width: 1320px;
   margin: 0 auto;
   align-items: start;
 }
@@ -228,14 +229,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
   padding-top: 1rem;
 }
 
 .cita-manuscrita {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1rem;
+  font-size: 1.15rem;
   font-weight: 300;
   color: var(--sepia);
   text-align: center;
@@ -250,21 +251,21 @@ body {
 .doc-titulo {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: 400;
   color: var(--sepia);
-  margin-bottom: 0.4rem;
-  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  line-height: 1.15;
 }
 
 .doc-subtitulo {
   font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 400;
   color: var(--sepia-claro);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 /* Módulos */
@@ -275,10 +276,10 @@ body {
 
 .modulo {
   display: grid;
-  grid-template-columns: 3.5rem 1fr auto;
+  grid-template-columns: 4.5rem 1fr auto;
   align-items: baseline;
-  gap: 1rem;
-  padding: 1.1rem 0;
+  gap: 1.25rem;
+  padding: 1.4rem 0;
   border-top: 1px solid rgba(107, 76, 42, 0.18);
 }
 
@@ -288,7 +289,7 @@ body {
 
 .modulo-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 600;
   color: var(--sepia);
   line-height: 1;
@@ -298,27 +299,27 @@ body {
 .modulo-cuerpo {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.2rem;
 }
 
 .modulo-titulo {
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--sepia);
 }
 
 .modulo-desc {
   font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 300;
   color: var(--sepia-claro);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .modulo-link {
   font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--verde-oscuro);
@@ -337,7 +338,7 @@ body {
 .vision {
   position: relative;
   overflow: hidden;
-  padding: 6rem 2.5rem;
+  padding: 8rem 4rem;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -362,27 +363,27 @@ body {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 900px;
+  max-width: 1100px;
   width: 100%;
 }
 
 .vision-eyebrow {
   font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gris);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .vision-titulo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 3.5rem;
+  font-size: 5rem;
   font-weight: 400;
   color: var(--blanco);
-  line-height: 1.15;
-  margin-bottom: 4rem;
+  line-height: 1.1;
+  margin-bottom: 5rem;
 }
 
 /* Stats grid */
@@ -392,17 +393,17 @@ body {
   gap: 1px;
   background: rgba(76, 175, 80, 0.15);
   border: 1px solid rgba(76, 175, 80, 0.15);
-  margin-bottom: 5rem;
+  margin-bottom: 6rem;
 }
 
 .stat-cell {
   background: rgba(5, 15, 5, 0.6);
-  padding: 2.25rem 1.5rem;
+  padding: 3rem 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 .stat-icono {
@@ -410,9 +411,14 @@ body {
   opacity: 0.7;
 }
 
+.stat-icono svg {
+  width: 34px;
+  height: 34px;
+}
+
 .stat-numero {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   font-weight: 600;
   color: var(--blanco);
   line-height: 1;
@@ -421,12 +427,12 @@ body {
 
 .stat-label {
   font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gris);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 /* CTA cierre */
@@ -434,13 +440,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 2.5rem;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
 }
 
 .vision-frase-1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
+  font-size: 1.65rem;
   font-weight: 300;
   color: rgba(255,255,255,0.75);
   font-style: italic;
@@ -448,14 +454,14 @@ body {
 
 .vision-frase-2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--blanco);
 }
 
 .vision-firma {
   margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .firma-svg {
@@ -464,7 +470,7 @@ body {
 
 .vision-botones {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -474,12 +480,12 @@ body {
   background: var(--verde);
   color: var(--negro);
   font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.9rem 2rem;
+  padding: 1rem 2.5rem;
   transition: background 0.2s ease;
 }
 
@@ -492,12 +498,12 @@ body {
   border: 1px solid var(--verde);
   color: var(--verde);
   font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.9rem 2rem;
+  padding: 1rem 2.5rem;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -510,16 +516,16 @@ body {
 ═══════════════════════════════════════════════════ */
 .footer {
   background: #000000;
-  padding: 2rem 2.5rem;
+  padding: 2.5rem 4rem;
   text-align: center;
 }
 
 .footer-texto {
   font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 300;
   color: var(--gris);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -537,7 +543,63 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
-   MOBILE
+   TABLET (1024px) — reducción controlada
+═══════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1.25rem 2.5rem;
+  }
+
+  .hero-contenido {
+    padding: 0 2.5rem;
+    max-width: 640px;
+  }
+
+  .hero-headline {
+    font-size: 4.5rem;
+  }
+
+  .pergamino {
+    padding: 5rem 2.5rem;
+  }
+
+  .pergamino-inner {
+    grid-template-columns: 35% 65%;
+    gap: 3.5rem;
+    max-width: 960px;
+  }
+
+  .doc-titulo {
+    font-size: 2.4rem;
+  }
+
+  .vision {
+    padding: 6rem 2.5rem;
+  }
+
+  .vision-titulo {
+    font-size: 3.75rem;
+  }
+
+  .vision-inner {
+    max-width: 860px;
+  }
+
+  .stat-numero {
+    font-size: 3.5rem;
+  }
+
+  .stat-cell {
+    padding: 2.25rem 1.25rem;
+  }
+
+  .footer {
+    padding: 2rem 2.5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   MOBILE (768px) — fallback compacto
 ═══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .navbar {
@@ -546,10 +608,26 @@ body {
 
   .hero-contenido {
     padding: 0 1.25rem;
+    max-width: 100%;
   }
 
   .hero-headline {
     font-size: 2.8rem;
+  }
+
+  .hero-badges {
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .badge-pill {
+    font-size: 0.62rem;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .btn-cta {
+    font-size: 0.72rem;
+    padding: 0.85rem 1.75rem;
   }
 
   .pergamino {
@@ -566,11 +644,29 @@ body {
   }
 
   .doc-titulo {
-    font-size: 1.75rem;
+    font-size: 1.9rem;
+  }
+
+  .doc-subtitulo {
+    margin-bottom: 2rem;
   }
 
   .modulo {
-    grid-template-columns: 2.75rem 1fr;
+    grid-template-columns: 3rem 1fr;
+    gap: 0.75rem;
+    padding: 1.1rem 0;
+  }
+
+  .modulo-num {
+    font-size: 2rem;
+  }
+
+  .modulo-titulo {
+    font-size: 0.85rem;
+  }
+
+  .modulo-desc {
+    font-size: 0.78rem;
   }
 
   .modulo-link {
@@ -582,33 +678,47 @@ body {
   }
 
   .vision-titulo {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
+    margin-bottom: 3rem;
+  }
+
+  .vision-inner {
+    max-width: 100%;
   }
 
   .stats-grid {
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 3.5rem;
+  }
+
+  .stat-cell {
+    padding: 1.75rem 1rem;
   }
 
   .stat-numero {
     font-size: 2.75rem;
   }
-}
 
-@media (max-width: 480px) {
-  .hero-headline {
-    font-size: 2.2rem;
+  .stat-label {
+    font-size: 0.62rem;
   }
 
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
+  .vision-frase-1 {
+    font-size: 1.25rem;
   }
 
-  .stat-numero {
-    font-size: 2.2rem;
+  .vision-frase-2 {
+    font-size: 1.5rem;
   }
 
-  .vision-titulo {
-    font-size: 2rem;
+  .btn-verde,
+  .btn-outline-verde {
+    font-size: 0.75rem;
+    padding: 0.85rem 1.75rem;
+  }
+
+  .footer {
+    padding: 1.75rem 1.25rem;
   }
 }
 </style>
