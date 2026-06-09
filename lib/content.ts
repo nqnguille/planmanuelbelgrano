@@ -87,18 +87,18 @@ export const CONTENT = {
       {
         icon: '⚡',
         category: 'Energía',
-        metric: '8–12 MWh/ha',
-        metricLabel: 'energía potencial',
+        metric: '68–82 MWh/ha',
+        metricLabel: 'energía bruta de biomasa',
         title: 'Biomasa de alto valor energético',
-        body: 'Bajo consumo hídrico. Biomasa aprovechable en cada etapa del proceso productivo.',
+        body: 'Bajo consumo hídrico. Entre 68 y 82 MWh de energía bruta por hectárea, aprovechable en cada etapa del proceso productivo.',
       },
       {
         icon: '◉',
         category: 'Alimentación',
-        metric: '20–30%',
-        metricLabel: 'proteína en harina',
+        metric: '25–50%',
+        metricLabel: 'proteína según procesamiento',
         title: 'Proteína vegetal completa',
-        body: 'Proteínas, aceites y alimentos de alto valor nutricional. Alta demanda global creciente.',
+        body: 'Proteínas de alta digestibilidad (88%), aceites y alimentos de alto valor nutricional. Alta demanda global creciente.',
       },
     ],
     metrics: [
@@ -140,10 +140,24 @@ export const CONTENT = {
     locationSub: 'Corazón de Vaca Muerta',
   },
 
+  asset: {
+    label: '07 · El Activo',
+    headline: 'YPF no compra\ncréditos de carbono.\nLos produce.',
+    body: 'BNEF proyecta un mercado de créditos de alta integridad con potencial de hasta USD 1 trillion hacia 2037. YPF ya tiene la mayor plataforma de activos carbonizables de Argentina. Lo que falta es la plataforma que los active.',
+    table: [
+      { concept: 'Captura por hectárea', value: '8–12 t CO₂/año', source: 'British Hemp Alliance / BHA' },
+      { concept: 'Precio de referencia sectorial', value: 'USD 40–80/tCO₂e', source: 'WBCSD 2024 — rango O&G NetZero' },
+      { concept: 'Valor Fase 1 · 4.000 ha', value: '~USD 2,2M/año', source: 'Proyección Flora Cáñamo' },
+      { concept: 'Fijación en hempcrete', value: '75–165 kg CO₂/m³', source: 'Arehart et al. 2020 / EIHA' },
+    ],
+    note: 'Alineado con YPF Bio, la estrategia SAF y los contratos LNG europeos que exigen certificación de huella de carbono (CS3D).',
+    tagline: 'Una obligación regulatoria convertida en activo exportable.',
+  },
+
   opportunity: {
-    label: '07 · La Oportunidad',
+    label: '08 · La Oportunidad',
     headline: '¿Qué industria argentina de escala global todavía no tiene dueño?',
-    body: 'Una ventana de tiempo. Una ventaja natural. Una decisión estratégica. Una oportunidad que no vuelve a repetirse.',
+    body: 'Una ventana de tiempo. Una ventaja natural. Una decisión estratégica temprana.',
     features: [
       {
         title: 'Infraestructura ya desplegada',
@@ -151,15 +165,15 @@ export const CONTENT = {
       },
       {
         title: 'Primer mover advantage real',
-        body: 'El mercado global de créditos de carbono de alta integridad vale US$50B en 2030. Nadie en Argentina tiene escala todavía. La ventana está abierta.',
+        body: 'BNEF proyecta un mercado de créditos de alta integridad con potencial de hasta USD 1 trillion hacia 2037. Nadie en Argentina tiene escala todavía. La ventana está abierta.',
       },
       {
-        title: 'Retorno económico concreto',
-        body: 'Portafolio de créditos certificados al 2030. Más fibra, materiales y biomasa. No compensación de ESG — activos exportables con precio de mercado.',
+        title: 'Retorno económico verificado',
+        body: 'Portafolio de créditos certificados al 2030. Más fibra, materiales y biomasa. Activos financieros con precio de mercado — no compensación de ESG.',
       },
       {
-        title: 'Escala desde el día uno',
-        body: 'Pasar de piloto a 100.000 hectáreas con la misma lógica que escaló Vaca Muerta: infraestructura existente, operación federal, know-how propio.',
+        title: 'La misma lógica que escaló Vaca Muerta',
+        body: 'Pasar de piloto a escala federal con infraestructura existente, operación distribuida y know-how propio. El modelo ya lo conocen.',
       },
     ],
   },
@@ -188,18 +202,18 @@ export const CONTENT = {
       ['Lógica', 'Exportar commodities', 'Extraer y exportar', 'De semilla a industria completa'],
       ['Impacto', 'Potencia alimentaria', 'Potencia energética', 'Potencia biológica'],
     ],
-    footer: 'Las grandes transformaciones nacionales comienzan cuando una materia prima se convierte en una plataforma industrial.',
+    footer: '"Las grandes transformaciones nacionales comienzan cuando una materia prima se convierte en una plataforma industrial." — Manuel Belgrano, 1809',
   },
 
   cta: {
     eyebrow: 'El momento es ahora',
     headline: 'La decisión es nuestra.',
     body: 'Este plan es una invitación a construir juntos la próxima gran industria argentina.',
-    cta: 'CONSTRUYAMOS EL FUTURO',
-    ctaHref: 'mailto:nqnguille@gmail.com',
+    cta: 'Agendar reunión',
+    ctaHref: 'mailto:contacto@planmanuelbelgrano.com.ar',
     signature: 'Manuel Belgrano',
     signatureSub: 'Guillermo Sandoval, Fundador — Flora Cáñamo Neuquino SRL · Neuquén, Patagonia Argentina',
-    contactEmail: 'nqnguille@gmail.com',
+    contactEmail: 'contacto@planmanuelbelgrano.com.ar',
     contactWhatsApp: '+54 299 422 9436',
   },
 }
