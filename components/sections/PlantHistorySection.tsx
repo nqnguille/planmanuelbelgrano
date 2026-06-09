@@ -24,7 +24,7 @@ const TIMELINE = [
   },
   {
     era: 'El decreto',
-    text: 'Desde Washington, prohibieron la semilla. El mundo entero se creyó la mentira.',
+    text: 'La sociedad entera se creyó una mentira. Y la prohibió en todo el mundo.',
     type: 'villain',
   },
   {
