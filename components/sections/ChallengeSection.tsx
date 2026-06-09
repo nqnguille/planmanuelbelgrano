@@ -36,8 +36,13 @@ export function ChallengeSection() {
           {c.cards.map((card, i) => (
             <Reveal key={card.number} delay={0.1 * i}>
               <div className="bg-[#1A1A1A] hover:bg-[#222] transition-colors duration-300 p-10 h-full group">
-                <p className="text-[#C8A46A]/50 text-4xl font-light mb-6"
-                  style={{ fontFamily: 'var(--font-garamond)' }}>
+                <p
+                  className="text-[#C8A46A] font-normal mb-4 leading-none"
+                  style={{
+                    fontFamily: 'var(--font-garamond)',
+                    fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
+                  }}
+                >
                   {card.number}
                 </p>
                 <h3 className="text-white text-xs tracking-[0.18em] uppercase mb-4 font-medium"

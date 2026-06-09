@@ -19,7 +19,7 @@ export function HeroSection() {
       ref={ref}
       id="s01"
       className="relative min-h-screen flex items-center overflow-hidden bg-[#111111]"
-      aria-label="Hero — De Vaca Muerta a Vaca Verde"
+      aria-label="Hero — Vaca Muerta ya la hiciste. Ahora viene Vaca Verde."
     >
       {/* Video background — swap src for Belgrano video from Gemini when available */}
       <motion.div
@@ -70,14 +70,14 @@ export function HeroSection() {
             className="text-[#C8A46A]/80 text-xs tracking-[0.25em] uppercase mb-8"
             style={{ fontFamily: 'var(--font-hanken)' }}
           >
-            Plan Manuel Belgrano · Cáñamo Industrial
+            {CONTENT.hero.eyebrow}
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-white font-normal leading-[1.05] mb-8"
+            className="text-white font-normal leading-[1.05] mb-5"
             style={{
               fontFamily: 'var(--font-garamond)',
               fontSize: 'clamp(3.5rem, 7vw, 6rem)',
@@ -91,20 +91,24 @@ export function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-white/70 text-lg leading-relaxed mb-4 max-w-lg"
-            style={{ fontFamily: 'var(--font-hanken)', fontWeight: 300 }}
+            transition={{ duration: 0.9, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[#C8A46A] mb-6"
+            style={{
+              fontFamily: 'var(--font-garamond)',
+              fontSize: 'clamp(1.5rem, 2.6vw, 2.2rem)',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              lineHeight: 1.2,
+            }}
           >
-            {CONTENT.hero.sub.split('\n').map((line, i) => (
-              <span key={i}>{line}{i < 1 && <br />}</span>
-            ))}
+            {CONTENT.hero.sub}
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.9, delay: 1.1 }}
-            className="text-white/45 text-sm leading-relaxed mb-12 max-w-md"
+            transition={{ duration: 0.9, delay: 1.0 }}
+            className="text-white/50 text-sm leading-relaxed mb-12 max-w-md"
             style={{ fontFamily: 'var(--font-hanken)', fontWeight: 300 }}
           >
             {CONTENT.hero.body}

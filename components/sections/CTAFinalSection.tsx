@@ -29,27 +29,38 @@ export function CTAFinalSection() {
 
         <Reveal delay={0.3}>
           <a
-            href="mailto:contacto@planmanuelbelgrano.ar"
+            href={c.ctaHref ?? 'mailto:guillermo@ancestra.ar'}
             className="inline-flex items-center gap-3 px-10 py-5 bg-[#C8A46A] text-[#1A1A1A] text-xs tracking-[0.25em] uppercase font-medium hover:bg-[#d4b07a] transition-colors duration-300 mb-20"
             style={{ fontFamily: 'var(--font-hanken)' }}
           >
             {c.cta}
+            <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
+              <path d="M0 4H14M14 4L11 1M14 4L11 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+            </svg>
           </a>
         </Reveal>
 
         <Reveal delay={0.5}>
-          <div className="mt-16 opacity-40">
+          <div className="mt-16 opacity-50">
             <p
               className="text-white/80"
               style={{
                 fontFamily: 'var(--font-garamond)',
-                fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                fontSize: 'clamp(1.6rem, 3vw, 2.8rem)',
                 fontStyle: 'italic',
                 fontWeight: 400,
               }}
             >
               {c.signature}
             </p>
+            {c.signatureSub && (
+              <p
+                className="text-white/40 text-xs tracking-[0.2em] uppercase mt-3"
+                style={{ fontFamily: 'var(--font-hanken)', fontWeight: 300 }}
+              >
+                {c.signatureSub}
+              </p>
+            )}
           </div>
         </Reveal>
       </div>

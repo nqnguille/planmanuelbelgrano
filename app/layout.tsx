@@ -18,18 +18,18 @@ const hanken = Hanken_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Plan Manuel Belgrano — De Vaca Muerta a Vaca Verde',
-  description: 'La próxima plataforma industrial argentina no se extrae. Se cultiva. Un masterplan de cáñamo industrial para capturar carbono, construir viviendas y generar empleo federal.',
+  title: 'Plan Manuel Belgrano — Vaca Muerta ya la hiciste. Ahora viene Vaca Verde.',
+  description: 'Cáñamo industrial en Patagonia. First mover advantage. €9,2M en créditos de carbono certificados al 2030. Una industria federal de escala global que todavía no tiene dueño.',
   openGraph: {
-    title: 'Plan Manuel Belgrano — De Vaca Muerta a Vaca Verde',
-    description: 'La próxima plataforma industrial argentina no se extrae. Se cultiva.',
+    title: 'Plan Manuel Belgrano — Vaca Muerta ya la hiciste. Ahora viene Vaca Verde.',
+    description: 'Cáñamo industrial en Patagonia. First mover advantage. €9,2M en créditos de carbono al 2030.',
     locale: 'es_AR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Plan Manuel Belgrano',
-    description: 'La próxima plataforma industrial argentina no se extrae. Se cultiva.',
+    description: 'Vaca Muerta ya la hiciste. Ahora viene Vaca Verde. Cáñamo industrial en Patagonia.',
   },
 }
 

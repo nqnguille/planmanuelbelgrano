@@ -8,33 +8,34 @@ export const CONTENT = {
   },
 
   hero: {
-    headline: ['De Vaca Muerta', 'a Vaca Verde.'],
-    sub: 'La próxima plataforma industrial argentina no se extrae.\nSe cultiva.',
-    body: 'Un masterplan para capturar carbono, construir viviendas, generar empleo y desarrollar una nueva industria federal basada en cáñamo industrial.',
-    cta: 'Explorar el Plan',
+    eyebrow: 'Horacio, esto es para vos.',
+    headline: ['Vaca Muerta', 'ya la hiciste.'],
+    sub: 'Ahora viene Vaca Verde.',
+    body: 'Cáñamo industrial en Patagonia. Primera mover advantage. Retorno real. Y encima hace bien.',
+    cta: 'Ver los números',
     // Swap this URL with the Belgrano video from Gemini when disponible
     videoId: 'OMDRiSLpQuA',
   },
 
   challenge: {
-    label: '02 · El Desafío',
-    headline: 'Argentina encontró petróleo. Ahora necesita encontrar su próxima plataforma industrial.',
-    body: 'En cada generación, una materia prima cambió el destino del país. La pregunta no es si habrá una próxima. La pregunta es si Argentina llegará preparada.',
+    label: '02 · La Oportunidad',
+    headline: 'El mercado global de biomateriales crece al 15% anual. Nadie lo domina todavía.',
+    body: 'El primer jugador de escala captura el 70% del valor. En Vaca Muerta lo entendiste antes que todos. Acá hay otra ventana.',
     cards: [
       {
-        number: '1',
-        title: 'Nueva Industria Federal',
-        body: 'Un recurso renovable con potencial de escala global, cultivable en todo el país.',
+        number: '€9,2M',
+        title: 'Portafolio de créditos de carbono',
+        body: 'Proyección acumulada al 2030. Certificados en mercados internacionales. Desde las primeras hectáreas.',
       },
       {
-        number: '2',
-        title: 'Activos Ambientales Propios',
-        body: 'Argentina puede producir sus propios créditos de carbono en lugar de comprarlos.',
+        number: '4.000',
+        title: 'Hectáreas disponibles',
+        body: 'Canal Mari Menuco, Neuquén. Infraestructura de Vaca Muerta al lado. Logística resuelta.',
       },
       {
-        number: '3',
-        title: 'Soberanía Productiva',
-        body: 'De la semilla al producto final. Una cadena de valor completa en territorio argentino.',
+        number: '8–15',
+        title: 'Toneladas de CO₂ por hectárea por año',
+        body: 'Captura verificable, certificable y vendible. No compensación — activo real con precio de mercado.',
       },
     ],
   },
@@ -42,13 +43,13 @@ export const CONTENT = {
   thesis: {
     label: '03 · La Tesis',
     teaser: 'Si hubieras podido minar Bitcoin en 2010,\n¿cuánto habrías invertido?',
-    headline: 'Necesitamos industrias de escala global con ventaja competitiva sustentable y federal.',
-    body: 'Que generen desarrollo real y prosperidad duradera. Que dejen más de lo que toman.',
+    headline: 'En cada generación, un recurso cambió el tablero. El que llegó primero ganó.',
+    body: 'Ferrocarriles, petróleo, shale. Siempre el mismo patrón: ventaja natural + decisión estratégica temprana = escala dominante.',
     timeline: [
-      { year: '1880', title: 'Ferrocarriles', body: 'Conectaron un país.' },
-      { year: '1907', title: 'Petróleo', body: 'Impulsaron la energía y la industria.' },
-      { year: '2010', title: 'Vaca Muerta', body: 'Convirtió Argentina en potencia energética.' },
-      { year: '2030+', title: 'Cáñamo Industrial', body: 'Puede convertirla en potencia biológica.', accent: true },
+      { year: '1880', title: 'Ferrocarriles', body: 'Conectaron un país. Primera mover gana todo.' },
+      { year: '1907', title: 'Petróleo', body: 'YPF nació de ver antes que nadie.' },
+      { year: '2010', title: 'Vaca Muerta', body: 'Vos lo apostaste cuando nadie creía.', accent: false },
+      { year: '2026', title: 'Cáñamo Industrial', body: 'La misma lógica. Una ventana que se cierra.', accent: true },
     ],
   },
 
@@ -124,14 +125,26 @@ export const CONTENT = {
   },
 
   opportunity: {
-    label: '07 · La Oportunidad',
-    headline: '¿Qué industria argentina de escala global todavía no tiene dueño?',
-    body: 'Una ventana de tiempo. Una ventaja natural. Una decisión estratégica. Una oportunidad que no vuelve a repetirse.',
+    label: '07 · Por qué YPF',
+    headline: 'Esta industria necesita quien ya sabe construir a escala federal.',
+    body: 'No es greenwashing. No es cumplimiento. Es la siguiente plataforma industrial argentina, y YPF tiene todo para ser el primer mover.',
     features: [
-      { title: 'Ventana de tiempo', body: 'El mercado global de biomateriales crece al 15% anual. El primer jugador de escala captura el 70% del valor.' },
-      { title: 'Ventaja natural', body: 'Patagonia tiene las condiciones climáticas, agua y tierra para ser la región productora más eficiente del hemisferio sur.' },
-      { title: 'Decisión estratégica', body: 'YPF tiene la infraestructura, el capital humano y la experiencia operativa para escalar esta industria en años, no décadas.' },
-      { title: 'Impacto triple', body: 'Ambiental: captura de carbono. Social: vivienda y empleo. Económico: nueva exportación de alto valor agregado.' },
+      {
+        title: 'Infraestructura ya desplegada',
+        body: 'Añelo tiene energía, logística, capital humano y servicios. Todo lo que un proyecto agroindustrial de escala necesita para arrancar en meses, no años.',
+      },
+      {
+        title: 'Primer mover advantage real',
+        body: 'El mercado global de créditos de carbono de alta integridad vale US$50B en 2030. Nadie en Argentina tiene escala todavía. La ventana está abierta.',
+      },
+      {
+        title: 'Retorno económico concreto',
+        body: 'Portafolio de €9,2M en créditos certificados al 2030. Más fibra, materiales y biomasa. No compensación de ESG — activos exportables con precio de mercado.',
+      },
+      {
+        title: 'Escala desde el día uno',
+        body: 'YPF puede pasar de piloto a 100.000 hectáreas con la misma lógica que escaló Vaca Muerta: infraestructura existente, operación federal, know-how propio.',
+      },
     ],
   },
 
@@ -164,9 +177,11 @@ export const CONTENT = {
   },
 
   cta: {
-    body: 'Las grandes transformaciones nacionales comienzan cuando una materia prima se convierte en una plataforma industrial.\nEl momento es ahora. La decisión es nuestra.',
-    headline: 'Este plan es una invitación a construir juntos la primera gran industria argentina.',
-    cta: 'Construyamos el Futuro',
-    signature: 'Manuel Belgrano',
+    body: 'Vaca Muerta tardó diez años en convencer a todos. Vos lo viste en dos.\nEste es ese momento. Solo que esta vez la plataforma crece.',
+    headline: 'Horacio, sumate.',
+    cta: 'Hablemos',
+    ctaHref: 'mailto:guillermo@ancestra.ar',
+    signature: 'Guillermo Sandoval',
+    signatureSub: 'Fundador, Flora Cáñamo Neuquino SRL',
   },
 }
