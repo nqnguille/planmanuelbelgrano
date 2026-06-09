@@ -1,5 +1,5 @@
 import { Header } from '@/components/layout/Header'
-import { HeroSection } from '@/components/sections/HeroSection'
+import { HeroScrollClient } from '@/components/sections/HeroScrollClient'
 import { ChallengeSection } from '@/components/sections/ChallengeSection'
 import { ThesisTimelineSection } from '@/components/sections/ThesisTimelineSection'
 import { PlantMarketsSection } from '@/components/sections/PlantMarketsSection'
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main>
       <Header />
-      <HeroSection />
+      <HeroScrollClient />
       <ChallengeSection />
       <ThesisTimelineSection />
       <PlantMarketsSection />

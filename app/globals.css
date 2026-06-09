@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #F7F6EB;
-  --color-green: #2D4239;
-  --color-accent: #71CE6A;
-  --color-gold: #C8A46A;
-  --color-black: #111111;
+  --color-cream:     #F7F6EB;
+  --color-green:     #71CE6A;
+  --color-forest:    #2D4239;
+  --color-dusk:      #1A2B22;
+  --color-gold:      #C9A84C;
+  --color-parchment: #E8E0C8;
+  --color-ink:       #1C1A14;
+  --color-warm:      #2A2318;
+
+  /* Legacy aliases — usados por las secciones existentes */
+  --color-accent:    #71CE6A;
+  --color-black:     #111111;
   --color-pergamino: #EDE8D6;
-  --color-gris: #8A9080;
-  --color-sepia: #8A6C3A;
-  --color-dark: #1A1A1A;
+  --color-gris:      #8A9080;
+  --color-sepia:     #8A6C3A;
+  --color-dark:      #1A1A1A;
 
   --font-garamond: var(--font-garamond);
-  --font-hanken: var(--font-hanken);
+  --font-hanken:   var(--font-hanken);
 }
 
 *, *::before, *::after {
@@ -25,9 +32,9 @@ html {
 }
 
 body {
-  font-family: var(--font-hanken), 'Hanken Grotesk', sans-serif;
+  font-family: var(--font-hanken), 'Plus Jakarta Sans', 'Hanken Grotesk', sans-serif;
   background-color: #F7F6EB;
-  color: #111111;
+  color: #1C1A14;
   overflow-x: hidden;
 }
 
@@ -36,9 +43,25 @@ h1, h2, h3, h4 {
 }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #1A1A1A; }
-::-webkit-scrollbar-thumb { background: #C8A46A; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #1A2B22; }
+::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 2px; }
 
+/* Escala tipográfica hero */
+.hero-xl {
+  font-size: clamp(4rem, 8vw, 7.5rem);
+  line-height: 1.0;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #71CE6A;
+  font-family: var(--font-hanken), 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+}
+
+/* Clases legacy para secciones existentes */
 .manuscript-bg {
   background-color: #D4C5A0;
   background-image:

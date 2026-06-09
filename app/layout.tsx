@@ -1,18 +1,18 @@
 import type { Metadata } from 'next'
-import { EB_Garamond, Hanken_Grotesk } from 'next/font/google'
+import { EB_Garamond, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 
 const garamond = EB_Garamond({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['400', '600'],
   style: ['normal', 'italic'],
   variable: '--font-garamond',
   display: 'swap',
 })
 
-const hanken = Hanken_Grotesk({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['300', '400', '500'],
   variable: '--font-hanken',
   display: 'swap',
 })
@@ -35,7 +35,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${garamond.variable} ${hanken.variable}`}>
+    <html lang="es" className={`${garamond.variable} ${jakarta.variable}`}>
+      <head>
+        {/* Preload hero images para eliminar layout shift */}
+        <link
+          rel="preload"
+          href="/hero/frame-0-estepa.png"
+          as="image"
+        />
+        <link
+          rel="preload"
+          href="/hero/frame-1-vision.png"
+          as="image"
+        />
+      </head>
       <body>{children}</body>
     </html>
   )
