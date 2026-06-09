@@ -5,79 +5,176 @@ import { CONTENT } from '@/lib/content'
 export function PlantMarketsSection() {
   const c = CONTENT.plant
   return (
-    <section id="s04" className="relative bg-[#F7F6EB] px-8 lg:px-20 xl:px-28 py-28 lg:py-36 overflow-hidden">
-      {/* Hemp plant watermark */}
-      <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-end pointer-events-none overflow-hidden">
-        <svg viewBox="0 0 300 600" className="h-full opacity-[0.04]" fill="none">
-          <line x1="150" y1="600" x2="150" y2="50" stroke="#2D4239" strokeWidth="3"/>
-          <ellipse cx="150" cy="200" rx="80" ry="35" stroke="#2D4239" strokeWidth="2" transform="rotate(-25 150 200)"/>
-          <ellipse cx="150" cy="260" rx="80" ry="35" stroke="#2D4239" strokeWidth="2" transform="rotate(25 150 260)"/>
-          <ellipse cx="150" cy="320" rx="70" ry="30" stroke="#2D4239" strokeWidth="2" transform="rotate(-20 150 320)"/>
-          <ellipse cx="150" cy="380" rx="70" ry="30" stroke="#2D4239" strokeWidth="2" transform="rotate(20 150 380)"/>
-          <ellipse cx="150" cy="430" rx="55" ry="25" stroke="#2D4239" strokeWidth="2" transform="rotate(-15 150 430)"/>
-          <ellipse cx="150" cy="470" rx="40" ry="20" stroke="#2D4239" strokeWidth="1.5" transform="rotate(15 150 470)"/>
-          <circle cx="150" cy="50" r="18" stroke="#2D4239" strokeWidth="2"/>
+    <section
+      id="s04"
+      className="relative px-8 lg:px-20 xl:px-28 py-28 lg:py-40 overflow-hidden"
+      style={{ backgroundColor: 'var(--color-parchment)' }}
+    >
+      {/* Hemp plant watermark fondo */}
+      <div className="absolute right-[-2%] top-0 bottom-0 w-[45%] flex items-center justify-end pointer-events-none overflow-hidden">
+        <svg viewBox="0 0 300 600" className="h-full" fill="none" style={{ opacity: 0.04 }}>
+          <line x1="150" y1="600" x2="150" y2="50" stroke="#2D4239" strokeWidth="3" />
+          <ellipse cx="150" cy="200" rx="80" ry="35" stroke="#2D4239" strokeWidth="2" transform="rotate(-25 150 200)" />
+          <ellipse cx="150" cy="260" rx="80" ry="35" stroke="#2D4239" strokeWidth="2" transform="rotate(25 150 260)" />
+          <ellipse cx="150" cy="320" rx="70" ry="30" stroke="#2D4239" strokeWidth="2" transform="rotate(-20 150 320)" />
+          <ellipse cx="150" cy="380" rx="70" ry="30" stroke="#2D4239" strokeWidth="2" transform="rotate(20 150 380)" />
+          <ellipse cx="150" cy="430" rx="55" ry="25" stroke="#2D4239" strokeWidth="2" transform="rotate(-15 150 430)" />
+          <ellipse cx="150" cy="470" rx="40" ry="20" stroke="#2D4239" strokeWidth="1.5" transform="rotate(15 150 470)" />
+          <circle cx="150" cy="50" r="18" stroke="#2D4239" strokeWidth="2" />
         </svg>
       </div>
 
       <div className="relative max-w-6xl mx-auto">
+
         <Reveal>
           <SectionLabel label={c.label} />
         </Reveal>
 
+        {/* Headline + body */}
         <div className="grid lg:grid-cols-2 gap-16 mb-20">
           <Reveal delay={0.1}>
             <h2
-              className="text-[#1A1A1A] font-normal leading-[1.1]"
+              className="font-normal leading-[1.1]"
               style={{
                 fontFamily: 'var(--font-garamond)',
-                fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                color: 'var(--color-ink)',
               }}
             >
               {c.headline.split('\n').map((line, i) => (
-                <span key={i}>{line}{i < 1 && <br />}</span>
+                <span key={i}>
+                  {line}
+                  {i < c.headline.split('\n').length - 1 && <br />}
+                </span>
               ))}
             </h2>
           </Reveal>
+
           <Reveal delay={0.2} className="flex items-end">
-            <p className="text-[#1A1A1A]/60 text-base leading-relaxed"
-              style={{ fontFamily: 'var(--font-hanken)', fontWeight: 300 }}>
+            <p
+              className="text-base leading-relaxed"
+              style={{
+                fontFamily: 'var(--font-hanken)',
+                fontWeight: 300,
+                color: 'rgba(28,26,20,0.65)',
+              }}
+            >
               {c.body}
             </p>
           </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Cards de 4 mercados */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {c.markets.map((m, i) => (
             <Reveal key={m.category} delay={0.1 * i}>
-              <div className="bg-white border border-black/8 p-8 hover:border-[#C8A46A]/40 hover:shadow-lg transition-all duration-300 h-full">
-                <p className="text-[#C8A46A] text-xs tracking-[0.2em] uppercase mb-4"
-                  style={{ fontFamily: 'var(--font-hanken)' }}>
+              <div
+                className="h-full p-8 border transition-colors duration-300"
+                style={{
+                  backgroundColor: 'white',
+                  borderColor: 'rgba(28,26,20,0.08)',
+                }}
+              >
+                {/* Categoría */}
+                <p
+                  className="text-xs tracking-[0.22em] uppercase mb-5"
+                  style={{
+                    fontFamily: 'var(--font-hanken)',
+                    color: 'var(--color-gold)',
+                  }}
+                >
                   {m.category}
                 </p>
-                <p className="text-[#1A1A1A] font-light mb-1"
+
+                {/* Métrica grande */}
+                <p
+                  className="font-light mb-1 leading-none"
                   style={{
                     fontFamily: 'var(--font-garamond)',
-                    fontSize: 'clamp(1.8rem, 2.5vw, 2.2rem)',
-                  }}>
+                    fontSize: 'clamp(1.8rem, 2.8vw, 2.4rem)',
+                    color: 'var(--color-ink)',
+                  }}
+                >
                   {m.metric}
                 </p>
-                <p className="text-[#8A9080] text-xs mb-6 tracking-wide"
-                  style={{ fontFamily: 'var(--font-hanken)' }}>
+
+                {/* Label métrica */}
+                <p
+                  className="text-xs mb-6 tracking-wide"
+                  style={{
+                    fontFamily: 'var(--font-hanken)',
+                    color: 'rgba(28,26,20,0.45)',
+                  }}
+                >
                   {m.metricLabel}
                 </p>
-                <h3 className="text-[#1A1A1A] text-sm font-medium mb-3"
-                  style={{ fontFamily: 'var(--font-hanken)' }}>
+
+                {/* Separador */}
+                <div className="w-8 h-px mb-5" style={{ backgroundColor: 'rgba(201,168,76,0.35)' }} />
+
+                {/* Título */}
+                <h3
+                  className="text-sm font-medium mb-3"
+                  style={{
+                    fontFamily: 'var(--font-hanken)',
+                    color: 'var(--color-ink)',
+                  }}
+                >
                   {m.title}
                 </h3>
-                <p className="text-[#1A1A1A]/55 text-xs leading-relaxed"
-                  style={{ fontFamily: 'var(--font-hanken)', fontWeight: 300 }}>
+
+                {/* Body */}
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{
+                    fontFamily: 'var(--font-hanken)',
+                    fontWeight: 300,
+                    color: 'rgba(28,26,20,0.6)',
+                  }}
+                >
                   {m.body}
                 </p>
               </div>
             </Reveal>
           ))}
         </div>
+
+        {/* Métricas secundarias — barra */}
+        <Reveal delay={0.5}>
+          <div
+            className="grid grid-cols-2 md:grid-cols-4 border-t"
+            style={{ borderColor: 'rgba(28,26,20,0.1)' }}
+          >
+            {c.metrics.map((m, i) => (
+              <div
+                key={i}
+                className="py-6 px-4 border-r last:border-r-0"
+                style={{ borderColor: 'rgba(28,26,20,0.1)' }}
+              >
+                <p
+                  className="font-light mb-1"
+                  style={{
+                    fontFamily: 'var(--font-garamond)',
+                    fontSize: 'clamp(1.2rem, 2vw, 1.6rem)',
+                    color: 'var(--color-ink)',
+                  }}
+                >
+                  {m.value}
+                </p>
+                <p
+                  className="text-xs uppercase tracking-[0.14em]"
+                  style={{
+                    fontFamily: 'var(--font-hanken)',
+                    color: 'rgba(28,26,20,0.5)',
+                  }}
+                >
+                  {m.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
       </div>
     </section>
   )

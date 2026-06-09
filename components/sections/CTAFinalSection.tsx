@@ -4,66 +4,176 @@ import { CONTENT } from '@/lib/content'
 export function CTAFinalSection() {
   const c = CONTENT.cta
   return (
-    <section id="s10" className="bg-[#2D4239] px-8 lg:px-20 xl:px-28 py-32 lg:py-44">
-      <div className="max-w-4xl mx-auto text-center">
-        <Reveal>
-          <p className="text-white/50 text-sm leading-relaxed mb-10 max-w-xl mx-auto"
-            style={{ fontFamily: 'var(--font-hanken)', fontWeight: 300 }}>
-            {c.body.split('\n').map((line, i) => (
-              <span key={i}>{line}{i < 1 && <br />}</span>
-            ))}
-          </p>
-        </Reveal>
+    <footer id="s10" style={{ backgroundColor: 'var(--color-ink)' }}>
 
-        <Reveal delay={0.15}>
-          <h2
-            className="text-white font-normal leading-[1.1] mb-14"
-            style={{
-              fontFamily: 'var(--font-garamond)',
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-            }}
-          >
-            {c.headline}
-          </h2>
-        </Reveal>
+      {/* Sección principal de cierre */}
+      <div className="px-8 lg:px-20 xl:px-28 py-32 lg:py-48">
+        <div className="max-w-4xl mx-auto">
 
-        <Reveal delay={0.3}>
-          <a
-            href={c.ctaHref ?? 'mailto:guillermo@ancestra.ar'}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-[#C8A46A] text-[#1A1A1A] text-xs tracking-[0.25em] uppercase font-medium hover:bg-[#d4b07a] transition-colors duration-300 mb-20"
-            style={{ fontFamily: 'var(--font-hanken)' }}
-          >
-            {c.cta}
-            <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
-              <path d="M0 4H14M14 4L11 1M14 4L11 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-            </svg>
-          </a>
-        </Reveal>
-
-        <Reveal delay={0.5}>
-          <div className="mt-16 opacity-50">
+          {/* Eyebrow */}
+          <Reveal>
             <p
-              className="text-white/80"
+              className="text-xs tracking-[0.28em] uppercase mb-8"
               style={{
-                fontFamily: 'var(--font-garamond)',
-                fontSize: 'clamp(1.6rem, 3vw, 2.8rem)',
-                fontStyle: 'italic',
-                fontWeight: 400,
+                fontFamily: 'var(--font-hanken)',
+                color: 'var(--color-green)',
               }}
             >
-              {c.signature}
+              {c.eyebrow}
             </p>
-            {c.signatureSub && (
+          </Reveal>
+
+          {/* Headline */}
+          <Reveal delay={0.1}>
+            <h2
+              className="font-normal leading-[1.05] mb-10"
+              style={{
+                fontFamily: 'var(--font-garamond)',
+                fontSize: 'clamp(3rem, 7vw, 6.5rem)',
+                color: 'var(--color-cream)',
+              }}
+            >
+              {c.headline}
+            </h2>
+          </Reveal>
+
+          {/* Body */}
+          <Reveal delay={0.2}>
+            <p
+              className="mb-16 max-w-xl leading-relaxed"
+              style={{
+                fontFamily: 'var(--font-hanken)',
+                fontWeight: 300,
+                fontSize: 'clamp(1rem, 1.6vw, 1.2rem)',
+                color: 'rgba(247,246,235,0.6)',
+              }}
+            >
+              {c.body}
+            </p>
+          </Reveal>
+
+          {/* CTA principal */}
+          <Reveal delay={0.3}>
+            <a
+              href={c.ctaHref}
+              className="inline-flex items-center gap-4 text-xs tracking-[0.28em] uppercase font-medium"
+              style={{
+                fontFamily: 'var(--font-hanken)',
+                padding: '1.1rem 2.5rem',
+                backgroundColor: 'var(--color-green)',
+                color: 'var(--color-ink)',
+                transition: 'background-color 0.25s ease',
+              }}
+            >
+              {c.cta}
+              <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
+                <path d="M0 4H14M14 4L11 1M14 4L11 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+              </svg>
+            </a>
+          </Reveal>
+
+        </div>
+      </div>
+
+      {/* Separador */}
+      <div
+        className="mx-8 lg:mx-20 xl:mx-28"
+        style={{ height: '1px', backgroundColor: 'rgba(247,246,235,0.07)' }}
+      />
+
+      {/* Firma + contacto */}
+      <div className="px-8 lg:px-20 xl:px-28 py-16">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10">
+
+          {/* Firma Manuel Belgrano */}
+          <Reveal delay={0.4}>
+            <div>
               <p
-                className="text-white/40 text-xs tracking-[0.2em] uppercase mt-3"
-                style={{ fontFamily: 'var(--font-hanken)', fontWeight: 300 }}
+                className="italic mb-2"
+                style={{
+                  fontFamily: 'var(--font-garamond)',
+                  fontSize: 'clamp(1.8rem, 3.5vw, 3rem)',
+                  color: 'rgba(247,246,235,0.85)',
+                  fontWeight: 400,
+                }}
+              >
+                {c.signature}
+              </p>
+              <p
+                className="text-xs tracking-[0.15em] uppercase"
+                style={{
+                  fontFamily: 'var(--font-hanken)',
+                  fontWeight: 300,
+                  color: 'rgba(247,246,235,0.35)',
+                }}
               >
                 {c.signatureSub}
               </p>
-            )}
-          </div>
-        </Reveal>
+            </div>
+          </Reveal>
+
+          {/* Contacto */}
+          <Reveal delay={0.5}>
+            <div className="flex flex-col gap-3 lg:text-right">
+              <a
+                href={`mailto:${c.contactEmail}`}
+                className="text-sm"
+                style={{
+                  fontFamily: 'var(--font-hanken)',
+                  fontWeight: 300,
+                  color: 'rgba(247,246,235,0.45)',
+                  transition: 'color 0.2s ease',
+                }}
+              >
+                {c.contactEmail}
+              </a>
+              <a
+                href={`https://wa.me/${c.contactWhatsApp.replace(/[\s+]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm"
+                style={{
+                  fontFamily: 'var(--font-hanken)',
+                  fontWeight: 300,
+                  color: 'rgba(247,246,235,0.45)',
+                  transition: 'color 0.2s ease',
+                }}
+              >
+                WhatsApp {c.contactWhatsApp}
+              </a>
+            </div>
+          </Reveal>
+
+        </div>
       </div>
-    </section>
+
+      {/* Tagline final */}
+      <div
+        className="px-8 lg:px-20 xl:px-28 py-6 border-t"
+        style={{ borderColor: 'rgba(247,246,235,0.05)' }}
+      >
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <p
+            className="text-xs tracking-[0.2em] uppercase"
+            style={{
+              fontFamily: 'var(--font-hanken)',
+              color: 'rgba(247,246,235,0.2)',
+            }}
+          >
+            Plan Manuel Belgrano · Flora Cáñamo Neuquino SRL · Neuquén, Patagonia Argentina
+          </p>
+          <p
+            className="text-xs"
+            style={{
+              fontFamily: 'var(--font-hanken)',
+              color: 'rgba(247,246,235,0.15)',
+            }}
+          >
+            2026
+          </p>
+        </div>
+      </div>
+
+    </footer>
   )
 }

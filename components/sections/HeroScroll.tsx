@@ -26,9 +26,8 @@ export function HeroScroll() {
           },
         })
 
-        // 0 → 0.25: texto s0 + sketch desaparecen
+        // 0 → 0.25: texto s0 desaparece
         tl.to('#hero-text-s0', { opacity: 0, y: -30, duration: 0.15 }, 0.1)
-          .to('#sketch-notes', { opacity: 0, duration: 0.2 }, 0.1)
 
         // 0.25 → 0.65: crossfade a frame-1, texto s1 aparece
           .to('#frame-1', { opacity: 1, duration: 0.3 }, 0.25)
@@ -112,6 +111,7 @@ export function HeroScroll() {
             src="/hero/frame-1-vision.png"
             alt="Belgrano parado frente a una ciudad verde floreciente, viviendas sustentables, golden hour"
             fill
+            priority
             style={{ objectFit: 'cover', objectPosition: 'center' }}
             sizes="100vw"
           />
@@ -130,40 +130,7 @@ export function HeroScroll() {
           }}
         />
 
-        {/* SKETCH NOTES — anotaciones manuscritas top-right */}
-        <div
-          id="sketch-notes"
-          style={{
-            position: 'absolute',
-            top: '8%',
-            right: '6%',
-            zIndex: 4,
-            opacity: 0.2,
-            pointerEvents: 'none',
-            fontFamily: 'var(--font-garamond), "EB Garamond", serif',
-            fontStyle: 'italic',
-            color: '#F7F6EB',
-            fontSize: 'clamp(0.85rem, 1.2vw, 1.1rem)',
-            lineHeight: 1.8,
-            textAlign: 'right',
-          }}
-        >
-          Industria
-          <br />
-          de materiales
-          <br />
-          <span style={{ opacity: 0.5 }}>—</span>
-          <br />
-          Energía
-          <br />
-          y logística
-          <br />
-          <span style={{ opacity: 0.5 }}>—</span>
-          <br />
-          Viviendas
-          <br />
-          sustentables
-        </div>
+        {/* SKETCH NOTES — eliminado: no funciona correctamente con GSAP en SSR */}
 
         {/* ESTADO 0 — visible al inicio, scroll 0-25% */}
         <div
