@@ -10,8 +10,39 @@ export function CTAFinalSection() {
       <div className="px-8 lg:px-20 xl:px-28 py-32 lg:py-48">
         <div className="max-w-4xl mx-auto">
 
-          {/* Eyebrow */}
+          {/* Cita Sturzenegger */}
           <Reveal>
+            <div style={{
+              borderLeft: '2px solid rgba(201,168,76,0.4)',
+              paddingLeft: '2rem',
+              marginBottom: '5rem',
+            }}>
+              <p style={{
+                fontFamily: 'var(--font-garamond)',
+                fontStyle: 'italic',
+                fontWeight: 400,
+                fontSize: 'clamp(1.3rem, 2.2vw, 1.9rem)',
+                lineHeight: 1.4,
+                color: 'rgba(247,246,235,0.85)',
+                marginBottom: '1rem',
+              }}>
+                "{c.sturzeneggerQuote}"
+              </p>
+              <p style={{
+                fontFamily: 'var(--font-hanken)',
+                fontWeight: 300,
+                fontSize: '0.72rem',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase' as const,
+                color: 'rgba(201,168,76,0.55)',
+              }}>
+                {c.sturzeneggerAttr}
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Eyebrow */}
+          <Reveal delay={0.08}>
             <p
               className="text-xs tracking-[0.28em] uppercase mb-8"
               style={{
@@ -24,21 +55,29 @@ export function CTAFinalSection() {
           </Reveal>
 
           {/* Headline */}
-          <Reveal delay={0.1}>
+          <Reveal delay={0.14}>
             <h2
               className="font-normal leading-[1.05] mb-10"
               style={{
                 fontFamily: 'var(--font-garamond)',
-                fontSize: 'clamp(3rem, 7vw, 6.5rem)',
+                fontStyle: 'italic',
+                fontSize: 'clamp(2.8rem, 6vw, 5.5rem)',
                 color: 'var(--color-cream)',
               }}
             >
-              {c.headline}
+              {c.headline.split('\n').map((line, i, arr) => (
+                <span key={i}>
+                  {i === arr.length - 1
+                    ? <em style={{ color: '#71CE6A', fontStyle: 'italic' }}>{line}</em>
+                    : line}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
             </h2>
           </Reveal>
 
           {/* Body */}
-          <Reveal delay={0.2}>
+          <Reveal delay={0.22}>
             <p
               className="mb-16 max-w-xl leading-relaxed"
               style={{

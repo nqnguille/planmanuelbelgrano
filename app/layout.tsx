@@ -37,17 +37,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`${garamond.variable} ${jakarta.variable}`}>
       <head>
-        {/* Preload hero images para eliminar layout shift */}
-        <link
-          rel="preload"
-          href="/hero/frame-0-estepa.png"
-          as="image"
-        />
-        <link
-          rel="preload"
-          href="/hero/frame-1-vision.png"
-          as="image"
-        />
+        {/* Preload hero frames — f01 y f09 para LCP; el resto carga en background */}
+        <link rel="preload" href="/hero/frames/f01.jpg" as="image" />
+        <link rel="preload" href="/hero/frames/f09.jpg" as="image" />
+        {/* Fallback: si JS no carga, mostrar contenido que Framer Motion ocultó */}
+        <noscript>{`<style>div[style*="opacity: 0"],div[style*="opacity:0"]{opacity:1!important;transform:none!important}</style>`}</noscript>
       </head>
       <body>{children}</body>
     </html>

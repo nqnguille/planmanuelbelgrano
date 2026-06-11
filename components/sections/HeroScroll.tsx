@@ -22,81 +22,44 @@ function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
 const STATES = [
   {
     id: 's0',
-    eyebrow: 'Patagonia · 1810',
-    headline: 'Doscientos años\ndel mismo ciclo.',
-    body: 'Extraer. Exportar. Sin transformar. La Patagonia sigue esperando la industria que Belgrano imaginó.',
+    icon: '⟳',
+    eyebrow: 'El ciclo que nunca se cerró.',
+    headline: 'Doscientos años de improductividad.',
+    body: 'Argentina exporta recursos naturales desde 1816. Ni un solo eslabón de valor agregado consolidado en escala. El modelo extractivo no genera industria, no acumula tecnología, no produce empleo calificado. La Patagonia tiene suelo, agua, sol y viento — y los regala sin procesar. Belgrano lo llamó el error fundacional. Sigue siendo el mismo.',
     cta: null,
   },
   {
     id: 's1',
-    eyebrow: 'Semilla',
-    headline: 'Una planta\nque rompe el ciclo.',
-    body: 'Crece en condiciones extremas. Sin riego intensivo. Sin agroquímicos. En la misma tierra que hoy se usa para extraer.',
+    icon: '◈',
+    eyebrow: 'La biología como ventaja competitiva.',
+    headline: 'La planta más eficiente del planeta.',
+    body: 'El cáñamo industrial es el segundo cultivo con mayor captura de CO₂ rankada globalmente — 8 a 12 toneladas por hectárea en 90 a 120 días. Sin riego intensivo, sin agroquímicos, en suelos áridos que hoy no producen nada. La naturaleza hace el trabajo a costo energético casi cero. Cada planta genera un activo certificable en el mercado de carbono antes de ser cosechada.',
     cta: null,
   },
   {
     id: 's2',
-    eyebrow: 'Cultivo',
-    headline: 'Mientras crece,\ncaptura.',
-    body: 'Entre 8 y 12 toneladas de CO₂ por hectárea, por año. Cada planta es un activo financiero en formación antes de ser cosechada.',
+    icon: '◎',
+    eyebrow: 'Hempcrete · Biochar · Fibra · Créditos',
+    headline: 'De la semilla a la llave. Toda la cadena.',
+    body: 'Hempcrete (fijación permanente, siglos de permanencia), biochar (USD 164/t certificado, compradores: Microsoft, Shell, Google), fibra industrial y créditos de carbono verificados. Todo desde la misma hectárea. Con la desregulación del Decreto 883 ya vigente y la escala de Neuquén disponible, la cadena completa puede operar en 2026.',
     cta: null,
   },
   {
     id: 's3',
-    eyebrow: 'Cosecha',
-    headline: 'Una cosecha.\nCuatro industrias.',
-    body: 'De una sola biomasa nacen cuatro cadenas de valor: carbono certificable, fibra industrial, energía y proteína vegetal.',
-    cta: null,
-  },
-  {
-    id: 's4',
-    eyebrow: 'Procesamiento',
-    headline: 'No exportamos\nmateria prima.',
-    body: 'Construimos la industria completa. Fibra. Hurda. Hempcrete. Aceite. Proteína. Valor en cada etapa del proceso.',
-    cta: null,
-  },
-  {
-    id: 's5',
-    eyebrow: 'Materiales',
-    headline: 'Cada muro fija\ncarbono para siempre.',
-    body: '75 a 165 kg de CO₂ fijados por metro cúbico según formulación. De forma permanente. Una estimación de 300 a 500 años de vida útil.',
-    cta: null,
-  },
-  {
-    id: 's6',
-    eyebrow: 'Construcción',
-    headline: 'Cada vivienda\nes un activo\ncertificado.',
-    body: 'No solo reduce el déficit habitacional. Genera un crédito de carbono certificable, exportable y con precio de mercado verificado.',
-    cta: null,
-  },
-  {
-    id: 's7',
-    eyebrow: 'Carbono',
-    headline: 'YPF ya tiene\nla plataforma.\nFalta activarla.',
-    body: 'Tierra irrigable. Logística. Escala federal. Capital humano. Todo lo que una industria de clase mundial necesita para arrancar hoy.',
-    cta: null,
-  },
-  {
-    id: 's8',
+    icon: '✦',
     eyebrow: 'Plan Manuel Belgrano · 2026',
-    headline: 'YPF no compra\ncréditos de carbono.\nLos produce.',
-    body: null,
-    cta: { label: 'Agendar reunión', href: 'mailto:contacto@planmanuelbelgrano.com.ar' },
+    headline: 'YPF no compra créditos de carbono.\nLos produce.',
+    body: 'Europa exige certificación de huella de carbono vía CS3D. Sin ella, el GNL argentino es commodity. Con ella: USD 7–17M de premium por cargo. YPF puede ser el primer productor soberano de créditos de carbono de América Latina — no como compensación, como línea de negocio. 4.000 ha generan USD 2,2M/año. A escala Neuquén: USD 27,5M anuales.',
+    cta: { label: 'Conocé el master plan', href: '#s05' },
   },
 ]
 
-// Posiciones GSAP normalizadas (0→1)
-// s0 fades out at 0.06 | cada estado ocupa ~0.11 del timeline
+// Posiciones GSAP normalizadas (0→1) — sin dead zones entre estados
 const TIMING = [
-  { outAt: 0.06 },
-  { inAt: 0.10, outAt: 0.20 },
-  { inAt: 0.23, outAt: 0.33 },
-  { inAt: 0.36, outAt: 0.46 },
-  { inAt: 0.49, outAt: 0.58 },
-  { inAt: 0.61, outAt: 0.70 },
-  { inAt: 0.73, outAt: 0.81 },
-  { inAt: 0.83, outAt: 0.90 },
-  { inAt: 0.92 },
+  { outAt: 0.10 },
+  { inAt: 0.11, outAt: 0.38 },
+  { inAt: 0.39, outAt: 0.62 },
+  { inAt: 0.63 },
 ]
 
 export function HeroScroll() {
@@ -198,7 +161,7 @@ export function HeroScroll() {
             trigger: '#hero-pin-container',
             start: 'top top',
             end: 'bottom bottom',
-            scrub: 1.2,
+            scrub: 0.8,
           },
         })
 
@@ -215,28 +178,8 @@ export function HeroScroll() {
         tl.fromTo('#hs2', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[2].inAt!)
         tl.to('#hs2', { opacity: 0, y: -30, duration: D }, TIMING[2].outAt!)
 
-        // S3
+        // S3 — stays
         tl.fromTo('#hs3', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[3].inAt!)
-        tl.to('#hs3', { opacity: 0, y: -30, duration: D }, TIMING[3].outAt!)
-
-        // S4
-        tl.fromTo('#hs4', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[4].inAt!)
-        tl.to('#hs4', { opacity: 0, y: -30, duration: D }, TIMING[4].outAt!)
-
-        // S5
-        tl.fromTo('#hs5', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[5].inAt!)
-        tl.to('#hs5', { opacity: 0, y: -30, duration: D }, TIMING[5].outAt!)
-
-        // S6
-        tl.fromTo('#hs6', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[6].inAt!)
-        tl.to('#hs6', { opacity: 0, y: -30, duration: D }, TIMING[6].outAt!)
-
-        // S7
-        tl.fromTo('#hs7', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[7].inAt!)
-        tl.to('#hs7', { opacity: 0, y: -30, duration: D }, TIMING[7].outAt!)
-
-        // S8 — stays
-        tl.fromTo('#hs8', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[8].inAt!)
       })
     }
     initTextAnimations()
@@ -250,7 +193,7 @@ export function HeroScroll() {
   return (
     <section
       id="hero-pin-container"
-      style={{ height: '800vh' }}
+      style={{ height: '700vh' }}
       aria-label="Hero — De la semilla a la industria"
     >
       <div
@@ -272,30 +215,31 @@ export function HeroScroll() {
             id={`hs${i}`}
             style={{
               position: 'absolute',
-              bottom: i === 8 ? '12%' : '16%',
+              bottom: i === 3 ? '12%' : '16%',
               right: '5%',
               zIndex: 5,
-              maxWidth: i === 8 ? 'min(620px, 52vw)' : 'min(540px, 46vw)',
+              maxWidth: i === 3 ? 'min(780px, 65vw)' : 'min(860px, 70vw)',
               textAlign: 'right',
               opacity: i === 0 ? 1 : 0,
             }}
           >
             <p style={{
               fontFamily: 'var(--font-hanken)',
-              fontSize: '0.68rem',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
+              fontSize: i === 0 ? '0.75rem' : '0.68rem',
+              letterSpacing: i === 0 ? '0.08em' : '0.2em',
+              textTransform: i === 0 ? 'none' : 'uppercase',
               color: '#71CE6A',
               fontWeight: 400,
               marginBottom: '1rem',
+              fontStyle: 'normal',
             }}>
-              {state.eyebrow}
+              <span style={{ marginRight: '0.5em', opacity: 0.8 }}>{state.icon}</span>{state.eyebrow}
             </p>
 
             <h2 style={{
               fontFamily: 'var(--font-garamond), "EB Garamond", serif',
               fontWeight: 400,
-              fontSize: i === 8
+              fontSize: i === 3
                 ? 'clamp(2.8rem, 5.5vw, 5rem)'
                 : 'clamp(3.2rem, 6.5vw, 6rem)',
               lineHeight: 1.0,
@@ -304,7 +248,7 @@ export function HeroScroll() {
             }}>
               {state.headline.split('\n').map((line, j) => (
                 <span key={j}>
-                  {j === state.headline.split('\n').length - 1 && i === 8
+                  {j === state.headline.split('\n').length - 1 && i === 3
                     ? <em style={{ color: '#71CE6A', fontStyle: 'italic' }}>{line}</em>
                     : line}
                   {j < state.headline.split('\n').length - 1 && <br />}
@@ -351,21 +295,23 @@ export function HeroScroll() {
           </div>
         ))}
 
-        {/* Indicador de etapa */}
+        {/* Mouse scroll indicator */}
         <div style={{
-          position: 'absolute', bottom: '2rem', left: '2.5rem', zIndex: 6,
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem',
+          position: 'absolute', bottom: '2.5rem', left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 6,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
+          pointerEvents: 'none',
         }}>
+          <svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.75" y="0.75" width="22.5" height="36.5" rx="11.25" stroke="rgba(247,246,235,0.28)" strokeWidth="1.5"/>
+            <circle cx="12" cy="11" r="2.5" fill="rgba(201,168,76,0.65)" className="scroll-wheel"/>
+          </svg>
           <span style={{
-            fontFamily: 'var(--font-hanken)', fontSize: '0.6rem',
-            letterSpacing: '0.25em', textTransform: 'uppercase',
-            color: 'rgba(247,246,235,0.3)', writingMode: 'vertical-rl',
+            fontFamily: 'var(--font-hanken)', fontSize: '0.52rem',
+            letterSpacing: '0.28em', textTransform: 'uppercase' as const,
+            color: 'rgba(247,246,235,0.2)',
           }}>scroll</span>
-          <div style={{
-            width: '1px', height: '3rem',
-            background: 'linear-gradient(to bottom, rgba(201,168,76,0.6), transparent)',
-            animation: 'scrollPulse 2s ease-in-out infinite',
-          }} />
         </div>
 
         {/* Flora badge */}
@@ -388,7 +334,13 @@ export function HeroScroll() {
           </span>
         </div>
 
-        <style>{`@keyframes scrollPulse { 0%,100%{transform:scaleY(1);opacity:.6} 50%{transform:scaleY(.6);opacity:1} }`}</style>
+        <style>{`
+          @keyframes wheelBounce {
+            0%,100% { transform: translateY(0); opacity: 0.65; }
+            50% { transform: translateY(6px); opacity: 0.15; }
+          }
+          .scroll-wheel { animation: wheelBounce 1.8s ease-in-out infinite; }
+        `}</style>
       </div>
     </section>
   )
