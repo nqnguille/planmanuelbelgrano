@@ -22,10 +22,10 @@ function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
 const STATES = [
   {
     id: 's0',
-    icon: '⟳',
-    eyebrow: 'El ciclo que nunca se cerró.',
-    headline: 'Doscientos años de improductividad.',
-    body: 'Argentina exporta recursos naturales desde 1816. Ni un solo eslabón de valor agregado consolidado en escala. El modelo extractivo no genera industria, no acumula tecnología, no produce empleo calificado. La Patagonia tiene suelo, agua, sol y viento — y los regala sin procesar. Belgrano lo llamó el error fundacional. Sigue siendo el mismo.',
+    icon: '✦',
+    eyebrow: 'Plan Manuel Belgrano · Cáñamo industrial en la Patagonia',
+    headline: 'Belgrano tenía razón.',
+    body: 'En 1796, desde el Consulado, Manuel Belgrano propuso el cultivo de cáñamo como una de las primeras industrias del territorio. Doscientos treinta años después, la Patagonia tiene el suelo, el agua, la energía y la escala para cumplirlo.',
     cta: null,
   },
   {
@@ -33,24 +33,24 @@ const STATES = [
     icon: '◈',
     eyebrow: 'La biología como ventaja competitiva.',
     headline: 'La planta más eficiente del planeta.',
-    body: 'El cáñamo industrial es el segundo cultivo con mayor captura de CO₂ rankada globalmente — 8 a 12 toneladas por hectárea en 90 a 120 días. Sin riego intensivo, sin agroquímicos, en suelos áridos que hoy no producen nada. La naturaleza hace el trabajo a costo energético casi cero. Cada planta genera un activo certificable en el mercado de carbono antes de ser cosechada.',
+    body: 'El cáñamo industrial captura 10 a 15 toneladas de CO₂ por hectárea en 90 a 120 días, crece en suelos áridos con bajo requerimiento hídrico y produce fibra, material de construcción y energía desde la misma hectárea. La naturaleza hace el trabajo a costo energético casi cero.',
     cta: null,
   },
   {
     id: 's2',
     icon: '◎',
-    eyebrow: 'Hempcrete · Biochar · Fibra · Créditos',
+    eyebrow: 'Hempcrete · Fibra · Biochar · Créditos',
     headline: 'De la semilla a la llave. Toda la cadena.',
-    body: 'Hempcrete (fijación permanente, siglos de permanencia), biochar (USD 164/t certificado, compradores: Microsoft, Shell, Google), fibra industrial y créditos de carbono verificados. Todo desde la misma hectárea. Con la desregulación del Decreto 883 ya vigente y la escala de Neuquén disponible, la cadena completa puede operar en 2026.',
+    body: 'El cáñamo se convierte en hempcrete: un material que aísla, resiste el fuego y dura siglos. Una cadena industrial completa — cultivo, procesamiento, materiales, construcción — con empleo técnico en cada eslabón y biochar certificado como segunda línea de valor.',
     cta: null,
   },
   {
     id: 's3',
     icon: '✦',
     eyebrow: 'Plan Manuel Belgrano · 2026',
-    headline: 'YPF no compra créditos de carbono.\nLos produce.',
-    body: 'Europa exige certificación de huella de carbono vía CS3D. Sin ella, el GNL argentino es commodity. Con ella: USD 7–17M de premium por cargo. YPF puede ser el primer productor soberano de créditos de carbono de América Latina — no como compensación, como línea de negocio. 4.000 ha generan USD 2,2M/año. A escala Neuquén: USD 27,5M anuales.',
-    cta: { label: 'Conocé el master plan', href: '#s05' },
+    headline: 'La industria que construye\nla próxima Patagonia.',
+    body: 'Vaca Muerta va a duplicar la población de Neuquén en la próxima década. El Plan Manuel Belgrano produce los materiales y las viviendas de ese crecimiento — y convierte hectáreas ociosas en una plataforma industrial de exportación.',
+    cta: { label: 'Ver masterplan', href: '/masterplan/' },
   },
 ]
 
