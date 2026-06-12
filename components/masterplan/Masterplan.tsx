@@ -271,7 +271,7 @@ const SPECS = [
   { value: '+500 años', label: 'Vida útil', detail: 'Norma europea EN 16101. Sistema constructivo usado en más de 50 países.' },
 ]
 
-const CHAIN = ['Semilla', 'Cultivo', 'Procesamiento', 'GEMCRETE', 'Vivienda']
+const CHAIN = ['Semilla', 'Cultivo', 'Procesamiento', 'Hempcrete', 'Vivienda']
 
 function MpSolucion() {
   return (
@@ -282,11 +282,10 @@ function MpSolucion() {
       </Rise>
       <Rise delay={0.16}>
         <Body>
-          El cáñamo industrial produce <strong style={{ color: GREEN_DARK, fontWeight: 500 }}>GEMCRETE</strong>:
-          nuestro ladrillo y sistema constructivo de hempcrete, un material que aísla,
-          respira y resiste el fuego. Las paredes se fabrican con biomasa cultivada en la
-          misma cuenca — logística mínima, insumo renovable cada 120 días, empleo técnico
-          en cada eslabón de la cadena.
+          El cáñamo industrial produce <strong style={{ color: GREEN_DARK, fontWeight: 500 }}>hempcrete</strong>:
+          un material de construcción que aísla, respira y resiste el fuego. Las paredes se
+          fabrican con biomasa cultivada en la misma cuenca — logística mínima, insumo
+          renovable cada 120 días, empleo técnico en cada eslabón de la cadena.
         </Body>
       </Rise>
 
@@ -459,8 +458,8 @@ const FASES = [
   },
   {
     tag: 'Fase 2 · Meses 12–24',
-    title: 'Piloto GEMCRETE',
-    body: 'Con la biomasa del benchmark: procesamiento, primeros bloques y certificación INTI del ladrillo GEMCRETE y de su sistema constructivo. Las primeras viviendas piloto pueden levantarse en los propios sitios operativos de YPF, para alojar al personal.',
+    title: 'Piloto hempcrete',
+    body: 'Con la biomasa del benchmark: procesamiento, primeros bloques y certificación INTI del ladrillo de hempcrete y de su sistema constructivo. Las primeras viviendas piloto pueden levantarse en los propios sitios operativos de YPF, para alojar al personal.',
     budget: 'USD 115.000',
     items: ['Procesamiento · USD 55.000', 'Materiales · USD 20.000', 'Construcción · USD 25.000', 'Certificación INTI · USD 15.000'],
   },
@@ -822,7 +821,7 @@ function MpVision() {
         <Rise delay={0.24}>
           <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)', lineHeight: 1.8, color: 'rgba(247,246,235,0.65)', maxWidth: '64ch' }}>
             Si a Neuquén llega un millón de personas, la pregunta no es solo dónde duermen:
-            es qué construye su economía. GEMCRETE convierte cualquier hectárea cultivable
+            es qué construye su economía. El hempcrete convierte cualquier hectárea cultivable
             de la Argentina en viviendas, barrios y ciudades enteras — y en una fuente de
             trabajo inagotable para cualquier argentino, en cada eslabón de la cadena, del
             campo a la llave.
