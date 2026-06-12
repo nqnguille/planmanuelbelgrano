@@ -161,8 +161,9 @@ function MpApertura() {
             ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
             lineHeight: 1.75, color: 'rgba(247,246,235,0.6)', maxWidth: '56ch', margin: '0 auto',
           }}>
-            Una propuesta de generación de valor para YPF: cáñamo industrial, materiales
-            de construcción y créditos de carbono en la misma cuenca que Vaca Muerta.
+            Una propuesta para que YPF lidere una industria nueva: cáñamo industrial,
+            materiales de construcción y créditos de carbono en la misma cuenca que
+            Vaca Muerta. Nosotros ponemos en marcha la rueda — los primeros eslabones.
             De la semilla a la llave.
           </p>
         </Rise>
@@ -270,7 +271,7 @@ const SPECS = [
   { value: '+500 años', label: 'Vida útil', detail: 'Norma europea EN 16101. Sistema constructivo usado en más de 50 países.' },
 ]
 
-const CHAIN = ['Semilla', 'Cultivo', 'Procesamiento', 'Material', 'Vivienda']
+const CHAIN = ['Semilla', 'Cultivo', 'Procesamiento', 'GEMCRETE', 'Vivienda']
 
 function MpSolucion() {
   return (
@@ -281,7 +282,8 @@ function MpSolucion() {
       </Rise>
       <Rise delay={0.16}>
         <Body>
-          El cáñamo industrial produce hempcrete: un material de construcción que aísla,
+          El cáñamo industrial produce <strong style={{ color: GREEN_DARK, fontWeight: 500 }}>GEMCRETE</strong>:
+          nuestro ladrillo y sistema constructivo de hempcrete, un material que aísla,
           respira y resiste el fuego. Las paredes se fabrican con biomasa cultivada en la
           misma cuenca — logística mínima, insumo renovable cada 120 días, empleo técnico
           en cada eslabón de la cadena.
@@ -349,24 +351,27 @@ function MpActivo() {
           <Rise><Eyebrow dark>03 · El activo</Eyebrow></Rise>
           <Rise delay={0.08}>
             <H2 dark>
-              4.000 hectáreas irrigables
+              La rueda arranca en cualquier
               <br />
-              que hoy rinden cero.
+              hectárea que YPF elija.
             </H2>
           </Rise>
           <Rise delay={0.16}>
             <Body dark>
-              Canal Mari Menuco y Barreales: tierras con agua asegurada dentro del área de
-              influencia de YPF, sin uso productivo. Es la misma lógica que monetizar gas
-              disponible con data centers, aplicada al territorio: cada hectárea sembrada
-              genera biomasa, materiales de construcción y créditos certificables.
+              La tierra del benchmark de Mendoza ya está asegurada: 4.000 hectáreas en
+              Valle de Uco. En Neuquén, el plan se adapta a cualquier superficie en
+              cualquier área — Mari Menuco, Barreales, Añelo o donde YPF decida. Es la
+              misma lógica que monetizar gas disponible con data centers, aplicada al
+              territorio: cada hectárea sembrada genera biomasa, materiales de
+              construcción y créditos certificables.
             </Body>
           </Rise>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(28,26,20,0.15)', border: '1px solid rgba(28,26,20,0.15)' }}>
           {[
-            { value: '4.000 ha', label: 'Fase 1 · Canal Mari Menuco / Barreales' },
-            { value: '50.000 ha', label: 'Potencial irrigable de la provincia del Neuquén' },
+            { value: '4.000 ha', label: 'Mendoza · Valle de Uco — tierra asegurada para el benchmark' },
+            { value: 'A elección', label: 'Neuquén · el plan se adapta a la superficie que YPF defina' },
+            { value: '50.000 ha', label: 'Potencial irrigable de la provincia del Neuquén a escala' },
             { value: '10–15 t CO₂', label: 'captura por hectárea por año, a validar en benchmark' },
           ].map((row, i) => (
             <Rise key={row.value} delay={0.12 + i * 0.08}>
@@ -388,18 +393,74 @@ function MpActivo() {
 
 /* ---------- 04 · el plan ---------- */
 
+const AI_LAYERS = [
+  {
+    n: '01',
+    title: 'Diseño experimental',
+    body: 'DBCA generado por IA: diseño en bloques completos al azar, hasta 30 variedades por ecorregión. El algoritmo optimiza repeticiones y aleatorización para máxima potencia estadística con la mínima superficie experimental.',
+  },
+  {
+    n: '02',
+    title: 'Sensores en parcela · IoT',
+    body: 'Humedad y temperatura de suelo, conductividad eléctrica y estación meteo por micro-bloque. Telemetría satelital Starlink — el mismo stack que YPF usa para leer sus tanques en tiempo real.',
+  },
+  {
+    n: '03',
+    title: 'Drones multiespectrales',
+    body: 'Vuelos periódicos: índices NDVI y NDRE (vigor y clorofila), altura y volumen de biomasa por fotogrametría 3D, mapas de uniformidad parcela por parcela.',
+  },
+  {
+    n: '04',
+    title: 'Visión por computadora',
+    body: 'Conteo de plantas y tasa de germinación, seguimiento fenológico automático y detección temprana de estrés hídrico, plagas y enfermedades antes de que sean visibles a simple vista.',
+  },
+  {
+    n: '05',
+    title: 'Modelos predictivos + gemelo digital',
+    body: 'Machine learning que predice rendimiento de biomasa, fibra y captura por variedad × clima. Un gemelo digital prueba en software cada decisión —riego, densidad, fecha de siembra— antes de llevarla al campo.',
+  },
+  {
+    n: '06',
+    title: 'MRV digital de carbono',
+    body: 'Flujo de CO₂ por cámaras, carbono en suelo por espectroscopía NIR, biomasa aérea y radicular modelada. Trazabilidad lista para certificación Verra VCS / Gold Standard.',
+  },
+  {
+    n: '07',
+    title: 'Dashboard en tiempo real',
+    body: 'Todo converge en un centro de operaciones espejo del RTIC de YPF: cada micro-parcela, en vivo, 24 horas los 365 días. YPF ve crecer el activo como ve producir un pozo.',
+  },
+  {
+    n: '08',
+    title: 'Variedad campeona por ecorregión',
+    body: 'Al cierre, la analítica comparativa entre Mendoza y Neuquén entrega la variedad óptima por clima y la curva real de captura. La decisión de escala se toma con datos propios.',
+  },
+]
+
+const TWO_REGIONS = [
+  {
+    region: 'Mendoza · Valle de Uco',
+    detail: 'Clima templado irrigado · Ley provincial 9617 · convenio UNCuyo',
+    land: '4.000 ha aseguradas',
+  },
+  {
+    region: 'Neuquén · a definir con YPF',
+    detail: 'Clima árido patagónico · infraestructura Vaca Muerta · convenio UNCo',
+    land: 'Superficie a elección de YPF',
+  },
+]
+
 const FASES = [
   {
     tag: 'Fase 1 · Meses 0–18',
-    title: 'Benchmark federal',
-    body: 'Neuquén y Mendoza en paralelo: dos ecorregiones, el mismo protocolo experimental DBCA, hasta 30 variedades por región. Convenios con UNCo y UNCuyo para validación científica certificable. El resultado: la variedad campeona por ecorregión y la curva real de captura, medida en territorio.',
+    title: 'Benchmark AI-First',
+    body: 'Los dos benchmarks en simultáneo, con todo el pipeline de inteligencia artificial corriendo. Convenios con UNCo y UNCuyo para validación científica certificable.',
     budget: 'USD 150.000',
     items: ['Campo · USD 49.000', 'Ciencia · USD 58.000', 'Tecnología · USD 37.000', 'Gestión · USD 6.000'],
   },
   {
     tag: 'Fase 2 · Meses 12–24',
-    title: 'Piloto hempcrete',
-    body: 'Con la biomasa del benchmark: procesamiento, primeros bloques, construcción piloto y certificación INTI del sistema constructivo. Al cierre, el material queda aprobado para construir en escala.',
+    title: 'Piloto GEMCRETE',
+    body: 'Con la biomasa del benchmark: procesamiento, primeros bloques y certificación INTI del ladrillo GEMCRETE y de su sistema constructivo. Las primeras viviendas piloto pueden levantarse en los propios sitios operativos de YPF, para alojar al personal.',
     budget: 'USD 115.000',
     items: ['Procesamiento · USD 55.000', 'Materiales · USD 20.000', 'Construcción · USD 25.000', 'Certificación INTI · USD 15.000'],
   },
@@ -408,22 +469,69 @@ const FASES = [
 function MpPlan() {
   return (
     <Section bg={CREAM} id="plan">
-      <Rise><Eyebrow dark>04 · El plan</Eyebrow></Rise>
+      <Rise><Eyebrow dark>04 · El benchmark</Eyebrow></Rise>
       <Rise delay={0.08}>
-        <H2 dark>
-          Benchmark primero.
+        <H2 dark size="xl">
+          Vamos a medir un cultivo
           <br />
-          La decisión de escala se toma con datos propios.
+          como YPF mide un pozo.
         </H2>
       </Rise>
       <Rise delay={0.14}>
-        <Body dark>
-          Trabajamos por tendencias, con rangos y sensibilidad. Cada número del modelo
-          económico se valida en el campo antes de comprometer la escala.
+        <Body dark max="68ch">
+          Filosofía <strong style={{ color: INK }}>AI-First</strong>: cada variable de cada
+          micro-parcela, medida en tiempo real. Dos benchmarks de cultivo en simultáneo
+          —Mendoza y Neuquén— para encontrar la variedad campeona por ecorregión. Es el
+          RTIC de YPF aplicado, por primera vez, a un cultivo.
         </Body>
       </Rise>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)', margin: '3.25rem 0 0' }}>
+      {/* Pipeline AI-First */}
+      <Rise delay={0.18}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '3.25rem 0 1.5rem' }}>
+          El pipeline de medición — 8 capas de IA en tiempo real
+        </p>
+      </Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'rgba(28,26,20,0.12)', border: '1px solid rgba(28,26,20,0.12)' }}>
+        {AI_LAYERS.map((l, i) => (
+          <Rise key={l.n} delay={0.08 + i * 0.05}>
+            <div style={{ background: CREAM, padding: 'clamp(1.5rem, 2.5vw, 1.9rem)', height: '100%', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
+                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.5rem', color: 'rgba(201,168,76,0.85)', lineHeight: 1 }}>{l.n}</span>
+                <h3 style={{ ...sans, fontSize: '0.92rem', fontWeight: 600, color: INK, margin: 0, letterSpacing: '0.01em' }}>{l.title}</h3>
+              </div>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(28,26,20,0.6)', margin: 0 }}>{l.body}</p>
+            </div>
+          </Rise>
+        ))}
+      </div>
+
+      {/* Dos regiones */}
+      <Rise delay={0.18}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '3.5rem 0 1.5rem' }}>
+          Dos ecorregiones, el mismo protocolo
+        </p>
+      </Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
+        {TWO_REGIONS.map((r, i) => (
+          <Rise key={r.region} delay={0.1 + i * 0.1}>
+            <div style={{ background: '#fff', border: '1px solid rgba(28,26,20,0.1)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.5rem, 2.5vw, 2rem)', height: '100%' }}>
+              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2vw, 1.8rem)', color: INK, margin: '0 0 0.75rem 0', lineHeight: 1.1 }}>{r.region}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.6, color: 'rgba(28,26,20,0.6)', margin: '0 0 1rem 0' }}>{r.detail}</p>
+              <p style={{ ...sans, fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: 0 }}>{r.land}</p>
+            </div>
+          </Rise>
+        ))}
+      </div>
+      <Rise delay={0.2}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: 'rgba(28,26,20,0.55)', maxWidth: '64ch', marginTop: '1.5rem' }}>
+          Correr los dos en paralelo diversifica el riesgo climático, valida directamente el
+          territorio de escala de YPF e identifica la genética óptima para cada clima del país.
+        </p>
+      </Rise>
+
+      {/* Fases / presupuesto */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)', margin: '3.5rem 0 0' }}>
         {FASES.map((f, i) => (
           <Rise key={f.title} delay={0.1 + i * 0.12}>
             <div style={{ background: '#fff', border: '1px solid rgba(28,26,20,0.1)', padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -664,21 +772,79 @@ function MpVentana() {
       </div>
 
       <Rise delay={0.2}>
-        <blockquote style={{ margin: 0, borderLeft: `3px solid ${GOLD}`, paddingLeft: 'clamp(1.25rem, 2.5vw, 2rem)', maxWidth: '720px' }}>
-          <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2.2vw, 1.9rem)', lineHeight: 1.3, color: CREAM, margin: '0 0 0.75rem 0' }}>
-            “A Neuquén se van a venir a vivir un millón de personas.”
-          </p>
-          <footer style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.65)' }}>
-            Federico Sturzenegger · Ministro de Desregulación · 2025
-          </footer>
-        </blockquote>
-      </Rise>
-      <Rise delay={0.28}>
-        <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78, color: 'rgba(247,246,235,0.55)', maxWidth: '60ch', marginTop: '1.75rem' }}>
-          El Plan Manuel Belgrano produce los materiales de ese crecimiento.
+        <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78, color: 'rgba(247,246,235,0.55)', maxWidth: '60ch', marginTop: '1rem' }}>
+          Cada hito del plan le entrega a YPF un activo que ya está operando: datos,
+          material certificado, créditos verificados, viviendas en pie.
         </p>
       </Rise>
     </Section>
+  )
+}
+
+/* ---------- 08 · la visión (ciudades de cáñamo) ---------- */
+
+// Render de la ciudad de hempcrete. Reemplazar por el render bespoke de Higgsfield/OGA
+// apenas haya créditos: una sola URL para swapear.
+const VISION_IMG = '/hero/frames/f09.jpg'
+
+function MpVision() {
+  return (
+    <section style={{ position: 'relative', overflow: 'hidden', background: DUSK, minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+      <img
+        src={VISION_IMG}
+        alt="Visión: ciudades argentinas construidas en cáñamo y hempcrete"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
+      />
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to bottom, rgba(26,43,34,0.6) 0%, rgba(26,43,34,0.88) 70%, rgba(26,43,34,0.97) 100%)',
+      }} />
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1120px', margin: '0 auto', padding: 'clamp(5rem, 11vw, 9rem) clamp(1.5rem, 6vw, 7rem)', width: '100%' }}>
+        <Rise>
+          <blockquote style={{ margin: '0 0 3rem', borderLeft: `3px solid ${GOLD}`, paddingLeft: 'clamp(1.25rem, 2.5vw, 2rem)', maxWidth: '760px' }}>
+            <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2.4vw, 2.1rem)', lineHeight: 1.3, color: CREAM, margin: '0 0 0.75rem 0' }}>
+              “A Neuquén se van a venir a vivir un millón de personas.”
+            </p>
+            <footer style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.65)' }}>
+              Federico Sturzenegger · Ministro de Desregulación · 2025
+            </footer>
+          </blockquote>
+        </Rise>
+
+        <Rise delay={0.1}>
+          <Eyebrow>08 · La visión</Eyebrow>
+        </Rise>
+        <Rise delay={0.16}>
+          <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', lineHeight: 1.04, color: CREAM, margin: '0 0 1.75rem 0', maxWidth: '16ch' }}>
+            Ciudades de cáñamo, de punta a punta del país.
+          </h2>
+        </Rise>
+        <Rise delay={0.24}>
+          <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)', lineHeight: 1.8, color: 'rgba(247,246,235,0.65)', maxWidth: '64ch' }}>
+            Si a Neuquén llega un millón de personas, la pregunta no es solo dónde duermen:
+            es qué construye su economía. GEMCRETE convierte cualquier hectárea cultivable
+            de la Argentina en viviendas, barrios y ciudades enteras — y en una fuente de
+            trabajo inagotable para cualquier argentino, en cada eslabón de la cadena, del
+            campo a la llave.
+          </p>
+        </Rise>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: 'rgba(201,168,76,0.18)', border: '1px solid rgba(201,168,76,0.18)', marginTop: '3rem' }}>
+          {[
+            { value: 'Cualquier provincia', label: 'el cultivo se adapta a cada clima del país' },
+            { value: 'Cada eslabón', label: 'empleo técnico del campo a la construcción' },
+            { value: 'Carbono fijado', label: 'la ciudad misma es el activo de carbono' },
+          ].map((s, i) => (
+            <Rise key={s.value} delay={0.1 + i * 0.08}>
+              <div style={{ background: DUSK, padding: '1.75rem 1.5rem', height: '100%' }}>
+                <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2vw, 1.7rem)', color: GREEN_DARK, margin: '0 0 0.5rem 0', lineHeight: 1.1 }}>{s.value}</p>
+                <p style={{ ...sans, fontSize: '0.74rem', color: 'rgba(247,246,235,0.5)', lineHeight: 1.55, margin: 0 }}>{s.label}</p>
+              </div>
+            </Rise>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -702,7 +868,7 @@ function MpCierre() {
         pointerEvents: 'none',
       }} />
       <div style={{ maxWidth: '1120px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <Rise><Eyebrow>08 · El cierre</Eyebrow></Rise>
+        <Rise><Eyebrow>09 · El cierre</Eyebrow></Rise>
 
         <div style={{ display: 'flex', flexDirection: 'column', margin: '0 0 4rem' }}>
           {LINAJE.map((l, i) => (
@@ -794,6 +960,7 @@ export function Masterplan() {
       <MpDeal />
       <MpUpside />
       <MpVentana />
+      <MpVision />
       <MpCierre />
     </main>
   )
