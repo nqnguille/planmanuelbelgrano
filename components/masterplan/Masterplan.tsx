@@ -570,7 +570,132 @@ function MpPlan() {
   )
 }
 
-/* ---------- 05 · el deal ---------- */
+/* ---------- 05 · el proceso (cosecha → hempcrete) ---------- */
+
+const PIPELINE = [
+  { n: '01', title: 'Cosecha', body: 'La planta entera entra al proceso. Sin desperdicio: cada parte tiene destino.' },
+  { n: '02', title: 'Decortización', body: 'Separación mecánica del tallo: shiv (la chamiza o médula leñosa) por un lado, fibra por el otro.' },
+  { n: '03', title: 'Mezclado', body: 'El shiv se mezcla con un aglutinante mineral y agua, en proporción controlada. Acá entra la tecnología del binder.' },
+  { n: '04', title: 'Fraguado + carbonatación', body: 'El muro absorbe CO₂ del aire mientras endurece. La fijación de carbono ocurre durante el curado y dura siglos.' },
+]
+
+const TECHS = [
+  { name: 'Hempire', origin: 'Ucrania', bring: 'Fifth Element Binder: aglutinante 100% natural, sin cemento ni cal. Hempcrete de menor densidad del mundo. Licencia territorial para Argentina disponible.' },
+  { name: 'IsoHemp', origin: 'Bélgica', bring: 'El mayor fabricante de bloques premoldeados: 5 millones de bloques al año. Referencia mundial para la vía del premoldeado a escala industrial.' },
+  { name: 'Weber Tradical', origin: 'Francia', bring: 'El binder de cal estándar europeo (Grupo Saint-Gobain). La opción probada y certificada para la formulación tradicional.' },
+  { name: 'UK Hempcrete', origin: 'Reino Unido', bring: 'Formación hands-on en aplicación in situ, vertido y proyectado. Transferencia de oficio para el equipo constructor.' },
+]
+
+const VIAS = [
+  {
+    tag: 'Vía 1 · Premoldeado',
+    title: 'El bloque que reemplaza al Retak.',
+    body: 'Producimos el bloque en planta y adoptamos las mismas medidas y el mismo sistema de colocación del bloque aislante tipo Retak. El constructor no cambia su método: cambia el material por uno que aísla mejor y fija carbono.',
+    points: [
+      'Compite en el segmento del bloque aislante de alto valor, no contra el ladrillo cerámico común',
+      'Control de calidad y curado en planta, logística por palet',
+      'Entrada directa a la obra tradicional: vivienda, ampliación, barrio',
+    ],
+  },
+  {
+    tag: 'Vía 2 · In situ',
+    title: 'Vertido o proyectado, directo en obra.',
+    body: 'La mezcla se aplica en el lugar: vertida dentro de un encofrado o proyectada con máquina (spray) contra la estructura. Muros monolíticos, sin juntas, con aislación continua.',
+    points: [
+      'Construcción rápida en escala: campamentos, barrios, ciudades enteras',
+      'Menos transporte: la mezcla se elabora en obra con shiv y binder',
+      'Muro continuo sin puentes térmicos — el mejor desempeño del sistema',
+    ],
+  },
+]
+
+function MpProceso() {
+  return (
+    <Section bg={PARCHMENT} id="proceso">
+      <Rise><Eyebrow dark>05 · El proceso</Eyebrow></Rise>
+      <Rise delay={0.08}>
+        <H2 dark size="xl">De la cosecha al hempcrete.</H2>
+      </Rise>
+      <Rise delay={0.14}>
+        <Body dark max="66ch">
+          El hempcrete no se fabrica: se cultiva y se cura. Cuatro pasos llevan la planta
+          del campo a la pared — y en el último, el material captura el CO₂ que lo vuelve
+          permanente.
+        </Body>
+      </Rise>
+
+      {/* Pipeline de elaboración */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0', margin: '3rem 0 0', alignItems: 'stretch' }}>
+        {PIPELINE.map((p, i) => (
+          <Rise key={p.n} delay={0.08 + i * 0.08} style={{ flex: '1 1 220px', display: 'flex' }}>
+            <div style={{ display: 'flex', alignItems: 'stretch', width: '100%' }}>
+              <div style={{ flex: 1, padding: '0 1.25rem', borderLeft: i === 0 ? 'none' : '1px solid rgba(28,26,20,0.15)' }}>
+                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.4rem', color: 'rgba(201,168,76,0.85)' }}>{p.n}</span>
+                <h3 style={{ ...sans, fontSize: '0.9rem', fontWeight: 600, color: INK, margin: '0.4rem 0 0.6rem' }}>{p.title}</h3>
+                <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(28,26,20,0.6)', margin: 0 }}>{p.body}</p>
+              </div>
+            </div>
+          </Rise>
+        ))}
+      </div>
+
+      {/* Menú de tecnologías internacionales */}
+      <Rise delay={0.16}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '4rem 0 0.75rem' }}>
+          Tecnologías a integrar — el benchmark evalúa, YPF elige
+        </p>
+      </Rise>
+      <Rise delay={0.2}>
+        <Body dark max="66ch">
+          No nos casamos con un proveedor. El benchmark prueba las mejores tecnologías del
+          mundo y mide cuál combinación de binder y formulación rinde mejor en cada
+          ecorregión argentina.
+        </Body>
+      </Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1px', background: 'rgba(28,26,20,0.12)', border: '1px solid rgba(28,26,20,0.12)', marginTop: '1.75rem' }}>
+        {TECHS.map((t, i) => (
+          <Rise key={t.name} delay={0.08 + i * 0.06}>
+            <div style={{ background: PARCHMENT, padding: 'clamp(1.5rem, 2.5vw, 1.9rem)', height: '100%' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '0.7rem', gap: '0.5rem' }}>
+                <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 1.8vw, 1.6rem)', color: INK, margin: 0, lineHeight: 1 }}>{t.name}</h3>
+                <span style={{ ...sans, fontSize: '0.55rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, whiteSpace: 'nowrap' }}>{t.origin}</span>
+              </div>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(28,26,20,0.62)', margin: 0 }}>{t.bring}</p>
+            </div>
+          </Rise>
+        ))}
+      </div>
+
+      {/* Dos vías al mercado */}
+      <Rise delay={0.16}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '4rem 0 1.5rem' }}>
+          Dos vías para llegar al mercado
+        </p>
+      </Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
+        {VIAS.map((v, i) => (
+          <Rise key={v.tag} delay={0.1 + i * 0.12}>
+            <div style={{ background: '#fff', border: '1px solid rgba(28,26,20,0.1)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.75rem 0' }}>{v.tag}</p>
+              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.4vw, 2.1rem)', color: INK, margin: '0 0 1rem 0', lineHeight: 1.1 }}>{v.title}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(28,26,20,0.6)', margin: '0 0 1.5rem 0' }}>{v.body}</p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 'auto 0 0', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                {v.points.map((pt) => (
+                  <li key={pt} style={{ ...sans, fontSize: '0.78rem', lineHeight: 1.5, color: 'rgba(28,26,20,0.6)', paddingLeft: '1.1rem', position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: 0, color: GREEN_LIGHT, fontWeight: 700 }}>—</span>
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Rise>
+        ))}
+      </div>
+    </Section>
+  )
+}
+
+/* ---------- 06 · el deal ---------- */
 
 const CONTRATOS = [
   {
@@ -593,7 +718,7 @@ const CONTRATOS = [
 function MpDeal() {
   return (
     <Section bg={INK} id="deal">
-      <Rise><Eyebrow>05 · El deal</Eyebrow></Rise>
+      <Rise><Eyebrow>06 · El deal</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 size="xl">
           El modelo del tren Neuquén–Añelo:
@@ -650,7 +775,7 @@ const SENSIBILIDAD = [
 function MpUpside() {
   return (
     <Section bg={PARCHMENT} id="upside">
-      <Rise><Eyebrow dark>06 · El upside</Eyebrow></Rise>
+      <Rise><Eyebrow dark>07 · El upside</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 dark>
           La captura de carbono cuesta entre USD 15 y 345 la tonelada.
@@ -747,7 +872,7 @@ const TIMELINE = [
 function MpVentana() {
   return (
     <Section bg={DUSK} id="ventana">
-      <Rise><Eyebrow>07 · La ventana 2026–2031</Eyebrow></Rise>
+      <Rise><Eyebrow>08 · La ventana 2026–2031</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2>Cada hito del plan acompaña un hito de YPF.</H2>
       </Rise>
@@ -811,7 +936,7 @@ function MpVision() {
         </Rise>
 
         <Rise delay={0.1}>
-          <Eyebrow>08 · La visión</Eyebrow>
+          <Eyebrow>09 · La visión</Eyebrow>
         </Rise>
         <Rise delay={0.16}>
           <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', lineHeight: 1.04, color: CREAM, margin: '0 0 1.75rem 0', maxWidth: '16ch' }}>
@@ -867,7 +992,7 @@ function MpCierre() {
         pointerEvents: 'none',
       }} />
       <div style={{ maxWidth: '1120px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <Rise><Eyebrow>09 · El cierre</Eyebrow></Rise>
+        <Rise><Eyebrow>10 · El cierre</Eyebrow></Rise>
 
         <div style={{ display: 'flex', flexDirection: 'column', margin: '0 0 4rem' }}>
           {LINAJE.map((l, i) => (
@@ -956,6 +1081,7 @@ export function Masterplan() {
       <MpSolucion />
       <MpActivo />
       <MpPlan />
+      <MpProceso />
       <MpDeal />
       <MpUpside />
       <MpVentana />
