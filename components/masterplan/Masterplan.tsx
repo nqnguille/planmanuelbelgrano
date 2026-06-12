@@ -609,6 +609,17 @@ const VIAS = [
   },
 ]
 
+const COMPARACION = [
+  { attr: 'Formato de cara', hemp: '50 × 25 cm', retak: '50 × 25 cm', match: true },
+  { attr: 'Espesores', hemp: '7,5 · 10 · 15 · 20 cm', retak: '7,5 · 10 · 15 cm', match: true },
+  { attr: 'Colocación', hemp: 'Adhesivo de capa fina · 8 bloques/m²', retak: 'Adhesivo de capa fina · 8 bloques/m²', match: true },
+  { attr: 'Densidad', hemp: '250–350 kg/m³', retak: '~450–550 kg/m³' },
+  { attr: 'Conductividad térmica (λ)', hemp: '0,06–0,12 W/mK', retak: '~0,10–0,16 W/mK' },
+  { attr: 'Resistencia al fuego', hemp: 'Alta — no sostiene combustión', retak: 'Incombustible (A1)' },
+  { attr: 'Huella de carbono', hemp: 'Negativa — fija 75–165 kg CO₂/m³', retak: 'Positiva — cemento + cal + autoclave', highlight: true },
+  { attr: 'Regulación de humedad', hemp: 'Alta (higroscópico)', retak: 'Media' },
+]
+
 function MpProceso() {
   return (
     <Section bg={PARCHMENT} id="proceso">
@@ -691,6 +702,59 @@ function MpProceso() {
           </Rise>
         ))}
       </div>
+
+      {/* Tabla comparativa hempcrete vs Retak */}
+      <Rise delay={0.16}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '4rem 0 0.6rem' }}>
+          El bloque, frente al Retak
+        </p>
+      </Rise>
+      <Rise delay={0.2}>
+        <Body dark max="64ch">
+          Mismo formato, mismo método de colocación: el albañil no cambia nada. Cambia la
+          densidad, la aislación y, sobre todo, la huella — el Retak emite carbono, el
+          hempcrete lo fija.
+        </Body>
+      </Rise>
+      <Rise delay={0.22}>
+        <div style={{ margin: '1.75rem 0 0', overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '620px' }}>
+            <thead>
+              <tr>
+                {['', 'Bloque hempcrete', 'Bloque Retak · hormigón celular'].map((h, i) => (
+                  <th key={i} style={{
+                    ...sans, fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase',
+                    color: i === 1 ? GREEN_LIGHT : 'rgba(28,26,20,0.45)', textAlign: 'left',
+                    padding: '0 1rem 0.85rem 0', borderBottom: '1px solid rgba(28,26,20,0.25)', fontWeight: 600,
+                  }}>
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARACION.map((row) => (
+                <tr key={row.attr} style={row.highlight ? { background: 'rgba(113,206,106,0.1)' } : undefined}>
+                  <td style={{ ...sans, fontSize: '0.74rem', letterSpacing: '0.04em', color: 'rgba(28,26,20,0.55)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)', whiteSpace: 'nowrap' }}>
+                    {row.attr}
+                  </td>
+                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: row.highlight ? 600 : 400, color: row.highlight ? GREEN_LIGHT : 'rgba(28,26,20,0.8)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)' }}>
+                    {row.hemp}{row.match && <span style={{ ...sans, fontSize: '0.6rem', color: GOLD, marginLeft: '0.5rem', letterSpacing: '0.1em' }}>=</span>}
+                  </td>
+                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: 300, color: 'rgba(28,26,20,0.6)', padding: '0.85rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)' }}>
+                    {row.retak}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Rise>
+      <Rise delay={0.26}>
+        <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.04em', color: 'rgba(28,26,20,0.4)', marginTop: '1rem' }}>
+          Valores de hempcrete según norma EN 16101 y formulación del benchmark. Valores de Retak: rangos típicos de hormigón celular curado en autoclave, a confirmar con ficha técnica oficial.
+        </p>
+      </Rise>
     </Section>
   )
 }
