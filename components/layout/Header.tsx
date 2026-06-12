@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { CONTENT } from '@/lib/content'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -22,10 +21,10 @@ export function Header() {
         borderBottom: scrolled ? '1px solid rgba(201,168,76,0.12)' : 'none',
       }}
     >
-      <div className="relative flex items-center justify-between px-8 lg:px-16 h-16">
+      <div className="flex items-center justify-between px-6 lg:px-16 h-16">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style={{ opacity: 0.85 }}>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style={{ opacity: 0.85 }} aria-hidden>
             <path d="M10 2C10 2 7 6 7 11C7 14 8.5 16 10 17C11.5 16 13 14 13 11C13 6 10 2 10 2Z" fill="#C9A84C" opacity="0.9"/>
             <path d="M10 17V19" stroke="#C9A84C" strokeWidth="1.2" strokeLinecap="round"/>
             <path d="M6.5 9L4 7" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" opacity="0.6"/>
@@ -35,37 +34,18 @@ export function Header() {
             className="text-white/90 text-xs tracking-[0.22em] uppercase font-medium"
             style={{ fontFamily: 'var(--font-hanken)' }}
           >
-            {CONTENT.nav.logo}
+            Plan Manuel Belgrano
           </span>
         </div>
 
-        {/* Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {CONTENT.nav.links.map((link, i) => {
-            const hrefs = ['#s02', '#s04', '#s06', '#s08']
-            return (
-              <a
-                key={link}
-                href={hrefs[i] || '#'}
-                className="text-white/55 hover:text-white/90 text-xs tracking-[0.15em] uppercase transition-colors duration-200"
-                style={{ fontFamily: 'var(--font-hanken)' }}
-              >
-                {link}
-              </a>
-            )
-          })}
-        </nav>
-
         {/* CTA */}
-        <div className="flex items-center gap-5">
-          <a
-            href={`mailto:${CONTENT.cta.contactEmail}`}
-            className="hidden md:block text-xs tracking-[0.15em] uppercase px-4 py-2 border border-[#C9A84C]/50 text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-colors duration-200"
-            style={{ fontFamily: 'var(--font-hanken)' }}
-          >
-            {CONTENT.nav.cta}
-          </a>
-        </div>
+        <a
+          href="/masterplan/"
+          className="text-xs tracking-[0.15em] uppercase px-4 py-2 border border-[#C9A84C]/50 text-[#C9A84C] hover:bg-[#C9A84C]/10 transition-colors duration-200"
+          style={{ fontFamily: 'var(--font-hanken)' }}
+        >
+          Ver masterplan
+        </a>
       </div>
     </header>
   )

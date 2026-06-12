@@ -26,6 +26,8 @@ export function Reveal({ children, delay = 0, className = '', direction = 'up' }
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
+      // Ensure content is visible if motion fails or JS is slow
+      style={{ willChange: 'opacity, transform' }}
     >
       {children}
     </motion.div>

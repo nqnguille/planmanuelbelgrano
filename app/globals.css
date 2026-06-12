@@ -28,14 +28,14 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   font-family: var(--font-hanken), 'Plus Jakarta Sans', 'Hanken Grotesk', sans-serif;
   background-color: #F7F6EB;
   color: #1C1A14;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4 {
@@ -74,4 +74,14 @@ h1, h2, h3, h4 {
   background-image:
     radial-gradient(ellipse at 10% 50%, rgba(200, 164, 106, 0.1) 0%, transparent 50%),
     radial-gradient(ellipse at 90% 20%, rgba(138, 108, 58, 0.07) 0%, transparent 50%);
+}
+
+/* Hero scroll — altura responsive: 250vh mobile, 400vh desktop */
+.hero-pin-section {
+  height: 250vh;
+}
+@media (min-width: 768px) {
+  .hero-pin-section {
+    height: 400vh;
+  }
 }

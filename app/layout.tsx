@@ -18,18 +18,18 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Plan Manuel Belgrano — Vaca Muerta ya la hiciste. Ahora viene Vaca Verde.',
-  description: 'Cáñamo industrial en Patagonia. First mover advantage. €9,2M en créditos de carbono certificados al 2030. Una industria federal de escala global que todavía no tiene dueño.',
+  title: 'Plan Manuel Belgrano — Cáñamo industrial en la Patagonia',
+  description: 'La industria que construye la próxima Patagonia: cáñamo industrial, hempcrete y créditos de carbono. De la semilla a la llave. Flora Cáñamo Neuquino SRL, Neuquén.',
   openGraph: {
-    title: 'Plan Manuel Belgrano — Vaca Muerta ya la hiciste. Ahora viene Vaca Verde.',
-    description: 'Cáñamo industrial en Patagonia. First mover advantage. €9,2M en créditos de carbono al 2030.',
+    title: 'Plan Manuel Belgrano — Cáñamo industrial en la Patagonia',
+    description: 'La industria que construye la próxima Patagonia: cáñamo industrial, hempcrete y créditos de carbono. De la semilla a la llave.',
     locale: 'es_AR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Plan Manuel Belgrano',
-    description: 'Vaca Muerta ya la hiciste. Ahora viene Vaca Verde. Cáñamo industrial en Patagonia.',
+    description: 'Cáñamo industrial en la Patagonia. De la semilla a la llave.',
   },
 }
 
@@ -37,17 +37,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`${garamond.variable} ${jakarta.variable}`}>
       <head>
-        {/* Preload hero images para eliminar layout shift */}
-        <link
-          rel="preload"
-          href="/hero/frame-0-estepa.png"
-          as="image"
-        />
-        <link
-          rel="preload"
-          href="/hero/frame-1-vision.png"
-          as="image"
-        />
+        {/* Preload hero frames — f01 y f09 para LCP; el resto carga en background */}
+        <link rel="preload" href="/hero/frames/f01.jpg" as="image" />
+        <link rel="preload" href="/hero/frames/f09.jpg" as="image" />
+        {/* Fallback: si JS no carga, mostrar contenido que Framer Motion ocultó */}
+        <noscript>{`<style>div[style*="opacity: 0"],div[style*="opacity:0"]{opacity:1!important;transform:none!important}</style>`}</noscript>
       </head>
       <body>{children}</body>
     </html>
