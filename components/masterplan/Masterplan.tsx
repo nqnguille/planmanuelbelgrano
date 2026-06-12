@@ -919,6 +919,37 @@ function MpUpside() {
           </div>
         </Rise>
       </div>
+
+      {/* La pata de certificación — equipo */}
+      <Rise delay={0.36}>
+        <div style={{
+          marginTop: 'clamp(2.5rem, 5vw, 3.5rem)', background: '#fff',
+          border: '1px solid rgba(28,26,20,0.1)', borderTop: `2px solid ${GREEN_LIGHT}`,
+          padding: 'clamp(1.75rem, 3vw, 2.5rem)', display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: 'clamp(1.5rem, 3vw, 2.5rem)', alignItems: 'center',
+        }}>
+          <div>
+            <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.9rem 0' }}>
+              La pata de certificación
+            </p>
+            <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', color: INK, margin: '0 0 0.45rem 0', lineHeight: 1.1 }}>
+              Joaquín Suárez Irigoyen
+            </h3>
+            <p style={{ ...sans, fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(28,26,20,0.45)', margin: 0 }}>
+              Lidera la certificación de captura de carbono
+            </p>
+          </div>
+          <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.75, color: 'rgba(28,26,20,0.65)', margin: 0 }}>
+            La certificación de captura —en cultivo y en producción— se delega en Joaquín,
+            que aporta la relación con <strong style={{ color: INK, fontWeight: 500 }}>Eco2Gaia</strong>,
+            una consultora de proyectos de carbono con la que el equipo ya trabajó. Su mandato:
+            evaluarla a fondo como socio de certificación y llevar los créditos por los estándares
+            internacionales —Verra VCS / Gold Standard—, dejando la trazabilidad lista para el
+            offtake con YPF.
+          </p>
+        </div>
+      </Rise>
     </Section>
   )
 }
@@ -926,7 +957,7 @@ function MpUpside() {
 /* ---------- 07 · la ventana ---------- */
 
 const TIMELINE = [
-  { year: '2026', text: 'Firma y siembra del benchmark en Neuquén y Mendoza.' },
+  { year: '2026', text: 'Firma y siembra del benchmark en Neuquén y Mendoza. Se suma Joaquín Suárez Irigoyen para liderar la certificación de carbono (relación con Eco2Gaia).' },
   { year: '2027', text: 'Arrancan las obras de Argentina LNG. Primeros bloques del piloto hempcrete.' },
   { year: '2028', text: 'Viviendas piloto construidas. Certificación INTI del sistema constructivo.' },
   { year: '2029–30', text: 'Escala: sociedades agrícolas, planta de procesamiento, campamentos permanentes.' },
