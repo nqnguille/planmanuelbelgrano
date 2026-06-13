@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-const PASSWORD = 'elsueñodemanuel'
+const PASSWORD = 'Manolo420'
 const STORAGE_KEY = 'pmb_access'
 
 export function GateClient({ children }: { children: React.ReactNode }) {
