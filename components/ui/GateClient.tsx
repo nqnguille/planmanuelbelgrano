@@ -39,7 +39,7 @@ export function GateClient({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 9999,
-      backgroundColor: '#1C1A14',
+      backgroundColor: '#071A38',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       flexDirection: 'column',
     }}>
@@ -49,7 +49,7 @@ export function GateClient({ children }: { children: React.ReactNode }) {
           fontSize: '0.62rem',
           letterSpacing: '0.25em',
           textTransform: 'uppercase' as const,
-          color: 'rgba(201,168,76,0.6)',
+          color: 'rgba(242,181,68,0.6)',
           marginBottom: '1.5rem',
         }}>
           Flora Cáñamo Neuquino
@@ -60,7 +60,7 @@ export function GateClient({ children }: { children: React.ReactNode }) {
           fontWeight: 400,
           fontSize: 'clamp(2rem, 4vw, 3.2rem)',
           lineHeight: 1.1,
-          color: '#F7F6EB',
+          color: '#F3F1E7',
         }}>
           Plan Manuel Belgrano
         </h1>
@@ -79,9 +79,9 @@ export function GateClient({ children }: { children: React.ReactNode }) {
           style={{
             width: '100%',
             padding: '0.875rem 1.25rem',
-            backgroundColor: error ? 'rgba(180,48,28,0.12)' : 'rgba(247,246,235,0.05)',
-            border: `1px solid ${error ? 'rgba(180,48,28,0.5)' : 'rgba(201,168,76,0.2)'}`,
-            color: '#F7F6EB',
+            backgroundColor: error ? 'rgba(180,48,28,0.12)' : 'rgba(243,241,231,0.05)',
+            border: `1px solid ${error ? 'rgba(180,48,28,0.5)' : 'rgba(242,181,68,0.2)'}`,
+            color: '#F3F1E7',
             fontFamily: 'var(--font-hanken)',
             fontSize: '0.9rem',
             letterSpacing: '0.06em',
@@ -95,8 +95,8 @@ export function GateClient({ children }: { children: React.ReactNode }) {
           style={{
             width: '100%',
             padding: '0.875rem 2rem',
-            backgroundColor: '#71CE6A',
-            color: '#1C1A14',
+            backgroundColor: '#5BC46A',
+            color: '#071A38',
             fontFamily: 'var(--font-hanken)',
             fontSize: '0.72rem',
             letterSpacing: '0.18em',

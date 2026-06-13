@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream:     #F7F6EB;
-  --color-green:     #71CE6A;
-  --color-forest:    #2D4239;
-  --color-dusk:      #1A2B22;
-  --color-gold:      #C9A84C;
-  --color-parchment: #E8E0C8;
-  --color-ink:       #1C1A14;
-  --color-warm:      #2A2318;
+  --color-cream:     #F3F1E7;
+  --color-green:     #5BC46A;
+  --color-forest:    #0E2A52;
+  --color-dusk:      #0E2A52;
+  --color-gold:      #F2B544;
+  --color-parchment: #E7ECF3;
+  --color-ink:       #071A38;
+  --color-warm:      #0B1F40;
 
   /* Legacy aliases — usados por las secciones existentes */
-  --color-accent:    #71CE6A;
-  --color-black:     #111111;
-  --color-pergamino: #EDE8D6;
+  --color-accent:    #5BC46A;
+  --color-black:     #071A38;
+  --color-pergamino: #E7ECF3;
   --color-gris:      #8A9080;
   --color-sepia:     #8A6C3A;
-  --color-dark:      #1A1A1A;
+  --color-dark:      #071A38;
 
   --font-garamond: var(--font-garamond);
   --font-hanken:   var(--font-hanken);
@@ -32,19 +32,19 @@ html {
 }
 
 body {
-  font-family: var(--font-hanken), 'Plus Jakarta Sans', 'Hanken Grotesk', sans-serif;
-  background-color: #F7F6EB;
-  color: #1C1A14;
+  font-family: var(--font-hanken), 'Archivo', system-ui, sans-serif;
+  background-color: #071A38;
+  color: #F3F1E7;
   overflow-x: clip;
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-garamond), 'EB Garamond', serif;
+  font-family: var(--font-garamond), 'Fraunces', serif;
 }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #1A2B22; }
-::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #0E2A52; }
+::-webkit-scrollbar-thumb { background: #F2B544; border-radius: 2px; }
 
 /* Escala tipográfica hero */
 .hero-xl {
@@ -56,21 +56,21 @@ h1, h2, h3, h4 {
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #71CE6A;
+  color: #5BC46A;
   font-family: var(--font-hanken), 'Plus Jakarta Sans', sans-serif;
   font-weight: 400;
 }
 
 /* Clases legacy para secciones existentes */
 .manuscript-bg {
-  background-color: #D4C5A0;
+  background-color: #B9C7D9;
   background-image:
     radial-gradient(ellipse at 20% 30%, rgba(139, 105, 60, 0.18) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 70%, rgba(100, 75, 35, 0.14) 0%, transparent 55%);
 }
 
 .parchment-bg {
-  background-color: #EDE8D6;
+  background-color: #E7ECF3;
   background-image:
     radial-gradient(ellipse at 10% 50%, rgba(200, 164, 106, 0.1) 0%, transparent 50%),
     radial-gradient(ellipse at 90% 20%, rgba(138, 108, 58, 0.07) 0%, transparent 50%);

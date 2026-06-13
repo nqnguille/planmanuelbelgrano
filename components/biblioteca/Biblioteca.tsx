@@ -32,11 +32,11 @@ import { S06_Pilot } from '@/components/biblioteca/deck/S06_Pilot'
 import { S07_Vision } from '@/components/biblioteca/deck/S07_Vision'
 import { S08_CTA } from '@/components/biblioteca/deck/S08_CTA'
 
-const INK = '#1C1A14'
-const DUSK = '#1A2B22'
-const CREAM = '#F7F6EB'
-const GOLD = '#C9A84C'
-const GREEN = '#71CE6A'
+const INK = '#071A38'
+const DUSK = '#0E2A52'
+const CREAM = '#F3F1E7'
+const GOLD = '#F2B544'
+const GREEN = '#5BC46A'
 
 const serif = { fontFamily: 'var(--font-garamond), serif', fontWeight: 400 } as const
 const sans = { fontFamily: 'var(--font-hanken), sans-serif' } as const
@@ -107,7 +107,7 @@ function Preview({ kind, children }: { kind: 'section' | 'deck'; children: React
 function Card({ mod, chosen, onToggle, onView }: { mod: Mod; chosen: boolean; onToggle: () => void; onView: () => void }) {
   return (
     <div style={{
-      background: '#fff', border: `1px solid ${chosen ? GREEN : 'rgba(28,26,20,0.12)'}`,
+      background: '#fff', border: `1px solid ${chosen ? GREEN : 'rgba(14,42,82,0.12)'}`,
       boxShadow: chosen ? `0 0 0 2px ${GREEN}` : 'none',
       display: 'flex', flexDirection: 'column', overflow: 'hidden', transition: 'border-color .15s, box-shadow .15s',
     }}>
@@ -121,12 +121,12 @@ function Card({ mod, chosen, onToggle, onView }: { mod: Mod; chosen: boolean; on
             ver ⤢
           </button>
         </div>
-        <p style={{ ...sans, fontWeight: 300, fontSize: '0.76rem', lineHeight: 1.5, color: 'rgba(28,26,20,0.6)', margin: 0, flex: 1 }}>{mod.desc}</p>
-        <code style={{ ...sans, fontSize: '0.62rem', color: 'rgba(28,26,20,0.4)', letterSpacing: '0.02em' }}>components/biblioteca/{mod.file}</code>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.76rem', lineHeight: 1.5, color: 'rgba(14,42,82,0.6)', margin: 0, flex: 1 }}>{mod.desc}</p>
+        <code style={{ ...sans, fontSize: '0.62rem', color: 'rgba(14,42,82,0.4)', letterSpacing: '0.02em' }}>components/biblioteca/{mod.file}</code>
         <button onClick={onToggle} style={{
           ...sans, marginTop: '0.4rem', padding: '0.6rem', cursor: 'pointer',
-          background: chosen ? GREEN : 'transparent', color: chosen ? INK : 'rgba(28,26,20,0.7)',
-          border: `1px solid ${chosen ? GREEN : 'rgba(28,26,20,0.25)'}`,
+          background: chosen ? GREEN : 'transparent', color: chosen ? INK : 'rgba(14,42,82,0.7)',
+          border: `1px solid ${chosen ? GREEN : 'rgba(14,42,82,0.25)'}`,
           fontSize: '0.66rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 500,
           transition: 'all .15s',
         }}>
@@ -160,14 +160,14 @@ export function Biblioteca() {
     <main style={{ background: CREAM, minHeight: '100vh', paddingBottom: chosen.size ? '7rem' : '4rem' }}>
       {/* Header */}
       <header style={{
-        position: 'sticky', top: 0, zIndex: 30, background: 'rgba(28,26,20,0.94)', backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(201,168,76,0.18)', padding: '0 clamp(1.25rem, 4vw, 3rem)', height: '3.5rem',
+        position: 'sticky', top: 0, zIndex: 30, background: 'rgba(14,42,82,0.94)', backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(242,181,68,0.18)', padding: '0 clamp(1.25rem, 4vw, 3rem)', height: '3.5rem',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CREAM, fontWeight: 500 }}>
-          Biblioteca de módulos <span style={{ color: 'rgba(201,168,76,0.7)' }}>· {all.length} piezas reciclables</span>
+          Biblioteca de módulos <span style={{ color: 'rgba(242,181,68,0.7)' }}>· {all.length} piezas reciclables</span>
         </span>
-        <a href="/masterplan/" style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, textDecoration: 'none', border: '1px solid rgba(201,168,76,0.35)', padding: '0.35rem 0.8rem' }}>
+        <a href="/masterplan/" style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, textDecoration: 'none', border: '1px solid rgba(242,181,68,0.35)', padding: '0.35rem 0.8rem' }}>
           ← Masterplan
         </a>
       </header>
@@ -176,7 +176,7 @@ export function Biblioteca() {
         <h1 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: INK, margin: '0 0 0.75rem 0' }}>
           Elegí qué reciclar.
         </h1>
-        <p style={{ ...sans, fontWeight: 300, fontSize: '0.95rem', lineHeight: 1.7, color: 'rgba(28,26,20,0.6)', maxWidth: '60ch', margin: 0 }}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.95rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.6)', maxWidth: '60ch', margin: 0 }}>
           Todos los módulos que generamos, en vivo. Hacé click en cualquier preview para verlo a tamaño completo,
           y tocá «Elegir» en los que quieras traer al masterplan. Abajo te queda la lista lista para pasarme.
         </p>
@@ -206,15 +206,15 @@ export function Biblioteca() {
       {chosen.size > 0 && (
         <div style={{
           position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 40,
-          background: 'rgba(28,26,20,0.97)', backdropFilter: 'blur(10px)', borderTop: `1px solid ${GREEN}`,
+          background: 'rgba(14,42,82,0.97)', backdropFilter: 'blur(10px)', borderTop: `1px solid ${GREEN}`,
           padding: '1rem clamp(1.25rem, 4vw, 3rem)', display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap',
         }}>
           <span style={{ ...sans, fontSize: '0.8rem', color: CREAM, fontWeight: 500 }}>
             {chosen.size} elegido{chosen.size > 1 ? 's' : ''}:
-            <span style={{ color: 'rgba(247,246,235,0.6)', fontWeight: 300 }}> {chosenMods.map((m) => m.name).join(', ')}</span>
+            <span style={{ color: 'rgba(243,241,231,0.6)', fontWeight: 300 }}> {chosenMods.map((m) => m.name).join(', ')}</span>
           </span>
           <div style={{ marginLeft: 'auto', display: 'flex', gap: '0.75rem' }}>
-            <button onClick={() => setChosen(new Set())} style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(247,246,235,0.5)', background: 'none', border: '1px solid rgba(247,246,235,0.2)', padding: '0.55rem 1rem', cursor: 'pointer' }}>
+            <button onClick={() => setChosen(new Set())} style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(243,241,231,0.5)', background: 'none', border: '1px solid rgba(243,241,231,0.2)', padding: '0.55rem 1rem', cursor: 'pointer' }}>
               Limpiar
             </button>
             <button onClick={() => navigator.clipboard?.writeText(lista)} style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: INK, background: GREEN, border: 'none', padding: '0.55rem 1.25rem', cursor: 'pointer', fontWeight: 600 }}>
@@ -230,15 +230,15 @@ export function Biblioteca() {
           onClick={() => setViewing(null)}
           style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(10,12,10,0.92)', display: 'flex', flexDirection: 'column' }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.85rem clamp(1rem, 4vw, 2.5rem)', borderBottom: '1px solid rgba(201,168,76,0.2)', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.85rem clamp(1rem, 4vw, 2.5rem)', borderBottom: '1px solid rgba(242,181,68,0.2)', flexShrink: 0 }}>
             <span style={{ ...sans, fontSize: '0.7rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: CREAM, fontWeight: 500 }}>
-              {viewing.name} <span style={{ color: 'rgba(247,246,235,0.45)' }}>· {viewing.desc}</span>
+              {viewing.name} <span style={{ color: 'rgba(243,241,231,0.45)' }}>· {viewing.desc}</span>
             </span>
             <div style={{ display: 'flex', gap: '0.75rem' }} onClick={(e) => e.stopPropagation()}>
               <button onClick={() => toggle(viewing.id)} style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: chosen.has(viewing.id) ? INK : CREAM, background: chosen.has(viewing.id) ? GREEN : 'transparent', border: `1px solid ${GREEN}`, padding: '0.5rem 1rem', cursor: 'pointer', fontWeight: 500 }}>
                 {chosen.has(viewing.id) ? '✓ Elegido' : 'Elegir'}
               </button>
-              <button onClick={() => setViewing(null)} style={{ ...sans, fontSize: '0.8rem', color: CREAM, background: 'none', border: '1px solid rgba(247,246,235,0.25)', width: '2rem', height: '2rem', cursor: 'pointer', lineHeight: 1 }}>✕</button>
+              <button onClick={() => setViewing(null)} style={{ ...sans, fontSize: '0.8rem', color: CREAM, background: 'none', border: '1px solid rgba(243,241,231,0.25)', width: '2rem', height: '2rem', cursor: 'pointer', lineHeight: 1 }}>✕</button>
             </div>
           </div>
           <div onClick={(e) => e.stopPropagation()} style={{ flex: 1, overflow: 'auto', background: INK }}>

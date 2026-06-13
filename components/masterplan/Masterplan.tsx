@@ -10,13 +10,13 @@ import type { CSSProperties, ReactNode } from 'react'
    → deal → upside carbono → ventana 2026-2031 → cierre Belgrano.
    ============================================================ */
 
-const INK = '#1C1A14'
-const DUSK = '#1A2B22'
-const CREAM = '#F7F6EB'
-const PARCHMENT = '#E8E0C8'
-const GOLD = '#C9A84C'
-const GREEN_DARK = '#71CE6A'
-const GREEN_LIGHT = '#4daa47'
+const INK = '#071A38'
+const DUSK = '#0E2A52'
+const CREAM = '#F3F1E7'
+const PARCHMENT = '#E7ECF3'
+const GOLD = '#F2B544'
+const GREEN_DARK = '#5BC46A'
+const GREEN_LIGHT = '#2F6FB0'
 
 const serif: CSSProperties = {
   fontFamily: 'var(--font-garamond), "EB Garamond", serif',
@@ -79,7 +79,7 @@ function Body({ children, dark, max = '62ch' }: { children: ReactNode; dark?: bo
       fontWeight: 300,
       fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)',
       lineHeight: 1.78,
-      color: dark ? 'rgba(28,26,20,0.68)' : 'rgba(247,246,235,0.62)',
+      color: dark ? 'rgba(14,42,82,0.68)' : 'rgba(243,241,231,0.62)',
       maxWidth: max,
       margin: 0,
     }}>
@@ -111,15 +111,15 @@ function MpHeader() {
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 80,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       padding: '0 clamp(1.25rem, 4vw, 3rem)', height: '3.5rem',
-      background: 'rgba(28,26,20,0.88)', backdropFilter: 'blur(12px)',
-      borderBottom: '1px solid rgba(201,168,76,0.14)',
+      background: 'rgba(14,42,82,0.88)', backdropFilter: 'blur(12px)',
+      borderBottom: '1px solid rgba(242,181,68,0.14)',
     }}>
-      <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(247,246,235,0.85)', fontWeight: 500 }}>
-        Plan Manuel Belgrano <span style={{ color: 'rgba(201,168,76,0.7)', marginLeft: '0.6em' }}>· Masterplan</span>
+      <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(243,241,231,0.85)', fontWeight: 500 }}>
+        Plan Manuel Belgrano <span style={{ color: 'rgba(242,181,68,0.7)', marginLeft: '0.6em' }}>· Masterplan</span>
       </span>
       <span style={{
         ...sans, fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase',
-        color: GOLD, border: '1px solid rgba(201,168,76,0.35)', padding: '0.3rem 0.7rem',
+        color: GOLD, border: '1px solid rgba(242,181,68,0.35)', padding: '0.3rem 0.7rem',
       }}>
         Confidencial
       </span>
@@ -142,7 +142,7 @@ function MpApertura() {
       />
       <div style={{
         position: 'absolute', inset: 0,
-        background: `linear-gradient(to bottom, rgba(26,43,34,0.55), rgba(26,43,34,0.92) 80%)`,
+        background: `linear-gradient(to bottom, rgba(7,26,56,0.55), rgba(7,26,56,0.92) 80%)`,
       }} />
       <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '6rem 1.5rem 4rem', maxWidth: '880px' }}>
         <Rise>
@@ -159,7 +159,7 @@ function MpApertura() {
         <Rise delay={0.24}>
           <p style={{
             ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
-            lineHeight: 1.75, color: 'rgba(247,246,235,0.6)', maxWidth: '56ch', margin: '0 auto',
+            lineHeight: 1.75, color: 'rgba(243,241,231,0.6)', maxWidth: '56ch', margin: '0 auto',
           }}>
             Una propuesta para que YPF lidere una industria nueva: cáñamo industrial,
             materiales de construcción y créditos de carbono en la misma cuenca que
@@ -170,7 +170,7 @@ function MpApertura() {
         <Rise delay={0.38}>
           <p style={{
             ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase',
-            color: 'rgba(201,168,76,0.6)', marginTop: '3rem',
+            color: 'rgba(242,181,68,0.6)', marginTop: '3rem',
           }}>
             Flora Cáñamo Neuquino SRL · Licencia ARICCAME 2024 · Neuquén
           </p>
@@ -178,7 +178,7 @@ function MpApertura() {
       </div>
       <div style={{
         position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2,
-        ...sans, fontSize: '0.55rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(247,246,235,0.25)',
+        ...sans, fontSize: '0.55rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(243,241,231,0.25)',
       }}>
         scroll
       </div>
@@ -216,7 +216,7 @@ function MpOportunidad() {
 
       <div style={{
         display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
-        gap: '1px', background: 'rgba(28,26,20,0.12)', border: '1px solid rgba(28,26,20,0.12)',
+        gap: '1px', background: 'rgba(14,42,82,0.12)', border: '1px solid rgba(14,42,82,0.12)',
         margin: '3.5rem 0',
       }}>
         {OPP_STATS.map((s, i) => (
@@ -225,7 +225,7 @@ function MpOportunidad() {
               <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 2.6vw, 2.4rem)', color: INK, margin: '0 0 0.5rem 0', lineHeight: 1 }}>
                 {s.value}
               </p>
-              <p style={{ ...sans, fontSize: '0.7rem', letterSpacing: '0.06em', color: 'rgba(28,26,20,0.55)', lineHeight: 1.55, margin: 0 }}>
+              <p style={{ ...sans, fontSize: '0.7rem', letterSpacing: '0.06em', color: 'rgba(14,42,82,0.55)', lineHeight: 1.55, margin: 0 }}>
                 {s.label}
               </p>
             </div>
@@ -244,7 +244,7 @@ function MpOportunidad() {
             “Van a llegar con buena temperatura, con internet, con calidad, en poco tiempo…
             van a estar más frescos para trabajar. Y eso es productividad.”
           </p>
-          <footer style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(28,26,20,0.45)' }}>
+          <footer style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)' }}>
             Horacio Marín · sobre el tren Neuquén–Añelo · Dínamo, 2026
           </footer>
         </blockquote>
@@ -252,7 +252,7 @@ function MpOportunidad() {
       <Rise delay={0.28}>
         <p style={{
           ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78,
-          color: 'rgba(28,26,20,0.68)', maxWidth: '62ch', marginTop: '2rem',
+          color: 'rgba(14,42,82,0.68)', maxWidth: '62ch', marginTop: '2rem',
         }}>
           El mismo razonamiento aplica a la vivienda. Este plan produce el material y las casas
           de ese crecimiento, con una cadena de suministro que nace al lado del pozo.
@@ -296,7 +296,7 @@ function MpSolucion() {
         {SPECS.map((s, i) => (
           <Rise key={s.label} delay={0.1 + i * 0.08}>
             <div style={{
-              background: 'rgba(247,246,235,0.04)', border: '1px solid rgba(201,168,76,0.16)',
+              background: 'rgba(243,241,231,0.04)', border: '1px solid rgba(242,181,68,0.16)',
               padding: '1.75rem 1.5rem', height: '100%',
             }}>
               <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', color: GREEN_DARK, margin: '0 0 0.4rem 0', lineHeight: 1.05 }}>
@@ -305,7 +305,7 @@ function MpSolucion() {
               <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem 0' }}>
                 {s.label}
               </p>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(247,246,235,0.5)', margin: 0 }}>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(243,241,231,0.5)', margin: 0 }}>
                 {s.detail}
               </p>
             </div>
@@ -316,22 +316,22 @@ function MpSolucion() {
       <Rise delay={0.2}>
         <div style={{
           display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem',
-          borderTop: '1px solid rgba(201,168,76,0.18)', paddingTop: '2rem',
+          borderTop: '1px solid rgba(242,181,68,0.18)', paddingTop: '2rem',
         }}>
-          <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(247,246,235,0.4)', marginRight: '0.5rem' }}>
+          <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(243,241,231,0.4)', marginRight: '0.5rem' }}>
             De la semilla a la llave
           </span>
           {CHAIN.map((step, i) => (
             <span key={step} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem' }}>
               <span style={{
                 ...sans, fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase',
-                color: i === CHAIN.length - 1 ? GREEN_DARK : 'rgba(247,246,235,0.75)',
-                border: `1px solid ${i === CHAIN.length - 1 ? 'rgba(113,206,106,0.4)' : 'rgba(247,246,235,0.18)'}`,
+                color: i === CHAIN.length - 1 ? GREEN_DARK : 'rgba(243,241,231,0.75)',
+                border: `1px solid ${i === CHAIN.length - 1 ? 'rgba(91,196,106,0.4)' : 'rgba(243,241,231,0.18)'}`,
                 padding: '0.45rem 0.9rem',
               }}>
                 {step}
               </span>
-              {i < CHAIN.length - 1 && <span style={{ color: 'rgba(201,168,76,0.5)', fontSize: '0.7rem' }}>→</span>}
+              {i < CHAIN.length - 1 && <span style={{ color: 'rgba(242,181,68,0.5)', fontSize: '0.7rem' }}>→</span>}
             </span>
           ))}
         </div>
@@ -366,7 +366,7 @@ function MpActivo() {
             </Body>
           </Rise>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(28,26,20,0.15)', border: '1px solid rgba(28,26,20,0.15)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(14,42,82,0.15)', border: '1px solid rgba(14,42,82,0.15)' }}>
           {[
             { value: '4.000 ha', label: 'Mendoza · Valle de Uco — tierra asegurada para el benchmark' },
             { value: 'A elección', label: 'Neuquén · el plan se adapta a la superficie que YPF defina' },
@@ -378,7 +378,7 @@ function MpActivo() {
                 <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.4vw, 2.2rem)', color: INK, lineHeight: 1, minWidth: '7.5rem' }}>
                   {row.value}
                 </span>
-                <span style={{ ...sans, fontSize: '0.72rem', letterSpacing: '0.05em', color: 'rgba(28,26,20,0.55)', lineHeight: 1.5 }}>
+                <span style={{ ...sans, fontSize: '0.72rem', letterSpacing: '0.05em', color: 'rgba(14,42,82,0.55)', lineHeight: 1.5 }}>
                   {row.label}
                 </span>
               </div>
@@ -491,15 +491,15 @@ function MpPlan() {
           El pipeline de medición — 8 capas de IA en tiempo real
         </p>
       </Rise>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'rgba(28,26,20,0.12)', border: '1px solid rgba(28,26,20,0.12)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'rgba(14,42,82,0.12)', border: '1px solid rgba(14,42,82,0.12)' }}>
         {AI_LAYERS.map((l, i) => (
           <Rise key={l.n} delay={0.08 + i * 0.05}>
             <div style={{ background: CREAM, padding: 'clamp(1.5rem, 2.5vw, 1.9rem)', height: '100%', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
-                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.5rem', color: 'rgba(201,168,76,0.85)', lineHeight: 1 }}>{l.n}</span>
+                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.5rem', color: 'rgba(242,181,68,0.85)', lineHeight: 1 }}>{l.n}</span>
                 <h3 style={{ ...sans, fontSize: '0.92rem', fontWeight: 600, color: INK, margin: 0, letterSpacing: '0.01em' }}>{l.title}</h3>
               </div>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(28,26,20,0.6)', margin: 0 }}>{l.body}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.6)', margin: 0 }}>{l.body}</p>
             </div>
           </Rise>
         ))}
@@ -514,16 +514,16 @@ function MpPlan() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
         {TWO_REGIONS.map((r, i) => (
           <Rise key={r.region} delay={0.1 + i * 0.1}>
-            <div style={{ background: '#fff', border: '1px solid rgba(28,26,20,0.1)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.5rem, 2.5vw, 2rem)', height: '100%' }}>
+            <div style={{ background: '#fff', border: '1px solid rgba(14,42,82,0.1)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.5rem, 2.5vw, 2rem)', height: '100%' }}>
               <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2vw, 1.8rem)', color: INK, margin: '0 0 0.75rem 0', lineHeight: 1.1 }}>{r.region}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.6, color: 'rgba(28,26,20,0.6)', margin: '0 0 1rem 0' }}>{r.detail}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.6)', margin: '0 0 1rem 0' }}>{r.detail}</p>
               <p style={{ ...sans, fontSize: '0.7rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: 0 }}>{r.land}</p>
             </div>
           </Rise>
         ))}
       </div>
       <Rise delay={0.2}>
-        <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: 'rgba(28,26,20,0.55)', maxWidth: '64ch', marginTop: '1.5rem' }}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.55)', maxWidth: '64ch', marginTop: '1.5rem' }}>
           Correr los dos en paralelo diversifica el riesgo climático, valida directamente el
           territorio de escala de YPF e identifica la genética óptima para cada clima del país.
         </p>
@@ -533,21 +533,21 @@ function MpPlan() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)', margin: '3.5rem 0 0' }}>
         {FASES.map((f, i) => (
           <Rise key={f.title} delay={0.1 + i * 0.12}>
-            <div style={{ background: '#fff', border: '1px solid rgba(28,26,20,0.1)', padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ background: '#fff', border: '1px solid rgba(14,42,82,0.1)', padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.75rem 0' }}>
                 {f.tag}
               </p>
               <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.4vw, 2.1rem)', color: INK, margin: '0 0 1rem 0', lineHeight: 1.1 }}>
                 {f.title}
               </h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(28,26,20,0.6)', margin: '0 0 1.5rem 0', flex: 1 }}>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.6)', margin: '0 0 1.5rem 0', flex: 1 }}>
                 {f.body}
               </p>
               <div style={{ borderTop: `2px solid ${GOLD}`, paddingTop: '1.25rem' }}>
                 <p style={{ ...serif, fontStyle: 'italic', fontSize: '1.6rem', color: INK, margin: '0 0 0.75rem 0' }}>{f.budget}</p>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                   {f.items.map((item) => (
-                    <li key={item} style={{ ...sans, fontSize: '0.72rem', color: 'rgba(28,26,20,0.5)', letterSpacing: '0.03em' }}>
+                    <li key={item} style={{ ...sans, fontSize: '0.72rem', color: 'rgba(14,42,82,0.5)', letterSpacing: '0.03em' }}>
                       {item}
                     </li>
                   ))}
@@ -560,7 +560,7 @@ function MpPlan() {
 
       <Rise delay={0.2}>
         <p style={{
-          ...sans, fontSize: '0.78rem', letterSpacing: '0.08em', color: 'rgba(28,26,20,0.5)',
+          ...sans, fontSize: '0.78rem', letterSpacing: '0.08em', color: 'rgba(14,42,82,0.5)',
           marginTop: '2.25rem', textAlign: 'center',
         }}>
           Inversión total del programa: <strong style={{ color: INK }}>USD 265.000–300.000</strong> · en dos desembolsos contra hitos verificables
@@ -640,10 +640,10 @@ function MpProceso() {
         {PIPELINE.map((p, i) => (
           <Rise key={p.n} delay={0.08 + i * 0.08} style={{ flex: '1 1 220px', display: 'flex' }}>
             <div style={{ display: 'flex', alignItems: 'stretch', width: '100%' }}>
-              <div style={{ flex: 1, padding: '0 1.25rem', borderLeft: i === 0 ? 'none' : '1px solid rgba(28,26,20,0.15)' }}>
-                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.4rem', color: 'rgba(201,168,76,0.85)' }}>{p.n}</span>
+              <div style={{ flex: 1, padding: '0 1.25rem', borderLeft: i === 0 ? 'none' : '1px solid rgba(14,42,82,0.15)' }}>
+                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.4rem', color: 'rgba(242,181,68,0.85)' }}>{p.n}</span>
                 <h3 style={{ ...sans, fontSize: '0.9rem', fontWeight: 600, color: INK, margin: '0.4rem 0 0.6rem' }}>{p.title}</h3>
-                <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(28,26,20,0.6)', margin: 0 }}>{p.body}</p>
+                <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.6)', margin: 0 }}>{p.body}</p>
               </div>
             </div>
           </Rise>
@@ -663,7 +663,7 @@ function MpProceso() {
           ecorregión argentina.
         </Body>
       </Rise>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1px', background: 'rgba(28,26,20,0.12)', border: '1px solid rgba(28,26,20,0.12)', marginTop: '1.75rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1px', background: 'rgba(14,42,82,0.12)', border: '1px solid rgba(14,42,82,0.12)', marginTop: '1.75rem' }}>
         {TECHS.map((t, i) => (
           <Rise key={t.name} delay={0.08 + i * 0.06}>
             <div style={{ background: PARCHMENT, padding: 'clamp(1.5rem, 2.5vw, 1.9rem)', height: '100%' }}>
@@ -671,7 +671,7 @@ function MpProceso() {
                 <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 1.8vw, 1.6rem)', color: INK, margin: 0, lineHeight: 1 }}>{t.name}</h3>
                 <span style={{ ...sans, fontSize: '0.55rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, whiteSpace: 'nowrap' }}>{t.origin}</span>
               </div>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(28,26,20,0.62)', margin: 0 }}>{t.bring}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.62)', margin: 0 }}>{t.bring}</p>
             </div>
           </Rise>
         ))}
@@ -686,13 +686,13 @@ function MpProceso() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
         {VIAS.map((v, i) => (
           <Rise key={v.tag} delay={0.1 + i * 0.12}>
-            <div style={{ background: '#fff', border: '1px solid rgba(28,26,20,0.1)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ background: '#fff', border: '1px solid rgba(14,42,82,0.1)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.75rem 0' }}>{v.tag}</p>
               <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.4vw, 2.1rem)', color: INK, margin: '0 0 1rem 0', lineHeight: 1.1 }}>{v.title}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(28,26,20,0.6)', margin: '0 0 1.5rem 0' }}>{v.body}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.6)', margin: '0 0 1.5rem 0' }}>{v.body}</p>
               <ul style={{ listStyle: 'none', padding: 0, margin: 'auto 0 0', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {v.points.map((pt) => (
-                  <li key={pt} style={{ ...sans, fontSize: '0.78rem', lineHeight: 1.5, color: 'rgba(28,26,20,0.6)', paddingLeft: '1.1rem', position: 'relative' }}>
+                  <li key={pt} style={{ ...sans, fontSize: '0.78rem', lineHeight: 1.5, color: 'rgba(14,42,82,0.6)', paddingLeft: '1.1rem', position: 'relative' }}>
                     <span style={{ position: 'absolute', left: 0, color: GREEN_LIGHT, fontWeight: 700 }}>—</span>
                     {pt}
                   </li>
@@ -724,8 +724,8 @@ function MpProceso() {
                 {['', 'Bloque hempcrete', 'Bloque Retak · hormigón celular'].map((h, i) => (
                   <th key={i} style={{
                     ...sans, fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase',
-                    color: i === 1 ? GREEN_LIGHT : 'rgba(28,26,20,0.45)', textAlign: 'left',
-                    padding: '0 1rem 0.85rem 0', borderBottom: '1px solid rgba(28,26,20,0.25)', fontWeight: 600,
+                    color: i === 1 ? GREEN_LIGHT : 'rgba(14,42,82,0.45)', textAlign: 'left',
+                    padding: '0 1rem 0.85rem 0', borderBottom: '1px solid rgba(14,42,82,0.25)', fontWeight: 600,
                   }}>
                     {h}
                   </th>
@@ -734,14 +734,14 @@ function MpProceso() {
             </thead>
             <tbody>
               {COMPARACION.map((row) => (
-                <tr key={row.attr} style={row.highlight ? { background: 'rgba(113,206,106,0.1)' } : undefined}>
-                  <td style={{ ...sans, fontSize: '0.74rem', letterSpacing: '0.04em', color: 'rgba(28,26,20,0.55)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)', whiteSpace: 'nowrap' }}>
+                <tr key={row.attr} style={row.highlight ? { background: 'rgba(91,196,106,0.1)' } : undefined}>
+                  <td style={{ ...sans, fontSize: '0.74rem', letterSpacing: '0.04em', color: 'rgba(14,42,82,0.55)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)', whiteSpace: 'nowrap' }}>
                     {row.attr}
                   </td>
-                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: row.highlight ? 600 : 400, color: row.highlight ? GREEN_LIGHT : 'rgba(28,26,20,0.8)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)' }}>
+                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: row.highlight ? 600 : 400, color: row.highlight ? GREEN_LIGHT : 'rgba(14,42,82,0.8)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)' }}>
                     {row.hemp}{row.match && <span style={{ ...sans, fontSize: '0.6rem', color: GOLD, marginLeft: '0.5rem', letterSpacing: '0.1em' }}>=</span>}
                   </td>
-                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: 300, color: 'rgba(28,26,20,0.6)', padding: '0.85rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)' }}>
+                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: 300, color: 'rgba(14,42,82,0.6)', padding: '0.85rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)' }}>
                     {row.retak}
                   </td>
                 </tr>
@@ -751,7 +751,7 @@ function MpProceso() {
         </div>
       </Rise>
       <Rise delay={0.26}>
-        <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.04em', color: 'rgba(28,26,20,0.4)', marginTop: '1rem' }}>
+        <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.04em', color: 'rgba(14,42,82,0.4)', marginTop: '1rem' }}>
           Valores de hempcrete según norma EN 16101 y formulación del benchmark. Valores de Retak: rangos típicos de hormigón celular curado en autoclave, a confirmar con ficha técnica oficial.
         </p>
       </Rise>
@@ -797,18 +797,18 @@ function MpDeal() {
         </Body>
       </Rise>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(201,168,76,0.18)', border: '1px solid rgba(201,168,76,0.18)', margin: '3.25rem 0' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(242,181,68,0.18)', border: '1px solid rgba(242,181,68,0.18)', margin: '3.25rem 0' }}>
         {CONTRATOS.map((c, i) => (
           <Rise key={c.num} delay={0.1 + i * 0.1}>
             <div style={{ background: INK, padding: 'clamp(1.5rem, 3vw, 2.25rem)', display: 'flex', gap: 'clamp(1.25rem, 3vw, 2.5rem)', alignItems: 'flex-start' }}>
-              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2.2rem, 3.5vw, 3.2rem)', color: 'rgba(201,168,76,0.55)', lineHeight: 1, minWidth: '3rem', textAlign: 'center' }}>
+              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2.2rem, 3.5vw, 3.2rem)', color: 'rgba(242,181,68,0.55)', lineHeight: 1, minWidth: '3rem', textAlign: 'center' }}>
                 {c.num}
               </span>
               <div>
                 <h3 style={{ ...sans, fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)', fontWeight: 500, color: CREAM, margin: '0 0 0.6rem 0', letterSpacing: '0.02em' }}>
                   {c.title}
                 </h3>
-                <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(247,246,235,0.5)', margin: 0, maxWidth: '68ch' }}>
+                <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.5)', margin: 0, maxWidth: '68ch' }}>
                   {c.body}
                 </p>
               </div>
@@ -818,7 +818,7 @@ function MpDeal() {
       </div>
 
       <Rise delay={0.2}>
-        <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(247,246,235,0.45)', maxWidth: '70ch' }}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.45)', maxWidth: '70ch' }}>
           La estructura replica la que YPF ya usa para viabilizar infraestructura con inversión
           privada: compromiso de contratación que baja el riesgo, privado que ejecuta, y un
           activo que queda operando para la cuenca.
@@ -865,8 +865,8 @@ function MpUpside() {
                 {['Escenario de precio', 'USD/tCO₂e', 'Fase 1 · 4.000 ha', 'Escala · 50.000 ha'].map((h) => (
                   <th key={h} style={{
                     ...sans, fontSize: '0.58rem', letterSpacing: '0.18em', textTransform: 'uppercase',
-                    color: 'rgba(28,26,20,0.45)', textAlign: 'left', padding: '0 1rem 0.85rem 0',
-                    borderBottom: '1px solid rgba(28,26,20,0.25)', fontWeight: 500,
+                    color: 'rgba(14,42,82,0.45)', textAlign: 'left', padding: '0 1rem 0.85rem 0',
+                    borderBottom: '1px solid rgba(14,42,82,0.25)', fontWeight: 500,
                   }}>
                     {h}
                   </th>
@@ -876,16 +876,16 @@ function MpUpside() {
             <tbody>
               {SENSIBILIDAD.map((row, i) => (
                 <tr key={row.escenario}>
-                  <td style={{ ...sans, fontSize: '0.82rem', color: 'rgba(28,26,20,0.7)', padding: '1rem 1rem 1rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)' }}>
+                  <td style={{ ...sans, fontSize: '0.82rem', color: 'rgba(14,42,82,0.7)', padding: '1rem 1rem 1rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)' }}>
                     {row.escenario}
                   </td>
-                  <td style={{ ...serif, fontStyle: 'italic', fontSize: '1.15rem', color: INK, padding: '1rem 1rem 1rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)' }}>
+                  <td style={{ ...serif, fontStyle: 'italic', fontSize: '1.15rem', color: INK, padding: '1rem 1rem 1rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)' }}>
                     {row.precio}
                   </td>
-                  <td style={{ ...sans, fontSize: '0.85rem', color: 'rgba(28,26,20,0.7)', padding: '1rem 1rem 1rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)' }}>
+                  <td style={{ ...sans, fontSize: '0.85rem', color: 'rgba(14,42,82,0.7)', padding: '1rem 1rem 1rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)' }}>
                     {row.fase1}
                   </td>
-                  <td style={{ ...sans, fontSize: '0.85rem', fontWeight: i === SENSIBILIDAD.length - 1 ? 500 : 300, color: i === SENSIBILIDAD.length - 1 ? GREEN_LIGHT : 'rgba(28,26,20,0.7)', padding: '1rem 0', borderBottom: '1px solid rgba(28,26,20,0.12)' }}>
+                  <td style={{ ...sans, fontSize: '0.85rem', fontWeight: i === SENSIBILIDAD.length - 1 ? 500 : 300, color: i === SENSIBILIDAD.length - 1 ? GREEN_LIGHT : 'rgba(14,42,82,0.7)', padding: '1rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)' }}>
                     {row.escala}
                   </td>
                 </tr>
@@ -898,10 +898,10 @@ function MpUpside() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
         <Rise delay={0.22}>
           <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: '1.25rem' }}>
-            <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(28,26,20,0.45)', margin: '0 0 0.5rem 0' }}>
+            <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: '0 0 0.5rem 0' }}>
               Segunda línea · Biochar
             </p>
-            <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.65, color: 'rgba(28,26,20,0.65)', margin: 0 }}>
+            <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.65, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
               El residuo del proceso se piroliza en biochar certificado: USD 164/t (Puro.earth),
               con compradores activos como Microsoft, Shell y Google. Permanencia de 500 a 1.000 años.
             </p>
@@ -909,10 +909,10 @@ function MpUpside() {
         </Rise>
         <Rise delay={0.3}>
           <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: '1.25rem' }}>
-            <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(28,26,20,0.45)', margin: '0 0 0.5rem 0' }}>
+            <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: '0 0 0.5rem 0' }}>
               Método
             </p>
-            <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.65, color: 'rgba(28,26,20,0.65)', margin: 0 }}>
+            <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.65, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
               Rangos y sensibilidad en lugar de pronósticos puntuales. La base de cálculo
               — 10–15 t CO₂/ha/año — se valida con mediciones propias durante el benchmark.
             </p>
@@ -924,7 +924,7 @@ function MpUpside() {
       <Rise delay={0.36}>
         <div style={{
           marginTop: 'clamp(2.5rem, 5vw, 3.5rem)', background: '#fff',
-          border: '1px solid rgba(28,26,20,0.1)', borderTop: `2px solid ${GREEN_LIGHT}`,
+          border: '1px solid rgba(14,42,82,0.1)', borderTop: `2px solid ${GREEN_LIGHT}`,
           padding: 'clamp(1.75rem, 3vw, 2.5rem)', display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
           gap: 'clamp(1.5rem, 3vw, 2.5rem)', alignItems: 'center',
@@ -936,11 +936,11 @@ function MpUpside() {
             <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', color: INK, margin: '0 0 0.45rem 0', lineHeight: 1.1 }}>
               Joaquín Suárez Irigoyen
             </h3>
-            <p style={{ ...sans, fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(28,26,20,0.45)', margin: 0 }}>
+            <p style={{ ...sans, fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: 0 }}>
               Lidera la certificación de captura de carbono
             </p>
           </div>
-          <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.75, color: 'rgba(28,26,20,0.65)', margin: 0 }}>
+          <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.75, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
             La certificación de captura —en cultivo y en producción— se delega en Joaquín,
             que aporta la relación con <strong style={{ color: GREEN_LIGHT, fontWeight: 600 }}>EcoGaia</strong>:
             una desarrolladora y certificadora de créditos de carbono argentina que ya opera
@@ -978,12 +978,12 @@ function MpVentana() {
           <Rise key={t.year} delay={0.08 + i * 0.08}>
             <div style={{
               display: 'flex', gap: 'clamp(1.25rem, 3vw, 3rem)', alignItems: 'baseline',
-              padding: '1.4rem 0', borderBottom: i < TIMELINE.length - 1 ? '1px solid rgba(247,246,235,0.08)' : 'none',
+              padding: '1.4rem 0', borderBottom: i < TIMELINE.length - 1 ? '1px solid rgba(243,241,231,0.08)' : 'none',
             }}>
               <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.4vw, 2.2rem)', color: i === TIMELINE.length - 1 ? GREEN_DARK : GOLD, lineHeight: 1, minWidth: 'clamp(5.5rem, 9vw, 8rem)' }}>
                 {t.year}
               </span>
-              <span style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.85rem, 1.1vw, 0.98rem)', lineHeight: 1.65, color: 'rgba(247,246,235,0.6)' }}>
+              <span style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.85rem, 1.1vw, 0.98rem)', lineHeight: 1.65, color: 'rgba(243,241,231,0.6)' }}>
                 {t.text}
               </span>
             </div>
@@ -992,7 +992,7 @@ function MpVentana() {
       </div>
 
       <Rise delay={0.2}>
-        <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78, color: 'rgba(247,246,235,0.55)', maxWidth: '60ch', marginTop: '1rem' }}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78, color: 'rgba(243,241,231,0.55)', maxWidth: '60ch', marginTop: '1rem' }}>
           Cada hito del plan le entrega a YPF un activo que ya está operando: datos,
           material certificado, créditos verificados, viviendas en pie.
         </p>
@@ -1017,7 +1017,7 @@ function MpVision() {
       />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to bottom, rgba(26,43,34,0.6) 0%, rgba(26,43,34,0.88) 70%, rgba(26,43,34,0.97) 100%)',
+        background: 'linear-gradient(to bottom, rgba(7,26,56,0.6) 0%, rgba(7,26,56,0.88) 70%, rgba(7,26,56,0.97) 100%)',
       }} />
       <div style={{ position: 'relative', zIndex: 2, maxWidth: '1120px', margin: '0 auto', padding: 'clamp(5rem, 11vw, 9rem) clamp(1.5rem, 6vw, 7rem)', width: '100%' }}>
         <Rise>
@@ -1025,7 +1025,7 @@ function MpVision() {
             <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2.4vw, 2.1rem)', lineHeight: 1.3, color: CREAM, margin: '0 0 0.75rem 0' }}>
               “A Neuquén se van a venir a vivir un millón de personas.”
             </p>
-            <footer style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.65)' }}>
+            <footer style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(242,181,68,0.65)' }}>
               Federico Sturzenegger · Ministro de Desregulación · 2025
             </footer>
           </blockquote>
@@ -1040,7 +1040,7 @@ function MpVision() {
           </h2>
         </Rise>
         <Rise delay={0.24}>
-          <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)', lineHeight: 1.8, color: 'rgba(247,246,235,0.65)', maxWidth: '64ch' }}>
+          <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)', lineHeight: 1.8, color: 'rgba(243,241,231,0.65)', maxWidth: '64ch' }}>
             Si a Neuquén llega un millón de personas, la pregunta no es solo dónde duermen:
             es qué construye su economía. El hempcrete convierte cualquier hectárea cultivable
             de la Argentina en viviendas, barrios y ciudades enteras — y en una fuente de
@@ -1049,7 +1049,7 @@ function MpVision() {
           </p>
         </Rise>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: 'rgba(201,168,76,0.18)', border: '1px solid rgba(201,168,76,0.18)', marginTop: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.18)', border: '1px solid rgba(242,181,68,0.18)', marginTop: '3rem' }}>
           {[
             { value: 'Cualquier provincia', label: 'el cultivo se adapta a cada clima del país' },
             { value: 'Cada eslabón', label: 'empleo técnico del campo a la construcción' },
@@ -1058,7 +1058,7 @@ function MpVision() {
             <Rise key={s.value} delay={0.1 + i * 0.08}>
               <div style={{ background: DUSK, padding: '1.75rem 1.5rem', height: '100%' }}>
                 <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2vw, 1.7rem)', color: GREEN_DARK, margin: '0 0 0.5rem 0', lineHeight: 1.1 }}>{s.value}</p>
-                <p style={{ ...sans, fontSize: '0.74rem', color: 'rgba(247,246,235,0.5)', lineHeight: 1.55, margin: 0 }}>{s.label}</p>
+                <p style={{ ...sans, fontSize: '0.74rem', color: 'rgba(243,241,231,0.5)', lineHeight: 1.55, margin: 0 }}>{s.label}</p>
               </div>
             </Rise>
           ))}
@@ -1084,7 +1084,7 @@ function MpCierre() {
       <div style={{
         position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
         width: '80vw', height: '80vh',
-        background: 'radial-gradient(ellipse, rgba(113,206,106,0.05) 0%, transparent 65%)',
+        background: 'radial-gradient(ellipse, rgba(91,196,106,0.05) 0%, transparent 65%)',
         pointerEvents: 'none',
       }} />
       <div style={{ maxWidth: '1120px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
@@ -1095,13 +1095,13 @@ function MpCierre() {
             <Rise key={l.year} delay={0.06 + i * 0.07}>
               <div style={{
                 display: 'flex', gap: 'clamp(1rem, 3vw, 2.5rem)', alignItems: 'baseline',
-                padding: '1.1rem 0', borderBottom: i < LINAJE.length - 1 ? '1px solid rgba(247,246,235,0.07)' : 'none',
+                padding: '1.1rem 0', borderBottom: i < LINAJE.length - 1 ? '1px solid rgba(243,241,231,0.07)' : 'none',
               }}>
-                <span style={{ ...sans, fontSize: '0.68rem', letterSpacing: '0.15em', color: 'rgba(201,168,76,0.6)', minWidth: '3.5rem' }}>{l.year}</span>
+                <span style={{ ...sans, fontSize: '0.68rem', letterSpacing: '0.15em', color: 'rgba(242,181,68,0.6)', minWidth: '3.5rem' }}>{l.year}</span>
                 <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.05rem, 1.6vw, 1.4rem)', color: i === LINAJE.length - 1 ? GREEN_DARK : CREAM, minWidth: 'clamp(9rem, 16vw, 14rem)', lineHeight: 1.2 }}>
                   {l.name}
                 </span>
-                <span style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.6, color: 'rgba(247,246,235,0.45)' }}>{l.text}</span>
+                <span style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.6, color: 'rgba(243,241,231,0.45)' }}>{l.text}</span>
               </div>
             </Rise>
           ))}
@@ -1118,7 +1118,7 @@ function MpCierre() {
         <Rise delay={0.2}>
           <p style={{
             ...sans, fontWeight: 300, fontSize: 'clamp(0.9rem, 1.2vw, 1.02rem)', lineHeight: 1.78,
-            color: 'rgba(247,246,235,0.55)', maxWidth: '58ch', margin: '0 auto 3rem', textAlign: 'center',
+            color: 'rgba(243,241,231,0.55)', maxWidth: '58ch', margin: '0 auto 3rem', textAlign: 'center',
           }}>
             Cada generación tuvo ingenieros con un modelo de país. Esta propuesta continúa esa
             línea: una industria nueva, medible y rentable, nacida al lado del yacimiento.
@@ -1142,11 +1142,11 @@ function MpCierre() {
               </svg>
             </a>
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <a href="mailto:contacto@planmanuelbelgrano.com.ar" style={{ ...sans, fontSize: '0.68rem', color: 'rgba(247,246,235,0.4)', textDecoration: 'none', letterSpacing: '0.04em' }}>
+              <a href="mailto:contacto@planmanuelbelgrano.com.ar" style={{ ...sans, fontSize: '0.68rem', color: 'rgba(243,241,231,0.4)', textDecoration: 'none', letterSpacing: '0.04em' }}>
                 contacto@planmanuelbelgrano.com.ar
               </a>
-              <span style={{ color: 'rgba(247,246,235,0.15)' }}>·</span>
-              <a href="https://wa.me/5492994229436" style={{ ...sans, fontSize: '0.68rem', color: 'rgba(247,246,235,0.4)', textDecoration: 'none', letterSpacing: '0.04em' }}>
+              <span style={{ color: 'rgba(243,241,231,0.15)' }}>·</span>
+              <a href="https://wa.me/5492994229436" style={{ ...sans, fontSize: '0.68rem', color: 'rgba(243,241,231,0.4)', textDecoration: 'none', letterSpacing: '0.04em' }}>
                 +54 299 422 9436
               </a>
             </div>
@@ -1156,7 +1156,7 @@ function MpCierre() {
         <Rise delay={0.4}>
           <p style={{
             ...sans, fontSize: '0.56rem', letterSpacing: '0.16em', textTransform: 'uppercase',
-            color: 'rgba(247,246,235,0.22)', textAlign: 'center', marginTop: '4rem',
+            color: 'rgba(243,241,231,0.22)', textAlign: 'center', marginTop: '4rem',
           }}>
             Guillermo Sandoval · Flora Cáñamo Neuquino SRL · Brown 420, Neuquén · Licencia ARICCAME 2024
           </p>

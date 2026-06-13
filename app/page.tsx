@@ -10,8 +10,8 @@ export default function Home() {
       </main>
       <footer
         style={{
-          background: '#1C1A14',
-          borderTop: '1px solid rgba(201,168,76,0.14)',
+          background: '#071A38',
+          borderTop: '1px solid rgba(242,181,68,0.14)',
           padding: '2rem clamp(1.5rem, 5vw, 4rem)',
           display: 'flex',
           flexWrap: 'wrap',
@@ -26,7 +26,7 @@ export default function Home() {
             fontSize: '0.6rem',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: 'rgba(247,246,235,0.35)',
+            color: 'rgba(243,241,231,0.35)',
           }}
         >
           © 2026 Flora Cáñamo Neuquino SRL · Neuquén, Patagonia Argentina
@@ -38,7 +38,7 @@ export default function Home() {
               fontFamily: 'var(--font-hanken)',
               fontSize: '0.62rem',
               letterSpacing: '0.08em',
-              color: 'rgba(247,246,235,0.45)',
+              color: 'rgba(243,241,231,0.45)',
               textDecoration: 'none',
             }}
           >
@@ -51,9 +51,9 @@ export default function Home() {
               fontSize: '0.6rem',
               letterSpacing: '0.16em',
               textTransform: 'uppercase',
-              color: '#C9A84C',
+              color: '#F2B544',
               textDecoration: 'none',
-              border: '1px solid rgba(201,168,76,0.4)',
+              border: '1px solid rgba(242,181,68,0.4)',
               padding: '0.45rem 1rem',
             }}
           >

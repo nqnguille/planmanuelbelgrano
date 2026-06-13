@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
-import { EB_Garamond, Plus_Jakarta_Sans } from 'next/font/google'
+import { Fraunces, Archivo } from 'next/font/google'
 import './globals.css'
 
-const garamond = EB_Garamond({
+// Display: Fraunces (serif italic con carácter). UI: Archivo (Omnibus-Type, Buenos Aires).
+// Mantienen los nombres de variable previos para no tocar cada componente.
+const garamond = Fraunces({
   subsets: ['latin'],
   weight: ['400', '600'],
   style: ['normal', 'italic'],
@@ -10,9 +12,9 @@ const garamond = EB_Garamond({
   display: 'swap',
 })
 
-const jakarta = Plus_Jakarta_Sans({
+const jakarta = Archivo({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['300', '400', '500', '600'],
   variable: '--font-hanken',
   display: 'swap',
 })

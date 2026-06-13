@@ -205,7 +205,7 @@ export function HeroScroll() {
         {/* Overlay */}
         <div style={{
           position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none',
-          background: 'linear-gradient(to left, rgba(26,43,34,0.85) 0%, rgba(26,43,34,0.45) 42%, transparent 65%), linear-gradient(to bottom, transparent 0%, rgba(26,43,34,0.5) 75%, rgba(26,43,34,0.97) 100%)',
+          background: 'linear-gradient(to left, rgba(7,26,56,0.85) 0%, rgba(7,26,56,0.45) 42%, transparent 65%), linear-gradient(to bottom, transparent 0%, rgba(7,26,56,0.5) 75%, rgba(7,26,56,0.97) 100%)',
         }} />
 
         {/* ESTADOS DE TEXTO */}
@@ -228,7 +228,7 @@ export function HeroScroll() {
               fontSize: i === 0 ? '0.75rem' : '0.68rem',
               letterSpacing: i === 0 ? '0.08em' : '0.2em',
               textTransform: i === 0 ? 'none' : 'uppercase',
-              color: '#71CE6A',
+              color: '#5BC46A',
               fontWeight: 400,
               marginBottom: '1rem',
               fontStyle: 'normal',
@@ -243,13 +243,13 @@ export function HeroScroll() {
                 ? 'clamp(2.8rem, 5.5vw, 5rem)'
                 : 'clamp(3.2rem, 6.5vw, 6rem)',
               lineHeight: 1.0,
-              color: '#F7F6EB',
+              color: '#F3F1E7',
               marginBottom: '1.25rem',
             }}>
               {state.headline.split('\n').map((line, j) => (
                 <span key={j}>
                   {j === state.headline.split('\n').length - 1 && i === 3
-                    ? <em style={{ color: '#71CE6A', fontStyle: 'italic' }}>{line}</em>
+                    ? <em style={{ color: '#5BC46A', fontStyle: 'italic' }}>{line}</em>
                     : line}
                   {j < state.headline.split('\n').length - 1 && <br />}
                 </span>
@@ -261,7 +261,7 @@ export function HeroScroll() {
                 fontFamily: 'var(--font-hanken)',
                 fontWeight: 300,
                 fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)',
-                color: 'rgba(247,246,235,0.72)',
+                color: 'rgba(243,241,231,0.72)',
                 lineHeight: 1.65,
                 marginBottom: state.cta ? '2rem' : 0,
               }}>
@@ -276,14 +276,14 @@ export function HeroScroll() {
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
                     padding: '1rem 2.25rem',
-                    backgroundColor: '#71CE6A', color: '#1C1A14',
+                    backgroundColor: '#5BC46A', color: '#071A38',
                     fontFamily: 'var(--font-hanken)', fontSize: '0.72rem',
                     letterSpacing: '0.18em', textTransform: 'uppercase',
                     fontWeight: 500, textDecoration: 'none',
                     transition: 'background-color 0.25s ease',
                   }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#5db856' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#71CE6A' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#4FB05E' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#5BC46A' }}
                 >
                   {state.cta.label}
                   <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
@@ -304,13 +304,13 @@ export function HeroScroll() {
           pointerEvents: 'none',
         }}>
           <svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.75" y="0.75" width="22.5" height="36.5" rx="11.25" stroke="rgba(247,246,235,0.28)" strokeWidth="1.5"/>
-            <circle cx="12" cy="11" r="2.5" fill="rgba(201,168,76,0.65)" className="scroll-wheel"/>
+            <rect x="0.75" y="0.75" width="22.5" height="36.5" rx="11.25" stroke="rgba(243,241,231,0.28)" strokeWidth="1.5"/>
+            <circle cx="12" cy="11" r="2.5" fill="rgba(242,181,68,0.65)" className="scroll-wheel"/>
           </svg>
           <span style={{
             fontFamily: 'var(--font-hanken)', fontSize: '0.52rem',
             letterSpacing: '0.28em', textTransform: 'uppercase' as const,
-            color: 'rgba(247,246,235,0.2)',
+            color: 'rgba(243,241,231,0.2)',
           }}>scroll</span>
         </div>
 
@@ -318,17 +318,17 @@ export function HeroScroll() {
         <div style={{
           position: 'absolute', bottom: '1.25rem', right: '1.5rem', zIndex: 10,
           display: 'flex', alignItems: 'center', gap: '0.5rem',
-          background: 'rgba(26,43,34,0.75)', backdropFilter: 'blur(8px)',
+          background: 'rgba(7,26,56,0.75)', backdropFilter: 'blur(8px)',
           padding: '0.4rem 0.75rem', borderRadius: '4px',
-          border: '1px solid rgba(113,206,106,0.2)',
+          border: '1px solid rgba(91,196,106,0.2)',
         }}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-            <path d="M12 2C12 2 7 7 7 12C7 14.5 8.5 16.5 10 17.5L10 22H14V17.5C15.5 16.5 17 14.5 17 12C17 7 12 2 12 2Z" fill="#71CE6A" opacity="0.9" />
+            <path d="M12 2C12 2 7 7 7 12C7 14.5 8.5 16.5 10 17.5L10 22H14V17.5C15.5 16.5 17 14.5 17 12C17 7 12 2 12 2Z" fill="#5BC46A" opacity="0.9" />
           </svg>
           <span style={{
             fontFamily: 'var(--font-hanken)', fontSize: '0.58rem',
             letterSpacing: '0.12em', textTransform: 'uppercase',
-            color: 'rgba(247,246,235,0.75)', fontWeight: 500, whiteSpace: 'nowrap',
+            color: 'rgba(243,241,231,0.75)', fontWeight: 500, whiteSpace: 'nowrap',
           }}>
             Flora Cáñamo Neuquino
           </span>
