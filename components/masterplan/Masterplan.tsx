@@ -942,11 +942,12 @@ function MpUpside() {
           </div>
           <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.75, color: 'rgba(28,26,20,0.65)', margin: 0 }}>
             La certificación de captura —en cultivo y en producción— se delega en Joaquín,
-            que aporta la relación con <strong style={{ color: INK, fontWeight: 500 }}>Eco2Gaia</strong>,
-            una consultora de proyectos de carbono con la que el equipo ya trabajó. Su mandato:
-            evaluarla a fondo como socio de certificación y llevar los créditos por los estándares
-            internacionales —Verra VCS / Gold Standard—, dejando la trazabilidad lista para el
-            offtake con YPF.
+            que aporta la relación con <strong style={{ color: GREEN_LIGHT, fontWeight: 600 }}>EcoGaia</strong>:
+            una desarrolladora y certificadora de créditos de carbono argentina que ya opera
+            proyectos de biochar y agricultura regenerativa bajo Verra y Gold Standard, con
+            créditos emitidos por el registro Puro. Encaja con las dos patas del plan —el cultivo
+            y el biochar— para llevar los créditos al mercado y dejar la trazabilidad lista para
+            el offtake con YPF.
           </p>
         </div>
       </Rise>
@@ -957,7 +958,7 @@ function MpUpside() {
 /* ---------- 07 · la ventana ---------- */
 
 const TIMELINE = [
-  { year: '2026', text: 'Firma y siembra del benchmark en Neuquén y Mendoza. Se suma Joaquín Suárez Irigoyen para liderar la certificación de carbono (relación con Eco2Gaia).' },
+  { year: '2026', text: 'Firma y siembra del benchmark en Neuquén y Mendoza. Se suma Joaquín Suárez Irigoyen para liderar la certificación de carbono (relación con EcoGaia).' },
   { year: '2027', text: 'Arrancan las obras de Argentina LNG. Primeros bloques del piloto hempcrete.' },
   { year: '2028', text: 'Viviendas piloto construidas. Certificación INTI del sistema constructivo.' },
   { year: '2029–30', text: 'Escala: sociedades agrícolas, planta de procesamiento, campamentos permanentes.' },
