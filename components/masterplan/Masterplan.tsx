@@ -828,6 +828,93 @@ function MpDeal() {
   )
 }
 
+/* ---------- 07 · el encaje en YPF ---------- */
+
+const PATAS = [
+  { n: '01', verb: 'Reducir', what: 'Emitir menos', detail: 'Eficiencia, fin del flaring a 2030, metano casi cero.', tag: 'YPF · hoy', unit: 'Operaciones · Nuevas Energías', ypf: true },
+  { n: '02', verb: 'Evitar', what: 'Sustituir por energía limpia', detail: 'Renovables y la mitad de la electricidad de fuentes limpias.', tag: 'YPF · hoy', unit: 'YPF Luz', ypf: true },
+  { n: '03', verb: 'Capturar', what: 'Capturar en el pozo', detail: 'CCS geológico en Bahía Blanca, con Wintershall Dea y Dow.', tag: 'YPF · hoy', unit: 'Y-TEC', ypf: true },
+  { n: '04', verb: 'Regenerar', what: 'Remover de la atmósfera', detail: 'Cáñamo → hempcrete y biochar. Remoción permanente, +500 años.', tag: 'Propuesta', unit: 'Plan Manuel Belgrano', ypf: false },
+]
+
+const APOYOS = ['Nuevas Energías', 'Y-TEC', 'YPF Luz', 'YPF Agro', 'Fundación YPF + Instituto Vaca Muerta', 'Eco2Gaia']
+
+function MpEncaje() {
+  return (
+    <Section bg={CREAM} id="encaje">
+      <Rise><Eyebrow dark>07 · El encaje en YPF</Eyebrow></Rise>
+      <Rise delay={0.08}>
+        <H2 dark size="xl">Pensado para apoyarse en lo que YPF ya construyó.</H2>
+      </Rise>
+      <Rise delay={0.14}>
+        <Body dark max="66ch">
+          YPF ya reduce, evita y captura. Lo que sigue es una propuesta para conversar:
+          cómo una cuarta vía —regenerar— podría sumarse, apoyándose en unidades que la
+          compañía ya tiene.
+        </Body>
+      </Rise>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'clamp(1rem, 2vw, 1.4rem)', margin: '3.25rem 0 0' }}>
+        {PATAS.map((p, i) => (
+          <Rise key={p.n} delay={0.08 + i * 0.08}>
+            <div style={{
+              background: '#fff', height: '100%', display: 'flex', flexDirection: 'column',
+              border: p.ypf ? '1px solid rgba(14,42,82,0.12)' : `1px solid ${GREEN_DARK}`,
+              borderTop: `3px solid ${p.ypf ? GREEN_LIGHT : GREEN_DARK}`,
+              boxShadow: p.ypf ? 'none' : `0 0 0 1px ${GREEN_DARK}`,
+              padding: 'clamp(1.5rem, 2.5vw, 1.9rem)',
+            }}>
+              <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.3rem', color: p.ypf ? 'rgba(14,42,82,0.4)' : GREEN_DARK }}>{p.n}</span>
+              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.4vw, 2.1rem)', color: p.ypf ? INK : '#2f8f3a', margin: '0.3rem 0 0.5rem', lineHeight: 1 }}>{p.verb}</h3>
+              <p style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.9rem 0' }}>{p.what}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.62)', margin: '0 0 1.25rem 0', flex: 1 }}>{p.detail}</p>
+              <div style={{ borderTop: '1px solid rgba(14,42,82,0.1)', paddingTop: '0.85rem' }}>
+                <span style={{
+                  ...sans, fontSize: '0.56rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
+                  color: p.ypf ? GREEN_LIGHT : '#2f8f3a',
+                  border: `1px solid ${p.ypf ? 'rgba(47,111,176,0.4)' : GREEN_DARK}`, padding: '0.25rem 0.55rem',
+                }}>
+                  {p.ypf ? '✓ ' : '◆ '}{p.tag}
+                </span>
+                <p style={{ ...sans, fontSize: '0.68rem', color: 'rgba(14,42,82,0.5)', marginTop: '0.65rem', letterSpacing: '0.02em' }}>{p.unit}</p>
+              </div>
+            </div>
+          </Rise>
+        ))}
+      </div>
+
+      <Rise delay={0.2}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.65)', maxWidth: '64ch', marginTop: '2rem' }}>
+          Las tres primeras bajan lo que se emite. Regenerar suma la única vía que
+          <strong style={{ color: INK, fontWeight: 500 }}> remueve CO₂ de la atmósfera</strong> —
+          a un costo por debajo del CCS.
+        </p>
+      </Rise>
+
+      {/* Puntos de apoyo */}
+      <Rise delay={0.24}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '3rem 0 1.1rem' }}>
+          Puntos de apoyo posibles, sin crear estructura nueva
+        </p>
+      </Rise>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+        {APOYOS.map((a, i) => (
+          <Rise key={a} delay={0.06 + i * 0.05}>
+            <span style={{ ...sans, fontSize: '0.74rem', color: 'rgba(14,42,82,0.7)', border: '1px solid rgba(14,42,82,0.18)', padding: '0.5rem 0.9rem', display: 'inline-block' }}>{a}</span>
+          </Rise>
+        ))}
+      </div>
+
+      <Rise delay={0.2}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.5)', maxWidth: '62ch', marginTop: '2rem' }}>
+          Todo esto es para explorar y ajustar en conjunto. La idea es simple: que la cuarta
+          pata se apoye en lo que YPF ya tiene, sin pedirle que construya nada nuevo.
+        </p>
+      </Rise>
+    </Section>
+  )
+}
+
 /* ---------- 06 · el upside ---------- */
 
 const SENSIBILIDAD = [
@@ -839,7 +926,7 @@ const SENSIBILIDAD = [
 function MpUpside() {
   return (
     <Section bg={PARCHMENT} id="upside">
-      <Rise><Eyebrow dark>07 · El upside</Eyebrow></Rise>
+      <Rise><Eyebrow dark>08 · El upside</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 dark>
           La captura de carbono cuesta entre USD 15 y 345 la tonelada.
@@ -968,7 +1055,7 @@ const TIMELINE = [
 function MpVentana() {
   return (
     <Section bg={DUSK} id="ventana">
-      <Rise><Eyebrow>08 · La ventana 2026–2031</Eyebrow></Rise>
+      <Rise><Eyebrow>09 · La ventana 2026–2031</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2>Cada hito del plan acompaña un hito de YPF.</H2>
       </Rise>
@@ -1032,7 +1119,7 @@ function MpVision() {
         </Rise>
 
         <Rise delay={0.1}>
-          <Eyebrow>09 · La visión</Eyebrow>
+          <Eyebrow>10 · La visión</Eyebrow>
         </Rise>
         <Rise delay={0.16}>
           <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', lineHeight: 1.04, color: CREAM, margin: '0 0 1.75rem 0', maxWidth: '16ch' }}>
@@ -1088,7 +1175,7 @@ function MpCierre() {
         pointerEvents: 'none',
       }} />
       <div style={{ maxWidth: '1120px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <Rise><Eyebrow>10 · El cierre</Eyebrow></Rise>
+        <Rise><Eyebrow>11 · El cierre</Eyebrow></Rise>
 
         <div style={{ display: 'flex', flexDirection: 'column', margin: '0 0 4rem' }}>
           {LINAJE.map((l, i) => (
@@ -1179,6 +1266,7 @@ export function Masterplan() {
       <MpPlan />
       <MpProceso />
       <MpDeal />
+      <MpEncaje />
       <MpUpside />
       <MpVentana />
       <MpVision />
