@@ -978,7 +978,7 @@ function MpEncaje() {
 const SENSIBILIDAD = [
   { escenario: 'Mercado voluntario', precio: 'USD 15/t', fase1: 'USD 0,6M/año', escala: 'USD 7,5M/año' },
   { escenario: 'Promedio O&G NetZero', precio: 'USD 35/t', fase1: 'USD 1,4M/año', escala: 'USD 17,5M/año' },
-  { escenario: 'Precio sombra interno', precio: 'USD 55/t', fase1: 'USD 2,2M/año', escala: 'USD 27,5M/año' },
+  { escenario: 'Precio sombra interno de YPF', precio: 'USD 55/t', fase1: 'USD 2,2M/año', escala: 'USD 27,5M/año' },
 ]
 
 function MpUpside() {
@@ -994,11 +994,11 @@ function MpUpside() {
       </Rise>
       <Rise delay={0.16}>
         <Body dark max="70ch">
-          La IEA estima USD 15–120/t para captura en fuentes concentradas y USD 130–345/t para
-          captura directa de aire. El hempcrete fija 75–165 kg de CO₂ por m³ con margen
-          positivo: el material se vende. Y los contratos de GNL con Europa son a 20 años —
-          cuando el comprador pida la huella del cargamento, la respuesta es propia, local y
-          auditable.
+          El hempcrete fija 75–165 kg de CO₂ por m³ con margen positivo: el material se vende.
+          Para valorar ese carbono no hace falta inventar un precio — usamos el de YPF. Su
+          Comité de Inversiones Críticas evalúa cada proyecto a un <strong style={{ color: INK, fontWeight: 500 }}>precio
+          sombra de USD 55 por tonelada de CO₂e</strong> (Reporte de Sustentabilidad 2024). A ese
+          número —el suyo— la cuenta es esta.
         </Body>
       </Rise>
 
@@ -1038,6 +1038,13 @@ function MpUpside() {
             </tbody>
           </table>
         </div>
+      </Rise>
+      <Rise delay={0.2}>
+        <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.03em', color: 'rgba(14,42,82,0.5)', marginTop: '0.75rem' }}>
+          USD 55/tCO₂e es el precio sombra que YPF aplica desde 2019 en su Comité de Inversiones
+          Críticas para testear proyectos (Reporte de Sustentabilidad YPF 2024, Alcance 1+2). Los
+          escenarios de USD 15 y 35 son referencias de mercado.
+        </p>
       </Rise>
 
       <Rise delay={0.22}>
