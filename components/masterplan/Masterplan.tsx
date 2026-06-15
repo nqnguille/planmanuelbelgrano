@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import type { CSSProperties, ReactNode } from 'react'
+import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 
 /* ============================================================
    PLAN MANUEL BELGRANO — MASTERPLAN (sitio gateado)
@@ -1007,61 +1008,107 @@ function MpUpside() {
         </div>
       </Rise>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
-        <Rise delay={0.22}>
-          <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: '1.25rem' }}>
-            <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: '0 0 0.5rem 0' }}>
-              Segunda línea · Biochar
-            </p>
-            <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.65, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
-              El residuo del proceso se piroliza en biochar certificado: USD 164/t (Puro.earth),
-              con compradores activos como Microsoft, Shell y Google. Permanencia de 500 a 1.000 años.
-            </p>
-          </div>
-        </Rise>
-        <Rise delay={0.3}>
-          <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: '1.25rem' }}>
-            <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: '0 0 0.5rem 0' }}>
-              Método
-            </p>
-            <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.65, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
-              Rangos y sensibilidad en lugar de pronósticos puntuales. La base de cálculo
-              — 10–15 t CO₂/ha/año — se valida con mediciones propias durante el benchmark.
-            </p>
-          </div>
-        </Rise>
-      </div>
+      <Rise delay={0.22}>
+        <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: '1.25rem', maxWidth: '70ch' }}>
+          <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: '0 0 0.5rem 0' }}>
+            Método
+          </p>
+          <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.65, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
+            Rangos y sensibilidad en lugar de pronósticos puntuales. La base de cálculo
+            — 10–15 t CO₂/ha/año — se valida con mediciones propias durante el benchmark.
+            La segunda línea de carbono (biochar) se desarrolla en su propia sección.
+          </p>
+        </div>
+      </Rise>
 
-      {/* La pata de certificación — equipo */}
+      {/* El socio de certificación — EcoGaia */}
       <Rise delay={0.36}>
         <div style={{
           marginTop: 'clamp(2.5rem, 5vw, 3.5rem)', background: '#fff',
           border: '1px solid rgba(14,42,82,0.1)', borderTop: `2px solid ${GREEN_LIGHT}`,
-          padding: 'clamp(1.75rem, 3vw, 2.5rem)', display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: 'clamp(1.5rem, 3vw, 2.5rem)', alignItems: 'center',
+          padding: 'clamp(1.75rem, 3vw, 2.5rem)',
         }}>
-          <div>
-            <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.9rem 0' }}>
-              La pata de certificación
-            </p>
-            <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', color: INK, margin: '0 0 0.45rem 0', lineHeight: 1.1 }}>
-              Joaquín Suárez Irigoyen
-            </h3>
-            <p style={{ ...sans, fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: 0 }}>
-              Lidera la certificación de captura de carbono
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'clamp(1.5rem, 3vw, 2.5rem)', alignItems: 'start' }}>
+            <div>
+              <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.9rem 0' }}>
+                El socio de certificación
+              </p>
+              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2rem, 3vw, 2.8rem)', color: GREEN_LIGHT, margin: '0 0 0.5rem 0', lineHeight: 1 }}>
+                EcoGaia
+              </h3>
+              <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: 0 }}>
+                Desarrolladora y certificadora de créditos de carbono · Argentina
+              </p>
+            </div>
+            <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.75, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
+              EcoGaia hace el ciclo completo del crédito de carbono —originación, viabilidad,
+              diseño, validación, financiamiento y venta— bajo los estándares Verra y Gold
+              Standard. Ya opera proyectos de biochar y agricultura regenerativa en la Argentina,
+              con créditos emitidos por el registro Puro. Para el plan es el socio que lleva los
+              créditos —de cultivo y de biochar— del campo al mercado, y deja la trazabilidad
+              lista para el offtake con YPF.
             </p>
           </div>
-          <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.75, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
-            La certificación de captura —en cultivo y en producción— se delega en Joaquín,
-            que aporta la relación con <strong style={{ color: GREEN_LIGHT, fontWeight: 600 }}>EcoGaia</strong>:
-            una desarrolladora y certificadora de créditos de carbono argentina que ya opera
-            proyectos de biochar y agricultura regenerativa bajo Verra y Gold Standard, con
-            créditos emitidos por el registro Puro. Encaja con las dos patas del plan —el cultivo
-            y el biochar— para llevar los créditos al mercado y dejar la trazabilidad lista para
-            el offtake con YPF.
-          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', borderTop: '1px solid rgba(14,42,82,0.1)', marginTop: '1.75rem', paddingTop: '1.5rem' }}>
+            {[
+              'Ciclo completo del crédito · 6 pasos',
+              'Verra · Gold Standard · registro Puro',
+              'Biochar + agricultura regenerativa en Argentina',
+              'Offtake vigente con Altitude · 165.000 t CO₂',
+            ].map((c) => (
+              <span key={c} style={{ ...sans, fontSize: '0.7rem', color: 'rgba(14,42,82,0.65)', border: '1px solid rgba(14,42,82,0.18)', padding: '0.45rem 0.85rem' }}>{c}</span>
+            ))}
+          </div>
         </div>
+      </Rise>
+    </Section>
+  )
+}
+
+/* ---------- 09 · la segunda línea · biochar ---------- */
+
+const BIOCHAR = [
+  { value: '~2,5 t', unit: 'CO₂e por tonelada de biochar', detail: 'Remoción que la pirólisis fija en una forma estable de carbono.' },
+  { value: '+1.000', unit: 'años de permanencia', detail: 'El carbono queda bloqueado en el suelo, sin reversión.' },
+  { value: 'USD 164', unit: 'por crédito BCR (referencia)', detail: 'Precio de mercado del Biochar Carbon Removal, registro Puro.' },
+  { value: 'EBC', unit: 'European Biochar Certificate', detail: 'El estándar internacional que verifica calidad y permanencia.' },
+]
+
+function MpBiochar() {
+  return (
+    <Section bg={INK} id="biochar">
+      <Rise><Eyebrow>09 · La segunda línea</Eyebrow></Rise>
+      <Rise delay={0.08}>
+        <H2 size="xl">El residuo también es un activo.</H2>
+      </Rise>
+      <Rise delay={0.14}>
+        <Body max="66ch">
+          La planta deja residuos: la fibra corta y el polvo de shiv que no van al hempcrete.
+          La pirólisis los convierte en <strong style={{ color: GREEN_DARK, fontWeight: 500 }}>biochar</strong> —
+          un carbón vegetal estable que bloquea carbono por más de mil años y mejora el suelo.
+          De la misma hectárea sale una segunda línea de créditos, con mercado y compradores
+          activos: Microsoft, Shell y Google entre ellos.
+        </Body>
+      </Rise>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.16)', border: '1px solid rgba(242,181,68,0.16)', margin: '3.25rem 0 0' }}>
+        {BIOCHAR.map((b, i) => (
+          <Rise key={b.unit} delay={0.08 + i * 0.08}>
+            <div style={{ background: INK, padding: 'clamp(1.5rem, 2.5vw, 1.9rem)', height: '100%' }}>
+              <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)', color: GREEN_DARK, margin: '0 0 0.3rem 0', lineHeight: 1 }}>{b.value}</p>
+              <p style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem 0' }}>{b.unit}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.76rem', lineHeight: 1.6, color: 'rgba(243,241,231,0.55)', margin: 0 }}>{b.detail}</p>
+            </div>
+          </Rise>
+        ))}
+      </div>
+
+      <Rise delay={0.2}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.75, color: 'rgba(243,241,231,0.6)', maxWidth: '66ch', marginTop: '2rem' }}>
+          Es terreno conocido para nuestro socio de certificación:
+          <strong style={{ color: GREEN_DARK, fontWeight: 500 }}> EcoGaia ya opera biochar en la Argentina</strong> con
+          créditos por el registro Puro. La segunda línea no hay que inventarla — hay que sumarla.
+        </p>
       </Rise>
     </Section>
   )
@@ -1070,7 +1117,7 @@ function MpUpside() {
 /* ---------- 07 · la ventana ---------- */
 
 const TIMELINE = [
-  { year: '2026', text: 'Firma y siembra del benchmark en Neuquén y Mendoza. Se suma Joaquín Suárez Irigoyen para liderar la certificación de carbono (relación con EcoGaia).' },
+  { year: '2026', text: 'Firma y siembra del benchmark en Neuquén y Mendoza. Acuerdo de certificación de carbono con EcoGaia (Verra / Gold Standard / Puro).' },
   { year: '2027', text: 'Arrancan las obras de Argentina LNG. Primeros bloques del piloto hempcrete.' },
   { year: '2028', text: 'Viviendas piloto construidas. Certificación del sistema constructivo.' },
   { year: '2029–30', text: 'Escala: sociedades agrícolas, planta de procesamiento, campamentos permanentes.' },
@@ -1080,7 +1127,7 @@ const TIMELINE = [
 function MpVentana() {
   return (
     <Section bg={DUSK} id="ventana">
-      <Rise><Eyebrow>09 · La ventana 2026–2031</Eyebrow></Rise>
+      <Rise><Eyebrow>10 · La ventana 2026–2031</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2>Cada hito del plan acompaña un hito de YPF.</H2>
       </Rise>
@@ -1144,7 +1191,7 @@ function MpVision() {
         </Rise>
 
         <Rise delay={0.1}>
-          <Eyebrow>10 · La visión</Eyebrow>
+          <Eyebrow>11 · La visión</Eyebrow>
         </Rise>
         <Rise delay={0.16}>
           <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', lineHeight: 1.04, color: CREAM, margin: '0 0 1.75rem 0', maxWidth: '16ch' }}>
@@ -1161,16 +1208,24 @@ function MpVision() {
           </p>
         </Rise>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.18)', border: '1px solid rgba(242,181,68,0.18)', marginTop: '3rem' }}>
+        <Rise delay={0.05}>
+          <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, margin: '3rem 0 1.25rem' }}>
+            Visión a 2035 · a escala plena
+          </p>
+        </Rise>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.18)', border: '1px solid rgba(242,181,68,0.18)' }}>
           {[
-            { value: 'Cualquier provincia', label: 'el cultivo se adapta a cada clima del país' },
-            { value: 'Cada eslabón', label: 'empleo técnico del campo a la construcción' },
-            { value: 'Carbono fijado', label: 'la ciudad misma es el activo de carbono' },
+            { target: 50000, suffix: '', label: 'empleos directos a escala plena' },
+            { target: 100000, suffix: '', label: 'viviendas de hempcrete potenciales' },
+            { target: 500000, suffix: '', label: 'toneladas de CO₂ fijadas por año' },
+            { target: 27, suffix: 'M', label: 'USD por año en créditos · escala Neuquén' },
           ].map((s, i) => (
-            <Rise key={s.value} delay={0.1 + i * 0.08}>
+            <Rise key={s.label} delay={0.1 + i * 0.08}>
               <div style={{ background: DUSK, padding: '1.75rem 1.5rem', height: '100%' }}>
-                <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2vw, 1.7rem)', color: GREEN_DARK, margin: '0 0 0.5rem 0', lineHeight: 1.1 }}>{s.value}</p>
-                <p style={{ ...sans, fontSize: '0.74rem', color: 'rgba(243,241,231,0.5)', lineHeight: 1.55, margin: 0 }}>{s.label}</p>
+                <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2rem, 3.2vw, 2.9rem)', color: GREEN_DARK, margin: '0 0 0.5rem 0', lineHeight: 1 }}>
+                  <AnimatedCounter target={s.target} suffix={s.suffix} />
+                </p>
+                <p style={{ ...sans, fontSize: '0.72rem', color: 'rgba(243,241,231,0.5)', lineHeight: 1.55, margin: 0 }}>{s.label}</p>
               </div>
             </Rise>
           ))}
@@ -1200,7 +1255,7 @@ function MpCierre() {
         pointerEvents: 'none',
       }} />
       <div style={{ maxWidth: '1120px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <Rise><Eyebrow>11 · El cierre</Eyebrow></Rise>
+        <Rise><Eyebrow>12 · El cierre</Eyebrow></Rise>
 
         <div style={{ display: 'flex', flexDirection: 'column', margin: '0 0 4rem' }}>
           {LINAJE.map((l, i) => (
@@ -1293,6 +1348,7 @@ export function Masterplan() {
       <MpDeal />
       <MpEncaje />
       <MpUpside />
+      <MpBiochar />
       <MpVentana />
       <MpVision />
       <MpCierre />
