@@ -857,63 +857,95 @@ function MpDeal() {
 /* ---------- 07 · el encaje en YPF ---------- */
 
 const PATAS = [
-  { n: '01', verb: 'Reducir', what: 'Emitir menos', detail: 'Eficiencia, fin del flaring a 2030, metano casi cero.', tag: 'YPF · hoy', unit: 'Operaciones · Nuevas Energías', ypf: true },
-  { n: '02', verb: 'Evitar', what: 'Sustituir por energía limpia', detail: 'Renovables y la mitad de la electricidad de fuentes limpias.', tag: 'YPF · hoy', unit: 'YPF Luz', ypf: true },
-  { n: '03', verb: 'Capturar', what: 'Capturar en el pozo', detail: 'CCS geológico en Bahía Blanca, con Wintershall Dea y Dow.', tag: 'YPF · hoy', unit: 'Y-TEC', ypf: true },
-  { n: '04', verb: 'Regenerar', what: 'Remover de la atmósfera', detail: 'Cáñamo → hempcrete y biochar. Remoción permanente, +500 años.', tag: 'Propuesta', unit: 'Plan Manuel Belgrano', ypf: false },
+  {
+    n: '01', verb: 'Reducir', what: 'Emitir menos en cada operación',
+    detail: 'Su palanca principal. Programas LDAR de detección y reparación de fugas, fin de la quema rutinaria de antorcha a 2030 y metano −30% vs 2021. Ya cumplió —anticipado, en 2023— la meta de −30% de intensidad de emisiones vs 2017, y prioriza cada proyecto con su curva MACC.',
+    tag: 'YPF · activo', unit: 'Upstream + Downstream', ypf: true,
+  },
+  {
+    n: '02', verb: 'Evitar', what: 'Sustituir por energía más limpia',
+    detail: 'El 55% de su electricidad ya es renovable (meta 50% a 2026) a través de YPF Luz. Suma el gas de Vaca Muerta como la energía de menor carbono y biocombustibles en naftas y diésel.',
+    tag: 'YPF · activo', unit: 'YPF Luz · Nuevas Energías', ypf: true,
+  },
+  {
+    n: '03', verb: 'Capturar', what: 'Recuperar lo que se ventea',
+    detail: 'Recupera gas venteado con nuevas conexiones y ductos, comprime con motores eléctricos y explora captura y almacenamiento. Es la palanca más cara de su curva.',
+    tag: 'YPF · activo', unit: 'Operaciones · Y-TEC', ypf: true,
+  },
+  {
+    n: '04', verb: 'Regenerar', what: 'Remover carbono de la atmósfera',
+    detail: 'Hasta hoy quedó vacía: la ambición Net Zero de YPF cubre solo Alcance 1+2, y la jerarquía de mitigación manda reducir antes de compensar. Su propio Reporte 2024 dice que la compañía busca «soluciones basadas en la naturaleza» — todavía sin un programa que las opere. El cáñamo → hempcrete y biochar es una, lista para arrancar.',
+    tag: 'Propuesta', unit: 'Plan Manuel Belgrano', ypf: false,
+  },
 ]
 
-const APOYOS = ['Nuevas Energías', 'Y-TEC', 'YPF Luz', 'YPF Agro', 'Fundación YPF + Instituto Vaca Muerta', 'Eco2Gaia']
+const APOYOS = ['Nuevas Energías', 'Y-TEC', 'YPF Luz', 'YPF Agro', 'Fundación YPF + Instituto Vaca Muerta', 'EcoGaia']
 
 function MpEncaje() {
   return (
     <Section bg={CREAM} id="encaje">
       <Rise><Eyebrow dark>07 · El encaje en YPF</Eyebrow></Rise>
       <Rise delay={0.08}>
-        <H2 dark size="xl">Pensado para apoyarse en lo que YPF ya construyó.</H2>
+        <H2 dark size="xl">Las cuatro palancas del net-zero de YPF.</H2>
       </Rise>
       <Rise delay={0.14}>
-        <Body dark max="66ch">
-          YPF ya reduce, evita y captura. Lo que sigue es una propuesta para conversar:
-          cómo una cuarta vía —regenerar— podría sumarse, apoyándose en unidades que la
-          compañía ya tiene.
+        <Body dark max="68ch">
+          Leímos el Reporte de Sustentabilidad 2024 de YPF. La compañía descarboniza con
+          una curva MACC y tres palancas activas. La cuarta —regenerar— es la que todavía
+          no tiene quién la opere. Acá, cada etapa con lo que YPF ya hace.
         </Body>
       </Rise>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'clamp(1rem, 2vw, 1.4rem)', margin: '3.25rem 0 0' }}>
+      <div style={{ margin: '3rem 0 0', border: '1px solid rgba(14,42,82,0.12)' }}>
         {PATAS.map((p, i) => (
-          <Rise key={p.n} delay={0.08 + i * 0.08}>
+          <Rise key={p.n} delay={0.06 + i * 0.07}>
             <div style={{
-              background: '#fff', height: '100%', display: 'flex', flexDirection: 'column',
-              border: p.ypf ? '1px solid rgba(14,42,82,0.12)' : `1px solid ${GREEN_DARK}`,
-              borderTop: `3px solid ${p.ypf ? GREEN_LIGHT : GREEN_DARK}`,
-              boxShadow: p.ypf ? 'none' : `0 0 0 1px ${GREEN_DARK}`,
-              padding: 'clamp(1.5rem, 2.5vw, 1.9rem)',
+              display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '0.5rem',
+              background: p.ypf ? '#fff' : 'rgba(91,196,106,0.08)',
+              borderTop: i === 0 ? 'none' : `1px solid rgba(14,42,82,0.12)`,
+              borderLeft: `3px solid ${p.ypf ? GREEN_LIGHT : GREEN_DARK}`,
+              padding: 'clamp(1.4rem, 2.5vw, 2rem)',
             }}>
-              <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.3rem', color: p.ypf ? 'rgba(14,42,82,0.4)' : GREEN_DARK }}>{p.n}</span>
-              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.4vw, 2.1rem)', color: p.ypf ? INK : '#2f8f3a', margin: '0.3rem 0 0.5rem', lineHeight: 1 }}>{p.verb}</h3>
-              <p style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.9rem 0' }}>{p.what}</p>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.62)', margin: '0 0 1.25rem 0', flex: 1 }}>{p.detail}</p>
-              <div style={{ borderTop: '1px solid rgba(14,42,82,0.1)', paddingTop: '0.85rem' }}>
-                <span style={{
-                  ...sans, fontSize: '0.56rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
-                  color: p.ypf ? GREEN_LIGHT : '#2f8f3a',
-                  border: `1px solid ${p.ypf ? 'rgba(47,111,176,0.4)' : GREEN_DARK}`, padding: '0.25rem 0.55rem',
-                }}>
-                  {p.ypf ? '✓ ' : '◆ '}{p.tag}
-                </span>
-                <p style={{ ...sans, fontSize: '0.68rem', color: 'rgba(14,42,82,0.5)', marginTop: '0.65rem', letterSpacing: '0.02em' }}>{p.unit}</p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'clamp(1rem, 3vw, 2.5rem)', alignItems: 'start' }}>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
+                    <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.2rem', color: p.ypf ? 'rgba(14,42,82,0.4)' : GREEN_DARK }}>{p.n}</span>
+                    <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 2.6vw, 2.3rem)', color: p.ypf ? INK : '#2f8f3a', margin: 0, lineHeight: 1 }}>{p.verb}</h3>
+                  </div>
+                  <p style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0.6rem 0 0.9rem' }}>{p.what}</p>
+                  <span style={{
+                    ...sans, fontSize: '0.56rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600,
+                    color: p.ypf ? GREEN_LIGHT : '#2f8f3a',
+                    border: `1px solid ${p.ypf ? 'rgba(47,111,176,0.4)' : GREEN_DARK}`, padding: '0.25rem 0.55rem',
+                  }}>
+                    {p.ypf ? '✓ ' : '◆ '}{p.tag}
+                  </span>
+                  <p style={{ ...sans, fontSize: '0.66rem', color: 'rgba(14,42,82,0.5)', marginTop: '0.6rem', letterSpacing: '0.02em' }}>{p.unit}</p>
+                </div>
+                <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.7)', margin: 0 }}>{p.detail}</p>
               </div>
             </div>
           </Rise>
         ))}
       </div>
 
+      {/* Cita textual del reporte */}
       <Rise delay={0.2}>
-        <p style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.65)', maxWidth: '64ch', marginTop: '2rem' }}>
-          Las tres primeras bajan lo que se emite. Regenerar suma la única vía que
-          <strong style={{ color: INK, fontWeight: 500 }}> remueve CO₂ de la atmósfera</strong> —
-          a un costo por debajo del CCS.
+        <blockquote style={{ margin: '2.5rem 0 0', borderLeft: `3px solid ${GOLD}`, paddingLeft: 'clamp(1.25rem, 2.5vw, 2rem)', maxWidth: '720px' }}>
+          <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2.2vw, 1.9rem)', lineHeight: 1.35, color: INK, margin: '0 0 0.75rem 0' }}>
+            “Buscar oportunidades de soluciones basadas en la naturaleza que cumplan con
+            criterios ambientales y sociales sólidos.”
+          </p>
+          <footer style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)' }}>
+            Reporte de Sustentabilidad YPF · 2024
+          </footer>
+        </blockquote>
+      </Rise>
+      <Rise delay={0.26}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: INK, maxWidth: '64ch', marginTop: '1.75rem' }}>
+          Lo escribió YPF. El Plan Manuel Belgrano es exactamente eso: una solución basada
+          en la naturaleza, lista para operar — y la única palanca que <strong style={{ fontWeight: 500 }}>remueve
+          CO₂ de la atmósfera</strong>, a un costo por debajo de la captura industrial.
         </p>
       </Rise>
 
