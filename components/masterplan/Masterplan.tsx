@@ -411,16 +411,16 @@ function MpActivo() {
 
 /* ---------- 04 · el plan ---------- */
 
-const AI_LAYERS = [
+const NUCLEO = [
   {
     n: '01',
     title: 'Diseño experimental',
-    body: 'DBCA generado por IA: diseño en bloques completos al azar, hasta 30 variedades por ecorregión. El algoritmo optimiza repeticiones y aleatorización para máxima potencia estadística con la mínima superficie experimental.',
+    body: 'DBCA generado por IA: diseño en bloques completos al azar con varias variedades por ecorregión. El algoritmo optimiza repeticiones y aleatorización para máxima potencia estadística con la mínima superficie.',
   },
   {
     n: '02',
     title: 'Sensores en parcela · IoT',
-    body: 'Humedad y temperatura de suelo, conductividad eléctrica y estación meteo por micro-bloque. Telemetría satelital Starlink — el mismo stack que YPF usa para leer sus tanques en tiempo real.',
+    body: 'Humedad y temperatura de suelo, conductividad eléctrica y estación meteo por micro-bloque, con telemetría satelital — el mismo tipo de stack que YPF usa para leer sus tanques en tiempo real.',
   },
   {
     n: '03',
@@ -429,40 +429,35 @@ const AI_LAYERS = [
   },
   {
     n: '04',
-    title: 'Visión por computadora',
-    body: 'Conteo de plantas y tasa de germinación, seguimiento fenológico automático y detección temprana de estrés hídrico, plagas y enfermedades antes de que sean visibles a simple vista.',
-  },
-  {
-    n: '05',
-    title: 'Modelos predictivos + gemelo digital',
-    body: 'Machine learning que predice rendimiento de biomasa, fibra y captura por variedad × clima. Un gemelo digital prueba en software cada decisión —riego, densidad, fecha de siembra— antes de llevarla al campo.',
-  },
-  {
-    n: '06',
-    title: 'MRV digital de carbono',
-    body: 'Flujo de CO₂ por cámaras, carbono en suelo por espectroscopía NIR, biomasa aérea y radicular modelada. Trazabilidad lista para certificación Verra VCS / Gold Standard.',
-  },
-  {
-    n: '07',
     title: 'Dashboard en tiempo real',
-    body: 'Todo converge en un centro de operaciones espejo del RTIC de YPF: cada micro-parcela, en vivo, 24 horas los 365 días. YPF ve crecer el activo como ve producir un pozo.',
+    body: 'Todo converge en un centro de operaciones espejo del RTIC de YPF: cada micro-parcela, en vivo. YPF ve crecer el activo como ve producir un pozo.',
+  },
+]
+
+const ROADMAP = [
+  {
+    title: 'Visión por computadora',
+    body: 'Conteo de plantas y germinación, seguimiento fenológico automático y detección temprana de estrés, plagas y enfermedades.',
   },
   {
-    n: '08',
-    title: 'Variedad campeona por ecorregión',
-    body: 'Al cierre, la analítica comparativa entre Mendoza y Neuquén entrega la variedad óptima por clima y la curva real de captura. La decisión de escala se toma con datos propios.',
+    title: 'Modelos predictivos + gemelo digital',
+    body: 'ML que predice rendimiento y captura por variedad × clima; un gemelo digital para probar decisiones antes de llevarlas al campo.',
+  },
+  {
+    title: 'MRV digital de carbono',
+    body: 'Medición directa de flujo de CO₂ y carbono en suelo, lista para certificación (Verra / Gold Standard) cuando el proyecto escale.',
   },
 ]
 
 const TWO_REGIONS = [
   {
     region: 'Mendoza · Valle de Uco',
-    detail: 'Clima templado irrigado · Ley provincial 9617 · convenio UNCuyo',
+    detail: 'Clima templado irrigado · marco regulatorio provincial · validación con universidades',
     land: '4.000 ha aseguradas',
   },
   {
     region: 'Neuquén · a definir con YPF',
-    detail: 'Clima árido patagónico · infraestructura Vaca Muerta · convenio UNCo',
+    detail: 'Clima árido patagónico · infraestructura Vaca Muerta · validación con universidades',
     land: 'Superficie a elección de YPF',
   },
 ]
@@ -471,16 +466,12 @@ const FASES = [
   {
     tag: 'Fase 1 · Meses 0–18',
     title: 'Benchmark AI-First',
-    body: 'Los dos benchmarks en simultáneo, con todo el pipeline de inteligencia artificial corriendo. Convenios con UNCo y UNCuyo para validación científica certificable.',
-    budget: 'USD 150.000',
-    items: ['Campo · USD 49.000', 'Ciencia · USD 58.000', 'Tecnología · USD 37.000', 'Gestión · USD 6.000'],
+    body: 'Los dos benchmarks en simultáneo, con el núcleo de medición corriendo en cada micro-parcela. Validación científica junto a universidades. El resultado: la variedad campeona por ecorregión, con datos propios.',
   },
   {
     tag: 'Fase 2 · Meses 12–24',
-    title: 'Piloto hempcrete',
-    body: 'Con la biomasa del benchmark: procesamiento, primeros bloques y certificación INTI del ladrillo de hempcrete y de su sistema constructivo. Las primeras viviendas piloto pueden levantarse en los propios sitios operativos de YPF, para alojar al personal.',
-    budget: 'USD 115.000',
-    items: ['Procesamiento · USD 55.000', 'Materiales · USD 20.000', 'Construcción · USD 25.000', 'Certificación INTI · USD 15.000'],
+    title: 'Piloto y construcción',
+    body: 'Con la biomasa del benchmark: procesamiento, primeros bloques y certificación del sistema constructivo. Las primeras viviendas piloto podrían levantarse en sitios operativos de YPF, para alojar al personal.',
   },
 ]
 
@@ -497,21 +488,21 @@ function MpPlan() {
       </Rise>
       <Rise delay={0.14}>
         <Body dark max="68ch">
-          Filosofía <strong style={{ color: INK }}>AI-First</strong>: cada variable de cada
-          micro-parcela, medida en tiempo real. Dos benchmarks de cultivo en simultáneo
-          —Mendoza y Neuquén— para encontrar la variedad campeona por ecorregión. Es el
-          RTIC de YPF aplicado, por primera vez, a un cultivo.
+          Filosofía <strong style={{ color: INK }}>AI-First</strong>: medir en tiempo real cada
+          variable de cada micro-parcela. Dos benchmarks de cultivo en simultáneo —Mendoza y
+          Neuquén— para encontrar la variedad campeona por ecorregión. Es el RTIC de YPF
+          aplicado, por primera vez, a un cultivo.
         </Body>
       </Rise>
 
-      {/* Pipeline AI-First */}
+      {/* Núcleo de medición · Fase 1 */}
       <Rise delay={0.18}>
         <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '3.25rem 0 1.5rem' }}>
-          El pipeline de medición — 8 capas de IA en tiempo real
+          Núcleo de medición · Fase 1
         </p>
       </Rise>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'rgba(14,42,82,0.12)', border: '1px solid rgba(14,42,82,0.12)' }}>
-        {AI_LAYERS.map((l, i) => (
+        {NUCLEO.map((l, i) => (
           <Rise key={l.n} delay={0.08 + i * 0.05}>
             <div style={{ background: CREAM, padding: 'clamp(1.5rem, 2.5vw, 1.9rem)', height: '100%', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
@@ -523,6 +514,30 @@ function MpPlan() {
           </Rise>
         ))}
       </div>
+
+      {/* Hoja de ruta */}
+      <Rise delay={0.18}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.5)', margin: '2.5rem 0 1.25rem' }}>
+          Lo que la IA permite escalar — hoja de ruta
+        </p>
+      </Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'clamp(1rem, 2vw, 1.4rem)' }}>
+        {ROADMAP.map((l, i) => (
+          <Rise key={l.title} delay={0.06 + i * 0.06}>
+            <div style={{ background: 'transparent', border: '1px dashed rgba(14,42,82,0.3)', padding: 'clamp(1.4rem, 2.2vw, 1.7rem)', height: '100%' }}>
+              <span style={{ ...sans, fontSize: '0.52rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', border: '1px solid rgba(14,42,82,0.2)', padding: '0.18rem 0.45rem' }}>Hoja de ruta</span>
+              <h3 style={{ ...sans, fontSize: '0.88rem', fontWeight: 600, color: 'rgba(14,42,82,0.85)', margin: '0.8rem 0 0.5rem' }}>{l.title}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.76rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.55)', margin: 0 }}>{l.body}</p>
+            </div>
+          </Rise>
+        ))}
+      </div>
+      <Rise delay={0.2}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.5)', maxWidth: '64ch', marginTop: '1.25rem' }}>
+          El núcleo corre desde el primer día. Las capas de la hoja de ruta se incorporan a
+          medida que el proyecto crece hacia la certificación y la escala.
+        </p>
+      </Rise>
 
       {/* Dos regiones */}
       <Rise delay={0.18}>
@@ -548,30 +563,20 @@ function MpPlan() {
         </p>
       </Rise>
 
-      {/* Fases / presupuesto */}
+      {/* Fases */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)', margin: '3.5rem 0 0' }}>
         {FASES.map((f, i) => (
           <Rise key={f.title} delay={0.1 + i * 0.12}>
-            <div style={{ background: '#fff', border: '1px solid rgba(14,42,82,0.1)', padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ background: '#fff', border: '1px solid rgba(14,42,82,0.1)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
               <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.75rem 0' }}>
                 {f.tag}
               </p>
               <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.4vw, 2.1rem)', color: INK, margin: '0 0 1rem 0', lineHeight: 1.1 }}>
                 {f.title}
               </h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.6)', margin: '0 0 1.5rem 0', flex: 1 }}>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.6)', margin: 0 }}>
                 {f.body}
               </p>
-              <div style={{ borderTop: `2px solid ${GOLD}`, paddingTop: '1.25rem' }}>
-                <p style={{ ...serif, fontStyle: 'italic', fontSize: '1.6rem', color: INK, margin: '0 0 0.75rem 0' }}>{f.budget}</p>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                  {f.items.map((item) => (
-                    <li key={item} style={{ ...sans, fontSize: '0.72rem', color: 'rgba(14,42,82,0.5)', letterSpacing: '0.03em' }}>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </Rise>
         ))}
@@ -579,10 +584,11 @@ function MpPlan() {
 
       <Rise delay={0.2}>
         <p style={{
-          ...sans, fontSize: '0.78rem', letterSpacing: '0.08em', color: 'rgba(14,42,82,0.5)',
-          marginTop: '2.25rem', textAlign: 'center',
+          ...sans, fontSize: '0.78rem', letterSpacing: '0.04em', color: 'rgba(14,42,82,0.5)',
+          marginTop: '2.25rem', textAlign: 'center', maxWidth: '60ch', marginLeft: 'auto', marginRight: 'auto',
         }}>
-          Inversión total del programa: <strong style={{ color: INK }}>USD 265.000–300.000</strong> · en dos desembolsos contra hitos verificables
+          Dos fases, en desembolsos contra hitos verificables. El alcance y los montos se
+          definen junto a YPF según las hectáreas y el ritmo acordados.
         </p>
       </Rise>
     </Section>
@@ -784,7 +790,7 @@ const CONTRATOS = [
   {
     num: 'I',
     title: 'Desarrollo de proveedor estratégico',
-    body: 'YPF financia benchmark y piloto en dos desembolsos contra hitos verificables: siembra completada y primer corte de datos; material certificado por INTI. USD 265.000–300.000 en 24 meses.',
+    body: 'YPF financia benchmark y piloto en dos desembolsos contra hitos verificables: siembra completada y primer corte de datos; sistema constructivo certificado. El monto se acuerda según el alcance y las hectáreas.',
   },
   {
     num: 'II',
@@ -1066,7 +1072,7 @@ function MpUpside() {
 const TIMELINE = [
   { year: '2026', text: 'Firma y siembra del benchmark en Neuquén y Mendoza. Se suma Joaquín Suárez Irigoyen para liderar la certificación de carbono (relación con EcoGaia).' },
   { year: '2027', text: 'Arrancan las obras de Argentina LNG. Primeros bloques del piloto hempcrete.' },
-  { year: '2028', text: 'Viviendas piloto construidas. Certificación INTI del sistema constructivo.' },
+  { year: '2028', text: 'Viviendas piloto construidas. Certificación del sistema constructivo.' },
   { year: '2029–30', text: 'Escala: sociedades agrícolas, planta de procesamiento, campamentos permanentes.' },
   { year: '2031', text: 'Primera exportación de Argentina LNG con la huella de carbono resuelta con activos propios.' },
 ]
