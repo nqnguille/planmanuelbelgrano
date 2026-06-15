@@ -146,25 +146,27 @@ function MpApertura() {
       }} />
       <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '6rem 1.5rem 4rem', maxWidth: '880px' }}>
         <Rise>
-          <Eyebrow>Preparado para YPF · Junio 2026</Eyebrow>
+          <Eyebrow>Diseñado para YPF · Junio 2026</Eyebrow>
         </Rise>
         <Rise delay={0.12}>
           <h1 style={{
             ...serif, fontStyle: 'italic',
             fontSize: 'clamp(3.2rem, 8vw, 7rem)', lineHeight: 1.02, color: CREAM, margin: '0 0 2rem 0',
           }}>
-            El masterplan.
+            YPF pone primera
+            <br />
+            en una industria nueva.
           </h1>
         </Rise>
         <Rise delay={0.24}>
           <p style={{
             ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
-            lineHeight: 1.75, color: 'rgba(243,241,231,0.6)', maxWidth: '56ch', margin: '0 auto',
+            lineHeight: 1.75, color: 'rgba(243,241,231,0.6)', maxWidth: '58ch', margin: '0 auto',
           }}>
-            Una propuesta para que YPF lidere una industria nueva: cáñamo industrial,
-            materiales de construcción y créditos de carbono en la misma cuenca que
-            Vaca Muerta. Nosotros ponemos en marcha la rueda — los primeros eslabones.
-            De la semilla a la llave.
+            El cáñamo industrial es una industria enorme que todavía no tiene dueño en la
+            Argentina. El Plan Manuel Belgrano llega para encajar en la cultura y los
+            objetivos de YPF: materiales de construcción y créditos de carbono en la misma
+            cuenca que Vaca Muerta. De la semilla a la llave.
           </p>
         </Rise>
         <Rise delay={0.38}>
@@ -172,7 +174,7 @@ function MpApertura() {
             ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase',
             color: 'rgba(242,181,68,0.6)', marginTop: '3rem',
           }}>
-            Flora Cáñamo Neuquino SRL · Licencia ARICCAME 2024 · Neuquén
+            Flora Cáñamo Neuquino · Neuquén
           </p>
         </Rise>
       </div>
@@ -189,7 +191,7 @@ function MpApertura() {
 /* ---------- 01 · la oportunidad ---------- */
 
 const OPP_STATS = [
-  { value: '40.000', label: 'puestos de trabajo proyectados por Argentina LNG' },
+  { value: '40.000', label: 'operadores que suma Vaca Muerta hacia 2031' },
   { value: '2.800', label: 'pozos a perforar en los próximos 5 años' },
   { value: 'USD 24.000M', label: 'el project finance más grande de la historia de Latinoamérica' },
   { value: '2027', label: 'inicio de obras — la gente llega antes que la infraestructura' },
@@ -201,16 +203,17 @@ function MpOportunidad() {
       <Rise><Eyebrow dark>01 · La oportunidad</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 dark size="xl">
-          Vaca Muerta va a sumar 40.000 trabajadores.
+          Vaca Muerta va a sumar 40.000 operadores.
           <br />
-          La pregunta operativa es dónde van a vivir.
+          Es una ciudad entera llegando a la meseta.
         </H2>
       </Rise>
       <Rise delay={0.16}>
         <Body dark>
-          Argentina LNG arranca obras en 2027. Añelo ya multiplicó su población y el alojamiento
-          es uno de los costos ocultos del yacimiento: horas de viaje, campamentos transitorios,
-          rotación. Cada hora arriba de una camioneta es productividad que el privado paga.
+          Entre 2027 y 2031, Argentina LNG y la expansión de Vaca Muerta traen cuarenta mil
+          operadores a la región. No es un pico pasajero: es población nueva, permanente, que
+          necesita dónde vivir cerca del pozo — rápido, con calidad y a la temperatura del
+          invierno patagónico.
         </Body>
       </Rise>
 
@@ -234,28 +237,28 @@ function MpOportunidad() {
       </div>
 
       <Rise delay={0.2}>
-        <blockquote style={{
-          margin: 0, borderLeft: `3px solid ${GOLD}`, paddingLeft: 'clamp(1.25rem, 2.5vw, 2rem)', maxWidth: '720px',
-        }}>
+        <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 'clamp(1.25rem, 2.5vw, 2rem)', maxWidth: '760px' }}>
           <p style={{
-            ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2.2vw, 1.9rem)',
-            lineHeight: 1.35, color: INK, margin: '0 0 0.75rem 0',
+            ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2.4vw, 2.1rem)',
+            lineHeight: 1.3, color: INK, margin: '0 0 1rem 0',
           }}>
-            “Van a llegar con buena temperatura, con internet, con calidad, en poco tiempo…
-            van a estar más frescos para trabajar. Y eso es productividad.”
+            El alojamiento es uno de los costos ocultos del yacimiento.
           </p>
-          <footer style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)' }}>
-            Horacio Marín · sobre el tren Neuquén–Añelo · Dínamo, 2026
-          </footer>
-        </blockquote>
+          <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78, color: 'rgba(14,42,82,0.68)', margin: 0 }}>
+            Horas de viaje, campamentos transitorios, rotación: cada operador mal alojado es
+            productividad que se paga. Y un déficit de vivienda de esta escala no lo resuelve
+            la construcción tradicional, que es lenta, importa materiales y depende del clima.
+          </p>
+        </div>
       </Rise>
       <Rise delay={0.28}>
         <p style={{
-          ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78,
-          color: 'rgba(14,42,82,0.68)', maxWidth: '62ch', marginTop: '2rem',
+          ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)', lineHeight: 1.78,
+          color: INK, maxWidth: '62ch', marginTop: '2.25rem',
         }}>
-          El mismo razonamiento aplica a la vivienda. Este plan produce el material y las casas
-          de ese crecimiento, con una cadena de suministro que nace al lado del pozo.
+          Ahí está la oportunidad: <strong style={{ fontWeight: 500 }}>producir las viviendas y
+          los materiales de ese crecimiento desde la misma cuenca</strong>, con una cadena que
+          nace al lado del pozo y emplea a la propia gente que llega.
         </p>
       </Rise>
     </Section>
@@ -271,7 +274,15 @@ const SPECS = [
   { value: '+500 años', label: 'Vida útil', detail: 'Norma europea EN 16101. Sistema constructivo usado en más de 50 países.' },
 ]
 
-const CHAIN = ['Semilla', 'Cultivo', 'Procesamiento', 'Hempcrete', 'Vivienda']
+const SEED_TO_KEY = [
+  { n: '01', name: 'Semilla', desc: 'Variedad de cáñamo certificada, adaptada a la ecorregión.' },
+  { n: '02', name: 'Cultivo', desc: '120 días a campo. La planta captura CO₂ mientras crece.', carbon: true },
+  { n: '03', name: 'Cosecha', desc: 'Se aprovecha la planta entera, sin desperdicio.' },
+  { n: '04', name: 'Procesamiento', desc: 'Decortización: se separan el shiv (médula) y la fibra.' },
+  { n: '05', name: 'Material', desc: 'El shiv + aglutinante forman el hempcrete: bloque o vertido.' },
+  { n: '06', name: 'Construcción', desc: 'Muros que aíslan, respiran y fijan el carbono por siglos.', carbon: true },
+  { n: '07', name: 'Vivienda', desc: 'La llave. Una casa hecha de la misma cuenca que el gas.', end: true },
+]
 
 function MpSolucion() {
   return (
@@ -313,28 +324,36 @@ function MpSolucion() {
         ))}
       </div>
 
+      {/* Gráfico: de la semilla a la llave */}
+      <Rise delay={0.18}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, margin: '3.75rem 0 1.5rem' }}>
+          El modelo de la semilla a la llave — siete pasos
+        </p>
+      </Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.16)', border: '1px solid rgba(242,181,68,0.16)' }}>
+        {SEED_TO_KEY.map((s, i) => (
+          <Rise key={s.n} delay={0.06 + i * 0.06}>
+            <div style={{
+              background: s.end ? 'rgba(91,196,106,0.08)' : INK, height: '100%',
+              padding: 'clamp(1.25rem, 2vw, 1.6rem)', display: 'flex', flexDirection: 'column', gap: '0.5rem',
+              position: 'relative',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.25rem', color: s.end ? GREEN_DARK : 'rgba(242,181,68,0.7)' }}>{s.n}</span>
+                {s.carbon && <span style={{ ...sans, fontSize: '0.5rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: GREEN_DARK, border: `1px solid ${GREEN_DARK}`, padding: '0.15rem 0.35rem' }}>CO₂</span>}
+                {s.end && <span style={{ ...sans, fontSize: '0.5rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: GREEN_DARK }}>★</span>}
+              </div>
+              <h3 style={{ ...sans, fontSize: '0.92rem', fontWeight: 600, color: s.end ? GREEN_DARK : CREAM, margin: 0, letterSpacing: '0.01em' }}>{s.name}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.72rem', lineHeight: 1.55, color: 'rgba(243,241,231,0.55)', margin: 0 }}>{s.desc}</p>
+            </div>
+          </Rise>
+        ))}
+      </div>
       <Rise delay={0.2}>
-        <div style={{
-          display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem',
-          borderTop: '1px solid rgba(242,181,68,0.18)', paddingTop: '2rem',
-        }}>
-          <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(243,241,231,0.4)', marginRight: '0.5rem' }}>
-            De la semilla a la llave
-          </span>
-          {CHAIN.map((step, i) => (
-            <span key={step} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span style={{
-                ...sans, fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase',
-                color: i === CHAIN.length - 1 ? GREEN_DARK : 'rgba(243,241,231,0.75)',
-                border: `1px solid ${i === CHAIN.length - 1 ? 'rgba(91,196,106,0.4)' : 'rgba(243,241,231,0.18)'}`,
-                padding: '0.45rem 0.9rem',
-              }}>
-                {step}
-              </span>
-              {i < CHAIN.length - 1 && <span style={{ color: 'rgba(242,181,68,0.5)', fontSize: '0.7rem' }}>→</span>}
-            </span>
-          ))}
-        </div>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.5)', maxWidth: '64ch', marginTop: '1.5rem' }}>
+          La planta captura carbono en el cultivo y lo fija en la pared para siempre. Cada
+          paso es empleo técnico — y todos ocurren en la misma cuenca, del campo a la llave.
+        </p>
       </Rise>
     </Section>
   )
@@ -350,28 +369,28 @@ function MpActivo() {
           <Rise><Eyebrow dark>03 · El activo</Eyebrow></Rise>
           <Rise delay={0.08}>
             <H2 dark>
-              La rueda arranca en cualquier
+              Replicable en cualquier
               <br />
-              hectárea que YPF elija.
+              hectárea que YPF nos ceda.
             </H2>
           </Rise>
           <Rise delay={0.16}>
             <Body dark>
-              La tierra del benchmark de Mendoza ya está asegurada: 4.000 hectáreas en
-              Valle de Uco. En Neuquén, el plan se adapta a cualquier superficie en
-              cualquier área — Mari Menuco, Barreales, Añelo o donde YPF decida. Es la
-              misma lógica que monetizar gas disponible con data centers, aplicada al
-              territorio: cada hectárea sembrada genera biomasa, materiales de
-              construcción y créditos certificables.
+              El plan no depende de un campo en particular: es un modelo que se replica
+              igual sobre cualquier superficie que YPF asigne, en cualquier clima y cualquier
+              área. La tierra de Mendoza (4.000 ha en Valle de Uco) es la primera prueba; de
+              ahí en más, donde YPF lo decida — Mari Menuco, Barreales, Añelo o el lote que
+              elija. Cada hectárea cedida se convierte en biomasa, materiales de construcción
+              y créditos certificables.
             </Body>
           </Rise>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(14,42,82,0.15)', border: '1px solid rgba(14,42,82,0.15)' }}>
           {[
-            { value: '4.000 ha', label: 'Mendoza · Valle de Uco — tierra asegurada para el benchmark' },
-            { value: 'A elección', label: 'Neuquén · el plan se adapta a la superficie que YPF defina' },
-            { value: '50.000 ha', label: 'Potencial irrigable de la provincia del Neuquén a escala' },
-            { value: '10–15 t CO₂', label: 'captura por hectárea por año, a validar en benchmark' },
+            { value: '4.000 ha', label: 'Mendoza · Valle de Uco — primera prueba, tierra asegurada' },
+            { value: 'Cualquier área', label: 'el modelo se replica igual sobre la tierra que YPF ceda' },
+            { value: '50.000 ha', label: 'potencial irrigable de Neuquén a escala plena' },
+            { value: '10–15 t CO₂', label: 'captura por hectárea/año, a validar en benchmark' },
           ].map((row, i) => (
             <Rise key={row.value} delay={0.12 + i * 0.08}>
               <div style={{ background: PARCHMENT, padding: '1.5rem 1.75rem', display: 'flex', alignItems: 'baseline', gap: '1.25rem' }}>
@@ -1245,7 +1264,7 @@ function MpCierre() {
             ...sans, fontSize: '0.56rem', letterSpacing: '0.16em', textTransform: 'uppercase',
             color: 'rgba(243,241,231,0.22)', textAlign: 'center', marginTop: '4rem',
           }}>
-            Guillermo Sandoval · Flora Cáñamo Neuquino SRL · Brown 420, Neuquén · Licencia ARICCAME 2024
+            Guillermo Sandoval · Flora Cáñamo Neuquino · Brown 420, Neuquén
           </p>
         </Rise>
       </div>
