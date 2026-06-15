@@ -193,8 +193,8 @@ function MpApertura() {
 
 const OPP_STATS = [
   { value: '40.000', label: 'operadores que suma Vaca Muerta hacia 2031' },
-  { value: '2.800', label: 'pozos a perforar en los próximos 5 años' },
-  { value: 'USD 24.000M', label: 'el project finance más grande de la historia de Latinoamérica' },
+  { value: 'USD 15.000M', label: 'exportación anual de Argentina LNG desde 2030' },
+  { value: '30 años', label: 'estabilidad jurídica e impositiva del RIGI para las grandes inversiones' },
   { value: '2027', label: 'inicio de obras — la gente llega antes que la infraestructura' },
 ]
 
@@ -211,10 +211,10 @@ function MpOportunidad() {
       </Rise>
       <Rise delay={0.16}>
         <Body dark>
-          Entre 2027 y 2031, Argentina LNG y la expansión de Vaca Muerta traen cuarenta mil
-          operadores a la región. No es un pico pasajero: es población nueva, permanente, que
-          necesita dónde vivir cerca del pozo — rápido, con calidad y a la temperatura del
-          invierno patagónico.
+          Entre 2027 y 2031, Argentina LNG —el cuarto pilar de YPF— y la expansión de Vaca
+          Muerta traen cuarenta mil operadores a la región. No es un pico pasajero: es población
+          nueva, permanente, que necesita dónde vivir cerca del pozo — rápido, con calidad y a
+          la temperatura del invierno patagónico.
         </Body>
       </Rise>
 
@@ -874,7 +874,7 @@ const PATAS = [
   },
   {
     n: '04', verb: 'Regenerar', what: 'Remover carbono de la atmósfera',
-    detail: 'Hasta hoy quedó vacía: la ambición Net Zero de YPF cubre solo Alcance 1+2, y la jerarquía de mitigación manda reducir antes de compensar. Su propio Reporte 2024 dice que la compañía busca «soluciones basadas en la naturaleza» — todavía sin un programa que las opere. El cáñamo → hempcrete y biochar es una, lista para arrancar.',
+    detail: 'Hasta hoy quedó vacía: la ambición Net Zero de YPF cubre solo Alcance 1+2, y su jerarquía de mitigación termina en «compensar», el escalón que todavía no opera. Lo que hace en naturaleza —plantar árboles nativos, rehabilitar áreas— es biodiversidad, no remoción de carbono a escala. El cáñamo → hempcrete y biochar sí lo es, lista para arrancar.',
     tag: 'Propuesta', unit: 'Plan Manuel Belgrano', ypf: false,
   },
 ]
@@ -947,6 +947,22 @@ function MpEncaje() {
           en la naturaleza, lista para operar — y la única palanca que <strong style={{ fontWeight: 500 }}>remueve
           CO₂ de la atmósfera</strong>, a un costo por debajo de la captura industrial.
         </p>
+      </Rise>
+
+      {/* Scope 3 — el grueso sin palanca */}
+      <Rise delay={0.3}>
+        <div style={{ background: '#fff', border: '1px solid rgba(14,42,82,0.12)', borderLeft: `3px solid ${GREEN_DARK}`, padding: 'clamp(1.5rem, 3vw, 2.25rem)', marginTop: '2.5rem' }}>
+          <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.75rem 0' }}>
+            Lo que agranda la oportunidad
+          </p>
+          <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.2vw, 1.05rem)', lineHeight: 1.75, color: 'rgba(14,42,82,0.72)', margin: 0, maxWidth: '70ch' }}>
+            La meta Net Zero de YPF cubre solo Alcance 1+2. El <strong style={{ color: INK, fontWeight: 500 }}>Alcance 3
+            —la combustión de los combustibles que vende, el grueso de su huella</strong>— no tiene
+            ninguna palanca que lo baje. Reducir, evitar y capturar no lo alcanzan: solo la remoción
+            puede compensarlo. Ahí es donde una pata regenerativa deja de ser un complemento y pasa
+            a ser la única respuesta posible.
+          </p>
+        </div>
       </Rise>
 
       {/* Puntos de apoyo */}
@@ -1155,44 +1171,98 @@ function MpBiochar() {
 
 /* ---------- 07 · la ventana ---------- */
 
-const TIMELINE = [
-  { year: '2026', text: 'Firma y siembra del benchmark en Neuquén y Mendoza. Acuerdo de certificación de carbono con EcoGaia (Verra / Gold Standard / Puro).' },
-  { year: '2027', text: 'Arrancan las obras de Argentina LNG. Primeros bloques del piloto hempcrete.' },
-  { year: '2028', text: 'Viviendas piloto construidas. Certificación del sistema constructivo.' },
-  { year: '2029–30', text: 'Escala: sociedades agrícolas, planta de procesamiento, campamentos permanentes.' },
-  { year: '2031', text: 'Primera exportación de Argentina LNG con la huella de carbono resuelta con activos propios.' },
+const VENTANA_ROWS = [
+  {
+    year: '2026',
+    pmb: ['Firma del acuerdo y siembra del benchmark (Neuquén + Mendoza)', 'Acuerdo de certificación con EcoGaia', 'Núcleo de medición AI-First en marcha'],
+    ypf: ['50% de electricidad comprada renovable', 'Metano −10% vs 2021', 'FID de Argentina LNG (objetivo de fin de año)'],
+  },
+  {
+    year: '2027',
+    pmb: ['Variedad campeona por ecorregión: primer corte de datos', 'Primeros bloques del piloto de hempcrete'],
+    ypf: ['Inicio de obras de Argentina LNG', 'Vaca Muerta Sur: primera exportación de crudo', '70% de combustibles ultrabajos en azufre'],
+  },
+  {
+    year: '2028',
+    pmb: ['Viviendas piloto construidas', 'Sistema constructivo certificado', 'Primeros créditos de carbono verificados'],
+    ypf: ['Inicio de distribución de dividendos', 'Construcción de la planta de GNL'],
+  },
+  {
+    year: '2029–30',
+    pmb: ['Escala: sociedades agrícolas + planta de procesamiento', 'Segunda línea de biochar en producción', 'Barrios y campamentos en hempcrete'],
+    ypf: ['Cero quema rutinaria de antorcha', 'Metano −30% vs 2021', 'Intensidad <10 kgCO₂e/BEP en Upstream NOC'],
+  },
+  {
+    year: '2031',
+    pmb: ['Créditos de carbono a escala (≈ USD 27,5M/año)', 'La huella del GNL, acompañada con remoción propia'],
+    ypf: ['Primeras exportaciones de Argentina LNG', 'Exportaciones energéticas hacia USD 30.000M+/año'],
+  },
 ]
+
+function RoadCol({ items, side }: { items: string[]; side: 'pmb' | 'ypf' }) {
+  const isPmb = side === 'pmb'
+  const accent = isPmb ? GREEN_DARK : GOLD
+  return (
+    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', textAlign: isPmb ? 'right' : 'left' }}>
+      {items.map((t) => (
+        <li key={t} style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.72rem, 0.95vw, 0.85rem)', lineHeight: 1.5, color: 'rgba(243,241,231,0.72)', position: 'relative', [isPmb ? 'paddingRight' : 'paddingLeft']: '0.85rem' } as CSSProperties}>
+          <span style={{ position: 'absolute', [isPmb ? 'right' : 'left']: 0, top: '0.35em', width: '4px', height: '4px', background: accent, borderRadius: '50%' } as CSSProperties} />
+          {t}
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 function MpVentana() {
   return (
     <Section bg={DUSK} id="ventana">
       <Rise><Eyebrow>10 · La ventana 2026–2031</Eyebrow></Rise>
       <Rise delay={0.08}>
-        <H2>Cada hito del plan acompaña un hito de YPF.</H2>
+        <H2>Nuestro roadmap corre al lado del de YPF.</H2>
+      </Rise>
+      <Rise delay={0.14}>
+        <Body max="64ch">
+          Cada hito del plan acompaña un hito real de YPF — sus propias metas del Reporte 2024
+          y del Plan Argentina LNG. Dos columnas, una sola ventana de tiempo.
+        </Body>
       </Rise>
 
-      <div style={{ margin: '3rem 0 3.5rem', display: 'flex', flexDirection: 'column' }}>
-        {TIMELINE.map((t, i) => (
-          <Rise key={t.year} delay={0.08 + i * 0.08}>
-            <div style={{
-              display: 'flex', gap: 'clamp(1.25rem, 3vw, 3rem)', alignItems: 'baseline',
-              padding: '1.4rem 0', borderBottom: i < TIMELINE.length - 1 ? '1px solid rgba(243,241,231,0.08)' : 'none',
-            }}>
-              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.4vw, 2.2rem)', color: i === TIMELINE.length - 1 ? GREEN_DARK : GOLD, lineHeight: 1, minWidth: 'clamp(5.5rem, 9vw, 8rem)' }}>
-                {t.year}
-              </span>
-              <span style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.85rem, 1.1vw, 0.98rem)', lineHeight: 1.65, color: 'rgba(243,241,231,0.6)' }}>
-                {t.text}
-              </span>
-            </div>
-          </Rise>
-        ))}
+      {/* Encabezados */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) clamp(3.5rem, 9vw, 6rem) minmax(0,1fr)', alignItems: 'center', margin: '2.75rem 0 0', paddingBottom: '0.9rem', borderBottom: '1px solid rgba(243,241,231,0.12)' }}>
+        <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GREEN_DARK, fontWeight: 600, textAlign: 'right' }}>Plan Manuel Belgrano</span>
+        <span />
+        <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, fontWeight: 600, textAlign: 'left' }}>YPF</span>
       </div>
 
+      {/* Filas por año */}
+      {VENTANA_ROWS.map((r, i) => (
+        <Rise key={r.year} delay={0.06 + i * 0.07}>
+          <div style={{
+            display: 'grid', gridTemplateColumns: 'minmax(0,1fr) clamp(3.5rem, 9vw, 6rem) minmax(0,1fr)',
+            alignItems: 'start', gap: 'clamp(0.5rem, 2vw, 1.5rem)',
+            padding: 'clamp(1.5rem, 2.5vw, 2rem) 0', borderBottom: '1px solid rgba(243,241,231,0.08)',
+          }}>
+            <RoadCol items={r.pmb} side="pmb" />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', color: CREAM, lineHeight: 1, whiteSpace: 'nowrap', borderTop: `2px solid ${i === VENTANA_ROWS.length - 1 ? GREEN_DARK : 'rgba(242,181,68,0.5)'}`, paddingTop: '0.5rem' }}>{r.year}</span>
+            </div>
+            <RoadCol items={r.ypf} side="ypf" />
+          </div>
+        </Rise>
+      ))}
+
       <Rise delay={0.2}>
-        <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78, color: 'rgba(243,241,231,0.55)', maxWidth: '60ch', marginTop: '1rem' }}>
-          Cada hito del plan le entrega a YPF un activo que ya está operando: datos,
-          material certificado, créditos verificados, viviendas en pie.
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0 0' }}>
+          <span style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.06em', color: 'rgba(243,241,231,0.45)' }}>
+            2050 — Ambición de YPF: Net Zero en Alcance 1+2
+          </span>
+        </div>
+      </Rise>
+      <Rise delay={0.26}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.05rem)', lineHeight: 1.78, color: 'rgba(243,241,231,0.6)', maxWidth: '62ch', marginTop: '2rem' }}>
+          A cada paso, el plan le entrega a YPF un activo que ya está operando: datos,
+          material certificado, créditos verificados y viviendas en pie.
         </p>
       </Rise>
     </Section>
