@@ -1,8 +1,21 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import type { CSSProperties, ReactNode } from 'react'
+import { useState, useEffect, type CSSProperties, type ReactNode } from 'react'
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
+
+/* Hook: detecta viewport angosto para apilar layouts en mobile. */
+function useNarrow(bp = 680) {
+  const [narrow, setNarrow] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width:${bp}px)`)
+    const on = () => setNarrow(mq.matches)
+    on()
+    mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [bp])
+  return narrow
+}
 
 /* ============================================================
    PLAN MANUEL BELGRANO — MASTERPLAN (sitio gateado)
@@ -1199,14 +1212,15 @@ const VENTANA_ROWS = [
   },
 ]
 
-function RoadCol({ items, side }: { items: string[]; side: 'pmb' | 'ypf' }) {
+function RoadCol({ items, side, stacked }: { items: string[]; side: 'pmb' | 'ypf'; stacked?: boolean }) {
   const isPmb = side === 'pmb'
   const accent = isPmb ? GREEN_DARK : GOLD
+  const right = isPmb && !stacked
   return (
-    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', textAlign: isPmb ? 'right' : 'left' }}>
+    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem', textAlign: right ? 'right' : 'left' }}>
       {items.map((t) => (
-        <li key={t} style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.72rem, 0.95vw, 0.85rem)', lineHeight: 1.5, color: 'rgba(243,241,231,0.72)', position: 'relative', [isPmb ? 'paddingRight' : 'paddingLeft']: '0.85rem' } as CSSProperties}>
-          <span style={{ position: 'absolute', [isPmb ? 'right' : 'left']: 0, top: '0.35em', width: '4px', height: '4px', background: accent, borderRadius: '50%' } as CSSProperties} />
+        <li key={t} style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.78rem, 0.95vw, 0.85rem)', lineHeight: 1.5, color: 'rgba(243,241,231,0.72)', position: 'relative', [right ? 'paddingRight' : 'paddingLeft']: '0.85rem' } as CSSProperties}>
+          <span style={{ position: 'absolute', [right ? 'right' : 'left']: 0, top: '0.35em', width: '4px', height: '4px', background: accent, borderRadius: '50%' } as CSSProperties} />
           {t}
         </li>
       ))}
@@ -1215,6 +1229,7 @@ function RoadCol({ items, side }: { items: string[]; side: 'pmb' | 'ypf' }) {
 }
 
 function MpVentana() {
+  const narrow = useNarrow()
   return (
     <Section bg={DUSK} id="ventana">
       <Rise><Eyebrow>10 · La ventana 2026–2031</Eyebrow></Rise>
@@ -1228,29 +1243,46 @@ function MpVentana() {
         </Body>
       </Rise>
 
-      {/* Encabezados */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) clamp(3.5rem, 9vw, 6rem) minmax(0,1fr)', alignItems: 'center', margin: '2.75rem 0 0', paddingBottom: '0.9rem', borderBottom: '1px solid rgba(243,241,231,0.12)' }}>
-        <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GREEN_DARK, fontWeight: 600, textAlign: 'right' }}>Plan Manuel Belgrano</span>
-        <span />
-        <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, fontWeight: 600, textAlign: 'left' }}>YPF</span>
-      </div>
-
-      {/* Filas por año */}
-      {VENTANA_ROWS.map((r, i) => (
-        <Rise key={r.year} delay={0.06 + i * 0.07}>
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'minmax(0,1fr) clamp(3.5rem, 9vw, 6rem) minmax(0,1fr)',
-            alignItems: 'start', gap: 'clamp(0.5rem, 2vw, 1.5rem)',
-            padding: 'clamp(1.5rem, 2.5vw, 2rem) 0', borderBottom: '1px solid rgba(243,241,231,0.08)',
-          }}>
-            <RoadCol items={r.pmb} side="pmb" />
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', color: CREAM, lineHeight: 1, whiteSpace: 'nowrap', borderTop: `2px solid ${i === VENTANA_ROWS.length - 1 ? GREEN_DARK : 'rgba(242,181,68,0.5)'}`, paddingTop: '0.5rem' }}>{r.year}</span>
-            </div>
-            <RoadCol items={r.ypf} side="ypf" />
+      {narrow ? (
+        /* ---- Mobile: apilado (año → PMB → YPF) ---- */
+        <div style={{ marginTop: '2.5rem' }}>
+          {VENTANA_ROWS.map((r, i) => (
+            <Rise key={r.year} delay={0.05 + i * 0.06}>
+              <div style={{ padding: '1.75rem 0', borderTop: '1px solid rgba(243,241,231,0.1)' }}>
+                <span style={{ ...serif, fontStyle: 'italic', fontSize: '2rem', color: i === VENTANA_ROWS.length - 1 ? GREEN_DARK : GOLD, lineHeight: 1, display: 'block', marginBottom: '1.1rem' }}>{r.year}</span>
+                <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GREEN_DARK, fontWeight: 600, margin: '0 0 0.6rem 0' }}>Plan Manuel Belgrano</p>
+                <RoadCol items={r.pmb} side="pmb" stacked />
+                <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, fontWeight: 600, margin: '1.1rem 0 0.6rem 0' }}>YPF</p>
+                <RoadCol items={r.ypf} side="ypf" stacked />
+              </div>
+            </Rise>
+          ))}
+        </div>
+      ) : (
+        /* ---- Desktop: side-by-side ---- */
+        <>
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) clamp(3.5rem, 9vw, 6rem) minmax(0,1fr)', alignItems: 'center', margin: '2.75rem 0 0', paddingBottom: '0.9rem', borderBottom: '1px solid rgba(243,241,231,0.12)' }}>
+            <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GREEN_DARK, fontWeight: 600, textAlign: 'right' }}>Plan Manuel Belgrano</span>
+            <span />
+            <span style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, fontWeight: 600, textAlign: 'left' }}>YPF</span>
           </div>
-        </Rise>
-      ))}
+          {VENTANA_ROWS.map((r, i) => (
+            <Rise key={r.year} delay={0.06 + i * 0.07}>
+              <div style={{
+                display: 'grid', gridTemplateColumns: 'minmax(0,1fr) clamp(3.5rem, 9vw, 6rem) minmax(0,1fr)',
+                alignItems: 'start', gap: 'clamp(0.5rem, 2vw, 1.5rem)',
+                padding: 'clamp(1.5rem, 2.5vw, 2rem) 0', borderBottom: '1px solid rgba(243,241,231,0.08)',
+              }}>
+                <RoadCol items={r.pmb} side="pmb" />
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 2vw, 1.8rem)', color: CREAM, lineHeight: 1, whiteSpace: 'nowrap', borderTop: `2px solid ${i === VENTANA_ROWS.length - 1 ? GREEN_DARK : 'rgba(242,181,68,0.5)'}`, paddingTop: '0.5rem' }}>{r.year}</span>
+                </div>
+                <RoadCol items={r.ypf} side="ypf" />
+              </div>
+            </Rise>
+          ))}
+        </>
+      )}
 
       <Rise delay={0.2}>
         <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0 0' }}>
