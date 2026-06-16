@@ -937,9 +937,15 @@ function MpEncaje() {
 /* ---------- 06 · el upside ---------- */
 
 const SENSIBILIDAD = [
-  { escenario: 'Mercado voluntario', precio: 'USD 15/t', fase1: 'USD 0,6M/año', escala: 'USD 7,5M/año' },
-  { escenario: 'Promedio O&G NetZero', precio: 'USD 35/t', fase1: 'USD 1,4M/año', escala: 'USD 17,5M/año' },
-  { escenario: 'Precio sombra interno de YPF', precio: 'USD 55/t', fase1: 'USD 2,2M/año', escala: 'USD 27,5M/año' },
+  { escenario: 'Mercado voluntario · nature-based', precio: 'USD 30/t', fase1: 'USD 1,2M/año', escala: 'USD 15M/año' },
+  { escenario: 'Cumplimiento europeo · EU ETS', precio: 'USD 75/t', fase1: 'USD 3,0M/año', escala: 'USD 37,5M/año' },
+  { escenario: 'Remoción durable · biochar (BCR–Puro)', precio: 'USD 164/t', fase1: 'USD 6,6M/año', escala: 'USD 82M/año' },
+]
+
+const DIFERENCIAS = [
+  { t: 'Evitación', price: 'USD 5–30/t', body: 'Se paga por NO emitir: no deforestar, capturar metano. Lo más barato — y lo más cuestionado, porque es reversible y difícil de probar.' },
+  { t: 'Remoción', price: 'USD 50–150/t', body: 'Se saca CO₂ de la atmósfera y se almacena. Más caro y mucho más valorado: es lo que el mercado serio busca.' },
+  { t: 'Remoción durable (la nuestra)', price: 'USD 100–200/t', body: 'Remoción que dura: hempcrete +500 años, biochar +1.000. La categoría premium del mercado (durable CDR), certificable y trazable.', ours: true },
 ]
 
 function MpUpside() {
@@ -948,23 +954,79 @@ function MpUpside() {
       <Rise><Eyebrow dark>07 · El upside</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 dark>
-          La captura de carbono cuesta entre USD 15 y 345 la tonelada.
+          No todos los créditos valen lo mismo.
           <br />
-          Salvo cuando deja una pared construida.
+          Los nuestros son los que más se pagan.
         </H2>
       </Rise>
       <Rise delay={0.16}>
-        <Body dark max="70ch">
-          El hempcrete fija 75–165 kg de CO₂ por m³ con margen positivo: el material se vende.
-          Para valorar ese carbono no hace falta inventar un precio — usamos el de YPF. Su
-          Comité de Inversiones Críticas evalúa cada proyecto a un <strong style={{ color: INK, fontWeight: 500 }}>precio
-          sombra de USD 55 por tonelada de CO₂e</strong> (Reporte de Sustentabilidad 2024). A ese
-          número —el suyo— la cuenta es esta.
+        <Body dark max="72ch">
+          El cáñamo produce <strong style={{ color: INK, fontWeight: 500 }}>créditos de remoción
+          durable</strong>: el carbono que la planta capta queda fijado en la pared (hempcrete)
+          y en el suelo (biochar) por siglos. Es la categoría más valorada del mercado. Sacar
+          CO₂ del aire con máquinas —captura directa— cuesta hoy entre USD 340 y 1.900 por
+          tonelada; nosotros lo fijamos con margen positivo, porque además vendemos el material.
         </Body>
       </Rise>
 
+      {/* Cómo se calcula */}
       <Rise delay={0.18}>
-        <div style={{ margin: '3rem 0', overflowX: 'auto' }}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '3rem 0 1.25rem' }}>
+          Cómo se calcula el ingreso por carbono
+        </p>
+      </Rise>
+      <Rise delay={0.2}>
+        <div style={{ background: '#fff', border: '1px solid rgba(14,42,82,0.12)', padding: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', gap: '0.6rem' }}>
+            {[
+              { v: '10–15 t CO₂', l: 'captura por hectárea / año' },
+              { op: '×' },
+              { v: 'hectáreas', l: 'la tierra que YPF ceda' },
+              { op: '×' },
+              { v: 'USD / t', l: 'precio del crédito' },
+              { op: '=' },
+              { v: 'ingreso anual', l: 'recurrente', res: true },
+            ].map((x, i) => x.op ? (
+              <span key={i} style={{ ...serif, fontStyle: 'italic', fontSize: '1.6rem', color: GOLD, alignSelf: 'center' }}>{x.op}</span>
+            ) : (
+              <div key={i} style={{ flex: '1 1 130px', background: x.res ? 'rgba(91,196,106,0.1)' : 'rgba(14,42,82,0.04)', border: `1px solid ${x.res ? GREEN_DARK : 'rgba(14,42,82,0.1)'}`, padding: '0.9rem 1rem' }}>
+                <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1rem, 1.5vw, 1.3rem)', color: x.res ? '#2f8f3a' : INK, margin: '0 0 0.2rem 0', lineHeight: 1.1 }}>{x.v}</p>
+                <p style={{ ...sans, fontSize: '0.62rem', color: 'rgba(14,42,82,0.5)', margin: 0, lineHeight: 1.3 }}>{x.l}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.7)', marginTop: '1.5rem' }}>
+            <strong style={{ color: INK, fontWeight: 500 }}>Ejemplo:</strong> 4.000 ha × 10 t CO₂/ha × USD 75/t (precio europeo) = <strong style={{ color: '#2f8f3a', fontWeight: 600 }}>USD 3,0M por año</strong>. El volumen lo valida el benchmark con mediciones propias; lo único que cambia entre escenarios es el precio del crédito.
+          </p>
+        </div>
+      </Rise>
+
+      {/* Las diferencias entre créditos */}
+      <Rise delay={0.18}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '3rem 0 1.25rem' }}>
+          Por qué no todos los créditos valen igual
+        </p>
+      </Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'clamp(1rem, 2vw, 1.4rem)' }}>
+        {DIFERENCIAS.map((d, i) => (
+          <Rise key={d.t} delay={0.08 + i * 0.08}>
+            <div style={{ background: d.ours ? 'rgba(91,196,106,0.08)' : '#fff', border: `1px solid ${d.ours ? GREEN_DARK : 'rgba(14,42,82,0.12)'}`, borderTop: `2px solid ${d.ours ? GREEN_DARK : 'rgba(14,42,82,0.2)'}`, padding: 'clamp(1.4rem, 2.5vw, 1.8rem)', height: '100%' }}>
+              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 1.9vw, 1.6rem)', color: d.ours ? '#2f8f3a' : INK, margin: '0 0 0.3rem 0', lineHeight: 1.1 }}>{d.t}</h3>
+              <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.8rem 0' }}>{d.price}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.8rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.65)', margin: 0 }}>{d.body}</p>
+            </div>
+          </Rise>
+        ))}
+      </div>
+
+      {/* Tabla de sensibilidad */}
+      <Rise delay={0.18}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '3rem 0 0' }}>
+          Cuánto vale, a precios reales de mercado
+        </p>
+      </Rise>
+      <Rise delay={0.2}>
+        <div style={{ margin: '1.25rem 0 0', overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '560px' }}>
             <thead>
               <tr>
@@ -1001,22 +1063,25 @@ function MpUpside() {
         </div>
       </Rise>
       <Rise delay={0.2}>
-        <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.03em', color: 'rgba(14,42,82,0.5)', marginTop: '0.75rem' }}>
-          USD 55/tCO₂e es el precio sombra que YPF aplica desde 2019 en su Comité de Inversiones
-          Críticas para testear proyectos (Reporte de Sustentabilidad YPF 2024, Alcance 1+2). Los
-          escenarios de USD 15 y 35 son referencias de mercado.
+        <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.03em', color: 'rgba(14,42,82,0.5)', marginTop: '0.85rem' }}>
+          Precios 2025: mercado voluntario nature-based (USD 5–50/t); EU ETS, mercado de
+          cumplimiento europeo (~USD 60–90/t); remoción durable de biochar (BCR / registro
+          Puro), promedio USD 164/t. Volumen base 10 t CO₂/ha/año, conservador; el benchmark
+          mide el real. Como referencia interna, YPF testea sus propios proyectos a un precio
+          sombra de USD 55/t (Reporte 2024).
         </p>
       </Rise>
 
       <Rise delay={0.22}>
-        <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: '1.25rem', maxWidth: '70ch' }}>
+        <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: '1.25rem', maxWidth: '72ch', marginTop: '2rem' }}>
           <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(14,42,82,0.45)', margin: '0 0 0.5rem 0' }}>
-            Método
+            Por qué a precio de mercado y no a precio sombra
           </p>
           <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.65, color: 'rgba(14,42,82,0.65)', margin: 0 }}>
-            Rangos y sensibilidad en lugar de pronósticos puntuales. La base de cálculo
-            — 10–15 t CO₂/ha/año — se valida con mediciones propias durante el benchmark.
-            La segunda línea de carbono (biochar) se desarrolla en su propia sección.
+            El precio sombra es lo que YPF estaría dispuesta a pagar para evitar una tonelada
+            —una herramienta interna de decisión—, no lo que se recibe por vender el crédito.
+            Para estimar el ingreso usamos el precio real al que se transan los créditos de
+            remoción durable, que es la categoría de lo que producimos.
           </p>
         </div>
       </Rise>
@@ -1139,7 +1204,7 @@ const VENTANA_ROWS = [
   },
   {
     year: '2031',
-    pmb: ['Créditos de carbono a escala (≈ USD 27,5M/año)', 'La huella del GNL, acompañada con remoción propia'],
+    pmb: ['Créditos de carbono a escala (USD 15–82M/año según mercado)', 'La huella del GNL, acompañada con remoción propia'],
     ypf: ['Primeras exportaciones de Argentina LNG', 'Exportaciones energéticas hacia USD 30.000M+/año'],
   },
 ]
