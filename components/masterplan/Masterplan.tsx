@@ -288,85 +288,163 @@ const SPECS = [
   { value: '+500 años', label: 'Vida útil', detail: 'Norma europea EN 16101. Sistema constructivo usado en más de 50 países.' },
 ]
 
-const SEED_TO_KEY = [
-  { n: '01', name: 'Semilla', desc: 'Variedad de cáñamo certificada, adaptada a la ecorregión.' },
-  { n: '02', name: 'Cultivo', desc: '120 días a campo. La planta captura CO₂ mientras crece.', carbon: true },
-  { n: '03', name: 'Cosecha', desc: 'Se aprovecha la planta entera, sin desperdicio.' },
-  { n: '04', name: 'Procesamiento', desc: 'Decortización: se separan el shiv (médula) y la fibra.' },
-  { n: '05', name: 'Material', desc: 'El shiv + aglutinante forman el hempcrete: bloque o vertido.' },
-  { n: '06', name: 'Construcción', desc: 'Muros que aíslan, respiran y fijan el carbono por siglos.', carbon: true },
-  { n: '07', name: 'Vivienda', desc: 'La llave. Una casa hecha de la misma cuenca que el gas.', end: true },
+type Step = { n: string; img: string; name: string; data: string; carbon?: boolean; end?: boolean }
+
+const CADENA_STEPS: Step[] = [
+  { n: '01', img: '01-semilla', name: 'Semilla', data: 'Variedad certificada por ecorregión' },
+  { n: '02', img: '02-cultivo', name: 'Cultivo', data: '120 días · captura 10–15 t CO₂/ha', carbon: true },
+  { n: '03', img: '03-cosecha', name: 'Cosecha', data: 'Planta entera, sin desperdicio' },
+  { n: '04', img: '04-decorticacion', name: 'Decortización', data: 'Separa el shiv (médula) y la fibra' },
+  { n: '05', img: '05-mezclado', name: 'Mezclado', data: 'Shiv + aglutinante + agua' },
+  { n: '06', img: '06-material', name: 'Material', data: 'Hempcrete: fija 75–165 kg CO₂/m³', carbon: true },
+  { n: '07', img: '07-construccion', name: 'Construcción', data: 'Bloque premoldeado o vertido in situ' },
+  { n: '08', img: '08-vivienda', name: 'Vivienda', data: 'La llave · +500 años de vida útil', end: true },
 ]
 
-function MpSolucion() {
+const BIOCHAR_STEPS: Step[] = [
+  { n: 'B1', img: '09-pirolisis', name: 'Pirólisis', data: '~500 °C sin oxígeno, del residuo de fibra y polvo' },
+  { n: 'B2', img: '10-biochar', name: 'Biochar', data: 'Carbono estable +1.000 años · crédito BCR', carbon: true },
+]
+
+function StepCard({ s }: { s: Step }) {
   return (
-    <Section bg={INK} id="solucion">
-      <Rise><Eyebrow>02 · La solución</Eyebrow></Rise>
+    <div style={{ position: 'relative', height: 'clamp(180px, 22vw, 230px)', overflow: 'hidden', border: s.end ? `1px solid ${GREEN_DARK}` : '1px solid rgba(242,181,68,0.18)' }}>
+      <img src={`/cadena/${s.img}.jpg`} alt={s.name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,56,0.94) 0%, rgba(7,26,56,0.4) 55%, rgba(7,26,56,0.12) 100%)' }} />
+      <span style={{ position: 'absolute', top: '0.7rem', left: '0.85rem', ...serif, fontStyle: 'italic', fontSize: '1.35rem', color: s.end ? GREEN_DARK : GOLD }}>{s.n}</span>
+      {s.carbon && <span style={{ position: 'absolute', top: '0.85rem', right: '0.85rem', ...sans, fontSize: '0.5rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: GREEN_DARK, border: `1px solid ${GREEN_DARK}`, padding: '0.15rem 0.35rem', background: 'rgba(7,26,56,0.55)' }}>CO₂</span>}
+      <div style={{ position: 'absolute', left: '0.85rem', right: '0.85rem', bottom: '0.85rem' }}>
+        <h3 style={{ ...sans, fontSize: '0.95rem', fontWeight: 600, color: s.end ? GREEN_DARK : CREAM, margin: '0 0 0.25rem 0' }}>{s.name}</h3>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.7rem', lineHeight: 1.45, color: 'rgba(243,241,231,0.82)', margin: 0 }}>{s.data}</p>
+      </div>
+    </div>
+  )
+}
+
+function CadLabel({ children, color }: { children: ReactNode; color: string }) {
+  return <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color, margin: '3.5rem 0 1.4rem' }}>{children}</p>
+}
+
+function MpCadena() {
+  return (
+    <Section bg={INK} id="cadena">
+      <Rise><Eyebrow>02 · La cadena</Eyebrow></Rise>
       <Rise delay={0.08}>
-        <H2 size="xl">Vivienda que se cultiva a 40 minutos del pozo.</H2>
+        <H2 size="xl">De la semilla a la llave — y a una segunda renta.</H2>
       </Rise>
       <Rise delay={0.16}>
-        <Body>
-          El cáñamo industrial produce <strong style={{ color: GREEN_DARK, fontWeight: 500 }}>hempcrete</strong>:
-          un material de construcción que aísla, respira y resiste el fuego. Las paredes se
-          fabrican con biomasa cultivada en la misma cuenca — logística mínima, insumo
-          renovable cada 120 días, empleo técnico en cada eslabón de la cadena.
+        <Body max="68ch">
+          Una sola planta abre una cadena industrial completa: cultivo, material de
+          construcción (<strong style={{ color: GREEN_DARK, fontWeight: 500 }}>hempcrete</strong>)
+          y, del residuo, biochar. Cada paso ocurre en la misma cuenca y es empleo técnico —
+          del campo a la vivienda.
         </Body>
       </Rise>
 
-      <div style={{
-        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-        gap: 'clamp(1rem, 2vw, 1.5rem)', margin: '3.5rem 0',
-      }}>
+      {/* Cadena principal con foto + overlay */}
+      <Rise delay={0.2}><CadLabel color={GOLD}>La cadena principal · ocho pasos</CadLabel></Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '0.75rem' }}>
+        {CADENA_STEPS.map((s, i) => (
+          <Rise key={s.n} delay={0.05 + i * 0.05}><StepCard s={s} /></Rise>
+        ))}
+      </div>
+
+      {/* Rama biochar */}
+      <Rise delay={0.18}><CadLabel color={GREEN_DARK}>La rama industrial · del residuo al biochar</CadLabel></Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.75rem' }}>
+        {BIOCHAR_STEPS.map((s, i) => (
+          <Rise key={s.n} delay={0.05 + i * 0.08}><StepCard s={s} /></Rise>
+        ))}
+      </div>
+      <Rise delay={0.2}>
+        <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.6)', maxWidth: '66ch', marginTop: '1.25rem' }}>
+          La fibra corta y el polvo que no van al hempcrete se pirolizan en biochar: una
+          segunda línea de créditos de la misma hectárea. EcoGaia ya opera biochar en la
+          Argentina.
+        </p>
+      </Rise>
+
+      {/* El material — hempcrete (SPECS) */}
+      <Rise delay={0.18}><CadLabel color={GOLD}>El material · hempcrete</CadLabel></Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
         {SPECS.map((s, i) => (
-          <Rise key={s.label} delay={0.1 + i * 0.08}>
-            <div style={{
-              background: 'rgba(243,241,231,0.04)', border: '1px solid rgba(242,181,68,0.16)',
-              padding: '1.75rem 1.5rem', height: '100%',
-            }}>
-              <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', color: GREEN_DARK, margin: '0 0 0.4rem 0', lineHeight: 1.05 }}>
-                {s.value}
-              </p>
-              <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem 0' }}>
-                {s.label}
-              </p>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(243,241,231,0.5)', margin: 0 }}>
-                {s.detail}
-              </p>
+          <Rise key={s.label} delay={0.08 + i * 0.07}>
+            <div style={{ background: 'rgba(243,241,231,0.04)', border: '1px solid rgba(242,181,68,0.16)', padding: '1.6rem 1.4rem', height: '100%' }}>
+              <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2.1vw, 1.9rem)', color: GREEN_DARK, margin: '0 0 0.4rem 0', lineHeight: 1.05 }}>{s.value}</p>
+              <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, margin: '0 0 0.7rem 0' }}>{s.label}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.76rem', lineHeight: 1.6, color: 'rgba(243,241,231,0.5)', margin: 0 }}>{s.detail}</p>
             </div>
           </Rise>
         ))}
       </div>
 
-      {/* Gráfico: de la semilla a la llave */}
-      <Rise delay={0.18}>
-        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, margin: '3.75rem 0 1.5rem' }}>
-          El modelo de la semilla a la llave — siete pasos
-        </p>
-      </Rise>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.16)', border: '1px solid rgba(242,181,68,0.16)' }}>
-        {SEED_TO_KEY.map((s, i) => (
-          <Rise key={s.n} delay={0.06 + i * 0.06}>
-            <div style={{
-              background: s.end ? 'rgba(91,196,106,0.08)' : INK, height: '100%',
-              padding: 'clamp(1.25rem, 2vw, 1.6rem)', display: 'flex', flexDirection: 'column', gap: '0.5rem',
-              position: 'relative',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.25rem', color: s.end ? GREEN_DARK : 'rgba(242,181,68,0.7)' }}>{s.n}</span>
-                {s.carbon && <span style={{ ...sans, fontSize: '0.5rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: GREEN_DARK, border: `1px solid ${GREEN_DARK}`, padding: '0.15rem 0.35rem' }}>CO₂</span>}
-                {s.end && <span style={{ ...sans, fontSize: '0.5rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: GREEN_DARK }}>★</span>}
+      {/* Tecnologías a integrar (TECHS) */}
+      <Rise delay={0.18}><CadLabel color={GREEN_DARK}>Tecnologías a integrar — el benchmark evalúa, YPF elige</CadLabel></Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.16)', border: '1px solid rgba(242,181,68,0.16)' }}>
+        {TECHS.map((t, i) => (
+          <Rise key={t.name} delay={0.06 + i * 0.06}>
+            <div style={{ background: INK, padding: '1.5rem 1.4rem', height: '100%' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '0.7rem', gap: '0.5rem' }}>
+                <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 1.7vw, 1.5rem)', color: CREAM, margin: 0, lineHeight: 1 }}>{t.name}</h3>
+                <span style={{ ...sans, fontSize: '0.52rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: GOLD, whiteSpace: 'nowrap' }}>{t.origin}</span>
               </div>
-              <h3 style={{ ...sans, fontSize: '0.92rem', fontWeight: 600, color: s.end ? GREEN_DARK : CREAM, margin: 0, letterSpacing: '0.01em' }}>{s.name}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.72rem', lineHeight: 1.55, color: 'rgba(243,241,231,0.55)', margin: 0 }}>{s.desc}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.76rem', lineHeight: 1.6, color: 'rgba(243,241,231,0.6)', margin: 0 }}>{t.bring}</p>
             </div>
           </Rise>
         ))}
       </div>
+
+      {/* Dos vías al mercado (VIAS) */}
+      <Rise delay={0.18}><CadLabel color={GOLD}>Dos vías para llegar al mercado</CadLabel></Rise>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
+        {VIAS.map((v, i) => (
+          <Rise key={v.tag} delay={0.1 + i * 0.12}>
+            <div style={{ background: 'rgba(243,241,231,0.04)', border: '1px solid rgba(242,181,68,0.16)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.6rem, 3vw, 2.2rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <p style={{ ...sans, fontSize: '0.56rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_DARK, margin: '0 0 0.7rem 0' }}>{v.tag}</p>
+              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', color: CREAM, margin: '0 0 0.9rem 0', lineHeight: 1.1 }}>{v.title}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.6)', margin: '0 0 1.25rem 0' }}>{v.body}</p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 'auto 0 0', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+                {v.points.map((pt) => (
+                  <li key={pt} style={{ ...sans, fontSize: '0.76rem', lineHeight: 1.5, color: 'rgba(243,241,231,0.6)', paddingLeft: '1.1rem', position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: 0, color: GREEN_DARK, fontWeight: 700 }}>—</span>{pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Rise>
+        ))}
+      </div>
+
+      {/* Tabla comparativa vs Retak (COMPARACION) */}
+      <Rise delay={0.18}><CadLabel color={GREEN_DARK}>El bloque, frente al Retak</CadLabel></Rise>
       <Rise delay={0.2}>
-        <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.5)', maxWidth: '64ch', marginTop: '1.5rem' }}>
-          La planta captura carbono en el cultivo y lo fija en la pared para siempre. Cada
-          paso es empleo técnico — y todos ocurren en la misma cuenca, del campo a la llave.
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '620px' }}>
+            <thead>
+              <tr>
+                {['', 'Bloque hempcrete', 'Bloque Retak · hormigón celular'].map((h, i) => (
+                  <th key={i} style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: i === 1 ? GREEN_DARK : 'rgba(243,241,231,0.45)', textAlign: 'left', padding: '0 1rem 0.85rem 0', borderBottom: '1px solid rgba(243,241,231,0.25)', fontWeight: 600 }}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARACION.map((row) => (
+                <tr key={row.attr} style={row.highlight ? { background: 'rgba(91,196,106,0.1)' } : undefined}>
+                  <td style={{ ...sans, fontSize: '0.72rem', letterSpacing: '0.04em', color: 'rgba(243,241,231,0.5)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(243,241,231,0.1)', whiteSpace: 'nowrap' }}>{row.attr}</td>
+                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: row.highlight ? 600 : 400, color: row.highlight ? GREEN_DARK : 'rgba(243,241,231,0.85)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(243,241,231,0.1)' }}>
+                    {row.hemp}{row.match && <span style={{ ...sans, fontSize: '0.6rem', color: GOLD, marginLeft: '0.5rem', letterSpacing: '0.1em' }}>=</span>}
+                  </td>
+                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: 300, color: 'rgba(243,241,231,0.55)', padding: '0.85rem 0', borderBottom: '1px solid rgba(243,241,231,0.1)' }}>{row.retak}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Rise>
+
+      <Rise delay={0.2}>
+        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.03em', color: 'rgba(243,241,231,0.35)', marginTop: '2rem' }}>
+          Imágenes: Wikimedia Commons (CC). Algunas son representativas del proceso industrial.
         </p>
       </Rise>
     </Section>
@@ -609,14 +687,7 @@ function MpPlan() {
   )
 }
 
-/* ---------- 05 · el proceso (cosecha → hempcrete) ---------- */
-
-const PIPELINE = [
-  { n: '01', title: 'Cosecha', body: 'La planta entera entra al proceso. Sin desperdicio: cada parte tiene destino.' },
-  { n: '02', title: 'Decortización', body: 'Separación mecánica del tallo: shiv (la chamiza o médula leñosa) por un lado, fibra por el otro.' },
-  { n: '03', title: 'Mezclado', body: 'El shiv se mezcla con un aglutinante mineral y agua, en proporción controlada. Acá entra la tecnología del binder.' },
-  { n: '04', title: 'Fraguado + carbonatación', body: 'El muro absorbe CO₂ del aire mientras endurece. La fijación de carbono ocurre durante el curado y dura siglos.' },
-]
+/* ---------- consts compartidos de la cadena (usados por MpCadena) ---------- */
 
 const TECHS = [
   { name: 'Hempire', origin: 'Ucrania', bring: 'Fifth Element Binder: aglutinante 100% natural, sin cemento ni cal. Hempcrete de menor densidad del mundo. Licencia territorial para Argentina disponible.' },
@@ -659,145 +730,6 @@ const COMPARACION = [
   { attr: 'Regulación de humedad', hemp: 'Alta (higroscópico)', retak: 'Media' },
 ]
 
-function MpProceso() {
-  return (
-    <Section bg={PARCHMENT} id="proceso">
-      <Rise><Eyebrow dark>05 · El proceso</Eyebrow></Rise>
-      <Rise delay={0.08}>
-        <H2 dark size="xl">De la cosecha al hempcrete.</H2>
-      </Rise>
-      <Rise delay={0.14}>
-        <Body dark max="66ch">
-          El hempcrete no se fabrica: se cultiva y se cura. Cuatro pasos llevan la planta
-          del campo a la pared — y en el último, el material captura el CO₂ que lo vuelve
-          permanente.
-        </Body>
-      </Rise>
-
-      {/* Pipeline de elaboración */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0', margin: '3rem 0 0', alignItems: 'stretch' }}>
-        {PIPELINE.map((p, i) => (
-          <Rise key={p.n} delay={0.08 + i * 0.08} style={{ flex: '1 1 220px', display: 'flex' }}>
-            <div style={{ display: 'flex', alignItems: 'stretch', width: '100%' }}>
-              <div style={{ flex: 1, padding: '0 1.25rem', borderLeft: i === 0 ? 'none' : '1px solid rgba(14,42,82,0.15)' }}>
-                <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.4rem', color: 'rgba(242,181,68,0.85)' }}>{p.n}</span>
-                <h3 style={{ ...sans, fontSize: '0.9rem', fontWeight: 600, color: INK, margin: '0.4rem 0 0.6rem' }}>{p.title}</h3>
-                <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.6)', margin: 0 }}>{p.body}</p>
-              </div>
-            </div>
-          </Rise>
-        ))}
-      </div>
-
-      {/* Menú de tecnologías internacionales */}
-      <Rise delay={0.16}>
-        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '4rem 0 0.75rem' }}>
-          Tecnologías a integrar — el benchmark evalúa, YPF elige
-        </p>
-      </Rise>
-      <Rise delay={0.2}>
-        <Body dark max="66ch">
-          No nos casamos con un proveedor. El benchmark prueba las mejores tecnologías del
-          mundo y mide cuál combinación de binder y formulación rinde mejor en cada
-          ecorregión argentina.
-        </Body>
-      </Rise>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1px', background: 'rgba(14,42,82,0.12)', border: '1px solid rgba(14,42,82,0.12)', marginTop: '1.75rem' }}>
-        {TECHS.map((t, i) => (
-          <Rise key={t.name} delay={0.08 + i * 0.06}>
-            <div style={{ background: PARCHMENT, padding: 'clamp(1.5rem, 2.5vw, 1.9rem)', height: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '0.7rem', gap: '0.5rem' }}>
-                <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 1.8vw, 1.6rem)', color: INK, margin: 0, lineHeight: 1 }}>{t.name}</h3>
-                <span style={{ ...sans, fontSize: '0.55rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, whiteSpace: 'nowrap' }}>{t.origin}</span>
-              </div>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(14,42,82,0.62)', margin: 0 }}>{t.bring}</p>
-            </div>
-          </Rise>
-        ))}
-      </div>
-
-      {/* Dos vías al mercado */}
-      <Rise delay={0.16}>
-        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '4rem 0 1.5rem' }}>
-          Dos vías para llegar al mercado
-        </p>
-      </Rise>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
-        {VIAS.map((v, i) => (
-          <Rise key={v.tag} delay={0.1 + i * 0.12}>
-            <div style={{ background: '#fff', border: '1px solid rgba(14,42,82,0.1)', borderTop: `2px solid ${GOLD}`, padding: 'clamp(1.75rem, 3vw, 2.5rem)', height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '0 0 0.75rem 0' }}>{v.tag}</p>
-              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.4vw, 2.1rem)', color: INK, margin: '0 0 1rem 0', lineHeight: 1.1 }}>{v.title}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.7, color: 'rgba(14,42,82,0.6)', margin: '0 0 1.5rem 0' }}>{v.body}</p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 'auto 0 0', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                {v.points.map((pt) => (
-                  <li key={pt} style={{ ...sans, fontSize: '0.78rem', lineHeight: 1.5, color: 'rgba(14,42,82,0.6)', paddingLeft: '1.1rem', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: GREEN_LIGHT, fontWeight: 700 }}>—</span>
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Rise>
-        ))}
-      </div>
-
-      {/* Tabla comparativa hempcrete vs Retak */}
-      <Rise delay={0.16}>
-        <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GREEN_LIGHT, margin: '4rem 0 0.6rem' }}>
-          El bloque, frente al Retak
-        </p>
-      </Rise>
-      <Rise delay={0.2}>
-        <Body dark max="64ch">
-          Mismo formato, mismo método de colocación: el albañil no cambia nada. Cambia la
-          densidad, la aislación y, sobre todo, la huella — el Retak emite carbono, el
-          hempcrete lo fija.
-        </Body>
-      </Rise>
-      <Rise delay={0.22}>
-        <div style={{ margin: '1.75rem 0 0', overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '620px' }}>
-            <thead>
-              <tr>
-                {['', 'Bloque hempcrete', 'Bloque Retak · hormigón celular'].map((h, i) => (
-                  <th key={i} style={{
-                    ...sans, fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase',
-                    color: i === 1 ? GREEN_LIGHT : 'rgba(14,42,82,0.45)', textAlign: 'left',
-                    padding: '0 1rem 0.85rem 0', borderBottom: '1px solid rgba(14,42,82,0.25)', fontWeight: 600,
-                  }}>
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {COMPARACION.map((row) => (
-                <tr key={row.attr} style={row.highlight ? { background: 'rgba(91,196,106,0.1)' } : undefined}>
-                  <td style={{ ...sans, fontSize: '0.74rem', letterSpacing: '0.04em', color: 'rgba(14,42,82,0.55)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)', whiteSpace: 'nowrap' }}>
-                    {row.attr}
-                  </td>
-                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: row.highlight ? 600 : 400, color: row.highlight ? GREEN_LIGHT : 'rgba(14,42,82,0.8)', padding: '0.85rem 1rem 0.85rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)' }}>
-                    {row.hemp}{row.match && <span style={{ ...sans, fontSize: '0.6rem', color: GOLD, marginLeft: '0.5rem', letterSpacing: '0.1em' }}>=</span>}
-                  </td>
-                  <td style={{ ...sans, fontSize: '0.82rem', fontWeight: 300, color: 'rgba(14,42,82,0.6)', padding: '0.85rem 0', borderBottom: '1px solid rgba(14,42,82,0.12)' }}>
-                    {row.retak}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Rise>
-      <Rise delay={0.26}>
-        <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.04em', color: 'rgba(14,42,82,0.4)', marginTop: '1rem' }}>
-          Valores de hempcrete según norma EN 16101 y formulación del benchmark. Valores de Retak: rangos típicos de hormigón celular curado en autoclave, a confirmar con ficha técnica oficial.
-        </p>
-      </Rise>
-    </Section>
-  )
-}
-
 /* ---------- 06 · el deal ---------- */
 
 const CONTRATOS = [
@@ -821,7 +753,7 @@ const CONTRATOS = [
 function MpDeal() {
   return (
     <Section bg={INK} id="deal">
-      <Rise><Eyebrow>06 · El deal</Eyebrow></Rise>
+      <Rise><Eyebrow>05 · El deal</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 size="xl">
           El modelo del tren Neuquén–Añelo:
@@ -897,7 +829,7 @@ const APOYOS = ['Nuevas Energías', 'Y-TEC', 'YPF Luz', 'YPF Agro', 'Fundación 
 function MpEncaje() {
   return (
     <Section bg={CREAM} id="encaje">
-      <Rise><Eyebrow dark>07 · El encaje en YPF</Eyebrow></Rise>
+      <Rise><Eyebrow dark>06 · El encaje en YPF</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 dark size="xl">Las cuatro palancas del net-zero de YPF.</H2>
       </Rise>
@@ -1013,7 +945,7 @@ const SENSIBILIDAD = [
 function MpUpside() {
   return (
     <Section bg={PARCHMENT} id="upside">
-      <Rise><Eyebrow dark>08 · El upside</Eyebrow></Rise>
+      <Rise><Eyebrow dark>07 · El upside</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 dark>
           La captura de carbono cuesta entre USD 15 y 345 la tonelada.
@@ -1145,7 +1077,7 @@ const BIOCHAR = [
 function MpBiochar() {
   return (
     <Section bg={INK} id="biochar">
-      <Rise><Eyebrow>09 · La segunda línea</Eyebrow></Rise>
+      <Rise><Eyebrow>08 · La segunda línea</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2 size="xl">El residuo también es un activo.</H2>
       </Rise>
@@ -1232,7 +1164,7 @@ function MpVentana() {
   const narrow = useNarrow()
   return (
     <Section bg={DUSK} id="ventana">
-      <Rise><Eyebrow>10 · La ventana 2026–2031</Eyebrow></Rise>
+      <Rise><Eyebrow>09 · La ventana 2026–2031</Eyebrow></Rise>
       <Rise delay={0.08}>
         <H2>Nuestro roadmap corre al lado del de YPF.</H2>
       </Rise>
@@ -1332,7 +1264,7 @@ function MpVision() {
         </Rise>
 
         <Rise delay={0.1}>
-          <Eyebrow>11 · La visión</Eyebrow>
+          <Eyebrow>10 · La visión</Eyebrow>
         </Rise>
         <Rise delay={0.16}>
           <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', lineHeight: 1.04, color: CREAM, margin: '0 0 1.75rem 0', maxWidth: '16ch' }}>
@@ -1396,7 +1328,7 @@ function MpCierre() {
         pointerEvents: 'none',
       }} />
       <div style={{ maxWidth: '1120px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-        <Rise><Eyebrow>12 · El cierre</Eyebrow></Rise>
+        <Rise><Eyebrow>11 · El cierre</Eyebrow></Rise>
 
         <div style={{ display: 'flex', flexDirection: 'column', margin: '0 0 4rem' }}>
           {LINAJE.map((l, i) => (
@@ -1482,10 +1414,9 @@ export function Masterplan() {
       <MpHeader />
       <MpApertura />
       <MpOportunidad />
-      <MpSolucion />
+      <MpCadena />
       <MpActivo />
       <MpPlan />
-      <MpProceso />
       <MpDeal />
       <MpEncaje />
       <MpUpside />
