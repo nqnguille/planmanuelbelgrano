@@ -1389,8 +1389,8 @@ const LINAJE = [
   { year: '1907', name: 'Luis Huergo', text: 'Defiende el petróleo de Comodoro Rivadavia como riqueza nacional a industrializar.' },
   { year: '1922', name: 'Enrique Mosconi', text: 'Funda la YPF industrial: eficiencia, escala y un modelo de país.' },
   { year: '2013', name: 'Vaca Muerta', text: 'La roca convierte a la Argentina en potencia energética.' },
-  { year: '2024', name: 'Horacio Marín', text: 'Lidera el plan 4x4 y el Argentina LNG: el país sale a exportar energía al mundo.' },
   { year: '2026', name: 'La próxima industria', text: 'La cuenca que exporta energía suma la pata que regenera: construye, fija carbono y genera valor.' },
+  { year: '2031', name: 'Horacio Marín', text: 'La Argentina exporta su primer GNL al mundo — el objetivo país que se propuso.' },
 ]
 
 function MpCierre() {
