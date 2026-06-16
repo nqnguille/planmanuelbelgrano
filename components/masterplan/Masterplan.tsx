@@ -1389,7 +1389,7 @@ const LINAJE = [
   { year: '1907', name: 'Luis Huergo', text: 'Defiende el petróleo de Comodoro Rivadavia como riqueza nacional a industrializar.' },
   { year: '1922', name: 'Enrique Mosconi', text: 'Funda la YPF industrial: eficiencia, escala y un modelo de país.' },
   { year: '2013', name: 'Vaca Muerta', text: 'La roca convierte a la Argentina en potencia energética.' },
-  { year: '2024', name: 'Horacio Marín', text: 'Se propone lo más difícil: convertir a YPF en la primera petrolera net-zero del mundo.' },
+  { year: '2024', name: 'Horacio Marín', text: 'Lidera el plan 4x4 y el Argentina LNG: el país sale a exportar energía al mundo.' },
   { year: '2026', name: 'La próxima industria', text: 'La cuenca que exporta energía suma la pata que regenera: construye, fija carbono y genera valor.' },
 ]
 
@@ -1435,12 +1435,13 @@ function MpCierre() {
             ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.25vw, 1.08rem)', lineHeight: 1.8,
             color: 'rgba(243,241,231,0.62)', maxWidth: '60ch', margin: '0 auto 3rem', textAlign: 'center',
           }}>
-            Horacio Marín se propuso lo más difícil: convertir a YPF en la
-            <strong style={{ color: CREAM, fontWeight: 500 }}> primera petrolera net-zero del mundo</strong>.
-            Regenerar es la pata que falta para lograrlo. Y el día que lo consiga, habrá que
-            agradecérselo también a <strong style={{ color: GREEN_DARK, fontWeight: 500 }}>Manuel
-            Belgrano</strong>, que hace más de dos siglos vio en esta planta una industria para
-            el país.
+            Imaginemos 2031: YPF exporta su primer GNL al mundo. Y un paso más allá, con la
+            pata que regenera ya en marcha, esa misma compañía podría convertirse en la
+            <strong style={{ color: CREAM, fontWeight: 500 }}> primera petrolera net-zero del planeta</strong>.
+            Esa es la visión. El día que se cumpla, habrá que agradecérselo a
+            <strong style={{ color: CREAM, fontWeight: 500 }}> Horacio Marín</strong> —que lo hizo
+            posible— y a <strong style={{ color: GREEN_DARK, fontWeight: 500 }}>Manuel Belgrano</strong>,
+            que hace más de dos siglos vio en esta planta una industria para el país.
           </p>
         </Rise>
 
