@@ -33,7 +33,7 @@ export default function Home() {
         </span>
         <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
           <a
-            href="mailto:contacto@planmanuelbelgrano.com.ar"
+            href="mailto:nqnguille@gmail.com"
             style={{
               fontFamily: 'var(--font-hanken)',
               fontSize: '0.62rem',
@@ -42,7 +42,7 @@ export default function Home() {
               textDecoration: 'none',
             }}
           >
-            contacto@planmanuelbelgrano.com.ar
+            nqnguille@gmail.com
           </a>
           <a
             href="/masterplan/"

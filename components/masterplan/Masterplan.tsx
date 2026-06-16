@@ -1347,23 +1347,32 @@ function MpVision() {
         </Rise>
 
         <Rise delay={0.05}>
-          <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, margin: '3rem 0 1.25rem' }}>
-            Visión a 2035 · a escala plena
+          <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, margin: '3rem 0 0.9rem' }}>
+            Visión a 2035 · Neuquén a escala plena
           </p>
         </Rise>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.18)', border: '1px solid rgba(242,181,68,0.18)' }}>
+        <Rise delay={0.08}>
+          <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.88rem, 1.1vw, 1rem)', lineHeight: 1.7, color: 'rgba(243,241,231,0.6)', maxWidth: '60ch', margin: '0 0 1.5rem 0' }}>
+            Sobre las 50.000 hectáreas irrigables de la provincia, la cadena entera —cultivo,
+            material, construcción y créditos— se traduce en estas cifras anuales a plena escala:
+          </p>
+        </Rise>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '1px', background: 'rgba(242,181,68,0.18)', border: '1px solid rgba(242,181,68,0.18)' }}>
           {[
-            { target: 50000, suffix: '', label: 'empleos directos a escala plena' },
-            { target: 100000, suffix: '', label: 'viviendas de hempcrete potenciales' },
-            { target: 500000, suffix: '', label: 'toneladas de CO₂ fijadas por año' },
-            { target: 27, suffix: 'M', label: 'USD por año en créditos · escala Neuquén' },
+            { target: 100000, suffix: '', big: 'viviendas de hempcrete', label: 'que fijan carbono mientras se construyen' },
+            { target: 50000, suffix: '', big: 'empleos directos', label: 'en cada eslabón, del campo a la obra' },
+            { target: 50000, suffix: ' ha', big: 'irrigables en Neuquén', label: 'la superficie disponible para escalar' },
+            { target: 500000, suffix: '', big: 'toneladas de CO₂', label: 'removidas por año, fijadas en pared y suelo' },
+            { target: 82, suffix: 'M', big: 'USD por año en créditos', label: 'de remoción durable, a precio de mercado' },
+            { target: 500, suffix: ' años', big: 'de permanencia', label: 'el carbono queda en cada pared, sin reversión' },
           ].map((s, i) => (
-            <Rise key={s.label} delay={0.1 + i * 0.08}>
-              <div style={{ background: DUSK, padding: '1.75rem 1.5rem', height: '100%' }}>
-                <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2rem, 3.2vw, 2.9rem)', color: GREEN_DARK, margin: '0 0 0.5rem 0', lineHeight: 1 }}>
+            <Rise key={s.big} delay={0.06 + i * 0.06}>
+              <div style={{ background: DUSK, padding: '1.6rem 1.4rem', height: '100%' }}>
+                <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.9rem, 3vw, 2.7rem)', color: GREEN_DARK, margin: '0 0 0.3rem 0', lineHeight: 1 }}>
                   <AnimatedCounter target={s.target} suffix={s.suffix} />
                 </p>
-                <p style={{ ...sans, fontSize: '0.72rem', color: 'rgba(243,241,231,0.5)', lineHeight: 1.55, margin: 0 }}>{s.label}</p>
+                <p style={{ ...sans, fontSize: '0.78rem', fontWeight: 500, color: CREAM, margin: '0 0 0.3rem 0', lineHeight: 1.25 }}>{s.big}</p>
+                <p style={{ ...sans, fontWeight: 300, fontSize: '0.68rem', color: 'rgba(243,241,231,0.5)', lineHeight: 1.45, margin: 0 }}>{s.label}</p>
               </div>
             </Rise>
           ))}
@@ -1380,7 +1389,8 @@ const LINAJE = [
   { year: '1907', name: 'Luis Huergo', text: 'Defiende el petróleo de Comodoro Rivadavia como riqueza nacional a industrializar.' },
   { year: '1922', name: 'Enrique Mosconi', text: 'Funda la YPF industrial: eficiencia, escala y un modelo de país.' },
   { year: '2013', name: 'Vaca Muerta', text: 'La roca convierte a la Argentina en potencia energética.' },
-  { year: '2026', name: 'La próxima industria', text: 'La cuenca que exporta energía suma la plataforma que construye, fija carbono y genera valor.' },
+  { year: '2024', name: 'Horacio Marín', text: 'Se propone lo más difícil: convertir a YPF en la primera petrolera net-zero del mundo.' },
+  { year: '2026', name: 'La próxima industria', text: 'La cuenca que exporta energía suma la pata que regenera: construye, fija carbono y genera valor.' },
 ]
 
 function MpCierre() {
@@ -1422,18 +1432,22 @@ function MpCierre() {
         </Rise>
         <Rise delay={0.2}>
           <p style={{
-            ...sans, fontWeight: 300, fontSize: 'clamp(0.9rem, 1.2vw, 1.02rem)', lineHeight: 1.78,
-            color: 'rgba(243,241,231,0.55)', maxWidth: '58ch', margin: '0 auto 3rem', textAlign: 'center',
+            ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem, 1.25vw, 1.08rem)', lineHeight: 1.8,
+            color: 'rgba(243,241,231,0.62)', maxWidth: '60ch', margin: '0 auto 3rem', textAlign: 'center',
           }}>
-            Cada generación tuvo ingenieros con un modelo de país. Esta propuesta continúa esa
-            línea: una industria nueva, medible y rentable, nacida al lado del yacimiento.
+            Horacio Marín se propuso lo más difícil: convertir a YPF en la
+            <strong style={{ color: CREAM, fontWeight: 500 }}> primera petrolera net-zero del mundo</strong>.
+            Regenerar es la pata que falta para lograrlo. Y el día que lo consiga, habrá que
+            agradecérselo también a <strong style={{ color: GREEN_DARK, fontWeight: 500 }}>Manuel
+            Belgrano</strong>, que hace más de dos siglos vio en esta planta una industria para
+            el país.
           </p>
         </Rise>
 
         <Rise delay={0.3}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
             <a
-              href="mailto:contacto@planmanuelbelgrano.com.ar?subject=Plan%20Manuel%20Belgrano%20%E2%80%94%20Reuni%C3%B3n"
+              href="mailto:nqnguille@gmail.com?subject=Plan%20Manuel%20Belgrano"
               style={{
                 ...sans, display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
                 background: GREEN_DARK, color: INK, fontWeight: 500,
@@ -1441,14 +1455,14 @@ function MpCierre() {
                 padding: '1rem 2.5rem', textDecoration: 'none',
               }}
             >
-              Agendar reunión
+              Conversemos
               <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden>
                 <path d="M0 4H14M14 4L11 1M14 4L11 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
               </svg>
             </a>
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <a href="mailto:contacto@planmanuelbelgrano.com.ar" style={{ ...sans, fontSize: '0.68rem', color: 'rgba(243,241,231,0.4)', textDecoration: 'none', letterSpacing: '0.04em' }}>
-                contacto@planmanuelbelgrano.com.ar
+              <a href="mailto:nqnguille@gmail.com" style={{ ...sans, fontSize: '0.68rem', color: 'rgba(243,241,231,0.4)', textDecoration: 'none', letterSpacing: '0.04em' }}>
+                nqnguille@gmail.com
               </a>
               <span style={{ color: 'rgba(243,241,231,0.15)' }}>·</span>
               <a href="https://wa.me/5492994229436" style={{ ...sans, fontSize: '0.68rem', color: 'rgba(243,241,231,0.4)', textDecoration: 'none', letterSpacing: '0.04em' }}>
