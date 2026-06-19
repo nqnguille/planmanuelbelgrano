@@ -205,7 +205,7 @@ export function HeroScroll() {
         {/* Overlay */}
         <div style={{
           position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none',
-          background: 'linear-gradient(to left, rgba(7,26,56,0.85) 0%, rgba(7,26,56,0.45) 42%, transparent 65%), linear-gradient(to bottom, transparent 0%, rgba(7,26,56,0.5) 75%, rgba(7,26,56,0.97) 100%)',
+          background: 'linear-gradient(to left, rgba(7,26,56,0.6) 0%, rgba(7,26,56,0.26) 42%, transparent 62%), linear-gradient(to bottom, transparent 0%, rgba(7,26,56,0.32) 78%, rgba(7,26,56,0.82) 100%)',
         }} />
 
         {/* ESTADOS DE TEXTO */}
