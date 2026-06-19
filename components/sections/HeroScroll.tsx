@@ -50,7 +50,7 @@ const STATES = [
     eyebrow: 'Plan Manuel Belgrano · 2026',
     headline: 'La industria que construye\nla próxima Patagonia.',
     body: 'Vaca Muerta va a duplicar la población de Neuquén en la próxima década. El Plan Manuel Belgrano produce los materiales y las viviendas de ese crecimiento — y convierte hectáreas ociosas en una plataforma industrial de exportación.',
-    cta: { label: 'Ver masterplan', href: '/masterplan/' },
+    cta: { label: 'Acceder al masterplan', href: '#gate' },
   },
 ]
 
@@ -273,6 +273,12 @@ export function HeroScroll() {
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem', flexWrap: 'wrap' }}>
                 <a
                   href={state.cta.href}
+                  onClick={(e) => {
+                    if (state.cta!.href.startsWith('#')) {
+                      e.preventDefault()
+                      document.getElementById(state.cta!.href.slice(1))?.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }}
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
                     padding: '1rem 2.25rem',

@@ -1,17 +1,12 @@
 import type { Metadata } from 'next'
-import { GateClient } from '@/components/ui/GateClient'
-import { Masterplan } from '@/components/masterplan/Masterplan'
+import { MasterplanExperience } from '@/components/masterplan/MasterplanExperience'
 
 export const metadata: Metadata = {
-  title: 'Masterplan — Plan Manuel Belgrano',
+  title: 'Plan Manuel Belgrano — Masterplan',
   description: 'Documento confidencial. Acceso con clave.',
   robots: { index: false, follow: false },
 }
 
 export default function MasterplanPage() {
-  return (
-    <GateClient>
-      <Masterplan />
-    </GateClient>
-  )
+  return <MasterplanExperience />
 }
