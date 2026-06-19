@@ -58,8 +58,8 @@ const STATES = [
 const TIMING = [
   { outAt: 0.10 },
   { inAt: 0.11, outAt: 0.38 },
-  { inAt: 0.39, outAt: 0.62 },
-  { inAt: 0.63 },
+  { inAt: 0.39, outAt: 0.55 },
+  { inAt: 0.56 },
 ]
 
 export function HeroScroll() {
@@ -193,7 +193,7 @@ export function HeroScroll() {
   return (
     <section
       id="hero-pin-container"
-      style={{ height: '700vh' }}
+      style={{ height: '950vh' }}
       aria-label="Hero — De la semilla a la industria"
     >
       <div
