@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
-const PASSWORD = 'Manolo420'
+const PASSWORD = 'elsueñodemanuel'
 const STORAGE_KEY = 'pmb_access'
 
 /* Gate en el flujo (no overlay): aparece como sección a continuación del hero
