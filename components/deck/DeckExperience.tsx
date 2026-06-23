@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Deck } from './Deck'
+import { PresentationDeck } from './PresentationDeck'
 
 const PASSWORD = 'belgrano2026'
 const STORAGE_KEY = 'pmb_deck'
@@ -35,7 +35,7 @@ export function DeckExperience() {
   }
 
   if (!checked) return null
-  if (unlocked) return <Deck />
+  if (unlocked) return <PresentationDeck />
 
   return (
     <div style={{
