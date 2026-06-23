@@ -125,7 +125,7 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
   { id: 'problema', tag: 'El problema', render: () => (
     <Shell bg={DUSK}>
       <Kicker>El problema que ya tiene YPF</Kicker>
-      <Title>El GNL que exportás a Europa va a tener que probar su huella.</Title>
+      <Title>El GNL que Argentina exporte a Europa tendrá que probar su huella.</Title>
       <Lead max="60ch">
         Desde 2025 el mercado europeo de alta integridad exige carbono certificado
         (CS3D, CBAM). Sin eso, el gas argentino compite como commodity contra Qatar,
@@ -157,10 +157,11 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
   { id: 'vision', tag: 'La solución', render: () => (
     <Shell image="/hero/relato/etapa2.jpg" overlay="linear-gradient(90deg, rgba(7,26,56,0.9) 0%, rgba(7,26,56,0.6) 60%, rgba(7,26,56,0.25) 100%)">
       <Kicker>La solución</Kicker>
-      <Title>La planta más eficiente del planeta, cultivada donde YPF ya está.</Title>
+      <Title>El cultivo terrestre que más carbono captura por hectárea, donde YPF ya opera.</Title>
       <Lead max="52ch" color="rgba(243,241,231,0.72)">
-        El cáñamo industrial captura más carbono por hectárea que cualquier cultivo,
-        en un ciclo de meses. Flora Cáñamo Neuquino lo lleva de la semilla a la llave:
+        El cáñamo industrial fija 10–15 t CO₂/ha por año en un ciclo de meses: #2 en el
+        ranking global de remoción —solo detrás de las microalgas marinas— y #1 entre los
+        cultivos terrestres. Flora Cáñamo Neuquino lo lleva de la semilla a la llave:
         cultivo, material de construcción y vivienda. Belgrano ya lo había escrito en 1796.
       </Lead>
     </Shell>
@@ -287,8 +288,8 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
         <Stat n="USD 27,5M" l="por año a escala provincial · 50.000 ha" color={GOLD} />
       </motion.div>
       <Lead max="58ch" color="rgba(243,241,231,0.5)">
-        No competimos con tus millones de toneladas: te damos la vía de remoción que el
-        inventario necesita, mientras reducís por las otras. Inversión total del piloto: USD 265K–300K.
+        No compite con los millones de toneladas de YPF: aporta la vía de remoción que el
+        inventario necesita, mientras YPF reduce por las otras. Inversión total del piloto: USD 265K–300K.
       </Lead>
     </Shell>
   )},

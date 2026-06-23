@@ -2,10 +2,12 @@
 
 import { useEffect, useRef } from 'react'
 
-const FRAME_COUNT = 9
+// Secuencia de cuadros del "relato vivo" (scrub por scroll, estilo Apple)
+const FRAME_COUNT = 104
 const FRAME_SRCS = Array.from({ length: FRAME_COUNT }, (_, i) =>
-  `/hero/frames/f${String(i + 1).padStart(2, '0')}.jpg`
+  `/hero/seqv/f${String(i + 1).padStart(3, '0')}.jpg`
 )
+const HERO_POSTER = '/hero/seqv/f001.jpg'
 
 function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   const sAR = srcW / srcH
@@ -25,15 +27,15 @@ const STATES = [
     icon: '✦',
     eyebrow: 'Plan Manuel Belgrano · Cáñamo industrial en la Patagonia',
     headline: 'Belgrano tenía razón.',
-    body: 'En 1796, desde el Consulado, Manuel Belgrano propuso el cultivo de cáñamo como una de las primeras industrias del territorio. Doscientos treinta años después, la Patagonia tiene el suelo, el agua, la energía y la escala para cumplirlo.',
+    body: 'En 1796, Belgrano propuso el cáñamo como una de las primeras industrias del país. Se adelantó dos siglos: hoy la Patagonia tiene el suelo, el agua, la energía y la escala para cumplirlo.',
     cta: null,
   },
   {
     id: 's1',
     icon: '◈',
     eyebrow: 'La biología como ventaja competitiva.',
-    headline: 'La planta más eficiente del planeta.',
-    body: 'El cáñamo industrial captura 10 a 15 toneladas de CO₂ por hectárea en 90 a 120 días, crece en suelos áridos con bajo requerimiento hídrico y produce fibra, material de construcción y energía desde la misma hectárea. La naturaleza hace el trabajo a costo energético casi cero.',
+    headline: 'El cultivo que más carbono fija por hectárea.',
+    body: 'En pocos meses captura más CO₂ por hectárea que cualquier otro cultivo terrestre, crece en suelos áridos con poca agua y entrega fibra, material y energía de una misma siembra. La naturaleza hace el trabajo a costo casi nulo.',
     cta: null,
   },
   {
@@ -41,15 +43,15 @@ const STATES = [
     icon: '◎',
     eyebrow: 'Hempcrete · Fibra · Biochar · Créditos',
     headline: 'De la semilla a la llave. Toda la cadena.',
-    body: 'El cáñamo se convierte en hempcrete: un material que aísla, resiste el fuego y dura siglos. Una cadena industrial completa — cultivo, procesamiento, materiales, construcción — con empleo técnico en cada eslabón y biochar certificado como segunda línea de valor.',
+    body: 'El cáñamo se transforma en hempcrete: aísla, resiste el fuego y dura siglos. Detrás hay una cadena completa —cultivo, procesamiento, materiales y construcción— con empleo técnico en cada eslabón, más biochar certificado como segunda línea de valor.',
     cta: null,
   },
   {
     id: 's3',
     icon: '✦',
     eyebrow: 'Plan Manuel Belgrano · 2026',
-    headline: 'La industria que construye\nla próxima Patagonia.',
-    body: 'Vaca Muerta va a duplicar la población de Neuquén en la próxima década. El Plan Manuel Belgrano produce los materiales y las viviendas de ese crecimiento — y convierte hectáreas ociosas en una plataforma industrial de exportación.',
+    headline: 'Juntos podemos convertir Vaca Muerta\nen Vaca Verde.',
+    body: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera. La misma cuenca, la misma potencia —ahora también verde.',
     cta: { label: 'Acceder al masterplan', href: '#gate' },
   },
 ]
@@ -80,24 +82,24 @@ export function HeroScroll() {
       return img
     })
 
-    let loadedCount = 0
     let ready = false
     let lastP = 0
+    let lastDrawn = -1
     let rafPending = false
     let gsapCtx: ReturnType<typeof import('gsap').gsap.context> | null = null
 
-    function onImgLoad() {
-      loadedCount++
-      if (loadedCount === FRAME_COUNT) {
+    function markReadyAndDraw() {
+      if (!ready) {
         ready = true
         resizeCanvas()
-        drawFrame(0)
       }
+      drawFrame(lastP)
     }
-    imgs.forEach((img) => {
-      if (img.complete && img.naturalWidth) onImgLoad()
-      else { img.onload = onImgLoad; img.onerror = onImgLoad }
-    })
+    // El primer cuadro habilita el dibujo; el resto se va cargando en segundo plano
+    if (imgs[0].complete && imgs[0].naturalWidth) markReadyAndDraw()
+    else { imgs[0].onload = markReadyAndDraw; imgs[0].onerror = markReadyAndDraw }
+    // Redibujar cuando cada cuadro termina de cargar (por si el usuario está quieto en ese punto)
+    imgs.forEach((img) => { img.onload = img.onload || (() => { if (ready) drawFrame(lastP) }) })
 
     function resizeCanvas() {
       const dpr = window.devicePixelRatio || 1
@@ -106,32 +108,32 @@ export function HeroScroll() {
       if (canvas!.width !== tw || canvas!.height !== th) {
         canvas!.width = tw; canvas!.height = th
         canvas!.style.width = W + 'px'; canvas!.style.height = H + 'px'
+        ctx.setTransform(1, 0, 0, 1, 0, 0)
         ctx.scale(dpr, dpr)
       }
     }
 
-    function coverDraw(img: HTMLImageElement) {
-      if (!img.naturalWidth) return
-      const cw = window.innerWidth, ch = window.innerHeight
-      const g = coverGeo(img.naturalWidth, img.naturalHeight, cw, ch)
-      ctx.drawImage(img, g.ox, g.oy, g.dW, g.dH)
+    function nearestLoaded(idx: number): HTMLImageElement | null {
+      for (let d = 0; d < FRAME_COUNT; d++) {
+        const a = imgs[idx - d], b = imgs[idx + d]
+        if (a && a.complete && a.naturalWidth) return a
+        if (b && b.complete && b.naturalWidth) return b
+      }
+      return null
     }
 
     function drawFrame(p: number) {
       if (!ready) return
+      const idx = Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(p * (FRAME_COUNT - 1))))
+      if (idx === lastDrawn && imgs[idx].complete && imgs[idx].naturalWidth) return
+      const img = (imgs[idx].complete && imgs[idx].naturalWidth) ? imgs[idx] : nearestLoaded(idx)
+      if (!img) return
       resizeCanvas()
       const cw = window.innerWidth, ch = window.innerHeight
+      const g = coverGeo(img.naturalWidth, img.naturalHeight, cw, ch)
       ctx.clearRect(0, 0, cw, ch)
-      const frameFloat = Math.min(p * (FRAME_COUNT - 1), FRAME_COUNT - 1 - 0.001)
-      const idx = Math.floor(frameFloat)
-      const t = frameFloat - idx
-      ctx.globalAlpha = 1
-      coverDraw(imgs[idx])
-      if (t > 0 && idx + 1 < FRAME_COUNT) {
-        ctx.globalAlpha = t
-        coverDraw(imgs[idx + 1])
-        ctx.globalAlpha = 1
-      }
+      ctx.drawImage(img, g.ox, g.oy, g.dW, g.dH)
+      lastDrawn = idx
     }
 
     function onScroll() {
@@ -150,11 +152,12 @@ export function HeroScroll() {
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', () => {
       canvas!.width = 0; canvas!.height = 0
+      lastDrawn = -1
       resizeCanvas(); drawFrame(lastP)
     }, { passive: true })
 
     async function initTextAnimations() {
-      const { gsap, ScrollTrigger } = await import('@/lib/gsap')
+      const { gsap } = await import('@/lib/gsap')
       gsapCtx = gsap.context(() => {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -183,6 +186,7 @@ export function HeroScroll() {
       })
     }
     initTextAnimations()
+    onScroll()
 
     return () => {
       window.removeEventListener('scroll', onScroll)
@@ -200,6 +204,12 @@ export function HeroScroll() {
         id="hero-sticky"
         style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}
       >
+        {/* Poster de fondo hasta que el primer cuadro esté listo */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 0,
+          backgroundImage: `url(${HERO_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center',
+        }} />
+
         <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, zIndex: 1, display: 'block' }} />
 
         {/* Overlay */}

@@ -4,7 +4,7 @@ import { Reveal } from '@/components/ui/Reveal'
 const CARDS = [
   {
     country: 'Bélgica · Fernelmont',
-    tag: 'Mayor fabricante de bloques de hempcrete del mundo',
+    tag: 'Mayor fabricante de bloques premoldeados de hempcrete de Europa',
     metric: '5M bloques/año',
     name: 'IsoHemp',
     body: 'Fábrica de 2 hectáreas inaugurada en 2021 (inversión €5M). Distribuyen en FR, DE, NL, ES, DK, IT. Ofrecen capacitación certificada para arquitectos y constructores. Referencia de escala industrial.',
@@ -16,7 +16,7 @@ const CARDS = [
     tag: 'Licencia territorial disponible para Argentina',
     metric: 'Fifth Element Binder',
     name: 'Hempire',
-    body: 'Aglutinante 100% natural, sin cemento ni cal hidráulica. Hempcrete de menor densidad del mundo. Venden licencias exclusivas de 5 años por territorio — Argentina no está asignado. Incluye 24t de aditivo + training + soporte 365 días.',
+    body: 'Aglutinante 100% natural, sin cemento ni cal hidráulica. Hempcrete de muy baja densidad. Venden licencias exclusivas de 5 años por territorio — Argentina no está asignado. Incluye 24t de aditivo + training + soporte 365 días.',
     url: 'hempire.tech',
     highlight: true,
   },

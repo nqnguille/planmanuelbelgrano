@@ -32,9 +32,9 @@ export const CONTENT = {
 
   thesis: {
     label: '03 · La Tesis',
-    teaser: 'Si hubieras podido certificar tu GNL como bajo carbono en 2023,\n¿cuánto habrías dejado sobre la mesa?',
+    teaser: 'Si se hubiera podido certificar el GNL como bajo carbono en 2023,\n¿cuánto se habría dejado sobre la mesa?',
     headline: 'Cada generación tiene una ventana de primer mover. Esta es la de YPF.',
-    body: 'El que llegó primero ganó. Ferrocarriles, petróleo, shale. Siempre el mismo patrón: ventaja natural + decisión estratégica temprana = escala dominante. El cáñamo industrial es la plataforma de compensación con mejor relación costo–permanencia del planeta. Argentina tiene los recursos. Decreto 883/2022 lo desreguló. La ventana está abierta.',
+    body: 'El que llegó primero ganó. Ferrocarriles, petróleo, shale. Siempre el mismo patrón: ventaja natural + decisión estratégica temprana = escala dominante. El cáñamo industrial es la plataforma de compensación con la mejor relación costo–permanencia disponible hoy. Argentina tiene los recursos. Decreto 883/2022 lo desreguló. La ventana está abierta.',
     timeline: [
       {
         year: '1880',
@@ -57,7 +57,7 @@ export const CONTENT = {
       {
         year: '2030+',
         title: 'Cáñamo Industrial',
-        body: 'Captura #2 global. Fijación #3 en hempcrete. Fijación #4 en biochar. El offset más eficiente del planeta está en Neuquén.',
+        body: 'Captura #2 global. Fijación #3 en hempcrete. Fijación #4 en biochar. El offset con mejor relación costo–permanencia está en Neuquén.',
         accent: true,
       },
     ],

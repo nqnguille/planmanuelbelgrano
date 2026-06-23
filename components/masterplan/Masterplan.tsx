@@ -690,7 +690,7 @@ function MpPlan() {
 /* ---------- consts compartidos de la cadena (usados por MpCadena) ---------- */
 
 const TECHS = [
-  { name: 'Hempire', origin: 'Ucrania', bring: 'Fifth Element Binder: aglutinante 100% natural, sin cemento ni cal. Hempcrete de menor densidad del mundo. Licencia territorial para Argentina disponible.' },
+  { name: 'Hempire', origin: 'Ucrania', bring: 'Fifth Element Binder: aglutinante 100% natural, sin cemento ni cal. Hempcrete de muy baja densidad. Licencia territorial para Argentina disponible.' },
   { name: 'IsoHemp', origin: 'Bélgica', bring: 'El mayor fabricante de bloques premoldeados: 5 millones de bloques al año. Referencia mundial para la vía del premoldeado a escala industrial.' },
   { name: 'Weber Tradical', origin: 'Francia', bring: 'El binder de cal estándar europeo (Grupo Saint-Gobain). La opción probada y certificada para la formulación tradicional.' },
   { name: 'UK Hempcrete', origin: 'Reino Unido', bring: 'Formación hands-on en aplicación in situ, vertido y proyectado. Transferencia de oficio para el equipo constructor.' },
