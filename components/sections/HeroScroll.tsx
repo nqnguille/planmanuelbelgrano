@@ -63,11 +63,13 @@ const STATES = [
 ]
 
 // Posiciones GSAP normalizadas (0→1) — sin dead zones entre estados
+// Alineados a las escenas reales del video (verificadas en los frames):
+// f001 árido · f030 campo · f058 construcción · f104 ciudad verde.
 const TIMING = [
-  { outAt: 0.12 },
-  { inAt: 0.15, outAt: 0.33 },
-  { inAt: 0.36, outAt: 0.52 },
-  { inAt: 0.56 },
+  { outAt: 0.13 },                 // S0 árido + industria
+  { inAt: 0.15, outAt: 0.36 },     // S1 campo de cáñamo
+  { inAt: 0.39, outAt: 0.60 },     // S2 construcción
+  { inAt: 0.64 },                  // S3 ciudad verde (entra y se sostiene)
 ]
 
 export function HeroScroll() {
@@ -171,7 +173,7 @@ export function HeroScroll() {
             trigger: '#hero-pin-container',
             start: 'top top',
             end: 'bottom bottom',
-            scrub: 0.8,
+            scrub: 0.15,
           },
         })
 
