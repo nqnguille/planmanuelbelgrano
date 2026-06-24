@@ -13,7 +13,7 @@ const HERO_POSTER = '/hero/seqv/f001.jpg'
 // tramo (FRAME_END → 1.0) es un "hold" donde la ciudad verde queda congelada y el
 // texto "Vaca Verde" se sostiene en pantalla —con el sticky aún pinneado— para que
 // haya tiempo de lectura antes de pasar al módulo siguiente.
-const FRAME_END = 0.60
+const FRAME_END = 0.45
 
 function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   const sAR = srcW / srcH
@@ -65,15 +65,14 @@ const STATES = [
 ]
 
 // Posiciones GSAP normalizadas (0→1) — sin dead zones entre estados
-// Alineados a las escenas reales (verificadas) y comprimidos a FRAME_END = 0.60:
-// f001 árido · f030 campo · f058 construcción · f104 ciudad verde.
-// El video termina al 60% → el último 40% del scroll (~380vh) es hold congelado
-// con "Vaca Verde" sostenido = mucho tiempo de lectura antes del gate.
+// Video comprimido a FRAME_END = 0.45 → todos los textos entran MUCHO antes, y el
+// último 55% del scroll es hold congelado con "Vaca Verde" sostenido (mucha lectura).
+// Escenas reales: f001 árido · f030 campo · f058 construcción · f104 ciudad verde.
 const TIMING = [
-  { outAt: 0.10 },                 // S0 árido + industria
-  { inAt: 0.11, outAt: 0.26 },     // S1 campo de cáñamo
-  { inAt: 0.29, outAt: 0.44 },     // S2 construcción
-  { inAt: 0.49 },                  // S3 ciudad verde (entra y se sostiene hasta el final)
+  { outAt: 0.08 },                 // S0 árido + industria
+  { inAt: 0.08, outAt: 0.20 },     // S1 campo de cáñamo
+  { inAt: 0.22, outAt: 0.34 },     // S2 construcción
+  { inAt: 0.38 },                  // S3 ciudad verde (entra temprano y se sostiene hasta el final)
 ]
 
 export function HeroScroll() {
