@@ -67,21 +67,30 @@ ordena: cada una de estas presiones cede si YPF se suma al plan.
 # 2. La solución: de la semilla a la llave
 
 Flora cultiva **cáñamo industrial** (*Cannabis sativa L.* con THC < 1%) y aprovecha
-la planta de forma prácticamente integral, a través de dos productos que **fijan
-el carbono de manera permanente**:
+la planta de forma prácticamente integral, a través de dos productos cuyo destino
+**almacena el carbono de forma durable**:
 
 - **Hempcrete** — material de construcción de base biológica con el que se fabrican
   ladrillos y bloques para **vivienda accesible, aislante y de rápida ejecución**,
-  con materia prima y mano de obra locales.
+  con materia prima y mano de obra locales. **No es un experimento: es una tecnología
+  probada en más de 50 países, con norma europea (EN 16101).** En Argentina casi no
+  se utiliza todavía; el proyecto no inventa el material, lo **trae y lo adapta** a
+  las condiciones locales.
 - **Biochar** — a partir de los residuos de la planta (pirólisis), un material que
-  **fija carbono de forma permanente** y mejora el suelo. Es la segunda línea de
-  carbono del proyecto.
+  **fija el carbono de forma durable (siglos)** y mejora el suelo. Es la segunda
+  línea de carbono del proyecto.
 
-**El diferencial que pone en valor el carbono.** De todos los derivados del cáñamo,
-**solo el hempcrete y el biochar fijan el carbono de forma permanente**; los demás
-(fibra, semilla) lo liberan tarde o temprano. Por eso esta cadena —y no cualquier
-proyecto de cáñamo— es la relevante para una estrategia de descarbonización: **no
-captura y suelta; fija.**
+**El diferencial que pone en valor el carbono.** Lo que distingue a esta cadena no es
+solo capturar carbono, sino **almacenarlo de forma durable**: el **biochar** lo
+retiene por siglos y el **hempcrete** lo mantiene almacenado durante toda la vida de
+la construcción. Frente a otros usos del cáñamo (fibra, semilla, papel), que lo
+liberan antes, estos dos son los de **mayor permanencia** —y, por eso, los relevantes
+para una estrategia de descarbonización: **no capturan y sueltan; almacenan.**
+
+**Dónde está la innovación.** No en el material —ya probado en el mundo— sino en la
+**integración**: producirlo a escala en Argentina, con medición y certificación del
+carbono, validando la genética adaptada al territorio y conectándolo con la vivienda
+que la zona necesita.
 
 **Aprovechamiento casi integral, sin desperdicio.** El ladrillo de hempcrete usa la
 biomasa estructural de la planta y el biochar valoriza los residuos: en conjunto,
@@ -288,7 +297,7 @@ ajusta el objeto al marco de cáñamo industrial — Ley 27.669.)*
 |---|---|
 | **Marco regulatorio del sector** | Marco nacional vigente (Ley 27.669/ARICCAME). El rol de YPF como catalizador institucional ayuda a ordenar la articulación entre organismos. |
 | **Doble contabilidad del carbono** | Integración de la cadena (custodia única) + registro serializado + titular único (YPF). |
-| **Reputación / greenwashing** | Remoción real y permanente, fijada físicamente en infraestructura y biochar; comunicación basada únicamente en datos certificados por terceros. |
+| **Reputación / greenwashing** | Remoción real y de almacenamiento durable, fijada físicamente en biochar (siglos) e infraestructura; comunicación basada únicamente en datos certificados por terceros. |
 | **Riesgo operativo (cultivo)** | Dos ecorregiones en paralelo; medición temprana (wecann.ai); ejecución a cargo de un socio con licencia, maquinaria y experiencia (Fundación GEN). |
 | **Escala** | Plan por etapas: la escala solo se aborda tras validar la genética. |
 | **Responsabilidad / ejecución** | Asignación por contrato dentro del consorcio; financiamiento de YPF por etapas contra hitos verificables. |
