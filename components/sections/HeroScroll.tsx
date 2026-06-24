@@ -9,11 +9,12 @@ const FRAME_SRCS = Array.from({ length: FRAME_COUNT }, (_, i) =>
 )
 const HERO_POSTER = '/hero/seqv/f001.jpg'
 
-// El scrub completa la secuencia bastante antes del final (FRAME_END): el último
-// tramo (FRAME_END → 1.0) es un "hold" donde la ciudad verde queda congelada y el
-// texto "Vaca Verde" se sostiene en pantalla —con el sticky aún pinneado— para que
-// haya tiempo de lectura antes de pasar al módulo siguiente.
-const FRAME_END = 0.45
+// Cuánto scroll dura el hero, en múltiplos de la altura del viewport (~4 = ~400vh).
+const SCROLL_MULTIPLIER = 4
+// Fracción del timeline (0→1) en la que corre toda la secuencia y entran los textos.
+// El resto (1 - SEQ) es un HOLD explícito: frame final + "Vaca Verde" congelados,
+// con la pantalla pinneada, para que dé tiempo de leer antes de pasar al gate.
+const SEQ = 0.62
 
 function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   const sAR = srcW / srcH
@@ -24,8 +25,8 @@ function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   } else {
     dW = dstW; dH = dstW / sAR   // llena el ancho, recorta abajo
   }
-  // Alineación superior-izquierda (desktop y mobile): conserva la industria del
-  // horizonte (arriba) y a Belgrano con la bandera (izquierda).
+  // Alineación superior-izquierda: conserva la industria del horizonte (arriba) y
+  // a Belgrano con la bandera (izquierda).
   return { dW, dH, ox: 0, oy: 0 }
 }
 
@@ -64,15 +65,16 @@ const STATES = [
   },
 ]
 
-// Posiciones GSAP normalizadas (0→1) — sin dead zones entre estados
-// Video comprimido a FRAME_END = 0.45 → todos los textos entran MUCHO antes, y el
-// último 55% del scroll es hold congelado con "Vaca Verde" sostenido (mucha lectura).
-// Escenas reales: f001 árido · f030 campo · f058 construcción · f104 ciudad verde.
+// Posiciones sobre el eje del timeline (0→1). Frames y textos comparten este eje,
+// así que la sincronía es exacta. Escenas reales (verificadas en los cuadros):
+// f001 árido · f030 campo · f058 construcción · f104 ciudad verde.
+// Los frames corren de 0 a SEQ (0.62); cada texto entra junto a su escena.
+// Transiciones SECUENCIALES (in = out anterior + D): sin solape de títulos ni baches.
 const TIMING = [
-  { outAt: 0.08 },                 // S0 árido + industria
-  { inAt: 0.08, outAt: 0.20 },     // S1 campo de cáñamo
-  { inAt: 0.22, outAt: 0.34 },     // S2 construcción
-  { inAt: 0.38 },                  // S3 ciudad verde (entra temprano y se sostiene hasta el final)
+  { out: 0.12 },                 // S0 árido + industria
+  { in: 0.17, out: 0.32 },       // S1 campo de cáñamo (~f030 ≈ 0.18)
+  { in: 0.37, out: 0.52 },       // S2 construcción (~f058 ≈ 0.35)
+  { in: 0.57 },                  // S3 ciudad verde — entra (~0.62) y se sostiene en el HOLD
 ]
 
 export function HeroScroll() {
@@ -94,23 +96,9 @@ export function HeroScroll() {
     })
 
     let ready = false
-    let lastP = 0
     let lastDrawn = -1
-    let rafPending = false
+    let curIdx = 0
     let gsapCtx: ReturnType<typeof import('gsap').gsap.context> | null = null
-
-    function markReadyAndDraw() {
-      if (!ready) {
-        ready = true
-        resizeCanvas()
-      }
-      drawFrame(lastP)
-    }
-    // El primer cuadro habilita el dibujo; el resto se va cargando en segundo plano
-    if (imgs[0].complete && imgs[0].naturalWidth) markReadyAndDraw()
-    else { imgs[0].onload = markReadyAndDraw; imgs[0].onerror = markReadyAndDraw }
-    // Redibujar cuando cada cuadro termina de cargar (por si el usuario está quieto en ese punto)
-    imgs.forEach((img) => { img.onload = img.onload || (() => { if (ready) drawFrame(lastP) }) })
 
     function resizeCanvas() {
       const dpr = window.devicePixelRatio || 1
@@ -133,96 +121,106 @@ export function HeroScroll() {
       return null
     }
 
-    function drawFrame(p: number) {
+    function drawFrame(rawIdx: number) {
+      const idx = Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(rawIdx)))
+      curIdx = idx
       if (!ready) return
-      const pf = Math.min(1, p / FRAME_END)
-      const idx = Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(pf * (FRAME_COUNT - 1))))
-      if (idx === lastDrawn && imgs[idx].complete && imgs[idx].naturalWidth) return
-      const img = (imgs[idx].complete && imgs[idx].naturalWidth) ? imgs[idx] : nearestLoaded(idx)
+      const exact = imgs[idx].complete && imgs[idx].naturalWidth > 0
+      if (exact && idx === lastDrawn) return
+      const img = exact ? imgs[idx] : nearestLoaded(idx)
       if (!img) return
       resizeCanvas()
       const cw = window.innerWidth, ch = window.innerHeight
       const g = coverGeo(img.naturalWidth, img.naturalHeight, cw, ch)
       ctx.clearRect(0, 0, cw, ch)
       ctx.drawImage(img, g.ox, g.oy, g.dW, g.dH)
-      lastDrawn = idx
+      // Si dibujamos un cuadro "cercano" (el exacto aún no cargó), dejamos lastDrawn
+      // en -1 para repintar cuando el exacto termine de cargar.
+      lastDrawn = exact ? idx : -1
     }
 
-    function onScroll() {
-      const container = document.getElementById('hero-pin-container')
-      if (!container) return
-      const rect = container.getBoundingClientRect()
-      const scrolled = Math.max(0, -rect.top)
-      const total = container.offsetHeight - window.innerHeight
-      lastP = total > 0 ? Math.min(1, scrolled / total) : 0
-      if (!rafPending) {
-        rafPending = true
-        requestAnimationFrame(() => { rafPending = false; drawFrame(lastP) })
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', () => {
-      canvas!.width = 0; canvas!.height = 0
+    function markReadyAndDraw() {
+      if (!ready) { ready = true; resizeCanvas() }
       lastDrawn = -1
-      resizeCanvas(); drawFrame(lastP)
-    }, { passive: true })
+      drawFrame(curIdx)
+    }
+    if (imgs[0].complete && imgs[0].naturalWidth) markReadyAndDraw()
+    else { imgs[0].onload = markReadyAndDraw; imgs[0].onerror = markReadyAndDraw }
+    // Repintar cuando el cuadro actual termina de cargar (si el usuario está quieto ahí)
+    imgs.forEach((img, i) => {
+      if (i === 0) return
+      img.onload = () => { if (ready && i === curIdx) { lastDrawn = -1; drawFrame(curIdx) } }
+    })
 
-    async function initTextAnimations() {
+    async function initTimeline() {
       const { gsap } = await import('@/lib/gsap')
       gsapCtx = gsap.context(() => {
+        const frameState = { f: 0 }
+        const D = 0.05
+
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: '#hero-pin-container',
+            trigger: '#hero-sticky',
             start: 'top top',
-            end: 'bottom bottom',
-            scrub: 0.15,
+            end: () => '+=' + window.innerHeight * SCROLL_MULTIPLIER,
+            pin: '#hero-sticky',
+            pinSpacing: true,
+            anticipatePin: 1,
+            scrub: 0.5,
+            invalidateOnRefresh: true,
           },
         })
 
-        const D = 0.05
+        // CANVAS (fondo) — es un tween del MISMO timeline que el texto → sincronía exacta.
+        tl.to(frameState, {
+          f: FRAME_COUNT - 1,
+          ease: 'none',
+          duration: SEQ,
+          onUpdate: () => drawFrame(frameState.f),
+        }, 0)
 
-        // La invitación a deslizar se desvanece apenas el usuario arranca a scrollear
+        // La invitación a deslizar se desvanece apenas arranca el scroll
         tl.to('#hero-scroll-cue', { opacity: 0, y: 14, duration: 0.04 }, 0.02)
 
-        // S0 → fade out
-        tl.to('#hs0', { opacity: 0, y: -30, duration: D }, TIMING[0].outAt)
+        // TEXTOS (mismo eje que los frames)
+        tl.to('#hs0', { opacity: 0, y: -30, duration: D }, TIMING[0].out)
+        tl.fromTo('#hs1', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[1].in!)
+        tl.to('#hs1', { opacity: 0, y: -30, duration: D }, TIMING[1].out!)
+        tl.fromTo('#hs2', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[2].in!)
+        tl.to('#hs2', { opacity: 0, y: -30, duration: D }, TIMING[2].out!)
+        tl.fromTo('#hs3', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[3].in!)
 
-        // S1
-        tl.fromTo('#hs1', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[1].inAt!)
-        tl.to('#hs1', { opacity: 0, y: -30, duration: D }, TIMING[1].outAt!)
-
-        // S2
-        tl.fromTo('#hs2', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[2].inAt!)
-        tl.to('#hs2', { opacity: 0, y: -30, duration: D }, TIMING[2].outAt!)
-
-        // S3 — stays
-        tl.fromTo('#hs3', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: D }, TIMING[3].inAt!)
+        // HOLD: extiende el timeline hasta 1.0 sin animar nada. El tramo SEQ→1.0 es
+        // scroll real con la pantalla pinneada y todo congelado (frame final + S3).
+        tl.to({}, { duration: 0.01 }, 0.99)
       })
     }
-    initTextAnimations()
-    onScroll()
+    initTimeline()
+
+    function onResize() {
+      canvas!.width = 0; canvas!.height = 0
+      lastDrawn = -1
+      resizeCanvas(); drawFrame(curIdx)
+      import('@/lib/gsap').then(({ ScrollTrigger }) => ScrollTrigger.refresh())
+    }
+    window.addEventListener('resize', onResize, { passive: true })
 
     return () => {
-      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
       if (gsapCtx) gsapCtx.revert()
     }
   }, [])
 
   return (
-    <section
-      id="hero-pin-container"
-      style={{ height: '950vh' }}
-      aria-label="Hero — De la semilla a la industria"
-    >
+    <section id="hero-pin-container" aria-label="Hero — De la semilla a la industria">
       <div
         id="hero-sticky"
-        style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}
+        style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
       >
         {/* Poster de fondo hasta que el primer cuadro esté listo */}
         <div style={{
           position: 'absolute', inset: 0, zIndex: 0,
-          backgroundImage: `url(${HERO_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'center',
+          backgroundImage: `url(${HERO_POSTER})`, backgroundSize: 'cover', backgroundPosition: 'top left',
         }} />
 
         <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, zIndex: 1, display: 'block' }} />
@@ -328,12 +326,12 @@ export function HeroScroll() {
           </div>
         ))}
 
-        {/* Invitación a deslizar — protagonista al inicio, se desvanece al scrollear */}
+        {/* Invitación a deslizar — sobria, se desvanece al scrollear */}
         <div id="hero-scroll-cue" style={{
-          position: 'absolute', bottom: '2rem', left: '50%',
+          position: 'absolute', bottom: '2.2rem', left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 8,
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.9rem',
           pointerEvents: 'none', textAlign: 'center',
         }}>
           <span style={{
