@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 
 const PASSWORD = 'elsueñodemanuel'
 const STORAGE_KEY = 'pmb_access'
+/* CTA para agendar directamente una reunión (Meet) y solicitar la clave en vivo. */
+const MEET_URL = 'https://calendar.app.google/PBcbPHeEvsxKNR4X8'
 
 /* Gate en el flujo (no overlay): aparece como sección a continuación del hero
    cinematográfico, igual que el WelcomeGate de CONFIDENT. */
@@ -149,6 +151,37 @@ export function InlineGate({ onUnlock }: { onUnlock: () => void }) {
         }}>
           Esa clave no abre esta puerta.
         </p>
+
+        {/* CTA: solicitar la clave por reunión / Meet */}
+        <div style={{ marginTop: '1.6rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ width: '100%', maxWidth: '300px', display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+            <span style={{ flex: 1, height: 1, background: 'rgba(243,241,231,0.12)' }} />
+            <span style={{ fontFamily: 'var(--font-hanken)', fontSize: '0.58rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(243,241,231,0.32)' }}>o</span>
+            <span style={{ flex: 1, height: 1, background: 'rgba(243,241,231,0.12)' }} />
+          </div>
+          <p style={{ fontFamily: 'var(--font-hanken)', fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.6, color: 'rgba(243,241,231,0.6)', maxWidth: '320px', margin: 0 }}>
+            ¿No tenés la clave? El acceso es personal. Solicitalo y te lo damos en vivo,
+            en una breve reunión.
+          </p>
+          <a
+            href={MEET_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.55rem',
+              width: '100%', maxWidth: '300px', justifyContent: 'center',
+              padding: '0.85rem 1.5rem',
+              background: 'transparent',
+              border: '1px solid rgba(242,181,68,0.55)',
+              color: '#F2B544',
+              fontFamily: 'var(--font-hanken)',
+              fontSize: '0.72rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 500,
+              textDecoration: 'none', cursor: 'pointer',
+            }}
+          >
+            Solicitar acceso por Meet
+          </a>
+        </div>
       </motion.div>
     </section>
   )
