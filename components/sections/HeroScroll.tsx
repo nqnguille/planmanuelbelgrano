@@ -12,20 +12,19 @@ const HERO_POSTER = '/hero/seqv/f001.jpg'
 // El scrub completa la secuencia antes del final (FRAME_END), dejando un "hold"
 // para que se pueda leer el último estado (Vaca Verde).
 const FRAME_END = 0.86
-// Sesgo vertical del recorte cover: 0 = ancla arriba (muestra la industria del
-// horizonte), 0.5 = centrado. Bajo a propósito para no perder la franja industrial.
-const VERTICAL_BIAS = 0.18
 
 function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   const sAR = srcW / srcH
   const dAR = dstW / dstH
-  let dW: number, dH: number, ox: number, oy: number
+  let dW: number, dH: number
   if (sAR > dAR) {
-    dH = dstH; dW = dstH * sAR; ox = (dstW - dW) / 2; oy = 0
+    dH = dstH; dW = dstH * sAR   // llena el alto, recorta a la derecha
   } else {
-    dW = dstW; dH = dstW / sAR; ox = 0; oy = (dstH - dH) * VERTICAL_BIAS
+    dW = dstW; dH = dstW / sAR   // llena el ancho, recorta abajo
   }
-  return { dW, dH, ox, oy }
+  // Alineación superior-izquierda (desktop y mobile): conserva la industria del
+  // horizonte (arriba) y a Belgrano con la bandera (izquierda).
+  return { dW, dH, ox: 0, oy: 0 }
 }
 
 const STATES = [
