@@ -109,7 +109,7 @@ el carbono es la consecuencia certificable.
 Este documento no pretende decirle a YPF cuáles son sus prioridades. Parte de
 objetivos que la compañía ya hizo públicos y propone un posible aporte a cada uno.
 
-| Objetivo público de YPF | Aporte posible del Plan Belgrano |
+| Objetivo público de YPF | Aporte posible del Plan Manuel Belgrano |
 |---|---|
 | Sostener la **licencia social para operar** en Neuquén | Empleo local de absorción y vivienda accesible en las comunidades donde YPF opera |
 | Avanzar en su **agenda de descarbonización** | Una vía de **remoción** biológica de carbono, complementaria a la reducción de emisiones, en su propio territorio |
@@ -261,8 +261,8 @@ su memoria *"Utilidades que resultarían del cultivo del lino y del cáñamo"*�
 desarrollo de esta industria como camino de valor agregado y trabajo para el país.
 La prohibición la interrumpió; el marco regulatorio vigente vuelve a habilitarla.
 
-> El sueño completo de Belgrano, y cómo el Plan lo retoma, puede conocerse en
-> **www.planmanuelbelgrano.com.ar**.
+> El sueño completo de Manuel Belgrano, y cómo el Plan lo retoma, puede conocerse
+> en **www.planmanuelbelgrano.com.ar**.
 
 *Esta dimensión se presenta como el horizonte que la inversión desbloquea, no como
 el pedido central: el foco de la propuesta sigue siendo la cadena hempcrete–biochar
@@ -304,7 +304,7 @@ ajusta el objeto al marco de cáñamo industrial — Ley 27.669.)*
 
 \newpage
 
-# 11. El momento
+# 11. Por qué ahora
 
 Hoy convergen una necesidad social urgente —empleo y vivienda en Añelo—, una
 industria nacional que espera quién la ordene, y la posibilidad de construir un
