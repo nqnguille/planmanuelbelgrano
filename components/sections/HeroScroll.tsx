@@ -9,9 +9,11 @@ const FRAME_SRCS = Array.from({ length: FRAME_COUNT }, (_, i) =>
 )
 const HERO_POSTER = '/hero/seqv/f001.jpg'
 
-// El scrub completa la secuencia antes del final (FRAME_END), dejando un "hold"
-// para que se pueda leer el último estado (Vaca Verde).
-const FRAME_END = 0.86
+// El scrub completa la secuencia bastante antes del final (FRAME_END): el último
+// tramo (FRAME_END → 1.0) es un "hold" donde la ciudad verde queda congelada y el
+// texto "Vaca Verde" se sostiene en pantalla —con el sticky aún pinneado— para que
+// haya tiempo de lectura antes de pasar al módulo siguiente.
+const FRAME_END = 0.74
 
 function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   const sAR = srcW / srcH
@@ -63,13 +65,14 @@ const STATES = [
 ]
 
 // Posiciones GSAP normalizadas (0→1) — sin dead zones entre estados
-// Alineados a las escenas reales del video (verificadas en los frames):
+// Alineados a las escenas reales (verificadas) y comprimidos a FRAME_END = 0.74:
 // f001 árido · f030 campo · f058 construcción · f104 ciudad verde.
+// S3 entra temprano (~0.57) y se sostiene desde ahí hasta el final = mucha lectura.
 const TIMING = [
-  { outAt: 0.13 },                 // S0 árido + industria
-  { inAt: 0.15, outAt: 0.36 },     // S1 campo de cáñamo
-  { inAt: 0.39, outAt: 0.60 },     // S2 construcción
-  { inAt: 0.64 },                  // S3 ciudad verde (entra y se sostiene)
+  { outAt: 0.11 },                 // S0 árido + industria
+  { inAt: 0.13, outAt: 0.30 },     // S1 campo de cáñamo
+  { inAt: 0.33, outAt: 0.52 },     // S2 construcción
+  { inAt: 0.57 },                  // S3 ciudad verde (entra y se sostiene hasta el final)
 ]
 
 export function HeroScroll() {
