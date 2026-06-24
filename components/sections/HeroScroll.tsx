@@ -9,6 +9,13 @@ const FRAME_SRCS = Array.from({ length: FRAME_COUNT }, (_, i) =>
 )
 const HERO_POSTER = '/hero/seqv/f001.jpg'
 
+// El scrub completa la secuencia antes del final (FRAME_END), dejando un "hold"
+// para que se pueda leer el último estado (Vaca Verde).
+const FRAME_END = 0.86
+// Sesgo vertical del recorte cover: 0 = ancla arriba (muestra la industria del
+// horizonte), 0.5 = centrado. Bajo a propósito para no perder la franja industrial.
+const VERTICAL_BIAS = 0.18
+
 function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   const sAR = srcW / srcH
   const dAR = dstW / dstH
@@ -16,7 +23,7 @@ function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   if (sAR > dAR) {
     dH = dstH; dW = dstH * sAR; ox = (dstW - dW) / 2; oy = 0
   } else {
-    dW = dstW; dH = dstW / sAR; ox = 0; oy = (dstH - dH) / 2
+    dW = dstW; dH = dstW / sAR; ox = 0; oy = (dstH - dH) * VERTICAL_BIAS
   }
   return { dW, dH, ox, oy }
 }
@@ -58,10 +65,10 @@ const STATES = [
 
 // Posiciones GSAP normalizadas (0→1) — sin dead zones entre estados
 const TIMING = [
-  { outAt: 0.10 },
-  { inAt: 0.11, outAt: 0.38 },
-  { inAt: 0.39, outAt: 0.55 },
-  { inAt: 0.56 },
+  { outAt: 0.18 },
+  { inAt: 0.21, outAt: 0.42 },
+  { inAt: 0.45, outAt: 0.62 },
+  { inAt: 0.66 },
 ]
 
 export function HeroScroll() {
@@ -124,7 +131,8 @@ export function HeroScroll() {
 
     function drawFrame(p: number) {
       if (!ready) return
-      const idx = Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(p * (FRAME_COUNT - 1))))
+      const pf = Math.min(1, p / FRAME_END)
+      const idx = Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(pf * (FRAME_COUNT - 1))))
       if (idx === lastDrawn && imgs[idx].complete && imgs[idx].naturalWidth) return
       const img = (imgs[idx].complete && imgs[idx].naturalWidth) ? imgs[idx] : nearestLoaded(idx)
       if (!img) return
@@ -168,7 +176,10 @@ export function HeroScroll() {
           },
         })
 
-        const D = 0.04
+        const D = 0.05
+
+        // La invitación a deslizar se desvanece apenas el usuario arranca a scrollear
+        tl.to('#hero-scroll-cue', { opacity: 0, y: 14, duration: 0.04 }, 0.02)
 
         // S0 → fade out
         tl.to('#hs0', { opacity: 0, y: -30, duration: D }, TIMING[0].outAt)
@@ -311,23 +322,27 @@ export function HeroScroll() {
           </div>
         ))}
 
-        {/* Mouse scroll indicator */}
-        <div style={{
-          position: 'absolute', bottom: '2.5rem', left: '50%',
+        {/* Invitación a deslizar — protagonista al inicio, se desvanece al scrollear */}
+        <div id="hero-scroll-cue" style={{
+          position: 'absolute', bottom: '2rem', left: '50%',
           transform: 'translateX(-50%)',
-          zIndex: 6,
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem',
-          pointerEvents: 'none',
+          zIndex: 8,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem',
+          pointerEvents: 'none', textAlign: 'center',
         }}>
-          <svg width="24" height="38" viewBox="0 0 24 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.75" y="0.75" width="22.5" height="36.5" rx="11.25" stroke="rgba(243,241,231,0.28)" strokeWidth="1.5"/>
-            <circle cx="12" cy="11" r="2.5" fill="rgba(242,181,68,0.65)" className="scroll-wheel"/>
-          </svg>
           <span style={{
-            fontFamily: 'var(--font-hanken)', fontSize: '0.52rem',
-            letterSpacing: '0.28em', textTransform: 'uppercase' as const,
-            color: 'rgba(243,241,231,0.2)',
-          }}>scroll</span>
+            fontFamily: 'var(--font-hanken)', fontSize: '0.8rem',
+            letterSpacing: '0.22em', textTransform: 'uppercase' as const,
+            color: 'rgba(243,241,231,0.92)', fontWeight: 500,
+            textShadow: '0 2px 14px rgba(7,26,56,0.85)',
+          }}>Deslizá para descubrirlo</span>
+          <svg width="30" height="46" viewBox="0 0 30 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="28" height="44" rx="14" stroke="rgba(91,196,106,0.85)" strokeWidth="1.6"/>
+            <circle cx="15" cy="13" r="3" fill="#5BC46A" className="scroll-wheel"/>
+          </svg>
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" className="scroll-chevron" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L9 8L17 1" stroke="rgba(242,181,68,0.95)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </div>
 
         {/* Flora badge */}
@@ -352,10 +367,15 @@ export function HeroScroll() {
 
         <style>{`
           @keyframes wheelBounce {
-            0%,100% { transform: translateY(0); opacity: 0.65; }
-            50% { transform: translateY(6px); opacity: 0.15; }
+            0%,100% { transform: translateY(0); opacity: 0.9; }
+            50% { transform: translateY(8px); opacity: 0.2; }
           }
-          .scroll-wheel { animation: wheelBounce 1.8s ease-in-out infinite; }
+          .scroll-wheel { animation: wheelBounce 1.6s ease-in-out infinite; }
+          @keyframes chevBounce {
+            0%,100% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(5px); opacity: 1; }
+          }
+          .scroll-chevron { animation: chevBounce 1.6s ease-in-out infinite; }
         `}</style>
       </div>
     </section>
