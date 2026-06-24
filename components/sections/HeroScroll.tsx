@@ -30,34 +30,34 @@ function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
 const STATES = [
   {
     id: 's0',
-    icon: '✦',
-    eyebrow: 'Plan Manuel Belgrano · Cáñamo industrial en la Patagonia',
-    headline: 'Belgrano tenía razón.',
-    body: 'En 1796, Belgrano propuso el cáñamo como una de las primeras industrias del país. Se adelantó dos siglos: hoy la Patagonia tiene el suelo, el agua, la energía y la escala para cumplirlo.',
+    icon: '',
+    eyebrow: '',
+    headline: 'Manuel Belgrano tenía razón.',
+    body: 'En 1796, Manuel Belgrano propuso el cáñamo como una de las primeras industrias del país: producir y agregar valor, en lugar de solo extraer. Se adelantó más de dos siglos. Hoy, sobre la misma tierra que hizo grande a Vaca Muerta, la Patagonia tiene el suelo, el agua, la energía y la escala para cumplir aquella visión.',
     cta: null,
   },
   {
     id: 's1',
     icon: '◈',
-    eyebrow: 'La biología como ventaja competitiva.',
-    headline: 'El cultivo que más carbono fija por hectárea.',
-    body: 'En pocos meses captura más CO₂ por hectárea que cualquier otro cultivo terrestre, crece en suelos áridos con poca agua y entrega fibra, material y energía de una misma siembra. La naturaleza hace el trabajo a costo casi nulo.',
+    eyebrow: 'La planta',
+    headline: 'El cultivo que más carbono captura por hectárea.',
+    body: 'En pocos meses, el cáñamo industrial captura más CO₂ por hectárea que cualquier otro cultivo terrestre. Crece en suelos áridos y con poca agua, y de una sola siembra entrega fibra, materiales y energía. La naturaleza hace el trabajo a un costo casi nulo: es el punto de partida de toda la cadena.',
     cta: null,
   },
   {
     id: 's2',
     icon: '◎',
-    eyebrow: 'Hempcrete · Fibra · Biochar · Créditos',
-    headline: 'De la semilla a la llave. Toda la cadena.',
-    body: 'El cáñamo se transforma en hempcrete: aísla, resiste el fuego y dura siglos. Detrás hay una cadena completa —cultivo, procesamiento, materiales y construcción— con empleo técnico en cada eslabón, más biochar certificado como segunda línea de valor.',
+    eyebrow: 'De la semilla a la llave',
+    headline: 'Una cadena entera, de la semilla a la llave.',
+    body: 'El cáñamo se transforma en hempcrete —un material probado en más de 50 países que aísla, resiste el fuego y almacena carbono durante toda la vida de la construcción—, con el que se levantan viviendas accesibles allí donde más faltan. De sus residuos nace el biochar, que fija carbono por siglos. Cultivo, industria y construcción, con empleo técnico en cada eslabón.',
     cta: null,
   },
   {
     id: 's3',
     icon: '✦',
-    eyebrow: 'Plan Manuel Belgrano · 2026',
+    eyebrow: 'La invitación',
     headline: 'Juntos podemos convertir Vaca Muerta\nen Vaca Verde.',
-    body: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera. La misma cuenca, la misma potencia —ahora también verde.',
+    body: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera: empleo local, vivienda para quienes llegan y carbono certificado. La misma cuenca que mueve al país puede ser también su motor verde —y la industria que hoy la impulsa, su mejor aliada para lograrlo.',
     cta: { label: 'Acceder al masterplan', href: '#gate' },
   },
 ]
@@ -243,18 +243,20 @@ export function HeroScroll() {
               opacity: i === 0 ? 1 : 0,
             }}
           >
-            <p style={{
-              fontFamily: 'var(--font-hanken)',
-              fontSize: i === 0 ? '0.75rem' : '0.68rem',
-              letterSpacing: i === 0 ? '0.08em' : '0.2em',
-              textTransform: i === 0 ? 'none' : 'uppercase',
-              color: '#5BC46A',
-              fontWeight: 400,
-              marginBottom: '1rem',
-              fontStyle: 'normal',
-            }}>
-              <span style={{ marginRight: '0.5em', opacity: 0.8 }}>{state.icon}</span>{state.eyebrow}
-            </p>
+            {state.eyebrow && (
+              <p style={{
+                fontFamily: 'var(--font-hanken)',
+                fontSize: '0.68rem',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: '#5BC46A',
+                fontWeight: 400,
+                marginBottom: '1rem',
+                fontStyle: 'normal',
+              }}>
+                {state.icon && <span style={{ marginRight: '0.5em', opacity: 0.8 }}>{state.icon}</span>}{state.eyebrow}
+              </p>
+            )}
 
             <h2 style={{
               fontFamily: 'var(--font-garamond), "EB Garamond", serif',
@@ -330,17 +332,13 @@ export function HeroScroll() {
           pointerEvents: 'none', textAlign: 'center',
         }}>
           <span style={{
-            fontFamily: 'var(--font-hanken)', fontSize: '0.8rem',
-            letterSpacing: '0.22em', textTransform: 'uppercase' as const,
-            color: 'rgba(243,241,231,0.92)', fontWeight: 500,
+            fontFamily: 'var(--font-hanken)', fontSize: '0.72rem',
+            letterSpacing: '0.24em', textTransform: 'uppercase' as const,
+            color: 'rgba(243,241,231,0.82)', fontWeight: 400,
             textShadow: '0 2px 14px rgba(7,26,56,0.85)',
           }}>Deslizá para descubrirlo</span>
-          <svg width="30" height="46" viewBox="0 0 30 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="28" height="44" rx="14" stroke="rgba(91,196,106,0.85)" strokeWidth="1.6"/>
-            <circle cx="15" cy="13" r="3" fill="#5BC46A" className="scroll-wheel"/>
-          </svg>
-          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" className="scroll-chevron" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L9 8L17 1" stroke="rgba(242,181,68,0.95)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="20" height="34" viewBox="0 0 20 34" fill="none" className="scroll-arrow" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 1V31M10 31L3 24M10 31L17 24" stroke="rgba(243,241,231,0.7)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
 
@@ -365,16 +363,11 @@ export function HeroScroll() {
         </div>
 
         <style>{`
-          @keyframes wheelBounce {
-            0%,100% { transform: translateY(0); opacity: 0.9; }
-            50% { transform: translateY(8px); opacity: 0.2; }
-          }
-          .scroll-wheel { animation: wheelBounce 1.6s ease-in-out infinite; }
-          @keyframes chevBounce {
+          @keyframes arrowBounce {
             0%,100% { transform: translateY(0); opacity: 0.5; }
-            50% { transform: translateY(5px); opacity: 1; }
+            50% { transform: translateY(7px); opacity: 1; }
           }
-          .scroll-chevron { animation: chevBounce 1.6s ease-in-out infinite; }
+          .scroll-arrow { animation: arrowBounce 1.8s ease-in-out infinite; }
         `}</style>
       </div>
     </section>
