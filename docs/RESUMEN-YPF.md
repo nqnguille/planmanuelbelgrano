@@ -22,6 +22,21 @@ ni una inversión filantrópica.
 > Presidencia. Las cifras comerciales (montos, precios y superficies) son materia
 > de negociación y no se incluyen en este resumen.*
 
+# El qué, el cómo y el cuándo
+
+- **El qué (×3).** Tres resultados de una misma cadena: **remoción de carbono
+  certificada**, **materiales de construcción** de baja huella y **empleo y
+  vivienda** en Neuquén.
+- **El cómo.** Cultivo de cáñamo industrial a escala en Neuquén → procesamiento
+  local de fibra y cañamiza → hempcrete y vivienda. YPF entra como **cliente
+  estratégico ancla** a través de tres contratos (Sección 3).
+- **El cuándo.** Un **piloto de validación de 18 meses** produce los datos y las
+  primeras certificaciones; de ahí, escala provincial hacia **2031**.
+
+El horizonte es concreto: que YPF sea la **primera empresa de Oil & Gas del mundo
+en alcanzar el NetZero**, integrando energía, remoción biológica de carbono,
+industria y vivienda en un mismo sistema productivo.
+
 \newpage
 
 # 1. Por qué le interesa a YPF
