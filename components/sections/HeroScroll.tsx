@@ -64,10 +64,10 @@ const STATES = [
 
 // Posiciones GSAP normalizadas (0→1) — sin dead zones entre estados
 const TIMING = [
-  { outAt: 0.18 },
-  { inAt: 0.21, outAt: 0.42 },
-  { inAt: 0.45, outAt: 0.62 },
-  { inAt: 0.66 },
+  { outAt: 0.12 },
+  { inAt: 0.15, outAt: 0.33 },
+  { inAt: 0.36, outAt: 0.52 },
+  { inAt: 0.56 },
 ]
 
 export function HeroScroll() {
