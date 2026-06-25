@@ -306,9 +306,9 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
         <Stat n="18 meses" l="para la variedad campeona por ecorregión" color={CELESTE} />
       </motion.div>
       <Lead max="62ch" color="rgba(243,241,231,0.5)">
-        Medido con un benchmark AI-First (sensores, drones, gemelo digital), espejo del
-        tablero que YPF ya usa. Hoy ya hay tracción real: licencia, cosechas, aceites
-        certificados, ensayo en cantera de Añelo y primeros ladrillos producidos.
+        Medido con un benchmark de campo (sensores, drones, gemelo digital). Hoy ya hay
+        tracción real: licencia, cosechas, aceites certificados, ensayo en cantera de Añelo
+        y primeros ladrillos producidos.
       </Lead>
     </Shell>
   )},

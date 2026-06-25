@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { useLang } from '@/lib/i18n'
 
 // Secuencia de cuadros del "relato vivo" (scrub por scroll, estilo Apple)
 const FRAME_COUNT = 104
@@ -9,12 +10,13 @@ const FRAME_SRCS = Array.from({ length: FRAME_COUNT }, (_, i) =>
 )
 const HERO_POSTER = '/hero/seqv/f001.jpg'
 
-// Cuánto scroll dura el hero, en múltiplos de la altura del viewport (~4 = ~400vh).
-const SCROLL_MULTIPLIER = 4
+// Cuánto scroll dura el hero, en múltiplos de la altura del viewport (~5 = ~500vh).
+// Más distancia = el video avanza más lento y fluido por cuadro al scrollear.
+const SCROLL_MULTIPLIER = 5
 // Fracción del timeline (0→1) en la que corre toda la secuencia y entran los textos.
 // El resto (1 - SEQ) es un HOLD explícito: frame final + "Vaca Verde" congelados,
 // con la pantalla pinneada, para que dé tiempo de leer antes de pasar al gate.
-const SEQ = 0.62
+const SEQ = 0.70
 
 function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   const sAR = srcW / srcH
@@ -30,40 +32,82 @@ function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   return { dW, dH, ox: 0, oy: 0 }
 }
 
-const STATES = [
-  {
-    id: 's0',
-    icon: '',
-    eyebrow: '',
-    headline: 'Manuel Belgrano tenía razón.',
-    body: 'En 1796, Manuel Belgrano propuso el cáñamo como una de las primeras industrias del país: producir y agregar valor, en lugar de solo extraer. Se adelantó más de dos siglos. Hoy, sobre la misma tierra que hizo grande a Vaca Muerta, la Patagonia tiene el suelo, el agua, la energía y la escala para cumplir aquella visión.',
-    cta: null,
+// Metadatos de cada estado (idénticos en ambos idiomas): id de animación, icono y
+// destino del CTA. El texto sale del diccionario COPY según el idioma activo.
+const STATES_META = [
+  { id: 's0', icon: '', hasCta: false, ctaHref: '' },
+  { id: 's1', icon: '◈', hasCta: false, ctaHref: '' },
+  { id: 's2', icon: '◎', hasCta: false, ctaHref: '' },
+  { id: 's3', icon: '✦', hasCta: true, ctaHref: '#gate' },
+] as const
+
+type HeroState = {
+  eyebrow: string
+  headline: string
+  body: string
+  ctaLabel: string
+}
+
+const COPY: Record<'es' | 'en', { states: HeroState[]; scrollCue: string }> = {
+  es: {
+    states: [
+      {
+        eyebrow: '',
+        headline: 'Manuel Belgrano tenía razón.',
+        body: 'En 1796, Manuel Belgrano propuso el cáñamo como una de las primeras industrias del país: producir y agregar valor, en lugar de solo extraer. Se adelantó más de dos siglos. Hoy, sobre la misma tierra que hizo grande a Vaca Muerta, la Patagonia tiene el suelo, el agua, la energía y la escala para cumplir aquella visión.',
+        ctaLabel: '',
+      },
+      {
+        eyebrow: 'La planta',
+        headline: 'Crece rápido, en suelo árido y con poca agua.',
+        body: 'El cáñamo industrial madura en pocos meses y prospera donde otros cultivos no llegan: poca agua, suelo difícil, clima patagónico. De una sola siembra entrega fibra, materiales y energía — el punto de partida de toda la cadena.',
+        ctaLabel: '',
+      },
+      {
+        eyebrow: 'De la semilla a la llave',
+        headline: 'Una cadena entera, de la semilla a la llave.',
+        body: 'El cáñamo se transforma en hempcrete —un material probado en más de 50 países que aísla, resiste el fuego y almacena carbono durante toda la vida de la construcción—, con el que se levantan viviendas accesibles allí donde más faltan. De sus residuos nace el biochar, que fija carbono por siglos. Cultivo, industria y construcción, con empleo técnico en cada eslabón.',
+        ctaLabel: '',
+      },
+      {
+        eyebrow: 'La invitación',
+        headline: 'Juntos podemos convertir Vaca Muerta\nen Vaca Verde.',
+        body: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera: empleo local, vivienda para quienes llegan y carbono verificable. La misma cuenca que mueve al país puede ser también su motor verde —y la industria que hoy la impulsa, su mejor aliada para lograrlo.',
+        ctaLabel: 'Acceder al masterplan',
+      },
+    ],
+    scrollCue: 'Deslizá para descubrirlo',
   },
-  {
-    id: 's1',
-    icon: '◈',
-    eyebrow: 'La planta',
-    headline: 'El cultivo que más carbono captura por hectárea.',
-    body: 'En pocos meses, el cáñamo industrial captura más CO₂ por hectárea que cualquier otro cultivo terrestre. Crece en suelos áridos y con poca agua, y de una sola siembra entrega fibra, materiales y energía. La naturaleza hace el trabajo a un costo casi nulo: es el punto de partida de toda la cadena.',
-    cta: null,
+  en: {
+    states: [
+      {
+        eyebrow: '',
+        headline: 'Manuel Belgrano was right.',
+        body: "In 1796, Manuel Belgrano proposed hemp as one of the country's first industries: to produce and add value, rather than merely extract. He was more than two centuries ahead of his time. Today, on the very land that made Vaca Muerta great, Patagonia has the soil, the water, the energy and the scale to fulfill that vision.",
+        ctaLabel: '',
+      },
+      {
+        eyebrow: 'The plant',
+        headline: 'It grows fast, in arid soil, with little water.',
+        body: "Industrial hemp matures in a few months and thrives where other crops can't: little water, difficult soil, a Patagonian climate. From a single planting it yields fiber, materials and energy — the starting point of the entire chain.",
+        ctaLabel: '',
+      },
+      {
+        eyebrow: 'From seed to key',
+        headline: 'An entire chain, from seed to key.',
+        body: 'Hemp becomes hempcrete — a material proven in more than 50 countries that insulates, resists fire and stores carbon for the entire life of the building — used to raise affordable homes where they are needed most. Its residues yield biochar, which sequesters carbon for centuries. Farming, industry and construction, with skilled jobs at every link.',
+        ctaLabel: '',
+      },
+      {
+        eyebrow: 'The invitation',
+        headline: 'Together we can turn Vaca Muerta\ninto Vaca Verde.',
+        body: 'Vaca Muerta gave Neuquén energy, jobs and scale. On that same land, hemp adds an industry that plants, builds and regenerates: local employment, homes for those who arrive and verifiable carbon. The same basin that drives the country can also be its green engine — and the industry that powers it today, its best ally in getting there.',
+        ctaLabel: 'Open the masterplan',
+      },
+    ],
+    scrollCue: 'Scroll to discover',
   },
-  {
-    id: 's2',
-    icon: '◎',
-    eyebrow: 'De la semilla a la llave',
-    headline: 'Una cadena entera, de la semilla a la llave.',
-    body: 'El cáñamo se transforma en hempcrete —un material probado en más de 50 países que aísla, resiste el fuego y almacena carbono durante toda la vida de la construcción—, con el que se levantan viviendas accesibles allí donde más faltan. De sus residuos nace el biochar, que fija carbono por siglos. Cultivo, industria y construcción, con empleo técnico en cada eslabón.',
-    cta: null,
-  },
-  {
-    id: 's3',
-    icon: '✦',
-    eyebrow: 'La invitación',
-    headline: 'Juntos podemos convertir Vaca Muerta\nen Vaca Verde.',
-    body: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera: empleo local, vivienda para quienes llegan y carbono certificado. La misma cuenca que mueve al país puede ser también su motor verde —y la industria que hoy la impulsa, su mejor aliada para lograrlo.',
-    cta: { label: 'Acceder al masterplan', href: '#gate' },
-  },
-]
+}
 
 // Posiciones sobre el eje del timeline (0→1). Frames y textos comparten este eje,
 // así que la sincronía es exacta. Escenas reales (verificadas en los cuadros):
@@ -71,15 +115,18 @@ const STATES = [
 // Los frames corren de 0 a SEQ (0.62); cada texto entra junto a su escena.
 // Transiciones SECUENCIALES (in = out anterior + D): sin solape de títulos ni baches.
 const TIMING = [
-  { out: 0.12 },                 // S0 árido + industria
-  { in: 0.17, out: 0.32 },       // S1 campo de cáñamo (~f030 ≈ 0.18)
-  { in: 0.37, out: 0.52 },       // S2 construcción (~f058 ≈ 0.35)
-  { in: 0.57 },                  // S3 ciudad verde — entra (~0.62) y se sostiene en el HOLD
+  { out: 0.135 },                // S0 árido + industria
+  { in: 0.192, out: 0.361 },     // S1 campo de cáñamo
+  { in: 0.418, out: 0.587 },     // S2 construcción
+  { in: 0.644 },                 // S3 ciudad verde — entra antes del frame final y se sostiene en el HOLD
 ]
 
 export function HeroScroll() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const initialized = useRef(false)
+  const { lang } = useLang()
+  const copy = COPY[lang]
+  const states = STATES_META.map((meta, i) => ({ ...meta, ...copy.states[i] }))
 
   useEffect(() => {
     if (initialized.current) return
@@ -89,11 +136,7 @@ export function HeroScroll() {
     if (!canvas) return
     const ctx = canvas.getContext('2d')!
 
-    const imgs: HTMLImageElement[] = FRAME_SRCS.map((src) => {
-      const img = new Image()
-      img.src = src
-      return img
-    })
+    const imgs: HTMLImageElement[] = FRAME_SRCS.map(() => new Image())
 
     let ready = false
     let lastDrawn = -1
@@ -144,13 +187,25 @@ export function HeroScroll() {
       lastDrawn = -1
       drawFrame(curIdx)
     }
-    if (imgs[0].complete && imgs[0].naturalWidth) markReadyAndDraw()
-    else { imgs[0].onload = markReadyAndDraw; imgs[0].onerror = markReadyAndDraw }
-    // Repintar cuando el cuadro actual termina de cargar (si el usuario está quieto ahí)
-    imgs.forEach((img, i) => {
-      if (i === 0) return
-      img.onload = () => { if (ready && i === curIdx) { lastDrawn = -1; drawFrame(curIdx) } }
-    })
+    // Carga ORDENADA (f001→f104) con un pipeline de concurrencia limitada: los cuadros
+    // que se ven primero están listos primero. Así nearestLoaded nunca "salta hacia
+    // adelante" (sólo cae a un cuadro ya pasado) y el scrub se ve continuo, sin saltos.
+    let loadIdx = 0
+    const CONCURRENCY = 6
+    function loadNext() {
+      if (loadIdx >= FRAME_COUNT) return
+      const i = loadIdx++
+      const img = imgs[i]
+      img.decoding = 'async'
+      img.onload = () => {
+        if (i === 0) markReadyAndDraw()
+        else if (ready && i === curIdx) { lastDrawn = -1; drawFrame(curIdx) }
+        loadNext()
+      }
+      img.onerror = () => loadNext()
+      img.src = FRAME_SRCS[i]
+    }
+    for (let c = 0; c < CONCURRENCY; c++) loadNext()
 
     async function initTimeline() {
       const { gsap } = await import('@/lib/gsap')
@@ -166,7 +221,7 @@ export function HeroScroll() {
             pin: '#hero-sticky',
             pinSpacing: true,
             anticipatePin: 1,
-            scrub: 0.5,
+            scrub: 0.6,
             invalidateOnRefresh: true,
           },
         })
@@ -212,7 +267,7 @@ export function HeroScroll() {
   }, [])
 
   return (
-    <section id="hero-pin-container" aria-label="Hero — De la semilla a la industria">
+    <section id="hero-pin-container" aria-label="Hero — Plan Manuel Belgrano">
       <div
         id="hero-sticky"
         style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
@@ -232,7 +287,7 @@ export function HeroScroll() {
         }} />
 
         {/* ESTADOS DE TEXTO */}
-        {STATES.map((state, i) => (
+        {states.map((state, i) => (
           <div
             key={state.id}
             id={`hs${i}`}
@@ -288,20 +343,20 @@ export function HeroScroll() {
                 fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)',
                 color: 'rgba(243,241,231,0.72)',
                 lineHeight: 1.65,
-                marginBottom: state.cta ? '2rem' : 0,
+                marginBottom: state.hasCta ? '2rem' : 0,
               }}>
                 {state.body}
               </p>
             )}
 
-            {state.cta && (
+            {state.hasCta && (
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem', flexWrap: 'wrap' }}>
                 <a
-                  href={state.cta.href}
+                  href={state.ctaHref}
                   onClick={(e) => {
-                    if (state.cta!.href.startsWith('#')) {
+                    if (state.ctaHref.startsWith('#')) {
                       e.preventDefault()
-                      document.getElementById(state.cta!.href.slice(1))?.scrollIntoView({ behavior: 'smooth' })
+                      document.getElementById(state.ctaHref.slice(1))?.scrollIntoView({ behavior: 'smooth' })
                     }
                   }}
                   style={{
@@ -316,7 +371,7 @@ export function HeroScroll() {
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#4FB05E' }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#5BC46A' }}
                 >
-                  {state.cta.label}
+                  {state.ctaLabel}
                   <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
                     <path d="M0 4H14M14 4L11 1M14 4L11 7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
                   </svg>
@@ -339,7 +394,7 @@ export function HeroScroll() {
             letterSpacing: '0.24em', textTransform: 'uppercase' as const,
             color: 'rgba(243,241,231,0.82)', fontWeight: 400,
             textShadow: '0 2px 14px rgba(7,26,56,0.85)',
-          }}>Deslizá para descubrirlo</span>
+          }}>{copy.scrollCue}</span>
           <svg width="20" height="34" viewBox="0 0 20 34" fill="none" className="scroll-arrow" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 1V31M10 31L3 24M10 31L17 24" stroke="rgba(243,241,231,0.7)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>

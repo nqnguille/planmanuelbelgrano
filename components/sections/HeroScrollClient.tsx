@@ -10,7 +10,7 @@ const HeroScrollDynamic = dynamic(
       <div
         style={{
           height: '100vh',
-          background: '#1A2B22',
+          background: '#071A38',
         }}
       />
     ),

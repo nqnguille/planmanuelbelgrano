@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import { HeroScrollClient } from '@/components/sections/HeroScrollClient'
-import { Masterplan } from '@/components/masterplan/Masterplan'
+import { MasterplanDoc } from '@/components/masterplan/MasterplanDoc'
 import { InlineGate } from '@/components/ui/InlineGate'
 
 /* Flujo continuo estilo CONFIDENT:
    hero cinematográfico (público) → gate inline → masterplan (al desbloquear).
    El estado de acceso vive en sessionStorage ('pmb_access'). */
 export function MasterplanExperience() {
+  // Gate activo: el acceso requiere la clave (entregada a YPF en el documento).
   const [unlocked, setUnlocked] = useState(false)
   const [checked, setChecked] = useState(false)
 
@@ -29,12 +30,12 @@ export function MasterplanExperience() {
             onUnlock={() => {
               setUnlocked(true)
               setTimeout(() => {
-                document.getElementById('oportunidad')?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById('resumen')?.scrollIntoView({ behavior: 'smooth' })
               }, 250)
             }}
           />
         ) : (
-          <Masterplan />
+          <MasterplanDoc showCover={false} />
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
 ---
 title: "Plan Manuel Belgrano"
-subtitle: "La oportunidad para YPF — Resumen para revisión legal y técnica"
+subtitle: "Una propuesta para YPF — Resumen para revisión legal y técnica"
 author: "Flora Cáñamo Neuquino SRL"
 date: "Junio 2026"
 lang: es-AR
@@ -10,12 +10,12 @@ lang: es-AR
 
 # En una frase
 
-**Plan Manuel Belgrano** es la plataforma que permite a YPF incorporar **remoción
-de carbono biológica, verificable y permanente** —en su propio territorio de
-operación en Neuquén— a través de una cadena de valor que produce, además,
-**materiales de construcción** y **empleo calificado**. Se propone una relación
-**comercial B2B**, con YPF como **cliente estratégico ancla**: no es una donación
-ni una inversión filantrópica.
+**Plan Manuel Belgrano** es una startup argentina que produce **remoción de
+carbono biológica, verificable y permanente** —en el territorio donde YPF ya
+opera, en Neuquén— a través de una cadena de valor que genera, además,
+**materiales de construcción** y **empleo calificado**. Se propone que YPF
+participe como **socio e inversor estratégico**: no como donante ni mecenas, sino
+respaldando a una compañía en etapa temprana con alto potencial de escala.
 
 > *Documento confidencial, entregado a YPF S.A. y a sus asesores para una primera
 > revisión legal y técnica, con carácter previo a una eventual reunión con su
@@ -33,32 +33,30 @@ ni una inversión filantrópica.
 - **El cuándo.** Un **piloto de validación de 18 meses** produce los datos y las
   primeras certificaciones; de ahí, escala provincial hacia **2031**.
 
-El horizonte es concreto: que YPF sea la **primera empresa de Oil & Gas del mundo
-en alcanzar el NetZero**, integrando energía, remoción biológica de carbono,
-industria y vivienda en un mismo sistema productivo.
+La aspiración de largo plazo es que este modelo contribuya a la agenda de
+descarbonización de YPF, integrando energía, remoción de carbono, industria y
+vivienda en un mismo sistema productivo.
 
 \newpage
 
-# 1. Por qué le interesa a YPF
+# 1. Dónde podría sumar a los objetivos de YPF
 
-El gas natural licuado que Argentina proyecta exportar a Europa enfrentará
-exigencias crecientes de **huella de carbono certificada** (CBAM y marcos de
-debida diligencia). En ese contexto, el carbono removido de alta integridad deja
-de ser un gesto reputacional y pasa a ser un **activo que habilita acceso a
-mercado y reduce riesgo regulatorio**.
+Este resumen no pretende decirle a YPF cuáles son sus prioridades. Parte de
+objetivos que la compañía ya ha hecho públicos y propone, para evaluarlo en
+conjunto, un posible aporte a cada uno.
 
-| Lo que YPF necesita | Lo que aporta el Plan Belgrano |
+| Objetivo público de YPF | Aporte posible del Plan Belgrano |
 |---|---|
-| Acceso al segmento premium del GNL europeo | Remociones certificadas que respaldan la huella del producto exportado |
-| Completar su curva de abatimiento (MACC) | La pata de **remoción** biológica que hoy falta —complementa, no reemplaza, la reducción de emisiones |
-| Licencia social y desarrollo territorial | Empleo calificado y vivienda en Neuquén, en el territorio de operación |
-| Posición de primer entrante | El operador que consolide la remoción biológica a escala provincial se define **ahora** |
+| Avanzar en su agenda de descarbonización | Una vía de **remoción** biológica de carbono, complementaria a la reducción de emisiones, generada en su propio territorio |
+| Sostener la licencia social para operar en Neuquén | Empleo calificado, vivienda y desarrollo local en las comunidades donde YPF opera |
+| Fortalecer su perfil ante inversores y financiadores | Créditos de remoción certificados y trazables, propios en lugar de adquiridos a terceros |
+| Construir activos de largo plazo | Un activo ambiental nuevo —el crédito de carbono— sumado a materiales de construcción de baja huella |
 
-El cáñamo industrial capta más CO₂ por hectárea que cualquier otro cultivo
-terrestre y se ubica entre los primeros mecanismos globales de remoción cuando se
-combina **captura** (biomasa) con **fijación permanente** (hempcrete y biochar).
-A diferencia de los créditos forestales, el carbono no queda expuesto a incendio o
-tala: queda **fijado físicamente en infraestructura** de larga vida útil.
+En el plano técnico, el cáñamo industrial ofrece una captura de carbono por
+hectárea destacada entre los cultivos y, al transformarse en hempcrete, fija ese
+carbono de forma permanente en infraestructura —a diferencia de los créditos
+forestales, más expuestos a incendio o tala. Lo presentamos como una opción a
+estudiar, no como una conclusión cerrada.
 
 \newpage
 
@@ -92,18 +90,18 @@ negociación.*
 |---|---|
 | **1. Desarrollo de proveedor estratégico** | YPF financia el piloto de validación en desembolsos contra hitos verificables. Si los hitos no se cumplen o el resultado no es certificable, no se percibe ese tramo: **Flora asume el riesgo de ejecución.** |
 | **2. Offtake de créditos de carbono** | Flora entrega a YPF créditos verificados bajo estándar internacional (Verra VCS / Gold Standard), con compromiso plurianual y **titularidad exclusiva de YPF** sobre cada crédito. |
-| **3. Exclusividad territorial — Neuquén** | YPF obtiene un derecho de preferencia sobre el carbono generado por el proyecto en la provincia, asegurando la posición de primer entrante. |
+| **3. Exclusividad territorial — Neuquén** | YPF tendría un derecho de preferencia sobre el carbono generado por el proyecto en la provincia. |
 
-**Qué obtiene YPF:** un flujo de remociones certificadas para su inventario y su
-reporte de sostenibilidad, materiales de baja huella, desarrollo territorial y la
-opción de exclusividad provincial — sin asumir el riesgo agronómico, que queda en
-cabeza de Flora.
+**Qué pondría el esquema a disposición de YPF:** un flujo de remociones
+certificadas para su inventario y su reporte de sostenibilidad, materiales de baja
+huella, desarrollo territorial y la opción de preferencia provincial — sin que YPF
+asuma el riesgo agronómico, que queda en cabeza de Flora.
 
 \newpage
 
-# 4. Por qué es real — Estado de avance
+# 4. Estado de avance
 
-El proyecto no es una presentación: tiene entidad, licencia y obra ejecutada.
+El proyecto cuenta con entidad constituida, licencia y obra ya ejecutada:
 
 | Hito | Estado |
 |---|---|
@@ -201,17 +199,16 @@ empresa del tamaño de YPF puede adoptar.
 
 \newpage
 
-# 9. Por qué ahora
+# 9. El momento
 
-Cada generación tuvo una ventana de primer entrante —los ferrocarriles, el
-petróleo, el shale— y siempre la ganó quien decidió a tiempo. La de la remoción
-biológica de carbono de alta integridad está abierta, y nadie la consolidó todavía
-a escala provincial en Argentina.
+La remoción biológica de carbono de alta integridad es todavía un campo incipiente
+en Argentina, y por eso creemos que vale la pena explorarlo temprano y en conjunto.
 
-Manuel Belgrano ya lo había escrito en 1796: la riqueza de un territorio se mide por
-lo que es capaz de transformar, no por lo que extrae. El Plan Belgrano propone
-convertir parte de la riqueza de Vaca Muerta en desarrollo regenerativo — sin
-reemplazar al petróleo, a partir de él.
+Manuel Belgrano ya lo había escrito en 1796: la riqueza de un territorio se mide
+por lo que es capaz de transformar, no por lo que extrae. En esa línea, el Plan
+Belgrano propone convertir parte de la riqueza de Vaca Muerta en desarrollo
+regenerativo —sin reemplazar al petróleo, a partir de él— y ponerlo a consideración
+de YPF.
 
 ---
 
