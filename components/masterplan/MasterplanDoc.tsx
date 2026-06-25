@@ -62,10 +62,10 @@ const COPY = {
     ] as readonly (readonly [string, string])[],
     resumen_body: (
       <>
-        El Plan Manuel Belgrano responde, en el mismo territorio donde YPF opera, a dos
-        problemas reales y actuales —la falta de vivienda y de empleo de absorción en la zona
-        de Vaca Muerta, y la parálisis de la industria del cáñamo argentino— y los transforma
-        en una plataforma productiva. Se propone a YPF una vinculación en la que{' '}
+        El Plan Manuel Belgrano responde a dos problemas reales y actuales en el mismo territorio
+        donde YPF opera: la falta de vivienda y de empleo de absorción en la zona de Vaca Muerta,
+        y la parálisis de la industria del cáñamo argentino. Los transforma en una plataforma
+        productiva. Se propone a YPF una vinculación en la que{' '}
         <Strong>YPF habilita y ancla el proyecto sin operarlo</Strong>: aporta su peso
         institucional, financia por etapas el inicio y queda como titular único del carbono.
         Flora y su consorcio ejecutan. La primera etapa —un{' '}
@@ -77,7 +77,7 @@ const COPY = {
 
     /* clippings */
     clippings: [
-      { medium: 'Río Negro', date: 'jun 2026', quote: 'Neuquén va a tener, en 30 años, 1 millón y medio de personas.', who: 'Federico Sturzenegger · Min. de Desregulación' },
+      { medium: 'Río Negro', date: 'jun 2026', quote: 'Neuquén va a tener, en 30 años, 1 millón y medio de personas.', who: 'Federico Sturzenegger · Ministro de Desregulación' },
       { medium: 'Infobae', date: '18 jun', quote: 'No se vengan con la familia.', who: 'Fernando Banderet · Intendente de Añelo', alarm: true },
       { medium: 'Infobae', date: 'jun 2026', quote: 'No nos sobra trabajo. Para trabajar en Vaca Muerta hay que formarse.', who: 'Rolando Figueroa · Gobernador de Neuquén' },
       { medium: 'LM Neuquén', date: 'may 2026', quote: 'Contratan empresas de afuera para obras que podrían hacer las empresas locales.', who: 'UOCRA Neuquén · +100 sin trabajo', alarm: true },
@@ -99,7 +99,7 @@ const COPY = {
 
     /* 1 · el momento */
     s1_eyebrow: 'El momento',
-    s1_title: 'Problemas reales que se descomprimen',
+    s1_title: 'Problemas reales que se pueden aliviar',
     s1_dek: 'Neuquén atraviesa tensiones concretas, documentadas en la prensa de junio de 2026, que el Plan Manuel Belgrano contribuye a descomprimir.',
     s1_bullets: [
       <>El <Strong>déficit habitacional</Strong> de la zona ronda el 60%, con los alquileres más caros del país.</>,
@@ -119,15 +119,14 @@ const COPY = {
     s2_title: 'De la semilla a la llave',
     s2_dek: 'Flora cultiva cáñamo industrial (Cannabis sativa L., THC < 1%) y aprovecha la planta de forma casi integral, en dos productos cuyo destino almacena el carbono de forma durable.',
     s2_products: [
-      { t: 'Hempcrete', d: 'Material de construcción de base biológica para ladrillos y bloques de vivienda accesible, aislante y de rápida ejecución. No es un experimento: es una tecnología probada en más de 50 países, con norma europea EN 16101. En Argentina casi no se usa — el proyecto no inventa el material, lo trae y lo adapta.' },
+      { t: 'Hempcrete', d: 'Material de construcción de base biológica para ladrillos y bloques de vivienda accesible, aislante y de rápida ejecución. Es una tecnología probada en más de 50 países, con norma europea EN 16101. En Argentina casi no se usa: el proyecto la trae y la adapta.' },
       { t: 'Biochar', d: 'A partir de los residuos de la planta (pirólisis), un material que fija el carbono de forma durable —siglos— y mejora el suelo. Es la segunda línea de carbono del proyecto, de la misma hectárea.' },
     ] as readonly { t: string; d: string }[],
     s2_statement_by: 'El diferencial que pone en valor el carbono',
     s2_statement: (
       <>
-        Lo que distingue a esta cadena no es solo capturar carbono, sino almacenarlo de forma
-        durable: el biochar lo retiene por siglos y el hempcrete, durante toda la vida de la
-        construcción. No capturan y sueltan; almacenan.
+        Lo que distingue a esta cadena es almacenar el carbono de forma durable: el biochar lo
+        retiene por siglos y el hempcrete, durante toda la vida de la construcción.
       </>
     ),
     s2_body: (
@@ -200,7 +199,7 @@ const COPY = {
     /* 6 · el carbono */
     s6_eyebrow: 'El carbono',
     s6_title: 'Medición, verificación y titularidad única',
-    s6_dek: 'La integridad del activo de carbono es la condición central para su defensa legal, y el proyecto la resuelve por diseño, no solo por cláusula.',
+    s6_dek: 'La integridad del activo de carbono es la condición central para su defensa legal, y el proyecto la resuelve desde el diseño de la cadena, antes que por contrato.',
     s6_statement_by: 'Integración de la cadena = sin doble contabilidad',
     s6_statement: (
       <>
@@ -307,7 +306,7 @@ const COPY = {
         Hoy convergen una necesidad social urgente —empleo y vivienda en Añelo—, una industria
         nacional que espera quién la ordene, y la posibilidad de construir un activo ambiental
         soberano. Transformar parte de la riqueza de Vaca Muerta en desarrollo, empleo y arraigo,
-        en el mismo territorio — <Strong color={CREAM}>sin reemplazar al petróleo, a partir de él.</Strong>
+        en el mismo territorio — <Strong color={CREAM}>a partir del petróleo, no en su lugar.</Strong>
       </>
     ),
     s11_vision_eyebrow: 'La visión',
@@ -337,7 +336,7 @@ const COPY = {
     cover_issuer_label: 'Issuer',
     cover_issuer: 'Flora Cáñamo Neuquino SRL · Guillermo Sandoval',
     cover_recipient_label: 'Recipient',
-    cover_recipient: 'Legal and technical team of YPF S.A.',
+    cover_recipient: 'YPF S.A. legal and technical team',
     cover_contents: 'Contents',
     toc: [
       'The moment', 'The solution', 'Fit with YPF', 'The ask',
@@ -355,10 +354,10 @@ const COPY = {
     ] as readonly (readonly [string, string])[],
     resumen_body: (
       <>
-        The Manuel Belgrano Plan responds, in the very territory where YPF operates, to two
-        real and present problems —the lack of housing and of absorption employment in the
-        Vaca Muerta region, and the paralysis of Argentina&apos;s hemp industry— and turns them
-        into a productive platform. We propose to YPF a partnership in which{' '}
+        The Manuel Belgrano Plan responds to two real and present problems in the very territory
+        where YPF operates: the lack of housing and of absorption employment in the Vaca Muerta
+        region, and the paralysis of Argentina&apos;s hemp industry. It turns them into a productive
+        platform. We propose to YPF a partnership in which{' '}
         <Strong>YPF enables and anchors the project without operating it</Strong>: it lends its
         institutional weight, finances the start in stages and remains the sole holder of the carbon.
         Flora and its consortium execute. The first stage —a{' '}
@@ -370,9 +369,9 @@ const COPY = {
 
     /* clippings */
     clippings: [
-      { medium: 'Río Negro', date: 'Jun 2026', quote: 'In 30 years, Neuquén will have one and a half million people.', who: 'Federico Sturzenegger · Min. of Deregulation' },
-      { medium: 'Infobae', date: 'Jun 18', quote: 'Don’t come with your family.', who: 'Fernando Banderet · Mayor of Añelo', alarm: true },
-      { medium: 'Infobae', date: 'Jun 2026', quote: 'We don’t have jobs to spare. To work in Vaca Muerta, you have to be trained.', who: 'Rolando Figueroa · Governor of Neuquén' },
+      { medium: 'Río Negro', date: 'Jun 2026', quote: 'In 30 years, Neuquén will have one and a half million people.', who: 'Federico Sturzenegger · Minister of Deregulation' },
+      { medium: 'Infobae', date: 'Jun 18', quote: 'Don\'t come with your family.', who: 'Fernando Banderet · Mayor of Añelo', alarm: true },
+      { medium: 'Infobae', date: 'Jun 2026', quote: 'We don\'t have jobs to spare. To work in Vaca Muerta, you have to be trained.', who: 'Rolando Figueroa · Governor of Neuquén' },
       { medium: 'LM Neuquén', date: 'May 2026', quote: 'They hire outside companies for work that local firms could do.', who: 'UOCRA Neuquén · 100+ out of work', alarm: true },
     ] as readonly { medium: string; date: string; quote: string; who: string; alarm?: boolean }[],
 
@@ -392,8 +391,8 @@ const COPY = {
 
     /* 1 · the moment */
     s1_eyebrow: 'The moment',
-    s1_title: 'Real problems that get relieved',
-    s1_dek: 'Neuquén is experiencing concrete tensions, documented in the June 2026 press, that the Manuel Belgrano Plan helps to relieve.',
+    s1_title: 'Real problems, ready to ease',
+    s1_dek: 'Neuquén is facing concrete tensions, documented in the June 2026 press, that the Manuel Belgrano Plan helps to ease.',
     s1_bullets: [
       <>The region&apos;s <Strong>housing deficit</Strong> is around 60%, with the most expensive rents in the country.</>,
       <>A large share of the <Strong>jobs goes to companies from outside</Strong> the province, and local labor is left out.</>,
@@ -403,7 +402,7 @@ const COPY = {
     s1_statement: (
       <>
         They all share one root: a productive potential that finds no one to organize it and
-        set it in motion. Each of these pressures could be relieved if YPF joins the plan.
+        set it in motion. Each of these pressures could ease if YPF joins the plan.
       </>
     ),
 
@@ -412,15 +411,14 @@ const COPY = {
     s2_title: 'From seed to key',
     s2_dek: 'Flora grows industrial hemp (Cannabis sativa L., THC < 1%) and uses almost the entire plant, in two products whose end use stores the carbon durably.',
     s2_products: [
-      { t: 'Hempcrete', d: 'A bio-based construction material for bricks and blocks for affordable, well-insulated and quick-to-build housing. It is not an experiment: it is a technology proven in more than 50 countries, with European standard EN 16101. In Argentina it is barely used — the project does not invent the material, it brings it in and adapts it.' },
-      { t: 'Biochar', d: 'Made from the plant’s residues (pyrolysis), a material that locks carbon durably —for centuries— and improves the soil. It is the project’s second carbon line, from the same hectare.' },
+      { t: 'Hempcrete', d: 'A bio-based construction material for bricks and blocks for affordable, well-insulated and quick-to-build housing. It is a technology proven in more than 50 countries, with European standard EN 16101. In Argentina it is barely used: the project brings it in and adapts it.' },
+      { t: 'Biochar', d: 'Made from the plant\'s residues (pyrolysis), a material that locks carbon durably —for centuries— and improves the soil. It is the project\'s second carbon line, from the same hectare.' },
     ] as readonly { t: string; d: string }[],
     s2_statement_by: 'The differentiator that gives the carbon its value',
     s2_statement: (
       <>
-        What sets this chain apart is not just capturing carbon, but storing it durably:
-        biochar holds it for centuries, and hempcrete for the entire life of the
-        building. They don&apos;t capture and release; they store.
+        What sets this chain apart is storing the carbon durably: biochar holds it for
+        centuries, and hempcrete for the entire life of the building.
       </>
     ),
     s2_body: (
@@ -436,10 +434,10 @@ const COPY = {
     s2_label_specs: 'The material, in numbers',
 
     /* 3 · fit with YPF */
-    s3_eyebrow: 'Convergence with YPF’s objectives',
+    s3_eyebrow: 'Convergence with YPF\'s objectives',
     s3_title: 'Where it could add value',
-    s3_dek: 'The objectives YPF has already made public for Vaca Muerta show points of convergence with this initiative. We outline, as a working hypothesis, possible contributions to each.',
-    s3_table_head: ['YPF’s public objective', 'Possible contribution of the Manuel Belgrano Plan'] as readonly string[],
+    s3_dek: 'The objectives YPF has already made public for Vaca Muerta show points of convergence with this initiative. We outline, as a working hypothesis, possible contributions to each of them.',
+    s3_table_head: ['YPF\'s public objective', 'Possible contribution of the Manuel Belgrano Plan'] as readonly string[],
     s3_table_rows: [
       ['Sustain the social license to operate in Neuquén', 'Local absorption employment and affordable housing in the communities where YPF operates'],
       ['Advance its decarbonization agenda', 'A pathway for biological carbon removal, complementary to emissions reduction, in its own territory'],
@@ -455,7 +453,7 @@ const COPY = {
     ),
 
     /* 4 · the ask */
-    s4_eyebrow: 'The ask to YPF',
+    s4_eyebrow: 'The ask of YPF',
     s4_title: 'Enable, not operate',
     s4_dek: (
       <>
@@ -473,9 +471,9 @@ const COPY = {
     s5_eyebrow: 'The plan in three phases',
     s5_title: 'Validate first, then scale',
     s5_dek: 'The project does not leap to scale blindly. It advances in stages, each enabling the next.',
-    s5_table_head: ['Phase', 'Object', 'Outcome'] as readonly string[],
+    s5_table_head: ['Phase', 'Focus', 'Outcome'] as readonly string[],
     s5_table_rows: [
-      [<><Strong>Phase 1 — Benchmark</Strong><br /><span style={{ color: CELESTE, fontSize: '0.78rem' }}>October 2026</span></>, 'Two simultaneous scientific trials (Neuquén and Mendoza) with national and international genetics', 'The winning genetics by territory. It already produces biomass for the first materials.'],
+      [<><Strong>Phase 1 — Benchmark</Strong><br /><span style={{ color: CELESTE, fontSize: '0.78rem' }}>October 2026</span></>, 'Two simultaneous scientific trials (Neuquén and Mendoza) with national and international genetics', 'The winning genetics for each territory, already producing biomass for the first materials.'],
       [<><Strong>Phase 2 — Reproduction</Strong></>, 'Multiplication of the seed of the selected genetics', 'Seed volume to scale'],
       [<><Strong>Phase 3 — Scale</Strong></>, 'Cultivation at scale', 'Full production: material, housing and the carbon asset at scale'],
     ] as readonly (readonly ReactNode[])[],
@@ -493,7 +491,7 @@ const COPY = {
     /* 6 · the carbon */
     s6_eyebrow: 'The carbon',
     s6_title: 'Measurement, verification and sole ownership',
-    s6_dek: 'The integrity of the carbon asset is the central condition for its legal defensibility, and the project resolves it by design, not just by clause.',
+    s6_dek: 'The integrity of the carbon asset is the central condition for its legal defensibility, and the project resolves it through chain design, ahead of any contract clause.',
     s6_statement_by: 'Chain integration = no double counting',
     s6_statement: (
       <>
@@ -503,7 +501,7 @@ const COPY = {
       </>
     ),
     s6_label_layers: 'Three layers of validation',
-    s6_table1_head: ['Layer', 'Responsible', 'Standard'] as readonly string[],
+    s6_table1_head: ['Layer', 'Owner', 'Standard'] as readonly string[],
     s6_table1_rows: [
       ['Measurement and traceability (MRV)', 'Proprietary system (to be developed)', 'Real-time digital crop traceability'],
       ['Carbon certification', <Strong>EcoGaia</Strong>, 'Verra / Gold Standard (international)'],
@@ -541,7 +539,7 @@ const COPY = {
     s7_label_partners: 'Institutional partners',
     s7_partners: [
       { t: 'Fundación GEN', s: 'Executes the cultivation · agricultural license', d: 'Holder of the agricultural license. It provides the machinery, the agronomic know-how and the operational capacity to execute the cultivation and the benchmark. It leads the Coirón Project, the first industrial hemp precedent in Neuquén (with support from Centro PyME-ADENEU).' },
-      { t: 'EcoGaia', s: 'Certifies the carbon', d: 'An Argentine developer and certifier of carbon credits: full cycle under Verra and Gold Standard. It already operates biochar and regenerative agriculture in Argentina, with hemp experience in Canada. Agreement at signing stage.' },
+      { t: 'EcoGaia', s: 'Certifies the carbon', d: 'An Argentine developer and certifier of carbon credits: full cycle under Verra and Gold Standard. It already operates biochar and regenerative agriculture in Argentina, with hemp experience in Canada. Agreement at the signing stage.' },
       { t: 'Territorial planning', s: 'Community dimension', d: 'A consultancy specialized in participatory territorial development, for the community and urban dimension of the initiative.' },
     ] as readonly { t: string; s: string; d: string }[],
     s7_body: (
@@ -556,8 +554,8 @@ const COPY = {
     /* 8 · the broader opportunity */
     s8_eyebrow: 'The broader opportunity',
     s8_title: 'An industry interrupted 230 years ago.',
-    s8_body: 'The first step is bounded and low-risk, but what it opens is large. Growing hemp at scale revives a chain from which multiple industries branch out —food, textiles, bioplastics, paper, cosmetics—: an engine of employment and regional development, with YPF as catalyst.',
-    s8_quote: 'As early as 1796, Manuel Belgrano was already proposing the cultivation of flax and hemp as a path of added value and work for the country. Prohibition interrupted it; the current framework enables it once again.',
+    s8_body: 'The first step is bounded and low-risk, but what it opens is large. Growing hemp at scale revives a chain from which multiple industries branch off —food, textiles, bioplastics, paper, cosmetics—: an engine of employment and regional development, with YPF as the catalyst.',
+    s8_quote: 'As early as 1796, Manuel Belgrano proposed the cultivation of flax and hemp as a path to added value and work for the country. Prohibition interrupted it; the current framework enables it once again.',
     s8_note: 'This dimension is the horizon that the investment unlocks, not the central ask: the focus of the proposal remains the hempcrete–biochar chain and its carbon.',
 
     /* 9 · legal framework */
@@ -584,7 +582,7 @@ const COPY = {
     s10_title: 'And how they are managed',
     s10_table_head: ['Risk', 'How it is managed'] as readonly string[],
     s10_table_rows: [
-      ['Sector regulatory framework', 'National framework in force (Law 27,669/ARICCAME). YPF’s role as institutional catalyst helps organize the coordination among agencies.'],
+      ['Sector regulatory framework', 'National framework in force (Law 27,669/ARICCAME). YPF\'s role as institutional catalyst helps organize the coordination among agencies.'],
       ['Double counting of carbon', 'Chain integration (single custody) + serialized registry + sole holder (YPF).'],
       ['Reputation / greenwashing', 'Real, durably stored removal, physically locked in; communication based solely on data certified by third parties.'],
       ['Operational risk (cultivation)', 'Two ecoregions in parallel; early measurement via the proprietary MRV system; execution led by a partner with license, machinery and experience (Fundación GEN).'],
@@ -599,8 +597,8 @@ const COPY = {
       <>
         Today, an urgent social need —employment and housing in Añelo—, a national
         industry waiting for someone to organize it, and the chance to build a sovereign
-        environmental asset all converge. Turning part of Vaca Muerta&apos;s wealth into development,
-        employment and roots, in the same territory — <Strong color={CREAM}>not replacing oil, but building on it.</Strong>
+        environmental asset all converge. This turns part of Vaca Muerta&apos;s wealth into development,
+        employment and roots, in the same territory — <Strong color={CREAM}>building on oil, not in its place.</Strong>
       </>
     ),
     s11_vision_eyebrow: 'The vision',

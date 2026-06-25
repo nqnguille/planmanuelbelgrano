@@ -115,8 +115,8 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
       <Title>Vaca Muerta genera riqueza.<br />Neuquén necesita algo más que riqueza.</Title>
       <Lead>
         Necesita mecanismos que transformen esa riqueza en desarrollo regenerativo,
-        empleo de calidad y nuevas oportunidades para sus comunidades. No en lugar
-        del petróleo: a partir de él.
+        empleo de calidad y nuevas oportunidades para sus comunidades — a partir
+        del petróleo, junto a él.
       </Lead>
     </Shell>
   )},
@@ -145,10 +145,7 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
       <Kicker>La llave</Kicker>
       <Title>El crédito de carbono de alta integridad es la llave de ese mercado.</Title>
       <Lead max="58ch">
-        Y todavía no tiene dueño en Argentina. La ventana de primer entrante ya pasó
-        con los ferrocarriles, con el petróleo, con el shale. Ahora está abierta para
-        quien llegue primero a la remoción biológica verificable. Esa es la pata que
-        hoy le falta al MACC de YPF: la única de remoción, no de reducción.
+        Y todavía no tiene dueño en Argentina. La ventana de primer entrante ya pasó con los ferrocarriles, el petróleo y el shale. Ahora está abierta para quien llegue primero a la remoción biológica verificable: la única pata de remoción que hoy le falta al MACC de YPF, frente a las de reducción.
       </Lead>
     </Shell>
   )},
@@ -159,9 +156,8 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
       <Kicker>La solución</Kicker>
       <Title>El cultivo terrestre que más carbono captura por hectárea, donde YPF ya opera.</Title>
       <Lead max="52ch" color="rgba(243,241,231,0.72)">
-        El cáñamo industrial fija 10–15 t CO₂/ha por año en un ciclo de meses: #2 en el
-        ranking global de remoción —solo detrás de las microalgas marinas— y #1 entre los
-        cultivos terrestres. Flora Cáñamo Neuquino lo lleva de la semilla a la llave:
+        El cáñamo industrial fija 10–15 t CO₂/ha por año en un ciclo de meses, entre los
+        cultivos terrestres de mayor captura por hectárea. Flora Cáñamo Neuquino lo lleva de la semilla a la llave:
         cultivo, material de construcción y vivienda. Belgrano ya lo había escrito en 1796.
       </Lead>
     </Shell>
@@ -238,12 +234,12 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
     const capas = [
       { q: 'Carbono', a: 'EcoGaia · Verra / Gold Standard', n: 'Estándares reconocidos globalmente. Prueba de adicionalidad obligatoria.' },
       { q: 'Material y sistema', a: 'INTI', n: 'Certificación nacional del ladrillo y el sistema constructivo.' },
-      { q: 'Cultivo y trazabilidad', a: 'ARICCAME (Ley 27.669)', n: 'Régimen vigente. Flora tiene licencia desde 2024.' },
+      { q: 'Cultivo y trazabilidad', a: 'ARICCAME (Ley 27.669)', n: 'Régimen vigente. Licencia agrícola en el consorcio (Fundación GEN); la industrial de Flora, en gestión.' },
     ]
     return (
       <Shell bg={DUSK}>
         <Kicker color={CELESTE}>¿Quién valida todo esto?</Kicker>
-        <Title size="lg">Ninguna afirmación sin un tercero que la respalde.</Title>
+        <Title size="lg">Cada afirmación, respaldada por un tercero.</Title>
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease }}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '1rem', marginTop: '2.4rem', maxWidth: 920 }}>
           {capas.map((c) => (
@@ -288,8 +284,7 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
         <Stat n="USD 27,5M" l="por año a escala provincial · 50.000 ha" color={GOLD} />
       </motion.div>
       <Lead max="58ch" color="rgba(243,241,231,0.5)">
-        No compite con los millones de toneladas de YPF: aporta la vía de remoción que el
-        inventario necesita, mientras YPF reduce por las otras. Inversión total del piloto: USD 265K–300K.
+        No compite con los millones de toneladas de YPF: aporta la vía de remoción que el inventario necesita, mientras YPF reduce emisiones por las demás vías. Inversión total del piloto: USD 265K–300K.
       </Lead>
     </Shell>
   )},
@@ -297,7 +292,7 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
   /* 11 — El piloto / la evidencia */
   { id: 'piloto', tag: 'La evidencia', render: () => (
     <Shell bg={DUSK}>
-      <Kicker color={CELESTE}>"Muéstrenme datos."</Kicker>
+      <Kicker color={CELESTE}>“Muéstrenme datos.”</Kicker>
       <Title size="lg">El piloto existe para producir exactamente esos datos.</Title>
       <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease }}
         style={{ display: 'flex', gap: 'clamp(1.4rem,4vw,3rem)', marginTop: '2.2rem', flexWrap: 'wrap' }}>
@@ -306,9 +301,9 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
         <Stat n="18 meses" l="para la variedad campeona por ecorregión" color={CELESTE} />
       </motion.div>
       <Lead max="62ch" color="rgba(243,241,231,0.5)">
-        Medido con un benchmark de campo (sensores, drones, gemelo digital). Hoy ya hay
-        tracción real: licencia, cosechas, aceites certificados, ensayo en cantera de Añelo
-        y primeros ladrillos producidos.
+        Medido con el benchmark de campo del piloto (sensores, drones, gemelo digital). Hoy ya hay
+        tracción real: cosechas, aceites con análisis de laboratorio, ensayo en cantera de Añelo
+        y primeros ladrillos de prueba.
       </Lead>
     </Shell>
   )},
@@ -336,7 +331,7 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
         </motion.div>
         <Lead max="60ch" color="rgba(243,241,231,0.5)">
           Si no entregamos, no cobramos. Y si YPF se retira en cinco años, el negocio de
-          materiales se sostiene solo con el mercado de la construcción: YPF acelera, no es el respirador.
+          materiales se sostiene solo con el mercado de la construcción: YPF acelera el plan, no lo sostiene.
         </Lead>
       </Shell>
     )

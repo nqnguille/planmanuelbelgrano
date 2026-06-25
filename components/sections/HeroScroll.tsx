@@ -54,7 +54,7 @@ const COPY: Record<'es' | 'en', { states: HeroState[]; scrollCue: string }> = {
       {
         eyebrow: '',
         headline: 'Manuel Belgrano tenía razón.',
-        body: 'En 1796, Manuel Belgrano propuso el cáñamo como una de las primeras industrias del país: producir y agregar valor, en lugar de solo extraer. Se adelantó más de dos siglos. Hoy, sobre la misma tierra que hizo grande a Vaca Muerta, la Patagonia tiene el suelo, el agua, la energía y la escala para cumplir aquella visión.',
+        body: 'En 1796 lo propuso como una de las primeras industrias del país: producir y agregar valor, en lugar de solo extraer. Se adelantó más de dos siglos. Hoy, sobre la misma tierra que hizo grande a Vaca Muerta, la Patagonia tiene el suelo, el agua, la energía y la escala para cumplir aquella visión.',
         ctaLabel: '',
       },
       {
@@ -71,8 +71,8 @@ const COPY: Record<'es' | 'en', { states: HeroState[]; scrollCue: string }> = {
       },
       {
         eyebrow: 'La invitación',
-        headline: 'Juntos podemos convertir Vaca Muerta\nen Vaca Verde.',
-        body: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera: empleo local, vivienda para quienes llegan y carbono verificable. La misma cuenca que mueve al país puede ser también su motor verde —y la industria que hoy la impulsa, su mejor aliada para lograrlo.',
+        headline: 'Juntos podemos convertir\nVaca Muerta en Vaca Verde.',
+        body: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera: empleo local, vivienda para quienes llegan y carbono verificable. La misma cuenca que mueve al país puede ser también su motor verde, con la industria que hoy la impulsa como su mejor aliada.',
         ctaLabel: 'Acceder al masterplan',
       },
     ],
@@ -83,7 +83,7 @@ const COPY: Record<'es' | 'en', { states: HeroState[]; scrollCue: string }> = {
       {
         eyebrow: '',
         headline: 'Manuel Belgrano was right.',
-        body: "In 1796, Manuel Belgrano proposed hemp as one of the country's first industries: to produce and add value, rather than merely extract. He was more than two centuries ahead of his time. Today, on the very land that made Vaca Muerta great, Patagonia has the soil, the water, the energy and the scale to fulfill that vision.",
+        body: "In 1796 he proposed hemp as one of the country's first industries: to produce and add value, rather than merely extract. He was more than two centuries ahead of his time. Today, on the very land that made Vaca Muerta great, Patagonia has the soil, the water, the energy and the scale to fulfill that vision.",
         ctaLabel: '',
       },
       {
@@ -95,13 +95,13 @@ const COPY: Record<'es' | 'en', { states: HeroState[]; scrollCue: string }> = {
       {
         eyebrow: 'From seed to key',
         headline: 'An entire chain, from seed to key.',
-        body: 'Hemp becomes hempcrete — a material proven in more than 50 countries that insulates, resists fire and stores carbon for the entire life of the building — used to raise affordable homes where they are needed most. Its residues yield biochar, which sequesters carbon for centuries. Farming, industry and construction, with skilled jobs at every link.',
+        body: 'Hemp becomes hempcrete — a material proven in more than 50 countries that insulates, resists fire and stores carbon for the entire life of the building — and is used to build affordable homes where they are needed most. Its residues yield biochar, which sequesters carbon for centuries. Farming, industry and construction, with skilled jobs at every link.',
         ctaLabel: '',
       },
       {
         eyebrow: 'The invitation',
-        headline: 'Together we can turn Vaca Muerta\ninto Vaca Verde.',
-        body: 'Vaca Muerta gave Neuquén energy, jobs and scale. On that same land, hemp adds an industry that plants, builds and regenerates: local employment, homes for those who arrive and verifiable carbon. The same basin that drives the country can also be its green engine — and the industry that powers it today, its best ally in getting there.',
+        headline: 'Together we can turn\nVaca Muerta into Vaca Verde.',
+        body: 'Vaca Muerta gave Neuquén energy, jobs and scale. On that same land, hemp adds an industry that plants, builds and regenerates: local employment, homes for those who arrive and verifiable carbon. The same basin that drives the country can also be its green engine, with the industry that powers it today as its best ally.',
         ctaLabel: 'Open the masterplan',
       },
     ],
