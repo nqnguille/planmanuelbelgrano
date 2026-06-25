@@ -4,7 +4,9 @@ import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLang } from '@/lib/i18n'
 
-const PASSWORD = 'elsueñodemanuel'
+// Claves aceptadas: la original en español + su equivalente en inglés (más fácil
+// de tipear para visitantes anglo — evita la ñ).
+const PASSWORDS = ['elsueñodemanuel', 'thedreamofmanuel']
 const STORAGE_KEY = 'pmb_access'
 /* CTA para agendar directamente una reunión (Meet) y solicitar la clave en vivo. */
 const MEET_URL = 'https://calendar.app.google/PBcbPHeEvsxKNR4X8'
@@ -52,7 +54,7 @@ export function InlineGate({ onUnlock }: { onUnlock: () => void }) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (value === PASSWORD) {
+    if (PASSWORDS.includes(value.trim())) {
       try { sessionStorage.setItem(STORAGE_KEY, '1') } catch {}
       onUnlock()
     } else {
