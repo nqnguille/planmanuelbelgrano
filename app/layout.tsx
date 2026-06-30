@@ -47,11 +47,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" className={`${garamond.variable} ${jakarta.variable}`}>
       <head>
         <meta name="theme-color" content="#071A38" />
-        {/* Preload hero frames — f01 y f09 para LCP; el resto carga en background */}
-        <link rel="preload" href="/hero/frames/f01.jpg" as="image" />
-        <link rel="preload" href="/hero/frames/f09.jpg" as="image" />
-        {/* Fallback: si JS no carga, mostrar contenido que Framer Motion ocultó */}
-        <noscript>{`<style>div[style*="opacity: 0"],div[style*="opacity:0"]{opacity:1!important;transform:none!important}</style>`}</noscript>
+        {/* Preload del primer cuadro del hero (secuencia seqv) para el LCP */}
+        <link rel="preload" href="/hero/seqv/f001.jpg" as="image" />
+        {/* Fallback: si JS no carga, mostrar contenido que Framer Motion ocultó.
+            Se inyecta con dangerouslySetInnerHTML para que el HTML del <style>
+            sea idéntico en servidor y cliente (si no, React escapa las comillas
+            y dispara un hydration mismatch). */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html:
+              '<style>div[style*="opacity: 0"],div[style*="opacity:0"]{opacity:1!important;transform:none!important}</style>',
+          }}
+        />
+        {/* El acceso lo controla functions/_middleware.js (server-side, consola gates-analytics).
+            Si el servidor ya autorizó (cookie pmb_gate=1), desbloqueamos los gates client-side
+            (sessionStorage pmb_access) antes de la hidratación, así no aparece un doble gate. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(document.cookie.indexOf('pmb_gate=1')>-1)sessionStorage.setItem('pmb_access','1')}catch(e){}",
+          }}
+        />
       </head>
       <body>
         <LangProvider>
