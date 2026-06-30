@@ -138,6 +138,13 @@ export function GateClient({ children }: { children: React.ReactNode }) {
           </p>
         )}
       </form>
+      {locked && (
+        <div style={{ marginTop: '1.4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.7rem', width: '100%', maxWidth: '300px' }}>
+          <p style={{ fontFamily: 'var(--font-hanken)', fontSize: '0.78rem', color: 'rgba(243,241,231,0.6)', margin: 0 }}>¿No tenés la clave? Pedila:</p>
+          <a href="https://calendar.app.google/PBcbPHeEvsxKNR4X8" target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '0.8rem 1.25rem', borderRadius: '999px', border: '1px solid rgba(242,181,68,0.55)', color: '#F2B544', textDecoration: 'none', fontFamily: 'var(--font-hanken)', fontSize: '0.72rem', letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 500 }}>Solicitar acceso por Meet</a>
+          <a href={'https://wa.me/5492994229436?text=' + encodeURIComponent('Hola, quiero acceso al Plan Manuel Belgrano.')} target="_blank" rel="noopener noreferrer" style={{ width: '100%', textAlign: 'center', padding: '0.8rem 1.25rem', borderRadius: '999px', background: 'rgba(91,196,106,0.12)', border: '1px solid rgba(91,196,106,0.55)', color: '#5BC46A', textDecoration: 'none', fontFamily: 'var(--font-hanken)', fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500 }}>Solicitar por WhatsApp</a>
+        </div>
+      )}
     </div>
   )
 }
