@@ -48,22 +48,30 @@ const COPY = {
 export function InlineGate({ onUnlock }: { onUnlock: () => void }) {
   const [value, setValue] = useState('')
   const [error, setError] = useState(false)
+  const [locked, setLocked] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const { lang } = useLang()
   const t = COPY[lang]
+  const MAX_FAILS = 3
+  const FAILS_KEY = 'pmb_fails'
   useEffect(() => { trackGate('view', 'masterplan') }, [])
+  useEffect(() => { try { if ((parseInt(localStorage.getItem(FAILS_KEY) || '0', 10) || 0) >= MAX_FAILS) setLocked(true) } catch {} }, [])
   const whatsappUrl = 'https://wa.me/5492994229436?text=' + encodeURIComponent(t.whatsappMsg)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (locked) return
     const key = value.trim()
     // Valida contra la consola central. El /verify ya registra el unlock/fail; respaldo local si no responde.
     let ok = await verifyGate('masterplan', key)
     if (ok === null) ok = PASSWORDS.includes(key.toLowerCase())
     if (ok) {
-      try { sessionStorage.setItem(STORAGE_KEY, '1') } catch {}
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); localStorage.removeItem(FAILS_KEY) } catch {}
       onUnlock()
     } else {
+      let n = 0
+      try { n = (parseInt(localStorage.getItem(FAILS_KEY) || '0', 10) || 0) + 1; localStorage.setItem(FAILS_KEY, String(n)) } catch {}
+      if (n >= MAX_FAILS) setLocked(true)
       setError(true)
       setValue('')
     }
@@ -143,6 +151,7 @@ export function InlineGate({ onUnlock }: { onUnlock: () => void }) {
             autoComplete="off"
             aria-label={t.placeholder}
             aria-invalid={error}
+            disabled={locked}
             animate={error ? { x: [0, -9, 9, -6, 6, 0] } : { x: 0 }}
             transition={{ duration: 0.42 }}
             style={{
@@ -162,11 +171,12 @@ export function InlineGate({ onUnlock }: { onUnlock: () => void }) {
           />
           <button
             type="submit"
+            disabled={locked}
             style={{
               width: '100%',
               maxWidth: '300px',
               padding: '0.9rem 2rem',
-              background: '#5BC46A',
+              background: locked ? 'rgba(180,48,28,0.5)' : '#5BC46A',
               color: '#071A38',
               fontFamily: 'var(--font-hanken)',
               fontSize: '0.72rem',
@@ -174,10 +184,10 @@ export function InlineGate({ onUnlock }: { onUnlock: () => void }) {
               textTransform: 'uppercase',
               fontWeight: 500,
               border: 'none',
-              cursor: 'pointer',
+              cursor: locked ? 'not-allowed' : 'pointer',
             }}
           >
-            {t.submit}
+            {locked ? (lang === 'en' ? 'Blocked' : 'Bloqueado') : t.submit}
           </button>
         </form>
 
@@ -188,10 +198,10 @@ export function InlineGate({ onUnlock }: { onUnlock: () => void }) {
           fontSize: '0.7rem',
           letterSpacing: '0.08em',
           color: 'rgba(220,80,60,0.85)',
-          opacity: error ? 1 : 0,
+          opacity: error || locked ? 1 : 0,
           transition: 'opacity 0.3s ease',
         }}>
-          {t.error}
+          {locked ? (lang === 'en' ? 'Too many attempts. Access blocked — request the key below.' : 'Demasiados intentos. Acceso bloqueado — pedí la clave abajo.') : t.error}
         </p>
 
         {/* CTA: solicitar la clave por reunión / Meet */}
