@@ -1,8 +1,10 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { trackGate, verifyGate } from '@/lib/gateTrack'
 
-const PASSWORD = 'Manolo420'
+// Mismas claves que el gate del masterplan (InlineGate), para una sola convención.
+const PASSWORDS = ['elsueñodemanuel', 'thedreamofmanuel']
 const STORAGE_KEY = 'pmb_access'
 
 export function GateClient({ children }: { children: React.ReactNode }) {
@@ -14,6 +16,7 @@ export function GateClient({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY) === '1') setUnlocked(true)
+    else trackGate('view', 'interno')
     setChecked(true)
   }, [])
 
@@ -21,9 +24,13 @@ export function GateClient({ children }: { children: React.ReactNode }) {
     if (checked && !unlocked) inputRef.current?.focus()
   }, [checked, unlocked])
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (value === PASSWORD) {
+    const key = value.trim()
+    // Valida contra la consola central (mismas llaves del masterplan); respaldo local si no responde.
+    let ok = await verifyGate('interno', key)
+    if (ok === null) ok = PASSWORDS.includes(key.toLowerCase())
+    if (ok) {
       sessionStorage.setItem(STORAGE_KEY, '1')
       setUnlocked(true)
     } else {

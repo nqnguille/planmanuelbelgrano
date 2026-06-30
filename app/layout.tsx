@@ -59,15 +59,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '<style>div[style*="opacity: 0"],div[style*="opacity:0"]{opacity:1!important;transform:none!important}</style>',
           }}
         />
-        {/* El acceso lo controla functions/_middleware.js (server-side, consola gates-analytics).
-            Si el servidor ya autorizó (cookie pmb_gate=1), desbloqueamos los gates client-side
-            (sessionStorage pmb_access) antes de la hidratación, así no aparece un doble gate. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "try{if(document.cookie.indexOf('pmb_gate=1')>-1)sessionStorage.setItem('pmb_access','1')}catch(e){}",
-          }}
-        />
       </head>
       <body>
         <LangProvider>

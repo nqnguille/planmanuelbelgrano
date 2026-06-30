@@ -1,8 +1,9 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLang } from '@/lib/i18n'
+import { trackGate, verifyGate } from '@/lib/gateTrack'
 
 // Claves aceptadas: la original en español + su equivalente en inglés (más fácil
 // de tipear para visitantes anglo — evita la ñ).
@@ -50,11 +51,16 @@ export function InlineGate({ onUnlock }: { onUnlock: () => void }) {
   const inputRef = useRef<HTMLInputElement>(null)
   const { lang } = useLang()
   const t = COPY[lang]
+  useEffect(() => { trackGate('view', 'masterplan') }, [])
   const whatsappUrl = 'https://wa.me/5492994229436?text=' + encodeURIComponent(t.whatsappMsg)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (PASSWORDS.includes(value.trim())) {
+    const key = value.trim()
+    // Valida contra la consola central. El /verify ya registra el unlock/fail; respaldo local si no responde.
+    let ok = await verifyGate('masterplan', key)
+    if (ok === null) ok = PASSWORDS.includes(key.toLowerCase())
+    if (ok) {
       try { sessionStorage.setItem(STORAGE_KEY, '1') } catch {}
       onUnlock()
     } else {
