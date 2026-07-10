@@ -85,3 +85,71 @@ h1, h2, h3, h4 {
     height: 400vh;
   }
 }
+
+/* ============================================================
+   Masterplan — tablas responsive (DocTable)
+   En desktop se ven como tabla; en mobile cada fila se apila
+   como una tarjeta "ETIQUETA → valor" en vez de hacer scroll
+   horizontal (que recortaba la 2ª/3ª columna en el celular).
+   ============================================================ */
+@media (max-width: 640px) {
+  .mp-doc-table {
+    min-width: 0 !important;
+  }
+  .mp-doc-table thead {
+    display: none;
+  }
+  .mp-doc-table,
+  .mp-doc-table tbody,
+  .mp-doc-table tr,
+  .mp-doc-table td {
+    display: block;
+    width: 100%;
+  }
+  .mp-doc-table tr {
+    padding: 0.35rem 0 1.1rem;
+    border-bottom: 1px solid rgba(7, 26, 56, 0.16);
+  }
+  .mp-doc-table tr:last-child {
+    border-bottom: 0;
+  }
+  .mp-doc-table td {
+    padding: 0.2rem 0 !important;
+    border-bottom: 0 !important;
+  }
+  /* Encabezado de columna como mini-etiqueta encima de cada celda */
+  .mp-doc-table td[data-label]:not([data-label=""])::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(7, 26, 56, 0.5);
+    font-weight: 600;
+    margin: 0.15rem 0 0.25rem;
+  }
+  /* La primera celda (label de fila) no necesita su propia etiqueta */
+  .mp-doc-table td:first-child {
+    margin-top: 0.4rem;
+  }
+}
+
+/* ============ Masterplan: navegación por etapas ============ */
+/* Sidebar lateral (desktop) / barra sticky de chips (mobile) */
+.mp-sidenav {
+  display: none;
+}
+.mp-stagebar {
+  display: flex;
+}
+@media (min-width: 1100px) {
+  .mp-sidenav {
+    display: flex;
+  }
+  .mp-stagebar {
+    display: none;
+  }
+}
+.mp-stagebar::-webkit-scrollbar {
+  display: none;
+}

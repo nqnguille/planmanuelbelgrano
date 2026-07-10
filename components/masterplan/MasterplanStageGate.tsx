@@ -15,7 +15,7 @@
    ============================================================ */
 
 import { motion, useScroll } from 'framer-motion'
-import { type CSSProperties, type ReactNode } from 'react'
+import { useState, useEffect, type CSSProperties, type ReactNode } from 'react'
 import { useLang } from '@/lib/i18n'
 
 const INK = '#071A38'
@@ -84,8 +84,10 @@ const TXT = {
     rail_label: 'El camino completo',
 
     stage_word: 'Etapa',
-    gate_label: 'Gate',
+    gate_label: 'El gate',
     fronts_label: 'Los frentes de trabajo de la etapa',
+    nav_top: [['vision', 'La visión'], ['regla', 'La regla']] as readonly (readonly [string, string])[],
+    nav_bottom: [['carriles', 'Los carriles'], ['carbono', 'El carbono'], ['quienes', 'Quiénes'], ['invitacion', 'La invitación']] as readonly (readonly [string, string])[],
 
     stages: [
       {
@@ -255,8 +257,10 @@ const TXT = {
     rail_label: 'The full path',
 
     stage_word: 'Stage',
-    gate_label: 'Gate',
+    gate_label: 'The gate',
     fronts_label: 'The work fronts of the stage',
+    nav_top: [['vision', 'The vision'], ['regla', 'The rule']] as readonly (readonly [string, string])[],
+    nav_bottom: [['carriles', 'The lanes'], ['carbono', 'The carbon'], ['quienes', 'Who'], ['invitacion', 'The invitation']] as readonly (readonly [string, string])[],
 
     stages: [
       {
@@ -425,7 +429,7 @@ function Reveal({ children, delay = 0, style }: { children: ReactNode; delay?: n
 
 function Doc({ children, id, bg = PAPER }: { children: ReactNode; id?: string; bg?: string }) {
   return (
-    <section id={id} style={{ background: bg, padding: 'clamp(3.5rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)' }}>
+    <section id={id} style={{ background: bg, padding: 'clamp(3.5rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)', scrollMarginTop: '3.4rem' }}>
       <div style={{ maxWidth: '1020px', margin: '0 auto' }}>{children}</div>
     </section>
   )
@@ -465,6 +469,126 @@ function ProgressBar() {
   )
 }
 
+/* ---------- navegación por etapas: scrollspy + sidebar/barra ---------- */
+
+const NAV_IDS = ['vision', 'regla', 'e0', 'e1', 'e2', 'e3', 'e4', 'e5', 'carriles', 'carbono', 'quienes', 'invitacion'] as const
+
+function useScrollSpy(): string {
+  const [active, setActive] = useState<string>('vision')
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id)
+        })
+      },
+      { rootMargin: '-42% 0px -52% 0px' },
+    )
+    NAV_IDS.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
+  return active
+}
+
+function StageNav({ t }: { t: T }) {
+  const active = useScrollSpy()
+
+  /* el sidebar flota solo mientras alguna sección del documento está en viewport
+     (no sobre el hero de arriba ni sobre el cierre cinematográfico) */
+  const [inDoc, setInDoc] = useState(false)
+  useEffect(() => {
+    const seen = new Set<string>()
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) seen.add(e.target.id)
+        else seen.delete(e.target.id)
+      })
+      setInDoc(seen.size > 0)
+    })
+    NAV_IDS.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
+
+  const dot = (id: string, label: string) => {
+    const on = active === id
+    return (
+      <a key={id} href={`#${id}`} aria-label={label} style={{ position: 'relative', display: 'flex', alignItems: 'center', height: '20px', textDecoration: 'none' }}>
+        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: on ? GOLD : 'rgba(7,26,56,0.25)', display: 'inline-block', marginLeft: '11px', transition: 'background 0.25s' }} />
+        {on && <NavLabel>{label}</NavLabel>}
+      </a>
+    )
+  }
+
+  return (
+    <>
+      {/* sidebar (desktop) */}
+      <nav className="mp-sidenav" aria-label="Etapas" style={{ position: 'fixed', left: '1rem', top: '50%', transform: 'translateY(-50%)', zIndex: 60, flexDirection: 'column', gap: '0.45rem', alignItems: 'flex-start', opacity: inDoc ? 1 : 0, pointerEvents: inDoc ? 'auto' : 'none', transition: 'opacity 0.35s' }}>
+        {t.nav_top.map(([id, label]) => dot(id, label))}
+        {t.stages.map((s) => {
+          const id = `e${s.n}`
+          const on = active === id
+          return (
+            <a key={id} href={`#${id}`} aria-label={`${t.stage_word} ${s.n} · ${s.name}`} style={{ position: 'relative', display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+              <span style={{
+                width: '29px', height: '29px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                border: `1px solid ${on ? GOLD : LINE}`, background: on ? 'rgba(242,181,68,0.14)' : '#fff',
+                ...serif, fontStyle: 'italic', fontSize: '0.95rem', color: on ? '#8a6510' : 'rgba(7,26,56,0.55)',
+                transition: 'all 0.25s',
+              }}>{s.n}</span>
+              {on && <NavLabel>{s.name}</NavLabel>}
+            </a>
+          )
+        })}
+        {t.nav_bottom.map(([id, label]) => dot(id, label))}
+      </nav>
+
+      {/* barra sticky de chips (mobile) */}
+      <nav className="mp-stagebar" aria-label="Etapas" style={{
+        position: 'sticky', top: 0, zIndex: 55,
+        background: 'rgba(250,248,241,0.93)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+        borderBottom: `1px solid ${LINE}`,
+        overflowX: 'auto', gap: '0.4rem', alignItems: 'center',
+        padding: '0.55rem 4.6rem 0.55rem 1rem',
+        scrollbarWidth: 'none',
+      }}>
+        {t.stages.map((s) => {
+          const id = `e${s.n}`
+          const on = active === id
+          return (
+            <a key={id} href={`#${id}`} style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0,
+              border: `1px solid ${on ? GOLD : LINE}`, background: on ? 'rgba(242,181,68,0.14)' : '#fff',
+              padding: '0.32rem 0.7rem', borderRadius: '999px', textDecoration: 'none',
+              transition: 'all 0.25s',
+            }}>
+              <span style={{ ...serif, fontStyle: 'italic', fontSize: '0.88rem', color: on ? '#8a6510' : GOLD, lineHeight: 1 }}>{s.n}</span>
+              <span style={{ ...sans, fontSize: '0.64rem', fontWeight: 600, color: on ? INK : MUTED, whiteSpace: 'nowrap' }}>{s.name}</span>
+            </a>
+          )
+        })}
+      </nav>
+    </>
+  )
+}
+
+function NavLabel({ children }: { children: ReactNode }) {
+  return (
+    <span style={{
+      position: 'absolute', left: 'calc(100% + 9px)', top: '50%', transform: 'translateY(-50%)',
+      background: PAPER, border: `1px solid ${LINE}`, borderRadius: '3px',
+      padding: '0.22rem 0.6rem', whiteSpace: 'nowrap',
+      ...sans, fontSize: '0.62rem', fontWeight: 600, color: INK, letterSpacing: '0.04em',
+      boxShadow: '0 1px 6px rgba(7,26,56,0.08)',
+    }}>{children}</span>
+  )
+}
+
 /* ---------- el rail de etapas (neutro, sin estados) ---------- */
 
 function StageRail({ t }: { t: T }) {
@@ -491,7 +615,7 @@ function StageRail({ t }: { t: T }) {
 
 /* ---------- capítulo de etapa (template idéntico para las 6) ---------- */
 
-function GateBlock({ t, n, verdict }: { t: T; n: number; verdict: string }) {
+function GateBlock({ t, verdict }: { t: T; verdict: string }) {
   return (
     <Reveal>
       <div style={{
@@ -503,7 +627,7 @@ function GateBlock({ t, n, verdict }: { t: T; n: number; verdict: string }) {
         display: 'flex', gap: '1.25rem', alignItems: 'flex-start', flexWrap: 'wrap',
       }}>
         <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', whiteSpace: 'nowrap', paddingTop: '0.2rem' }}>
-          {t.gate_label} {n}
+          {t.gate_label}
         </span>
         <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.05rem, 1.7vw, 1.35rem)', lineHeight: 1.4, color: INK, margin: 0, flex: '1 1 320px' }}>
           {verdict}
@@ -540,12 +664,9 @@ function StageChapter({ t, idx, bg }: { t: T; idx: number; bg: string }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
         {s.fronts.map(([title, d], i) => (
           <Reveal key={title} delay={0.04 * i}>
-            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GOLD}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)', display: 'flex', gap: 'clamp(1rem, 2.5vw, 1.75rem)', alignItems: 'flex-start' }}>
-              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 2.8vw, 2.3rem)', color: GOLD, lineHeight: 1, minWidth: '2rem' }}>{i + 1}</span>
-              <div>
-                <h3 style={{ ...sans, fontSize: '0.98rem', fontWeight: 600, color: INK, margin: '0 0 0.4rem' }}>{title}</h3>
-                <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.65, color: MUTED, margin: 0, maxWidth: '76ch' }}>{d}</p>
-              </div>
+            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GOLD}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)' }}>
+              <h3 style={{ ...sans, fontSize: '0.98rem', fontWeight: 600, color: INK, margin: '0 0 0.4rem' }}>{title}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.65, color: MUTED, margin: 0, maxWidth: '76ch' }}>{d}</p>
             </div>
           </Reveal>
         ))}
@@ -583,7 +704,7 @@ function StageChapter({ t, idx, bg }: { t: T; idx: number; bg: string }) {
         </div>
       )}
 
-      <GateBlock t={t} n={idx + 1} verdict={s.gate} />
+      <GateBlock t={t} verdict={s.gate} />
     </Doc>
   )
 }
@@ -728,12 +849,9 @@ function Invitacion({ t }: { t: T }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(242,181,68,0.2)', border: '1px solid rgba(242,181,68,0.2)' }}>
         {t.inv_items.map(([n, name, d], i) => (
           <Reveal key={n} delay={0.08 * i}>
-            <div style={{ background: DUSK, padding: 'clamp(1.5rem, 3vw, 2.25rem)', display: 'flex', gap: 'clamp(1.25rem, 3vw, 2.5rem)', alignItems: 'flex-start' }}>
-              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: 'rgba(242,181,68,0.6)', lineHeight: 1, minWidth: '2.5rem' }}>{n}</span>
-              <div>
-                <h3 style={{ ...sans, fontSize: 'clamp(1rem, 1.4vw, 1.18rem)', fontWeight: 600, color: CREAM, margin: '0 0 0.6rem' }}>{name}</h3>
-                <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.62)', margin: 0, maxWidth: '70ch' }}>{d}</p>
-              </div>
+            <div style={{ background: DUSK, padding: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
+              <h3 style={{ ...sans, fontSize: 'clamp(1rem, 1.4vw, 1.18rem)', fontWeight: 600, color: CREAM, margin: '0 0 0.6rem' }}>{name}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.62)', margin: 0, maxWidth: '70ch' }}>{d}</p>
             </div>
           </Reveal>
         ))}
@@ -826,6 +944,7 @@ export function MasterplanStageGate({ showCover = false }: { showCover?: boolean
   return (
     <main style={{ background: PAPER }}>
       {showCover && <ProgressBar />}
+      <StageNav t={t} />
       <Tesis t={t} />
       <Regla t={t} />
       {t.stages.map((s, i) => (
