@@ -2,16 +2,16 @@
 
 /* ============================================================
    PLAN MANUEL BELGRANO — MASTERPLAN STAGE-GATE (jul 2026)
-   Escrito de cero: el documento ES el camino de etapas.
-   Arquitectura = la metodología del proyecto (Stage Gate,
-   6 etapas × 5 dimensiones, un gate por vez, riesgo mínimo):
-     tesis → la regla → Etapa 0 ✓ → Etapa 1 ✓ →
-     ETAPA 2 ● (la que se financia ahora) → camino 3-5 →
-     carriles (5 programas) → carbono → quiénes → invitación →
+   El documento ES el camino de etapas, desarrolladas todas con
+   el MISMO nivel de detalle y sin marcar estado de avance
+   (en qué etapa está el proyecto se cuenta en reunión):
+     tesis → la regla del juego → Etapas 0-5 (template idéntico:
+     pregunta del gate → frentes de trabajo → criterio del gate)
+     → carriles (5 programas) → carbono → quiénes → invitación →
      cierre cinematográfico.
-   Sin precios en la web (presupuesto de la Etapa 2 en reunión).
-   Sin nombres de empresas energéticas. Bilingüe ES / EN.
-   Estética Soberana (papel, navy, dorado, Fraunces/Archivo).
+   Sin precios en la web (el presupuesto de cada etapa se
+   presenta en reunión). Sin nombres de empresas energéticas.
+   Bilingüe ES / EN. Estética Soberana.
    ============================================================ */
 
 import { motion, useScroll } from 'framer-motion'
@@ -24,10 +24,8 @@ const PAPER = '#FAF8F1'
 const CREAM = '#F3F1E7'
 const GOLD = '#F2B544'
 const GREEN = '#5BC46A'
-const GREEN_DK = '#2F8F3A'
 const CELESTE = '#2F6FB0'
 const LINE = 'rgba(7,26,56,0.13)'
-const LINE_D = 'rgba(243,241,231,0.16)'
 const MUTED = 'rgba(7,26,56,0.66)'
 const FAINT = 'rgba(7,26,56,0.5)'
 const CREAM_MUTED = 'rgba(243,241,231,0.72)'
@@ -53,6 +51,17 @@ function rich(s: string, boldColor?: string): ReactNode {
    COPY — ES / EN
    ============================================================ */
 
+type Stage = {
+  n: string
+  name: string
+  q: string
+  intro: string
+  fronts: readonly (readonly [string, string])[]
+  gate: string
+  showClippings?: boolean
+  showCadena?: boolean
+}
+
 const TXT = {
   es: {
     /* tesis */
@@ -67,98 +76,99 @@ const TXT = {
     regla_d:
       'El plan avanza con un modelo de madurez Stage Gate: seis etapas, evaluadas en paralelo en cinco dimensiones — técnica, regulatoria, comercial, financiera e institucional. Entre etapa y etapa hay un gate: una decisión de inversión que solo se toma con la evidencia de la etapa anterior.',
     regla_body:
-      'El error clásico de los proyectos grandes es saltar a la escala a ciegas. Este plan lo hace **imposible por diseño**: cada etapa tiene entregables verificables, cada gate tiene criterios explícitos, y el capital de una etapa nunca compromete el de la siguiente. Lo que se compra en cada etapa es información — la que convierte a la próxima en una decisión, en lugar de una apuesta.',
+      'El error clásico de los proyectos grandes es saltar a la escala a ciegas. Este plan lo hace **imposible por diseño**: cada etapa tiene frentes de trabajo y entregables verificables, cada gate tiene criterios explícitos, y el capital de una etapa nunca compromete el de la siguiente. Lo que se compra en cada etapa es información — la que convierte a la próxima en una decisión, en lugar de una apuesta. **El presupuesto de cada etapa se estructura contra sus entregables y se presenta en reunión.**',
     regla_dims_label: 'Las cinco dimensiones de cada gate',
     dims: ['Técnica', 'Regulatoria', 'Comercial', 'Financiera', 'Institucional'],
     regla_statement: 'El capital entra por etapas y solo avanza con evidencia.',
     regla_statement_by: 'La regla del plan',
-
-    /* rail */
     rail_label: 'El camino completo',
-    stages: [
-      { n: '0', name: 'Formulación', state: 'done' },
-      { n: '1', name: 'Viabilidad', state: 'done' },
-      { n: '2', name: 'Piloto', state: 'now' },
-      { n: '3', name: 'Demostración', state: 'next' },
-      { n: '4', name: 'Escalamiento', state: 'next' },
-      { n: '5', name: 'Plataforma territorial', state: 'next' },
-    ],
+
     stage_word: 'Etapa',
-    badge_done: 'Completada',
-    badge_now: 'En curso — la etapa que se financia ahora',
-    badge_next: 'Se cuantifica al aprobar el gate anterior',
     gate_label: 'Gate',
-    gate_passed: 'Aprobado',
-    gate_open: 'El gate que este plan viene a pasar',
+    fronts_label: 'Los frentes de trabajo de la etapa',
 
-    /* etapa 0 */
-    e0_q: '¿Hay acá un proyecto real?',
-    e0_intro:
-      'La Etapa 0 respondió la pregunta fundacional con trabajo de campo, mercado y marco legal — no con entusiasmo. Esto es lo que quedó demostrado:',
-    e0_items: [
-      ['El problema es real y está documentado', 'Déficit habitacional cercano al 60% en la zona de Vaca Muerta, Añelo creció más del 140%, los alquileres más caros del país, y obra que se contrata a empresas de fuera de la provincia. La prensa de 2026 lo cuenta sola:'],
-      ['El mercado tiene un hueco de pionero', 'El material a batir está identificado (hormigón celular curado en autoclave) y los segmentos también: construcción privada, vivienda pública y la industria que necesita alojar a su gente. Nadie construyó todavía con cáñamo en Argentina.'],
-      ['El producto está especificado', 'Hempcrete: densidad objetivo 250–350 kg/m³, conductividad 0,06–0,12 W/mK, incombustible (Clase A), vida útil de más de 500 años — norma europea EN 16101, probado en más de 50 países. Dos líneas: ladrillo de cerramiento y bloque estructural.'],
-      ['El marco legal existe y está relevado', 'Ley 27.669 (cáñamo industrial, THC < 0,3%, autoridad ARICCAME en el Ministerio de Economía) y Decreto 405/2023. Ruta de certificación del sistema constructivo identificada junto al INTI: aptitud técnica, normas IRAM, reglamentos CIRSOC.'],
-      ['El consorcio está formado', 'Flora integra; Fundación GEN cultiva (titular de la licencia agrícola, con el primer antecedente de cáñamo industrial de Neuquén); EcoGaia certifica el carbono (Verra / Gold Standard); INTI valida el material; Red Protierra transfiere el saber constructivo.'],
-      ['El plan tiene arquitectura', 'Cinco programas de trabajo y este modelo de madurez por etapas, con indicadores verificables para cada dimensión en cada etapa.'],
-    ],
-    clippings: [
-      { medium: 'Río Negro', quote: 'Neuquén va a tener, en 30 años, 1 millón y medio de personas.', who: 'F. Sturzenegger · Ministro de Desregulación', alarm: false },
-      { medium: 'Infobae', quote: 'No se vengan con la familia.', who: 'F. Banderet · Intendente de Añelo', alarm: true },
-      { medium: 'LM Neuquén', quote: 'Contratan empresas de afuera para obras que podrían hacer las empresas locales.', who: 'UOCRA Neuquén · +100 sin trabajo', alarm: true },
-    ],
-    e0_gate: 'Hay problema real, producto especificado, marco vigente y equipo con licencias. Hay proyecto.',
-
-    /* etapa 1 */
-    e1_q: '¿Se puede hacer acá, con lo nuestro?',
-    e1_intro:
-      'La Etapa 1 bajó el proyecto del papel al territorio. La viabilidad no se argumentó: se produjo.',
-    e1_items: [
-      ['Cultivo real, en la provincia', 'El consorcio opera cultivo y producción en Neuquén desde 2023 — cosechas, productos con análisis de laboratorio y una operación que ya conoce el clima, el suelo y la regulación.'],
-      ['Primeros materiales producidos', 'Formulación seleccionada (binder de cal, con desarrollo junto al INTI), primeros ladrillos de prueba y un ensayo industrial en una cantera de Añelo — el material se hizo, no se proyectó.'],
-      ['La cadena completa, diseñada', 'De la semilla a la llave: ocho eslabones definidos, de la genética al barrio construido.'],
-      ['Licencias en la mesa', 'La licencia agrícola de ARICCAME está operativa en el consorcio (Fundación GEN); la licencia industrial de Flora, en gestión.'],
-      ['Dos ecorregiones aseguradas para validar', 'Tierra disponible en Mendoza (Valle de Uco) y Neuquén para ensayar genéticas en paralelo y elegir la variedad campeona por territorio.'],
-    ],
-    cadena: ['Semilla', 'Cultivo', 'Cosecha', 'Decortización', 'Mezclado', 'Hempcrete', 'Construcción', 'Vivienda'],
-    e1_gate: 'Es viable: hay material, hay licencias, hay tierra y hay operación. Lo que falta no es idea — es serie.',
-
-    /* etapa 2 — LA ACTUAL */
-    e2_q: '¿El material se produce en serie, con desempeño reproducible y certificable?',
-    e2_intro:
-      'Todo el plan se concentra hoy en esta pregunta. La Etapa 2 es la más chica del camino y la que más certeza compra: convierte los primeros ladrillos en un producto medido, ensayado y listo para certificar — y a la genética en un dato, no una promesa.',
-    e2_deliv_label: 'Los cinco entregables de la etapa',
-    e2_deliverables: [
-      ['Benchmark de genéticas en dos ecorregiones', 'Ensayo científico simultáneo en Mendoza y Neuquén, con genéticas nacionales e internacionales: la variedad campeona por territorio, medida — el cimiento agrícola de todo lo que sigue.'],
-      ['Lote piloto de ladrillos y bloques', 'Producción en condiciones controladas, con variabilidad entre lotes documentada: la prueba de que el material sale igual dos veces.'],
-      ['Ensayos normalizados en el INTI', 'Resistencia, desempeño térmico (IRAM 11605) y comportamiento al fuego, en laboratorio acreditado: el expediente que abre la certificación del sistema constructivo.'],
-      ['Primera medición del carbono', 'Análisis de ciclo de vida preliminar y estimación de captura por unidad, con metodología certificable (EcoGaia): el activo ambiental deja de ser un cálculo de escritorio.'],
-      ['MRV piloto', 'Trazabilidad digital del cultivo al material: el hilo de custodia que hará auditable cada tonelada.'],
-    ],
-    e2_not_label: 'Lo que esta etapa no compromete',
-    e2_not:
-      'Ni planta industrial, ni escala de hectáreas, ni compromisos de largo plazo. La Etapa 2 termina con un informe de gate: si la evidencia acompaña, se abre la Demostración; si no acompaña, el aprendizaje queda comprado al precio más bajo posible. **Ese es el diseño.**',
-    e2_risk_label: 'Los riesgos de la etapa, acotados de antemano',
-    e2_risks: [
-      ['Agronómico', 'Dos ecorregiones en paralelo y ejecución a cargo de un socio con licencia, maquinaria y experiencia en el cultivo (Fundación GEN).'],
-      ['Técnico', 'Formulación ya seleccionada en la Etapa 1; los ensayos INTI entran temprano, no al final.'],
-      ['Regulatorio', 'Marco nacional vigente; las habilitaciones del piloto están mapeadas en la dimensión regulatoria del plan.'],
-    ],
-    e2_price:
-      'El presupuesto de la Etapa 2 —acotado y estructurado contra estos cinco entregables— se presenta en reunión.',
-    e2_gate: 'Con lote reproducible, ensayos aprobados y captura medida, la Demostración deja de ser un riesgo: es la decisión siguiente.',
-
-    /* camino 3-5 */
-    camino_k: 'El camino por delante',
-    camino_t: 'Lo que cada gate desbloquea',
-    camino_d:
-      'Las etapas siguientes no se cuantifican hoy — se cuantifican al aprobar el gate anterior, con los datos que ese gate produce. Es la misma regla que protege a quien financia la Etapa 2.',
-    camino_items: [
-      ['3', 'Demostración', '¿Funciona en una construcción real?', 'La primera vivienda demostrativa: certificación de aptitud técnica en marcha, desempeño térmico medido en uso, manual constructivo y aplicadores formados.'],
-      ['4', 'Escalamiento', '¿Se produce industrialmente, con calidad constante?', 'Planta industrial, control de calidad por lote, certificaciones completas y comercialización a escala — el material compitiendo en el mercado de la construcción.'],
-      ['5', 'Plataforma territorial', '¿Se replica en nuevos territorios?', 'El paquete completo —tecnología, alianzas, formación y financiamiento— transferible a otras provincias. Y la cadena madre encendiendo las industrias que se desprenden del cáñamo: alimentos, textil, bioplásticos, papel.'],
-    ],
+    stages: [
+      {
+        n: '0', name: 'Formulación',
+        q: '¿Hay acá un proyecto real?',
+        intro: 'La etapa fundacional: definir el proyecto con trabajo de campo, mercado y marco legal — no con entusiasmo. El problema, el producto, el marco y el equipo quedan sobre la mesa antes de invertir un peso en desarrollo.',
+        fronts: [
+          ['El problema, caracterizado y documentado', 'Déficit habitacional cercano al 60% en la zona de Vaca Muerta, Añelo creció más del 140%, los alquileres más caros del país y obra que se contrata a empresas de fuera de la provincia. La prensa lo cuenta sola:'],
+          ['El mercado y su hueco de pionero', 'El material a batir identificado (hormigón celular curado en autoclave), los segmentos definidos —construcción privada, vivienda pública y la industria que necesita alojar a su gente— y una posición única: nadie construyó todavía con cáñamo en Argentina.'],
+          ['El producto, especificado', 'Hempcrete: densidad objetivo 250–350 kg/m³, conductividad 0,06–0,12 W/mK, incombustible (Clase A), vida útil de más de 500 años — norma europea EN 16101, probado en más de 50 países. Dos líneas: ladrillo de cerramiento y bloque estructural.'],
+          ['El marco legal, relevado', 'Ley 27.669 (cáñamo industrial, THC < 0,3%, autoridad ARICCAME en el Ministerio de Economía) y Decreto 405/2023. Ruta de certificación del sistema constructivo identificada junto al INTI: aptitud técnica, normas IRAM, reglamentos CIRSOC.'],
+          ['El consorcio y la gobernanza', 'Flora integra; Fundación GEN cultiva (titular de la licencia agrícola, con el primer antecedente de cáñamo industrial de Neuquén); EcoGaia certifica el carbono; INTI valida el material; Red Protierra transfiere el saber constructivo. Quien opera no es quien valida ni quien certifica.'],
+        ],
+        gate: 'Existe una base técnica, legal, comercial e institucional suficiente para justificar la inversión en viabilidad.',
+        showClippings: true,
+      },
+      {
+        n: '1', name: 'Viabilidad',
+        q: '¿Se puede hacer acá, con lo nuestro?',
+        intro: 'La etapa que baja el proyecto del papel al territorio: la viabilidad no se argumenta, se produce. Materiales de prueba, licencias, tierra y una operación real que conoce el clima, el suelo y la regulación.',
+        fronts: [
+          ['Formulaciones de laboratorio', 'Mezclas de cañamiza y aglomerante ensayadas hasta seleccionar la formulación de trabajo (binder de cal), con desarrollo junto al INTI.'],
+          ['Prototipos y primeros materiales', 'Primeros ladrillos de prueba y ensayo industrial en condiciones reales — el material se hace, no se proyecta.'],
+          ['La cadena completa, diseñada', 'De la semilla a la llave: ocho eslabones definidos, de la genética al barrio construido, con el proceso productivo del piloto dimensionado.'],
+          ['Licencias y habilitaciones', 'Licencia agrícola de ARICCAME operativa en el consorcio (Fundación GEN); licencia industrial en gestión; habilitaciones del piloto identificadas.'],
+          ['Demanda y financiamiento, validados', 'Interés real de constructoras y programas de vivienda relevado en el territorio, y un plan de financiamiento del piloto contra hitos verificables.'],
+        ],
+        gate: 'Es técnicamente viable producir el material, hay camino regulatorio y hay interés real: se justifica el piloto.',
+        showCadena: true,
+      },
+      {
+        n: '2', name: 'Piloto',
+        q: '¿El material se produce en serie, con desempeño reproducible y certificable?',
+        intro: 'La etapa que convierte los primeros ladrillos en un producto medido, ensayado y listo para certificar — y a la genética en un dato, no una promesa. Es la etapa más chica del camino y la que más certeza compra.',
+        fronts: [
+          ['Benchmark de genéticas en dos ecorregiones', 'Ensayo científico simultáneo en Mendoza y Neuquén, con genéticas nacionales e internacionales: la variedad campeona por territorio, medida — el cimiento agrícola de todo lo que sigue.'],
+          ['Lote piloto de ladrillos y bloques', 'Producción en condiciones controladas, con variabilidad entre lotes documentada: la prueba de que el material sale igual dos veces.'],
+          ['Ensayos normalizados en el INTI', 'Resistencia, desempeño térmico (IRAM 11605) y comportamiento al fuego, en laboratorio acreditado: el expediente que abre la certificación del sistema constructivo.'],
+          ['Primera medición del carbono', 'Análisis de ciclo de vida preliminar y estimación de captura por unidad, con metodología certificable (EcoGaia): el activo ambiental deja de ser un cálculo de escritorio.'],
+          ['MRV piloto', 'Trazabilidad digital del cultivo al material: el hilo de custodia que hará auditable cada tonelada.'],
+        ],
+        gate: 'Lote reproducible, ensayos aprobados y captura medida: la construcción real deja de ser un riesgo y pasa a ser la decisión siguiente.',
+      },
+      {
+        n: '3', name: 'Demostración',
+        q: '¿Funciona en una construcción real y es repetible constructivamente?',
+        intro: 'La etapa donde el material se vuelve casa: una obra demostrativa completa, medida en uso, con el sistema constructivo documentado y la certificación técnica en marcha. La evidencia deja el laboratorio y se muda al territorio.',
+        fronts: [
+          ['La vivienda demostrativa', 'Una obra real ejecutada de punta a punta con el sistema constructivo propio, documentada paso a paso — la primera casa de cáñamo de la Argentina.'],
+          ['Desempeño medido en uso', 'Comportamiento térmico, humedad y confort monitoreados durante meses de habitación real, con etiqueta de eficiencia energética como referencia pública.'],
+          ['Certificación de aptitud técnica', 'El expediente CAT en marcha: la llave que habilita obra pública y vivienda social — el mercado más grande del material.'],
+          ['Manual constructivo y aplicadores', 'El sistema documentado en manuales junto a Red Protierra y las primeras camadas de aplicadores formados: el saber deja de vivir en una sola cuadrilla.'],
+          ['Tracción comercial verificable', 'Expresiones formales de interés y primeros acuerdos a partir de la obra: constructoras, programas de vivienda y el offtake del carbono avanzado.'],
+        ],
+        gate: 'La obra funciona, el desempeño está medido y el mercado respondió: se justifica la inversión industrial.',
+      },
+      {
+        n: '4', name: 'Escalamiento',
+        q: '¿Se produce industrialmente, con calidad constante y certificable?',
+        intro: 'La etapa donde el sistema se vuelve industria: planta, control de calidad, certificaciones completas y el material compitiendo de igual a igual en el mercado de la construcción.',
+        fronts: [
+          ['La planta industrial', 'Capacidad definida por la demanda validada en la Demostración, ingeniería de proceso y localización cerca de la cuenca — el flete manda en los materiales de construcción.'],
+          ['Calidad industrial por lote', 'Control estadístico del proceso, muestreo por lote y procedimientos normalizados: la calidad deja de depender de las manos.'],
+          ['Certificaciones completas', 'CAT vigente para las dos líneas de producto, normas IRAM cumplidas y habilitación industrial de planta — el material comercializable legalmente a escala.'],
+          ['Canales y comercialización', 'Distribuidores, constructoras, desarrolladores y programas públicos: la red que sostiene la producción, con la unidad económica —costo, precio, margen— validada con datos propios.'],
+          ['El carbono, a escala', 'Con volumen industrial, el activo ambiental se certifica y comercializa en serio: cada tonelada serializada, un solo titular, ingresos que complementan al material.'],
+        ],
+        gate: 'La producción es industrial, la calidad es constante y la demanda la absorbe: el negocio es repetible.',
+      },
+      {
+        n: '5', name: 'Plataforma territorial',
+        q: '¿Se replica en nuevos territorios y se sostiene sin depender de un solo actor?',
+        intro: 'La etapa final no es un techo: es un modelo. Todo lo validado —tecnología, alianzas, formación, financiamiento— se empaqueta para replicarse en cualquier provincia con tierra, agua y sol. La plataforma de desarrollo territorial.',
+        fronts: [
+          ['El paquete tecnológico transferible', 'Know-how, manuales y especificaciones empaquetados para réplica y licenciamiento: se replican plantas, no se despacha producto pesado a mil kilómetros.'],
+          ['El modelo institucional replicable', 'El consorcio como molde —integrador + cultivo + certificadora + validación técnica— transferible a nuevos territorios con actores locales.'],
+          ['Formación a escala', 'Academia de empleo, certificación de competencias e inserción laboral: cada nueva planta y cada nueva obra forman su propia gente.'],
+          ['El portfolio diversificado', 'Bloques, ladrillos, paneles, morteros y biochar — y la cadena madre encendiendo las industrias que se desprenden del cáñamo: alimentos, textil, bioplásticos, papel.'],
+          ['Autosostenibilidad financiera', 'Ingresos diversificados —material, construcción, licencias, formación, carbono— y capacidad de financiar nuevas réplicas sin depender de un único financiador ni de un único cliente.'],
+        ],
+        gate: 'El modelo vive solo: la industria que Belgrano propuso, funcionando de punta a punta del país.',
+      },
+    ] as readonly Stage[],
 
     /* carriles */
     carriles_k: 'Los cinco carriles',
@@ -179,9 +189,9 @@ const TXT = {
     carbono_body1:
       'El diferencial del cáñamo construido es la permanencia: el carbono que captura el cultivo queda fijado en la pared durante toda la vida de la construcción, y en el suelo por siglos vía biochar. Al controlar la cadena completa —semilla, cultivo, material, construcción y residuos— el crédito tiene **un único hilo de custodia**: se mide con el MRV propio, lo certifica EcoGaia bajo estándares internacionales, y cada tonelada se registra una sola vez, a nombre de un único titular.',
     carbono_body2:
-      'Su dimensión económica se cuantifica cuando el plan la valida — la primera medición real es, precisamente, un entregable de la Etapa 2. **Como todo en este documento, el activo no se promete: se demuestra.**',
+      'Su dimensión económica se cuantifica cuando el plan la valida — la primera medición real es un entregable del Piloto, y la escala comercial llega con el Escalamiento. **Como todo en este documento, el activo no se promete: se demuestra.**',
 
-    /* quiénes / lo que sostiene */
+    /* quiénes */
     quienes_k: 'Lo que sostiene el plan',
     quienes_t: 'Un consorcio con las piezas completas',
     quienes: [
@@ -197,13 +207,13 @@ const TXT = {
 
     /* invitación */
     inv_k: 'La invitación',
-    inv_t: 'Los asientos de la Etapa 2',
+    inv_t: 'Tres asientos en la mesa fundadora',
     inv_d:
-      'Un socio no compra la visión entera: entra por el gate que tiene adelante. La Etapa 2 tiene asientos abiertos — sin subsidios, sin organismos nuevos, con compromisos acotados contra cinco entregables verificables.',
+      'Un socio no compra la visión entera: entra por el gate que tiene adelante, con compromisos acotados contra entregables verificables — sin subsidios y sin organismos nuevos.',
     inv_items: [
-      ['01', 'La industria', 'Financia una validación chica y queda fundadora de la cadena: preferencia sobre el carbono certificado y sobre la vivienda para sus propias operaciones, con la opción —nunca la obligación— de acompañar cada etapa siguiente.'],
+      ['01', 'La industria', 'Financia etapas acotadas y queda fundadora de la cadena: preferencia sobre el carbono certificado y sobre la vivienda para sus propias operaciones, con la opción —nunca la obligación— de acompañar cada etapa siguiente.'],
       ['02', 'El Estado', 'Reglas claras y articulación. El plan avanza con el marco vigente y capital privado; del Estado necesita lo que mejor puede dar: destrabar, simplificar y acompañar sin poner trabas.'],
-      ['03', 'La ciencia', 'Los ensayos, las normas y la certificación de la Etapa 2 son el corazón de la etapa: INTI, universidades y laboratorios acreditados. Toda afirmación del plan la firma un tercero.'],
+      ['03', 'La ciencia', 'Ensayos, normas y certificación en cada etapa del camino: INTI, universidades y laboratorios acreditados. Toda afirmación del plan la firma un tercero.'],
     ],
 
     /* cierre */
@@ -217,6 +227,13 @@ const TXT = {
     cta_meet: 'Agendar una reunión',
     cta_whatsapp: 'Escribinos por WhatsApp',
     footer: 'Flora Cáñamo Neuquino SRL · Julio 2026 · Documento confidencial',
+
+    clippings: [
+      { medium: 'Río Negro', quote: 'Neuquén va a tener, en 30 años, 1 millón y medio de personas.', who: 'F. Sturzenegger · Ministro de Desregulación', alarm: false },
+      { medium: 'Infobae', quote: 'No se vengan con la familia.', who: 'F. Banderet · Intendente de Añelo', alarm: true },
+      { medium: 'LM Neuquén', quote: 'Contratan empresas de afuera para obras que podrían hacer las empresas locales.', who: 'UOCRA Neuquén · +100 sin trabajo', alarm: true },
+    ],
+    cadena: ['Semilla', 'Cultivo', 'Cosecha', 'Decortización', 'Mezclado', 'Hempcrete', 'Construcción', 'Vivienda'],
   },
 
   en: {
@@ -230,93 +247,99 @@ const TXT = {
     regla_d:
       'The plan advances under a Stage-Gate maturity model: six stages, evaluated in parallel across five dimensions — technical, regulatory, commercial, financial and institutional. Between stages there is a gate: an investment decision made only with the evidence from the previous stage.',
     regla_body:
-      'The classic mistake of large projects is leaping to scale blindly. This plan makes that **impossible by design**: every stage has verifiable deliverables, every gate has explicit criteria, and the capital of one stage never commits the capital of the next. What each stage buys is information — the kind that turns the next stage into a decision instead of a bet.',
+      'The classic mistake of large projects is leaping to scale blindly. This plan makes that **impossible by design**: every stage has verifiable work fronts and deliverables, every gate has explicit criteria, and the capital of one stage never commits the capital of the next. What each stage buys is information — the kind that turns the next stage into a decision instead of a bet. **The budget of each stage is structured against its deliverables and presented in a meeting.**',
     regla_dims_label: 'The five dimensions of every gate',
     dims: ['Technical', 'Regulatory', 'Commercial', 'Financial', 'Institutional'],
     regla_statement: 'Capital enters in stages and only advances with evidence.',
     regla_statement_by: 'The rule of the plan',
-
     rail_label: 'The full path',
-    stages: [
-      { n: '0', name: 'Formulation', state: 'done' },
-      { n: '1', name: 'Feasibility', state: 'done' },
-      { n: '2', name: 'Pilot', state: 'now' },
-      { n: '3', name: 'Demonstration', state: 'next' },
-      { n: '4', name: 'Scale-up', state: 'next' },
-      { n: '5', name: 'Territorial platform', state: 'next' },
-    ],
+
     stage_word: 'Stage',
-    badge_done: 'Completed',
-    badge_now: 'In progress — the stage being financed now',
-    badge_next: 'Quantified upon approval of the previous gate',
     gate_label: 'Gate',
-    gate_passed: 'Approved',
-    gate_open: 'The gate this plan is here to pass',
+    fronts_label: 'The work fronts of the stage',
 
-    e0_q: 'Is there a real project here?',
-    e0_intro:
-      'Stage 0 answered the founding question with field work, market research and legal groundwork — not with enthusiasm. This is what was demonstrated:',
-    e0_items: [
-      ['The problem is real and documented', 'A housing deficit close to 60% in the Vaca Muerta region, Añelo grew more than 140%, the most expensive rents in the country, and construction contracted to companies from outside the province. The 2026 press tells it on its own:'],
-      ['The market has a pioneer\'s gap', 'The material to beat is identified (autoclaved aerated concrete) and so are the segments: private construction, public housing and the industry that needs to house its people. No one has built with hemp in Argentina yet.'],
-      ['The product is specified', 'Hempcrete: target density 250–350 kg/m³, conductivity 0.06–0.12 W/mK, non-combustible (Class A), service life over 500 years — European standard EN 16101, proven in more than 50 countries. Two lines: enclosure brick and structural block.'],
-      ['The legal framework exists and is mapped', 'Law 27,669 (industrial hemp, THC < 0.3%, ARICCAME as authority under the Ministry of Economy) and Decree 405/2023. Certification path for the construction system identified with INTI: technical aptitude, IRAM standards, CIRSOC regulations.'],
-      ['The consortium is formed', 'Flora integrates; Fundación GEN cultivates (holder of the agricultural license, with Neuquén\'s first industrial hemp precedent); EcoGaia certifies the carbon (Verra / Gold Standard); INTI validates the material; Red Protierra transfers the building know-how.'],
-      ['The plan has architecture', 'Five work programs and this staged maturity model, with verifiable indicators for every dimension at every stage.'],
-    ],
-    clippings: [
-      { medium: 'Río Negro', quote: 'In 30 years, Neuquén will have one and a half million people.', who: 'F. Sturzenegger · Minister of Deregulation', alarm: false },
-      { medium: 'Infobae', quote: 'Don\'t come with your family.', who: 'F. Banderet · Mayor of Añelo', alarm: true },
-      { medium: 'LM Neuquén', quote: 'They hire outside companies for work that local firms could do.', who: 'UOCRA Neuquén · 100+ out of work', alarm: true },
-    ],
-    e0_gate: 'There is a real problem, a specified product, a framework in force and a licensed team. There is a project.',
-
-    e1_q: 'Can it be done here, with what we have?',
-    e1_intro:
-      'Stage 1 took the project from paper to territory. Feasibility was not argued: it was produced.',
-    e1_items: [
-      ['Real cultivation, in the province', 'The consortium has operated cultivation and production in Neuquén since 2023 — harvests, lab-tested products and an operation that already knows the climate, the soil and the regulation.'],
-      ['First materials produced', 'Formulation selected (lime binder, developed with INTI), first test bricks and an industrial trial at a quarry in Añelo — the material was made, not projected.'],
-      ['The full chain, designed', 'From seed to key: eight links defined, from genetics to the built neighborhood.'],
-      ['Licenses on the table', 'The ARICCAME agricultural license is operational within the consortium (Fundación GEN); Flora\'s industrial license is in process.'],
-      ['Two ecoregions secured for validation', 'Land available in Mendoza (Uco Valley) and Neuquén to trial genetics in parallel and pick the winning variety per territory.'],
-    ],
-    cadena: ['Seed', 'Cultivation', 'Harvest', 'Decortication', 'Mixing', 'Hempcrete', 'Construction', 'Housing'],
-    e1_gate: 'It is feasible: there is material, there are licenses, there is land and there is an operation. What is missing is not an idea — it is series production.',
-
-    e2_q: 'Can the material be produced in series, with reproducible, certifiable performance?',
-    e2_intro:
-      'The entire plan is concentrated on this question today. Stage 2 is the smallest stage of the path and the one that buys the most certainty: it turns the first bricks into a measured, tested, certification-ready product — and the genetics into data, not a promise.',
-    e2_deliv_label: 'The five deliverables of the stage',
-    e2_deliverables: [
-      ['Genetics benchmark in two ecoregions', 'A simultaneous scientific trial in Mendoza and Neuquén, with national and international genetics: the winning variety per territory, measured — the agricultural foundation of everything that follows.'],
-      ['Pilot batch of bricks and blocks', 'Production under controlled conditions, with batch-to-batch variability documented: the proof that the material comes out the same twice.'],
-      ['Standardized testing at INTI', 'Strength, thermal performance (IRAM 11605) and fire behavior, in an accredited laboratory: the file that opens the certification of the construction system.'],
-      ['First carbon measurement', 'Preliminary life-cycle analysis and capture estimate per unit, under a certifiable methodology (EcoGaia): the environmental asset stops being a desk calculation.'],
-      ['Pilot MRV', 'Digital traceability from crop to material: the chain of custody that will make every tonne auditable.'],
-    ],
-    e2_not_label: 'What this stage does not commit',
-    e2_not:
-      'No industrial plant, no scaling of hectares, no long-term commitments. Stage 2 ends with a gate report: if the evidence holds, Demonstration opens; if it does not, the learning was bought at the lowest possible price. **That is the design.**',
-    e2_risk_label: 'The stage\'s risks, bounded in advance',
-    e2_risks: [
-      ['Agronomic', 'Two ecoregions in parallel and execution led by a partner with a license, machinery and cultivation experience (Fundación GEN).'],
-      ['Technical', 'Formulation already selected in Stage 1; INTI testing enters early, not at the end.'],
-      ['Regulatory', 'National framework in force; the pilot\'s permits are mapped in the plan\'s regulatory dimension.'],
-    ],
-    e2_price:
-      'The Stage 2 budget —bounded and structured against these five deliverables— is presented in a meeting.',
-    e2_gate: 'With a reproducible batch, approved tests and measured capture, Demonstration stops being a risk: it becomes the next decision.',
-
-    camino_k: 'The path ahead',
-    camino_t: 'What each gate unlocks',
-    camino_d:
-      'The following stages are not quantified today — they are quantified upon approval of the previous gate, with the data that gate produces. It is the same rule that protects whoever finances Stage 2.',
-    camino_items: [
-      ['3', 'Demonstration', 'Does it work in a real building?', 'The first demonstration house: technical aptitude certification underway, thermal performance measured in use, a construction manual and trained applicators.'],
-      ['4', 'Scale-up', 'Can it be produced industrially, with constant quality?', 'Industrial plant, batch quality control, complete certifications and commercialization at scale — the material competing in the construction market.'],
-      ['5', 'Territorial platform', 'Can it be replicated in new territories?', 'The full package —technology, alliances, training and financing— transferable to other provinces. And the mother chain igniting the industries that branch off hemp: food, textiles, bioplastics, paper.'],
-    ],
+    stages: [
+      {
+        n: '0', name: 'Formulation',
+        q: 'Is there a real project here?',
+        intro: 'The founding stage: defining the project with field work, market research and legal groundwork — not with enthusiasm. The problem, the product, the framework and the team are laid on the table before a single peso goes into development.',
+        fronts: [
+          ['The problem, characterized and documented', 'A housing deficit close to 60% in the Vaca Muerta region, Añelo grew more than 140%, the most expensive rents in the country and construction contracted to companies from outside the province. The press tells it on its own:'],
+          ['The market and its pioneer\'s gap', 'The material to beat identified (autoclaved aerated concrete), the segments defined —private construction, public housing and the industry that needs to house its people— and a unique position: no one has built with hemp in Argentina yet.'],
+          ['The product, specified', 'Hempcrete: target density 250–350 kg/m³, conductivity 0.06–0.12 W/mK, non-combustible (Class A), service life over 500 years — European standard EN 16101, proven in more than 50 countries. Two lines: enclosure brick and structural block.'],
+          ['The legal framework, mapped', 'Law 27,669 (industrial hemp, THC < 0.3%, ARICCAME as authority under the Ministry of Economy) and Decree 405/2023. Certification path for the construction system identified with INTI: technical aptitude, IRAM standards, CIRSOC regulations.'],
+          ['The consortium and its governance', 'Flora integrates; Fundación GEN cultivates (holder of the agricultural license, with Neuquén\'s first industrial hemp precedent); EcoGaia certifies the carbon; INTI validates the material; Red Protierra transfers the building know-how. The operator is not the validator nor the certifier.'],
+        ],
+        gate: 'There is a sufficient technical, legal, commercial and institutional base to justify investing in feasibility.',
+        showClippings: true,
+      },
+      {
+        n: '1', name: 'Feasibility',
+        q: 'Can it be done here, with what we have?',
+        intro: 'The stage that takes the project from paper to territory: feasibility is not argued, it is produced. Test materials, licenses, land and a real operation that knows the climate, the soil and the regulation.',
+        fronts: [
+          ['Laboratory formulations', 'Hemp-hurd and binder mixes tested until a working formulation is selected (lime binder), developed with INTI.'],
+          ['Prototypes and first materials', 'First test bricks and an industrial trial under real conditions — the material is made, not projected.'],
+          ['The full chain, designed', 'From seed to key: eight links defined, from genetics to the built neighborhood, with the pilot\'s production process dimensioned.'],
+          ['Licenses and permits', 'ARICCAME agricultural license operational within the consortium (Fundación GEN); industrial license in process; pilot permits identified.'],
+          ['Demand and financing, validated', 'Real interest from builders and housing programs surveyed in the territory, and a pilot financing plan against verifiable milestones.'],
+        ],
+        gate: 'Producing the material is technically feasible, there is a regulatory path and there is real interest: the pilot is justified.',
+        showCadena: true,
+      },
+      {
+        n: '2', name: 'Pilot',
+        q: 'Can the material be produced in series, with reproducible, certifiable performance?',
+        intro: 'The stage that turns the first bricks into a measured, tested, certification-ready product — and the genetics into data, not a promise. It is the smallest stage of the path and the one that buys the most certainty.',
+        fronts: [
+          ['Genetics benchmark in two ecoregions', 'A simultaneous scientific trial in Mendoza and Neuquén, with national and international genetics: the winning variety per territory, measured — the agricultural foundation of everything that follows.'],
+          ['Pilot batch of bricks and blocks', 'Production under controlled conditions, with batch-to-batch variability documented: the proof that the material comes out the same twice.'],
+          ['Standardized testing at INTI', 'Strength, thermal performance (IRAM 11605) and fire behavior, in an accredited laboratory: the file that opens the certification of the construction system.'],
+          ['First carbon measurement', 'Preliminary life-cycle analysis and capture estimate per unit, under a certifiable methodology (EcoGaia): the environmental asset stops being a desk calculation.'],
+          ['Pilot MRV', 'Digital traceability from crop to material: the chain of custody that will make every tonne auditable.'],
+        ],
+        gate: 'A reproducible batch, approved tests and measured capture: real construction stops being a risk and becomes the next decision.',
+      },
+      {
+        n: '3', name: 'Demonstration',
+        q: 'Does it work in a real building, and is it constructively repeatable?',
+        intro: 'The stage where the material becomes a house: a complete demonstration build, measured in use, with the construction system documented and technical certification underway. The evidence leaves the laboratory and moves to the territory.',
+        fronts: [
+          ['The demonstration house', 'A real build executed end to end with the plan\'s own construction system, documented step by step — Argentina\'s first hemp house.'],
+          ['Performance measured in use', 'Thermal behavior, humidity and comfort monitored through months of real habitation, with an energy-efficiency label as public reference.'],
+          ['Technical aptitude certification', 'The CAT file underway: the key that enables public works and social housing — the material\'s largest market.'],
+          ['Construction manual and applicators', 'The system documented in manuals with Red Protierra and the first cohorts of trained applicators: the know-how stops living in a single crew.'],
+          ['Verifiable commercial traction', 'Formal expressions of interest and first agreements arising from the build: builders, housing programs and the carbon offtake advancing.'],
+        ],
+        gate: 'The build works, performance is measured and the market responded: industrial investment is justified.',
+      },
+      {
+        n: '4', name: 'Scale-up',
+        q: 'Can it be produced industrially, with constant, certifiable quality?',
+        intro: 'The stage where the system becomes an industry: plant, quality control, complete certifications and the material competing head to head in the construction market.',
+        fronts: [
+          ['The industrial plant', 'Capacity defined by the demand validated in Demonstration, process engineering and a location near the basin — freight rules in construction materials.'],
+          ['Industrial quality by batch', 'Statistical process control, batch sampling and standardized procedures: quality stops depending on hands.'],
+          ['Complete certifications', 'CAT in force for both product lines, IRAM standards met and the plant\'s industrial permit — the material legally marketable at scale.'],
+          ['Channels and commercialization', 'Distributors, builders, developers and public programs: the network that sustains production, with the unit economics —cost, price, margin— validated with the plan\'s own data.'],
+          ['Carbon, at scale', 'With industrial volume, the environmental asset is certified and marketed in earnest: every tonne serialized, a single holder, revenue that complements the material.'],
+        ],
+        gate: 'Production is industrial, quality is constant and demand absorbs it: the business is repeatable.',
+      },
+      {
+        n: '5', name: 'Territorial platform',
+        q: 'Can it be replicated in new territories and sustain itself without depending on a single actor?',
+        intro: 'The final stage is not a ceiling: it is a model. Everything validated —technology, alliances, training, financing— is packaged to be replicated in any province with land, water and sun. The territorial development platform.',
+        fronts: [
+          ['The transferable technology package', 'Know-how, manuals and specifications packaged for replication and licensing: plants are replicated, heavy product is not shipped a thousand kilometers.'],
+          ['The replicable institutional model', 'The consortium as a mold —integrator + cultivation + certifier + technical validation— transferable to new territories with local actors.'],
+          ['Training at scale', 'Employment academy, skills certification and job placement: every new plant and every new build trains its own people.'],
+          ['The diversified portfolio', 'Blocks, bricks, panels, mortars and biochar — and the mother chain igniting the industries that branch off hemp: food, textiles, bioplastics, paper.'],
+          ['Financial self-sustainability', 'Diversified revenue —material, construction, licenses, training, carbon— and the capacity to finance new replications without depending on a single financier or a single client.'],
+        ],
+        gate: 'The model lives on its own: the industry Belgrano proposed, working from one end of the country to the other.',
+      },
+    ] as readonly Stage[],
 
     carriles_k: 'The five lanes',
     carriles_t: 'The programs that run through every stage',
@@ -335,7 +358,7 @@ const TXT = {
     carbono_body1:
       'The differentiator of built hemp is permanence: the carbon captured by the crop stays locked in the wall for the entire life of the building, and in the soil for centuries via biochar. By controlling the full chain —seed, cultivation, material, construction and residues— the credit has **a single chain of custody**: measured with the plan\'s own MRV, certified by EcoGaia under international standards, and each tonne registered only once, in the name of a single holder.',
     carbono_body2:
-      'Its economic dimension is quantified when the plan validates it — the first real measurement is, precisely, a Stage 2 deliverable. **Like everything in this document, the asset is not promised: it is demonstrated.**',
+      'Its economic dimension is quantified when the plan validates it — the first real measurement is a Pilot deliverable, and commercial scale arrives with Scale-up. **Like everything in this document, the asset is not promised: it is demonstrated.**',
 
     quienes_k: 'What holds the plan up',
     quienes_t: 'A consortium with all the pieces',
@@ -351,13 +374,13 @@ const TXT = {
       '**Guillermo Sandoval** — founder of Flora and of the Manuel Belgrano Plan. He chairs the civil association that has operated cultivation and production in Neuquén since 2023 and leads Flora Cáñamo Neuquino SRL (incorporated January 2025; registration underway in the CABA jurisdiction, with its corporate purpose aligned to Law 27,669).',
 
     inv_k: 'The invitation',
-    inv_t: 'The seats of Stage 2',
+    inv_t: 'Three seats at the founding table',
     inv_d:
-      'A partner does not buy the whole vision: they enter through the gate in front of them. Stage 2 has open seats — no subsidies, no new agencies, with bounded commitments against five verifiable deliverables.',
+      'A partner does not buy the whole vision: they enter through the gate in front of them, with bounded commitments against verifiable deliverables — no subsidies and no new agencies.',
     inv_items: [
-      ['01', 'Industry', 'Finances a small validation and becomes a founder of the chain: preference over the certified carbon and over housing for its own operations, with the option —never the obligation— to accompany each following stage.'],
+      ['01', 'Industry', 'Finances bounded stages and becomes a founder of the chain: preference over the certified carbon and over housing for its own operations, with the option —never the obligation— to accompany each following stage.'],
       ['02', 'The State', 'Clear rules and coordination. The plan advances under the current framework with private capital; from the State it needs what it does best: unblock, simplify and support without adding hurdles.'],
-      ['03', 'Science', 'The testing, standards and certification of Stage 2 are the heart of the stage: INTI, universities and accredited laboratories. Every claim in the plan is signed by a third party.'],
+      ['03', 'Science', 'Testing, standards and certification at every stage of the path: INTI, universities and accredited laboratories. Every claim in the plan is signed by a third party.'],
     ],
 
     cierre_vision_k: 'The vision',
@@ -370,6 +393,13 @@ const TXT = {
     cta_meet: 'Schedule a meeting',
     cta_whatsapp: 'Message us on WhatsApp',
     footer: 'Flora Cáñamo Neuquino SRL · July 2026 · Confidential document',
+
+    clippings: [
+      { medium: 'Río Negro', quote: 'In 30 years, Neuquén will have one and a half million people.', who: 'F. Sturzenegger · Minister of Deregulation', alarm: false },
+      { medium: 'Infobae', quote: 'Don\'t come with your family.', who: 'F. Banderet · Mayor of Añelo', alarm: true },
+      { medium: 'LM Neuquén', quote: 'They hire outside companies for work that local firms could do.', who: 'UOCRA Neuquén · 100+ out of work', alarm: true },
+    ],
+    cadena: ['Seed', 'Cultivation', 'Harvest', 'Decortication', 'Mixing', 'Hempcrete', 'Construction', 'Housing'],
   },
 } as const
 
@@ -435,97 +465,45 @@ function ProgressBar() {
   )
 }
 
-/* ---------- el rail de etapas ---------- */
+/* ---------- el rail de etapas (neutro, sin estados) ---------- */
 
-function StageRail({ t, current }: { t: T; current?: number }) {
+function StageRail({ t }: { t: T }) {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem 0', alignItems: 'stretch', margin: '0.5rem 0 0.5rem' }}>
-      {t.stages.map((s, i) => {
-        const isCurrent = current !== undefined && i === current
-        const done = s.state === 'done'
-        const now = s.state === 'now'
-        const nodeColor = done ? GREEN_DK : now ? GOLD : 'rgba(7,26,56,0.28)'
-        return (
-          <div key={s.n} style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: '0.55rem',
-              border: `1px solid ${isCurrent ? nodeColor : LINE}`,
-              background: isCurrent ? (now ? 'rgba(242,181,68,0.12)' : 'rgba(47,143,58,0.08)') : '#fff',
-              padding: '0.5rem 0.85rem', borderRadius: '3px',
-            }}>
-              <span style={{
-                ...serif, fontStyle: 'italic', fontSize: '1.15rem', lineHeight: 1,
-                color: nodeColor, minWidth: '0.8rem', textAlign: 'center',
-              }}>{s.n}</span>
-              <span style={{ ...sans, fontSize: '0.68rem', fontWeight: 600, color: done || now ? INK : FAINT, whiteSpace: 'nowrap' }}>
-                {s.name}{done ? ' ✓' : now ? ' ●' : ''}
-              </span>
-            </div>
-            {i < t.stages.length - 1 && (
-              <span aria-hidden style={{ width: 'clamp(0.5rem, 1.4vw, 1.1rem)', height: '1px', background: 'rgba(7,26,56,0.25)', display: 'inline-block' }} />
-            )}
-          </div>
-        )
-      })}
+      {t.stages.map((s, i) => (
+        <div key={s.n} style={{ display: 'flex', alignItems: 'center' }}>
+          <a href={`#e${s.n}`} style={{
+            display: 'flex', alignItems: 'center', gap: '0.55rem',
+            border: `1px solid ${LINE}`, background: '#fff',
+            padding: '0.5rem 0.85rem', borderRadius: '3px', textDecoration: 'none',
+          }}>
+            <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.15rem', lineHeight: 1, color: GOLD, minWidth: '0.8rem', textAlign: 'center' }}>{s.n}</span>
+            <span style={{ ...sans, fontSize: '0.68rem', fontWeight: 600, color: INK, whiteSpace: 'nowrap' }}>{s.name}</span>
+          </a>
+          {i < t.stages.length - 1 && (
+            <span aria-hidden style={{ width: 'clamp(0.5rem, 1.4vw, 1.1rem)', height: '1px', background: 'rgba(7,26,56,0.25)', display: 'inline-block' }} />
+          )}
+        </div>
+      ))}
     </div>
   )
 }
 
-/* ---------- encabezado de capítulo-etapa ---------- */
+/* ---------- capítulo de etapa (template idéntico para las 6) ---------- */
 
-function StageHeader({ t, idx, q }: { t: T; idx: number; q: string }) {
-  const s = t.stages[idx]
-  const done = s.state === 'done'
-  const now = s.state === 'now'
-  const color = done ? GREEN_DK : now ? GOLD : FAINT
-  const badge = done ? t.badge_done : now ? t.badge_now : t.badge_next
-  return (
-    <Reveal>
-      <header style={{ marginBottom: '2.5rem', scrollMarginTop: '4rem' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 'clamp(1rem, 2.5vw, 1.75rem)', flexWrap: 'wrap' }}>
-          <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(3.4rem, 8vw, 6rem)', color, lineHeight: 0.8, flexShrink: 0 }}>{s.n}</span>
-          <div style={{ flex: '1 1 300px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', flexWrap: 'wrap', marginBottom: '0.6rem' }}>
-              <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.26em', textTransform: 'uppercase', color: CELESTE, fontWeight: 500 }}>
-                {t.stage_word} {s.n} · {s.name}
-              </span>
-              <span style={{
-                ...sans, fontSize: '0.56rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700,
-                color: done ? GREEN_DK : now ? '#8a6510' : FAINT,
-                background: done ? 'rgba(47,143,58,0.1)' : now ? 'rgba(242,181,68,0.18)' : 'rgba(7,26,56,0.05)',
-                border: `1px solid ${done ? 'rgba(47,143,58,0.3)' : now ? 'rgba(242,181,68,0.5)' : LINE}`,
-                padding: '0.28rem 0.6rem', borderRadius: '2px',
-              }}>{badge}</span>
-            </div>
-            <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 3.6vw, 2.9rem)', lineHeight: 1.12, color: INK, margin: 0, maxWidth: '26ch' }}>
-              {q}
-            </h2>
-          </div>
-        </div>
-        <div style={{ height: '1px', background: LINE, marginTop: '1.9rem' }} />
-      </header>
-    </Reveal>
-  )
-}
-
-/* ---------- bloque de gate ---------- */
-
-function GateBlock({ t, n, verdict, passed }: { t: T; n: number; verdict: string; passed: boolean }) {
+function GateBlock({ t, n, verdict }: { t: T; n: number; verdict: string }) {
   return (
     <Reveal>
       <div style={{
         marginTop: '2.5rem',
-        border: `1px solid ${passed ? 'rgba(47,143,58,0.35)' : 'rgba(242,181,68,0.55)'}`,
-        borderLeft: `4px solid ${passed ? GREEN_DK : GOLD}`,
-        background: passed ? 'rgba(47,143,58,0.05)' : 'rgba(242,181,68,0.08)',
+        border: '1px solid rgba(242,181,68,0.55)',
+        borderLeft: `4px solid ${GOLD}`,
+        background: 'rgba(242,181,68,0.08)',
         padding: 'clamp(1.25rem, 2.5vw, 1.8rem)',
         display: 'flex', gap: '1.25rem', alignItems: 'flex-start', flexWrap: 'wrap',
       }}>
-        <span style={{
-          ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700,
-          color: passed ? GREEN_DK : '#8a6510', whiteSpace: 'nowrap', paddingTop: '0.2rem',
-        }}>
-          {t.gate_label} {n} — {passed ? t.gate_passed + ' ✓' : t.gate_open}
+        <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', whiteSpace: 'nowrap', paddingTop: '0.2rem' }}>
+          {t.gate_label} {n}
         </span>
         <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.05rem, 1.7vw, 1.35rem)', lineHeight: 1.4, color: INK, margin: 0, flex: '1 1 320px' }}>
           {verdict}
@@ -535,27 +513,80 @@ function GateBlock({ t, n, verdict, passed }: { t: T; n: number; verdict: string
   )
 }
 
-/* ---------- lista de evidencia (etapas 0-1) ---------- */
+const CADENA_IMG = ['01-semilla', '02-cultivo', '03-cosecha', '04-decorticacion', '05-mezclado', '06-material', '07-construccion', '08-vivienda'] as const
 
-function EvidenceList({ items }: { items: readonly (readonly [string, string])[] }) {
+function StageChapter({ t, idx, bg }: { t: T; idx: number; bg: string }) {
+  const s = t.stages[idx]
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-      {items.map(([title, d], i) => (
-        <Reveal key={title} delay={0.04 * i}>
-          <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: 'clamp(1.1rem, 2.2vw, 1.5rem)', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-            <span aria-hidden style={{ color: GREEN_DK, ...sans, fontWeight: 700, fontSize: '0.95rem', lineHeight: 1.5 }}>✓</span>
-            <div>
-              <h3 style={{ ...sans, fontSize: '0.96rem', fontWeight: 600, color: INK, margin: '0 0 0.35rem' }}>{title}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.65, color: MUTED, margin: 0, maxWidth: '78ch' }}>{d}</p>
+    <Doc bg={bg} id={`e${s.n}`}>
+      <Reveal>
+        <header style={{ marginBottom: '2.5rem', scrollMarginTop: '4rem' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 'clamp(1rem, 2.5vw, 1.75rem)', flexWrap: 'wrap' }}>
+            <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(3.4rem, 8vw, 6rem)', color: GOLD, lineHeight: 0.8, flexShrink: 0 }}>{s.n}</span>
+            <div style={{ flex: '1 1 300px' }}>
+              <Eyebrow>{t.stage_word} {s.n} · {s.name}</Eyebrow>
+              <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 3.6vw, 2.9rem)', lineHeight: 1.12, color: INK, margin: 0, maxWidth: '26ch' }}>
+                {s.q}
+              </h2>
             </div>
           </div>
-        </Reveal>
-      ))}
-    </div>
+          <div style={{ height: '1px', background: LINE, marginTop: '1.9rem' }} />
+        </header>
+      </Reveal>
+
+      <Reveal><P max="74ch">{s.intro}</P></Reveal>
+
+      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2.25rem 0 1.1rem' }}>{t.fronts_label}</p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+        {s.fronts.map(([title, d], i) => (
+          <Reveal key={title} delay={0.04 * i}>
+            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GOLD}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)', display: 'flex', gap: 'clamp(1rem, 2.5vw, 1.75rem)', alignItems: 'flex-start' }}>
+              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 2.8vw, 2.3rem)', color: GOLD, lineHeight: 1, minWidth: '2rem' }}>{i + 1}</span>
+              <div>
+                <h3 style={{ ...sans, fontSize: '0.98rem', fontWeight: 600, color: INK, margin: '0 0 0.4rem' }}>{title}</h3>
+                <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.65, color: MUTED, margin: 0, maxWidth: '76ch' }}>{d}</p>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* material de apoyo específico de algunas etapas */}
+      {s.showClippings && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(232px, 1fr))', gap: '0.7rem', marginTop: '0.7rem' }}>
+          {t.clippings.map((c, i) => (
+            <Reveal key={c.quote} delay={0.05 * i}>
+              <article style={{ background: '#fff', border: `1px solid ${LINE}`, borderTop: `2px solid ${c.alarm ? '#B4301C' : 'rgba(7,26,56,0.5)'}`, padding: '0.8rem 1rem 0.9rem', height: '100%', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                <span style={{ ...serif, fontWeight: 600, fontSize: '0.74rem', color: INK, borderBottom: '1px solid rgba(7,26,56,0.1)', paddingBottom: '0.35rem' }}>{c.medium}</span>
+                <p style={{ ...serif, fontStyle: 'italic', fontSize: '0.88rem', lineHeight: 1.3, color: INK, margin: 0 }}>“{c.quote}”</p>
+                <p style={{ ...sans, fontSize: '0.55rem', letterSpacing: '0.03em', color: FAINT, margin: 'auto 0 0', lineHeight: 1.4 }}>{c.who}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      )}
+
+      {s.showCadena && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(105px, 1fr))', gap: '0.5rem', marginTop: '1.5rem' }}>
+          {CADENA_IMG.map((img, i) => {
+            const name = t.cadena[i]
+            return (
+              <Reveal key={img} delay={0.04 * i}>
+                <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', border: `1px solid ${LINE}` }}>
+                  <img src={`/cadena/${img}.jpg`} alt={name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,56,0.9), transparent 55%)' }} />
+                  <span style={{ position: 'absolute', left: '0.5rem', bottom: '0.45rem', ...sans, fontSize: '0.62rem', fontWeight: 600, color: CREAM }}>{name}</span>
+                </div>
+              </Reveal>
+            )
+          })}
+        </div>
+      )}
+
+      <GateBlock t={t} n={idx + 1} verdict={s.gate} />
+    </Doc>
   )
 }
-
-const CADENA_IMG = ['01-semilla', '02-cultivo', '03-cosecha', '04-decorticacion', '05-mezclado', '06-material', '07-construccion', '08-vivienda'] as const
 
 /* ============================================================
    SECCIONES
@@ -607,145 +638,6 @@ function Regla({ t }: { t: T }) {
       </Reveal>
 
       <Statement by={t.regla_statement_by}>{t.regla_statement}</Statement>
-    </Doc>
-  )
-}
-
-function Etapa0({ t }: { t: T }) {
-  return (
-    <Doc bg={CREAM} id="e0">
-      <StageHeader t={t} idx={0} q={t.e0_q} />
-      <Reveal><P max="72ch">{t.e0_intro}</P></Reveal>
-
-      <EvidenceList items={t.e0_items.slice(0, 1)} />
-
-      {/* recortes de prensa como evidencia del problema */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(232px, 1fr))', gap: '0.7rem', margin: '0.7rem 0' }}>
-        {t.clippings.map((c, i) => (
-          <Reveal key={c.quote} delay={0.05 * i}>
-            <article style={{ background: '#fff', border: `1px solid ${LINE}`, borderTop: `2px solid ${c.alarm ? '#B4301C' : 'rgba(7,26,56,0.5)'}`, padding: '0.8rem 1rem 0.9rem', height: '100%', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-              <span style={{ ...serif, fontWeight: 600, fontSize: '0.74rem', color: INK, borderBottom: '1px solid rgba(7,26,56,0.1)', paddingBottom: '0.35rem' }}>{c.medium}</span>
-              <p style={{ ...serif, fontStyle: 'italic', fontSize: '0.88rem', lineHeight: 1.3, color: INK, margin: 0 }}>“{c.quote}”</p>
-              <p style={{ ...sans, fontSize: '0.55rem', letterSpacing: '0.03em', color: FAINT, margin: 'auto 0 0', lineHeight: 1.4 }}>{c.who}</p>
-            </article>
-          </Reveal>
-        ))}
-      </div>
-
-      <EvidenceList items={t.e0_items.slice(1)} />
-
-      <GateBlock t={t} n={1} verdict={t.e0_gate} passed />
-    </Doc>
-  )
-}
-
-function Etapa1({ t }: { t: T }) {
-  return (
-    <Doc id="e1">
-      <StageHeader t={t} idx={1} q={t.e1_q} />
-      <Reveal><P max="72ch">{t.e1_intro}</P></Reveal>
-
-      <EvidenceList items={t.e1_items} />
-
-      {/* la cadena, diseñada */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(105px, 1fr))', gap: '0.5rem', margin: '1.5rem 0 0' }}>
-        {CADENA_IMG.map((img, i) => {
-          const name = t.cadena[i]
-          return (
-            <Reveal key={img} delay={0.04 * i}>
-              <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', border: `1px solid ${LINE}` }}>
-                <img src={`/cadena/${img}.jpg`} alt={name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,56,0.9), transparent 55%)' }} />
-                <span style={{ position: 'absolute', left: '0.5rem', bottom: '0.45rem', ...sans, fontSize: '0.62rem', fontWeight: 600, color: CREAM }}>{name}</span>
-              </div>
-            </Reveal>
-          )
-        })}
-      </div>
-
-      <GateBlock t={t} n={2} verdict={t.e1_gate} passed />
-    </Doc>
-  )
-}
-
-function Etapa2({ t }: { t: T }) {
-  return (
-    <Doc bg={CREAM} id="e2">
-      <StageHeader t={t} idx={2} q={t.e2_q} />
-      <Reveal>
-        <P max="74ch" style={{ fontSize: 'clamp(1rem, 1.3vw, 1.14rem)' }}>{t.e2_intro}</P>
-      </Reveal>
-
-      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2.25rem 0 1.1rem' }}>{t.e2_deliv_label}</p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-        {t.e2_deliverables.map(([title, d], i) => (
-          <Reveal key={title} delay={0.05 * i}>
-            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GOLD}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)', display: 'flex', gap: 'clamp(1rem, 2.5vw, 1.75rem)', alignItems: 'flex-start' }}>
-              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 2.8vw, 2.3rem)', color: GOLD, lineHeight: 1, minWidth: '2rem' }}>{i + 1}</span>
-              <div>
-                <h3 style={{ ...sans, fontSize: '0.98rem', fontWeight: 600, color: INK, margin: '0 0 0.4rem' }}>{title}</h3>
-                <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.65, color: MUTED, margin: 0, maxWidth: '76ch' }}>{d}</p>
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* lo que no compromete */}
-      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2.5rem 0 1rem' }}>{t.e2_not_label}</p>
-      <Reveal>
-        <P max="74ch">{rich(t.e2_not, INK)}</P>
-      </Reveal>
-
-      {/* riesgos acotados */}
-      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2rem 0 1.1rem' }}>{t.e2_risk_label}</p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.7rem' }}>
-        {t.e2_risks.map(([r, d], i) => (
-          <Reveal key={r} delay={0.05 * i}>
-            <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: '1.2rem 1.3rem', height: '100%' }}>
-              <h3 style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 700, color: INK, margin: '0 0 0.55rem' }}>{r}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.6, color: MUTED, margin: 0 }}>{d}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* presupuesto en reunión */}
-      <Reveal>
-        <div style={{ marginTop: '2.25rem', background: INK, padding: 'clamp(1.4rem, 2.8vw, 2rem)', maxWidth: '46rem' }}>
-          <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.1rem, 1.8vw, 1.4rem)', lineHeight: 1.45, color: CREAM, margin: 0 }}>
-            {t.e2_price}
-          </p>
-        </div>
-      </Reveal>
-
-      <GateBlock t={t} n={3} verdict={t.e2_gate} passed={false} />
-    </Doc>
-  )
-}
-
-function Camino({ t }: { t: T }) {
-  return (
-    <Doc id="camino">
-      <Reveal>
-        <Eyebrow>{t.camino_k}</Eyebrow>
-        <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.9rem, 4vw, 3.2rem)', lineHeight: 1.08, color: INK, margin: '0 0 1.4rem', maxWidth: '24ch' }}>{t.camino_t}</h2>
-        <P max="72ch">{t.camino_d}</P>
-      </Reveal>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))', gap: '0.8rem', marginTop: '1.5rem' }}>
-        {t.camino_items.map(([n, name, q, d], i) => (
-          <Reveal key={n} delay={0.06 * i}>
-            <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: 'clamp(1.4rem, 2.5vw, 1.9rem)', height: '100%' }}>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.8rem', marginBottom: '0.7rem' }}>
-                <span style={{ ...serif, fontStyle: 'italic', fontSize: '2.4rem', color: 'rgba(7,26,56,0.3)', lineHeight: 1 }}>{n}</span>
-                <h3 style={{ ...sans, fontSize: '1rem', fontWeight: 600, color: INK, margin: 0 }}>{name}</h3>
-              </div>
-              <p style={{ ...serif, fontStyle: 'italic', fontSize: '1.02rem', lineHeight: 1.35, color: CELESTE, margin: '0 0 0.7rem' }}>{q}</p>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.84rem', lineHeight: 1.65, color: MUTED, margin: 0 }}>{d}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
     </Doc>
   )
 }
@@ -936,10 +828,9 @@ export function MasterplanStageGate({ showCover = false }: { showCover?: boolean
       {showCover && <ProgressBar />}
       <Tesis t={t} />
       <Regla t={t} />
-      <Etapa0 t={t} />
-      <Etapa1 t={t} />
-      <Etapa2 t={t} />
-      <Camino t={t} />
+      {t.stages.map((s, i) => (
+        <StageChapter key={s.n} t={t} idx={i} bg={i % 2 === 0 ? CREAM : PAPER} />
+      ))}
       <Carriles t={t} />
       <Carbono t={t} />
       <Quienes t={t} />
