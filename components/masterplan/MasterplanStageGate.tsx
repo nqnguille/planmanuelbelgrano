@@ -24,6 +24,7 @@ const PAPER = '#FAF8F1'
 const CREAM = '#F3F1E7'
 const GOLD = '#F2B544'
 const GREEN = '#5BC46A'
+const GREEN_DK = '#2F8F3A'
 const CELESTE = '#2F6FB0'
 const LINE = 'rgba(7,26,56,0.13)'
 const MUTED = 'rgba(7,26,56,0.66)'
@@ -64,11 +65,37 @@ type Stage = {
 
 const TXT = {
   es: {
-    /* tesis */
-    tesis_k: 'El plan',
+    /* la visión */
+    tesis_k: 'La visión',
     tesis_lead: 'Podemos convertir Vaca Muerta en Vaca Verde.',
     tesis_body:
-      'La visión es enorme: vivienda, empleo y una industria nueva desde la superficie de Neuquén — la tierra, el agua y el sol que quedan cuando el subsuelo ya dio lo suyo. Por eso el plan es exactamente lo contrario: **chico, verificable y por etapas**. Nadie pone todo el capital de una vez; cada etapa compra la certeza que habilita la siguiente.',
+      'Debajo de Neuquén está la energía que hoy mueve al país. En la superficie hay tierra, agua y sol para producir lo que puede sostenerlo para siempre. **Vaca Muerta no es eterna — lo que construyamos con lo que genera puede serlo.**',
+    v_belgrano_label: 'Una industria interrumpida hace 230 años',
+    v_belgrano:
+      'En 1796, Manuel Belgrano propuso desde el Consulado el cultivo del lino y del cáñamo como una de las primeras industrias del país: **producir y agregar valor, en lugar de solo extraer**. Se adelantó más de dos siglos. El cáñamo construyó durante siglos en Europa, Asia y América —la estructura más antigua documentada tiene mil quinientos años y sigue en pie—, hasta que la prohibición del siglo XX lo interrumpió: una decisión regulatoria, no técnica ni económica. El marco vigente vuelve a habilitarlo. **Y la industria todavía no tiene dueño.**',
+    v_planta_label: 'La planta',
+    v_planta:
+      'El cáñamo industrial crece rápido, en suelo árido y con poca agua: madura en pocos meses y prospera donde otros cultivos no llegan. De una sola siembra entrega fibra, materiales y energía — casi sin desperdicio.',
+    v_products: [
+      ['Hempcrete', 'El material de construcción de base biológica: ladrillos y bloques para vivienda accesible, aislante y de rápida ejecución. Probado en más de 50 países, con un diferencial único: el carbono que capturó el cultivo queda almacenado en la pared durante toda la vida de la construcción.'],
+      ['Biochar', 'Del residuo de la planta, por pirólisis, un carbón vegetal estable que bloquea carbono por más de mil años y mejora el suelo. La segunda línea de valor de la misma hectárea — el residuo también es un activo.'],
+    ] as readonly (readonly [string, string])[],
+    v_cadena_label: 'De la semilla a la llave',
+    v_cadena:
+      'Una sola planta abre una cadena industrial completa: cultivo, material de construcción y, del residuo, biochar. Cada paso ocurre en la misma cuenca y es empleo técnico — del campo a la vivienda.',
+    v_impacto_label: 'Tres resultados de la misma cadena',
+    v_cards: [
+      ['Vivienda', 'accesible, aislante y de rápida ejecución, con materia prima y mano de obra locales — allí donde más falta.'],
+      ['Empleo', 'técnico y local en cada eslabón: cultivo, industria y construcción. La fuente de trabajo crece con cada hectárea y con cada obra.'],
+      ['Industria', 'valor agregado en origen que multiplica empresas regionales — y reactiva las cadenas que se desprenden del cáñamo: alimentos, textiles, bioplásticos, papel, cosmética.'],
+    ] as readonly (readonly [string, string])[],
+    v_ciudades_label: 'Ciudades de cáñamo',
+    v_ciudades:
+      'Si a Neuquén llega un millón de personas, la pregunta no es solo dónde duermen: es qué construye su economía. El hempcrete convierte cualquier hectárea cultivable de la Argentina en viviendas, barrios y ciudades enteras — y en una fuente de trabajo inagotable, en cada eslabón de la cadena, del campo a la llave.',
+    v_statement: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera.',
+    v_statement_by: 'Vaca Muerta → Vaca Verde',
+    v_puente:
+      'La visión es enorme. Por eso el plan es exactamente lo contrario: **chico, verificable y por etapas**. Nadie pone todo el capital de una vez; cada etapa compra la certeza que habilita la siguiente.',
 
     /* la regla */
     regla_k: 'La regla del juego',
@@ -116,7 +143,6 @@ const TXT = {
           ['Demanda y financiamiento, validados', 'Interés real de constructoras y programas de vivienda relevado en el territorio, y un plan de financiamiento del piloto contra hitos verificables.'],
         ],
         gate: 'Es técnicamente viable producir el material, hay camino regulatorio y hay interés real: se justifica el piloto.',
-        showCadena: true,
       },
       {
         n: '2', name: 'Piloto',
@@ -239,10 +265,36 @@ const TXT = {
   },
 
   en: {
-    tesis_k: 'The plan',
+    tesis_k: 'The vision',
     tesis_lead: 'We can turn Vaca Muerta into Vaca Verde.',
     tesis_body:
-      'The vision is enormous: housing, employment and a new industry from Neuquén\'s surface — the land, water and sun that remain when the subsoil has given its share. That is why the plan is exactly the opposite: **small, verifiable and staged**. No one puts up all the capital at once; each stage buys the certainty that enables the next one.',
+      'Beneath Neuquén lies the energy that powers the country today. On the surface, there is land, water and sun to produce what can sustain it forever. **Vaca Muerta is not eternal — what we build with what it generates can be.**',
+    v_belgrano_label: 'An industry interrupted 230 years ago',
+    v_belgrano:
+      'In 1796, Manuel Belgrano proposed from the Consulate the cultivation of flax and hemp as one of the country\'s first industries: **producing and adding value, rather than only extracting**. He was more than two centuries ahead. Hemp built across Europe, Asia and America for centuries —the oldest documented structure is fifteen hundred years old and still standing— until the 20th-century prohibition interrupted it: a regulatory decision, not a technical or economic one. The current framework enables it once again. **And the industry still has no owner.**',
+    v_planta_label: 'The plant',
+    v_planta:
+      'Industrial hemp grows fast, in arid soil and with little water: it matures in a few months and thrives where other crops cannot. A single sowing delivers fiber, materials and energy — with almost zero waste.',
+    v_products: [
+      ['Hempcrete', 'The bio-based construction material: bricks and blocks for affordable, well-insulated, quick-to-build housing. Proven in more than 50 countries, with a unique differentiator: the carbon captured by the crop stays stored in the wall for the entire life of the building.'],
+      ['Biochar', 'From the plant\'s residues, through pyrolysis, a stable charcoal that locks carbon for more than a thousand years and improves the soil. The second value line from the same hectare — the residue is an asset too.'],
+    ] as readonly (readonly [string, string])[],
+    v_cadena_label: 'From seed to key',
+    v_cadena:
+      'A single plant opens a complete industrial chain: cultivation, construction material and, from the residue, biochar. Every step happens in the same basin and is skilled employment — from the field to the home.',
+    v_impacto_label: 'Three outcomes from the same chain',
+    v_cards: [
+      ['Housing', 'affordable, well-insulated and quick to build, with local raw materials and labor — where it is needed most.'],
+      ['Employment', 'skilled and local at every link: farming, industry and construction. The source of work grows with every hectare and every build.'],
+      ['Industry', 'value added at the source that multiplies regional companies — and revives the chains that branch off hemp: food, textiles, bioplastics, paper, cosmetics.'],
+    ] as readonly (readonly [string, string])[],
+    v_ciudades_label: 'Hemp cities',
+    v_ciudades:
+      'If a million people arrive in Neuquén, the question is not only where they sleep: it is what builds their economy. Hempcrete turns any arable hectare of Argentina into homes, neighborhoods and entire cities — and into an inexhaustible source of work, at every link of the chain, from the field to the key.',
+    v_statement: 'Vaca Muerta gave Neuquén energy, work and scale. On that same land, hemp adds an industry that plants, builds and regenerates.',
+    v_statement_by: 'Vaca Muerta → Vaca Verde',
+    v_puente:
+      'The vision is enormous. That is why the plan is exactly the opposite: **small, verifiable and staged**. No one puts up all the capital at once; each stage buys the certainty that enables the next one.',
 
     regla_k: 'The rule of the game',
     regla_t: 'Risk is not taken: it is eliminated stage by stage.',
@@ -289,7 +341,6 @@ const TXT = {
           ['Demand and financing, validated', 'Real interest from builders and housing programs surveyed in the territory, and a pilot financing plan against verifiable milestones.'],
         ],
         gate: 'Producing the material is technically feasible, there is a regulatory path and there is real interest: the pilot is justified.',
-        showCadena: true,
       },
       {
         n: '2', name: 'Pilot',
@@ -713,6 +764,14 @@ function StageChapter({ t, idx, bg }: { t: T; idx: number; bg: string }) {
    SECCIONES
    ============================================================ */
 
+function VisionLabel({ children }: { children: ReactNode }) {
+  return (
+    <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '3.25rem 0 1.1rem' }}>
+      {children}
+    </p>
+  )
+}
+
 function Tesis({ t }: { t: T }) {
   return (
     <Doc bg={CREAM} id="vision">
@@ -725,6 +784,75 @@ function Tesis({ t }: { t: T }) {
       <Reveal delay={0.08}>
         <P max="74ch" style={{ fontSize: 'clamp(1rem, 1.35vw, 1.16rem)', marginBottom: 0 }}>
           {rich(t.tesis_body, INK)}
+        </P>
+      </Reveal>
+
+      {/* Belgrano 1796 — la industria interrumpida */}
+      <VisionLabel>{t.v_belgrano_label}</VisionLabel>
+      <Reveal>
+        <P max="74ch" style={{ marginBottom: 0 }}>{rich(t.v_belgrano, INK)}</P>
+      </Reveal>
+
+      {/* la planta y sus dos materiales */}
+      <VisionLabel>{t.v_planta_label}</VisionLabel>
+      <Reveal>
+        <P max="74ch">{t.v_planta}</P>
+      </Reveal>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(1rem, 2.5vw, 1.75rem)' }}>
+        {t.v_products.map(([pt, pd], i) => (
+          <Reveal key={pt} delay={0.08 * i}>
+            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderTop: `2px solid ${GREEN}`, padding: 'clamp(1.6rem, 3vw, 2.2rem)', height: '100%' }}>
+              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 2.6vw, 2.2rem)', color: INK, margin: '0 0 0.85rem' }}>{pt}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.7, color: MUTED, margin: 0 }}>{pd}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* la cadena: de la semilla a la llave */}
+      <VisionLabel>{t.v_cadena_label}</VisionLabel>
+      <Reveal>
+        <P max="74ch">{t.v_cadena}</P>
+      </Reveal>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(105px, 1fr))', gap: '0.5rem' }}>
+        {CADENA_IMG.map((img, i) => {
+          const name = t.cadena[i]
+          return (
+            <Reveal key={img} delay={0.04 * i}>
+              <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', border: `1px solid ${LINE}` }}>
+                <img src={`/cadena/${img}.jpg`} alt={name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,56,0.9), transparent 55%)' }} />
+                <span style={{ position: 'absolute', left: '0.5rem', bottom: '0.45rem', ...sans, fontSize: '0.62rem', fontWeight: 600, color: CREAM }}>{name}</span>
+              </div>
+            </Reveal>
+          )
+        })}
+      </div>
+
+      {/* triple impacto */}
+      <VisionLabel>{t.v_impacto_label}</VisionLabel>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: LINE, border: `1px solid ${LINE}` }}>
+        {t.v_cards.map(([title, d], i) => (
+          <Reveal key={title} delay={0.06 * i}>
+            <div style={{ background: CREAM, padding: 'clamp(1.5rem, 2.5vw, 2rem)', height: '100%' }}>
+              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.4vw, 2rem)', color: GREEN_DK, margin: '0 0 0.6rem' }}>{title}</h3>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.6, color: MUTED, margin: 0 }}>{d}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* ciudades de cáñamo */}
+      <VisionLabel>{t.v_ciudades_label}</VisionLabel>
+      <Reveal>
+        <P max="74ch">{t.v_ciudades}</P>
+      </Reveal>
+      <Statement by={t.v_statement_by}>{t.v_statement}</Statement>
+
+      {/* puente al método */}
+      <Reveal>
+        <P max="74ch" style={{ fontSize: 'clamp(1rem, 1.35vw, 1.16rem)', marginBottom: 0 }}>
+          {rich(t.v_puente, INK)}
         </P>
       </Reveal>
     </Doc>
