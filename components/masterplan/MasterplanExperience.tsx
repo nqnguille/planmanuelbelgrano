@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { HeroScrollClient } from '@/components/sections/HeroScrollClient'
-import { MasterplanDoc } from '@/components/masterplan/MasterplanDoc'
+import { MasterplanUniversal } from '@/components/masterplan/MasterplanUniversal'
 import { InlineGate } from '@/components/ui/InlineGate'
 
 /* Flujo continuo estilo CONFIDENT:
@@ -30,12 +30,12 @@ export function MasterplanExperience() {
             onUnlock={() => {
               setUnlocked(true)
               setTimeout(() => {
-                document.getElementById('resumen')?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })
               }, 250)
             }}
           />
         ) : (
-          <MasterplanDoc showCover={false} />
+          <MasterplanUniversal />
         )}
       </div>
     </div>

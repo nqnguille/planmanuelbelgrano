@@ -3,7 +3,7 @@ import { MasterplanExperience } from '@/components/masterplan/MasterplanExperien
 
 export const metadata: Metadata = {
   title: 'Plan Manuel Belgrano — Masterplan',
-  description: 'Documento confidencial. Acceso con clave.',
+  description: 'Documento confidencial. El masterplan de una nueva industria argentina.',
   robots: { index: false, follow: false },
 }
 
