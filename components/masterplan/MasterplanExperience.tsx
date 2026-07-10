@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { HeroScrollClient } from '@/components/sections/HeroScrollClient'
-import { MasterplanUniversal } from '@/components/masterplan/MasterplanUniversal'
+import { MasterplanStageGate } from '@/components/masterplan/MasterplanStageGate'
 import { InlineGate } from '@/components/ui/InlineGate'
 
 /* Flujo continuo estilo CONFIDENT:
@@ -35,7 +35,7 @@ export function MasterplanExperience() {
             }}
           />
         ) : (
-          <MasterplanUniversal />
+          <MasterplanStageGate />
         )}
       </div>
     </div>
