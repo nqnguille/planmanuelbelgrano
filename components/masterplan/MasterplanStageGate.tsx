@@ -118,8 +118,8 @@ const TXT = {
     stage_word: 'Etapa',
     gate_label: 'El gate',
     fronts_label: 'Los frentes de trabajo de la etapa',
-    nav_top: [['vision', 'La visión'], ['regla', 'La regla']] as readonly (readonly [string, string])[],
-    nav_bottom: [['carriles', 'Los carriles'], ['carbono', 'El carbono'], ['quienes', 'Quiénes'], ['invitacion', 'La invitación']] as readonly (readonly [string, string])[],
+    nav_top: [['vision', 'La visión', 'V'], ['regla', 'La regla', 'R']] as readonly (readonly [string, string, string])[],
+    nav_bottom: [['carriles', 'Los carriles', 'C'], ['carbono', 'El carbono', 'CO₂'], ['quienes', 'Quiénes', 'Q'], ['invitacion', 'La invitación', 'I']] as readonly (readonly [string, string, string])[],
 
     stages: [
       {
@@ -328,8 +328,8 @@ const TXT = {
     stage_word: 'Stage',
     gate_label: 'The gate',
     fronts_label: 'The work fronts of the stage',
-    nav_top: [['vision', 'The vision'], ['regla', 'The rule']] as readonly (readonly [string, string])[],
-    nav_bottom: [['carriles', 'The lanes'], ['carbono', 'The carbon'], ['quienes', 'Who'], ['invitacion', 'The invitation']] as readonly (readonly [string, string])[],
+    nav_top: [['vision', 'The vision', 'V'], ['regla', 'The rule', 'R']] as readonly (readonly [string, string, string])[],
+    nav_bottom: [['carriles', 'The lanes', 'L'], ['carbono', 'The carbon', 'CO₂'], ['quienes', 'Who', 'W'], ['invitacion', 'The invitation', 'I']] as readonly (readonly [string, string, string])[],
 
     stages: [
       {
@@ -590,41 +590,36 @@ function StageNav({ t }: { t: T }) {
     return () => observer.disconnect()
   }, [])
 
-  const dot = (id: string, label: string) => {
-    const on = active === id
-    return (
-      <a key={id} href={`#${id}`} aria-label={label} style={{ position: 'relative', display: 'flex', alignItems: 'center', height: '20px', textDecoration: 'none' }}>
-        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: on ? GOLD : 'rgba(7,26,56,0.25)', display: 'inline-block', marginLeft: '11px', transition: 'background 0.25s' }} />
-        {on && <NavLabel>{label}</NavLabel>}
-      </a>
-    )
-  }
+  /* menú completo, en el orden del documento: V · R · 0-5 · C · CO₂ · Q · I */
+  const items: { id: string; label: string; glyph: string }[] = [
+    ...t.nav_top.map(([id, label, glyph]) => ({ id, label, glyph })),
+    ...t.stages.map((s) => ({ id: `e${s.n}`, label: `${s.name}`, glyph: s.n })),
+    ...t.nav_bottom.map(([id, label, glyph]) => ({ id, label, glyph })),
+  ]
 
   return (
     <>
       {/* sidebar (desktop) */}
-      <nav className="mp-sidenav" aria-label="Etapas" style={{ position: 'fixed', left: '1rem', top: '50%', transform: 'translateY(-50%)', zIndex: 60, flexDirection: 'column', gap: '0.45rem', alignItems: 'flex-start', opacity: inDoc ? 1 : 0, pointerEvents: inDoc ? 'auto' : 'none', transition: 'opacity 0.35s' }}>
-        {t.nav_top.map(([id, label]) => dot(id, label))}
-        {t.stages.map((s) => {
-          const id = `e${s.n}`
+      <nav className="mp-sidenav" aria-label="Secciones" style={{ position: 'fixed', left: '1rem', top: '50%', transform: 'translateY(-50%)', zIndex: 60, flexDirection: 'column', gap: '0.45rem', alignItems: 'flex-start', opacity: inDoc ? 1 : 0, pointerEvents: inDoc ? 'auto' : 'none', transition: 'opacity 0.35s' }}>
+        {items.map(({ id, label, glyph }) => {
           const on = active === id
+          const multi = glyph.length > 1
           return (
-            <a key={id} href={`#${id}`} aria-label={`${t.stage_word} ${s.n} · ${s.name}`} style={{ position: 'relative', display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <a key={id} href={`#${id}`} aria-label={label} style={{ position: 'relative', display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
               <span style={{
                 width: '29px', height: '29px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                 border: `1px solid ${on ? GOLD : LINE}`, background: on ? 'rgba(242,181,68,0.14)' : '#fff',
-                ...serif, fontStyle: 'italic', fontSize: '0.95rem', color: on ? '#8a6510' : 'rgba(7,26,56,0.55)',
+                ...serif, fontStyle: 'italic', fontSize: multi ? '0.56rem' : '0.95rem', color: on ? '#8a6510' : 'rgba(7,26,56,0.55)',
                 transition: 'all 0.25s',
-              }}>{s.n}</span>
-              {on && <NavLabel>{s.name}</NavLabel>}
+              }}>{glyph}</span>
+              {on && <NavLabel>{label}</NavLabel>}
             </a>
           )
         })}
-        {t.nav_bottom.map(([id, label]) => dot(id, label))}
       </nav>
 
       {/* barra sticky de chips (mobile) */}
-      <nav className="mp-stagebar" aria-label="Etapas" style={{
+      <nav className="mp-stagebar" aria-label="Secciones" style={{
         position: 'sticky', top: 0, zIndex: 55,
         background: 'rgba(250,248,241,0.93)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
         borderBottom: `1px solid ${LINE}`,
@@ -632,9 +627,9 @@ function StageNav({ t }: { t: T }) {
         padding: '0.55rem 4.6rem 0.55rem 1rem',
         scrollbarWidth: 'none',
       }}>
-        {t.stages.map((s) => {
-          const id = `e${s.n}`
+        {items.map(({ id, label, glyph }) => {
           const on = active === id
+          const multi = glyph.length > 1
           return (
             <a key={id} href={`#${id}`} style={{
               display: 'inline-flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0,
@@ -642,8 +637,8 @@ function StageNav({ t }: { t: T }) {
               padding: '0.32rem 0.7rem', borderRadius: '999px', textDecoration: 'none',
               transition: 'all 0.25s',
             }}>
-              <span style={{ ...serif, fontStyle: 'italic', fontSize: '0.88rem', color: on ? '#8a6510' : GOLD, lineHeight: 1 }}>{s.n}</span>
-              <span style={{ ...sans, fontSize: '0.64rem', fontWeight: 600, color: on ? INK : MUTED, whiteSpace: 'nowrap' }}>{s.name}</span>
+              <span style={{ ...serif, fontStyle: 'italic', fontSize: multi ? '0.6rem' : '0.88rem', color: on ? '#8a6510' : GOLD, lineHeight: 1 }}>{glyph}</span>
+              <span style={{ ...sans, fontSize: '0.64rem', fontWeight: 600, color: on ? INK : MUTED, whiteSpace: 'nowrap' }}>{label}</span>
             </a>
           )
         })}
