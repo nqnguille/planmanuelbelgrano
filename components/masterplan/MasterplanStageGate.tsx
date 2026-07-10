@@ -83,6 +83,11 @@ const TXT = {
     v_cadena_label: 'De la semilla a la llave',
     v_cadena:
       'Una sola planta abre una cadena industrial completa: cultivo, material de construcción y, del residuo, biochar. Cada paso ocurre en la misma cuenca y es empleo técnico — del campo a la vivienda.',
+    v_dif_label: 'El diferencial',
+    v_dif:
+      'Casi cualquier cultivo captura carbono; lo excepcional es retenerlo. Este proyecto fija el carbono capturado en materia que lo guarda por décadas y siglos —**en la pared, como ladrillo; en el suelo, como biochar**— y, porque la cadena es una sola, cada crédito nace con **una única cadena de custodia**, trazable de la semilla al muro. Respaldo físico y custodia única le dan al crédito un valor que el mercado paga, y que muy pocos pueden ofrecer.',
+    v_dif_statement: 'El carbono se captura en el campo y queda guardado en la pared: un crédito que solo puede generar quien tiene la cadena entera.',
+    v_dif_by: 'Fijación durable + custodia única',
     v_impacto_label: 'Tres resultados de la misma cadena',
     v_cards: [
       ['Vivienda', 'accesible, aislante y de rápida ejecución, con materia prima y mano de obra locales — allí donde más falta.'],
@@ -289,6 +294,11 @@ const TXT = {
     v_cadena_label: 'From seed to key',
     v_cadena:
       'A single plant opens a complete industrial chain: cultivation, construction material and, from the residue, biochar. Every step happens in the same basin and is skilled employment — from the field to the home.',
+    v_dif_label: 'The differentiator',
+    v_dif:
+      'Almost any crop captures carbon; what is exceptional is holding onto it. This project locks the captured carbon into matter that keeps it for decades and centuries —**in the wall, as brick; in the soil, as biochar**— and, because the chain is one, every credit is born with **a single chain of custody**, traceable from seed to wall. Physical backing and single custody give the credit a value the market pays for, and that very few can offer.',
+    v_dif_statement: 'The carbon is captured in the field and stays stored in the wall: a credit that only whoever holds the entire chain can generate.',
+    v_dif_by: 'Durable fixation + single custody',
     v_impacto_label: 'Three outcomes from the same chain',
     v_cards: [
       ['Housing', 'affordable, well-insulated and quick to build, with local raw materials and labor — where it is needed most.'],
@@ -842,6 +852,13 @@ function Tesis({ t }: { t: T }) {
           )
         })}
       </div>
+
+      {/* el diferencial: fijación durable + custodia única */}
+      <VisionLabel>{t.v_dif_label}</VisionLabel>
+      <Reveal>
+        <P max="74ch">{rich(t.v_dif, INK)}</P>
+      </Reveal>
+      <Statement by={t.v_dif_by}>{t.v_dif_statement}</Statement>
 
       {/* triple impacto */}
       <VisionLabel>{t.v_impacto_label}</VisionLabel>
