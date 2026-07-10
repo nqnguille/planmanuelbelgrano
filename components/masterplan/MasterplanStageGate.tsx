@@ -216,6 +216,13 @@ const TXT = {
     carbono_t: 'Carbono medido, verificado y de un solo dueño',
     carbono_body1:
       'El diferencial del cáñamo construido es la permanencia: el carbono que captura el cultivo queda fijado en la pared durante toda la vida de la construcción, y en el suelo por siglos vía biochar. Al controlar la cadena completa —semilla, cultivo, material, construcción y residuos— el crédito tiene **un único hilo de custodia**: se mide con el MRV propio, lo certifica EcoGaia bajo estándares internacionales, y cada tonelada se registra una sola vez, a nombre de un único titular.',
+    carbono_moat_label: 'La oportunidad para quien entra primero',
+    carbono_moat1:
+      'Toda empresa con una meta ambiental enfrenta la misma disyuntiva: comprar créditos de terceros —a precio de mercado, con la integridad de otro— o **generar los propios**. Este plan ofrece lo segundo: la capacidad de producir créditos de remoción durable, verificados y trazables, en el mismo territorio donde la empresa opera. Un activo que nadie más puede reclamar, a costo de productor — **una ventaja que no se puede comprar hecha**.',
+    carbono_moat_statement: 'Generar créditos de carbono hoy es como minar bitcoin en 2010: el que entra temprano fija su costo para siempre, y la posición de pionero se toma una sola vez.',
+    carbono_moat_by: 'El diferencial para el socio fundador',
+    carbono_moat2:
+      'La ventana de primer entrante ya pasó por los ferrocarriles, el petróleo y el shale. Ahora está abierta para la remoción biológica verificable — y en la Argentina ese activo todavía no tiene dueño. La empresa que ayude a arrancar y validar el modelo queda, para siempre, como la que lo hizo posible: **fundadora de la cadena y primera en la fila de todo lo que produce**.',
     carbono_body2:
       'Su dimensión económica se cuantifica cuando el plan la valida — la primera medición real es un entregable del Piloto, y la escala comercial llega con el Escalamiento. **Como todo en este documento, el activo no se promete: se demuestra.**',
 
@@ -239,7 +246,7 @@ const TXT = {
     inv_d:
       'Un socio no compra la visión entera: entra por el gate que tiene adelante, con compromisos acotados contra entregables verificables — sin subsidios y sin organismos nuevos.',
     inv_items: [
-      ['01', 'La industria', 'Financia etapas acotadas y queda fundadora de la cadena: preferencia sobre el carbono certificado y sobre la vivienda para sus propias operaciones, con la opción —nunca la obligación— de acompañar cada etapa siguiente.'],
+      ['01', 'La industria', 'Financia etapas acotadas y queda fundadora de la cadena: **la capacidad de generar sus propios créditos de carbono** —en lugar de comprarlos a terceros— y preferencia sobre la vivienda para sus propias operaciones, con la opción —nunca la obligación— de acompañar cada etapa siguiente.'],
       ['02', 'El Estado', 'Reglas claras y articulación. El plan avanza con el marco vigente y capital privado; del Estado necesita lo que mejor puede dar: destrabar, simplificar y acompañar sin poner trabas.'],
       ['03', 'La ciencia', 'Ensayos, normas y certificación en cada etapa del camino: INTI, universidades y laboratorios acreditados. Toda afirmación del plan la firma un tercero.'],
     ],
@@ -412,6 +419,13 @@ const TXT = {
     carbono_t: 'Carbon measured, verified, with a single owner',
     carbono_body1:
       'The differentiator of built hemp is permanence: the carbon captured by the crop stays locked in the wall for the entire life of the building, and in the soil for centuries via biochar. By controlling the full chain —seed, cultivation, material, construction and residues— the credit has **a single chain of custody**: measured with the plan\'s own MRV, certified by EcoGaia under international standards, and each tonne registered only once, in the name of a single holder.',
+    carbono_moat_label: 'The opportunity for whoever enters first',
+    carbono_moat1:
+      'Every company with an environmental target faces the same dilemma: buying credits from third parties —at market price, on someone else\'s integrity— or **generating its own**. This plan offers the latter: the capacity to produce durable-removal credits, verified and traceable, in the very territory where the company operates. An asset no one else can claim, at producer cost — **an advantage that cannot be bought ready-made**.',
+    carbono_moat_statement: 'Generating carbon credits today is like mining bitcoin in 2010: whoever enters early locks in their cost forever, and the pioneer\'s position is taken only once.',
+    carbono_moat_by: 'The differentiator for the founding partner',
+    carbono_moat2:
+      'The first-mover window already passed with railroads, oil and shale. It is now open for verifiable biological removal — and in Argentina that asset still has no owner. The company that helps start and validate the model remains, forever, the one that made it possible: **a founder of the chain, first in line for everything it produces**.',
     carbono_body2:
       'Its economic dimension is quantified when the plan validates it — the first real measurement is a Pilot deliverable, and commercial scale arrives with Scale-up. **Like everything in this document, the asset is not promised: it is demonstrated.**',
 
@@ -433,7 +447,7 @@ const TXT = {
     inv_d:
       'A partner does not buy the whole vision: they enter through the gate in front of them, with bounded commitments against verifiable deliverables — no subsidies and no new agencies.',
     inv_items: [
-      ['01', 'Industry', 'Finances bounded stages and becomes a founder of the chain: preference over the certified carbon and over housing for its own operations, with the option —never the obligation— to accompany each following stage.'],
+      ['01', 'Industry', 'Finances bounded stages and becomes a founder of the chain: **the capacity to generate its own carbon credits** —instead of buying them from third parties— and preference over housing for its own operations, with the option —never the obligation— to accompany each following stage.'],
       ['02', 'The State', 'Clear rules and coordination. The plan advances under the current framework with private capital; from the State it needs what it does best: unblock, simplify and support without adding hurdles.'],
       ['03', 'Science', 'Testing, standards and certification at every stage of the path: INTI, universities and accredited laboratories. Every claim in the plan is signed by a third party.'],
     ],
@@ -929,7 +943,27 @@ function Carbono({ t }: { t: T }) {
           {rich(t.carbono_body1, CREAM)}
         </p>
       </Reveal>
-      <Reveal delay={0.14}>
+
+      {/* el moat: generar en lugar de comprar */}
+      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, fontWeight: 600, margin: '2.75rem 0 1.1rem' }}>{t.carbono_moat_label}</p>
+      <Reveal>
+        <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.98rem, 1.3vw, 1.1rem)', lineHeight: 1.8, color: CREAM_MUTED, maxWidth: '72ch', margin: '0 0 1.75rem' }}>
+          {rich(t.carbono_moat1, CREAM)}
+        </p>
+      </Reveal>
+      <Reveal>
+        <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 'clamp(1.25rem, 2.5vw, 2rem)', margin: '0.5rem 0 1.9rem', maxWidth: '44rem' }}>
+          <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.35rem, 2.5vw, 2.1rem)', lineHeight: 1.3, color: CREAM, margin: 0 }}>{t.carbono_moat_statement}</p>
+          <p style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(243,241,231,0.5)', margin: '1rem 0 0' }}>{t.carbono_moat_by}</p>
+        </div>
+      </Reveal>
+      <Reveal>
+        <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.98rem, 1.3vw, 1.1rem)', lineHeight: 1.8, color: CREAM_MUTED, maxWidth: '72ch', margin: '0 0 1.75rem' }}>
+          {rich(t.carbono_moat2, CREAM)}
+        </p>
+      </Reveal>
+
+      <Reveal delay={0.06}>
         <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.98rem, 1.3vw, 1.1rem)', lineHeight: 1.8, color: CREAM_MUTED, maxWidth: '72ch', margin: 0 }}>
           {rich(t.carbono_body2, CREAM)}
         </p>
@@ -979,7 +1013,7 @@ function Invitacion({ t }: { t: T }) {
           <Reveal key={n} delay={0.08 * i}>
             <div style={{ background: DUSK, padding: 'clamp(1.5rem, 3vw, 2.25rem)' }}>
               <h3 style={{ ...sans, fontSize: 'clamp(1rem, 1.4vw, 1.18rem)', fontWeight: 600, color: CREAM, margin: '0 0 0.6rem' }}>{name}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.62)', margin: 0, maxWidth: '70ch' }}>{d}</p>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.88rem', lineHeight: 1.7, color: 'rgba(243,241,231,0.62)', margin: 0, maxWidth: '70ch' }}>{rich(d, CREAM)}</p>
             </div>
           </Reveal>
         ))}
