@@ -136,6 +136,16 @@ const TXT = {
     v_ciclo_caption: 'Dos destinos, un mismo resultado: el carbono sale del aire y no vuelve. Y el suelo mejorado produce la próxima cosecha.',
     v_ciclo_credito:
       'Ese viaje tiene un premio: cada tonelada guardada es un **crédito de carbono** — certificados que las empresas del mundo compran para compensar lo que contaminan. Esta cadena permite **generarlos acá**, con respaldo físico y trazables de la semilla al muro.',
+    v_viaje: [
+      { img: '/viaje/01-aire.jpg', title: 'El aire', body: 'En el aire sobra el carbono que abajo hace falta. El viaje empieza en la estepa: tierra disponible, viento, y un recurso invisible esperando ser capturado.' },
+      { img: '/viaje/02-cultivo.jpg', title: 'El cultivo', body: 'La fotosíntesis lo captura mientras la planta crece — en meses, no en décadas. Cada hectárea sembrada trabaja a cielo abierto, absorbiendo carbono todos los días.' },
+      { img: '/viaje/03-cosecha.jpg', title: 'La cosecha', body: 'La planta se cosecha entera. El tallo y el residuo ya tienen destino: acá el viaje se abre en dos caminos.' },
+      { img: '/viaje/04-canamiza.jpg', title: 'La cañamiza', body: 'El tallo se abre y entrega la cañamiza —su corazón leñoso— y la fibra. La materia prima del material que construye.' },
+      { img: '/viaje/05-bloque.jpg', title: 'El bloque', body: 'Cañamiza, cal y agua, prensadas. El bloque se endurece absorbiendo todavía más CO₂ del aire mientras cura.' },
+      { img: '/viaje/06-casa.jpg', title: 'La casa', body: 'El carbono queda guardado en la pared por toda la vida de la construcción. La primera vía termina en un techo: una vivienda que abriga y fija carbono a la vez.', hito: '+500 años en la pared' },
+      { img: '/viaje/07-biochar.jpg', title: 'El biochar', body: 'El residuo que no fue al bloque entra a la pirólisis: calor sin oxígeno que lo convierte en carbón estable. Carbono que ya no vuelve al aire.' },
+      { img: '/viaje/08-suelo.jpg', title: 'El suelo', body: 'El biochar se incorpora a la tierra: retiene agua y nutrientes, y mejora la próxima cosecha. El viaje termina donde empezó — con el campo más fértil que antes.', hito: '+1.000 años en el suelo' },
+    ] as readonly { img: string; title: string; body: string; hito?: string }[],
     v_biochar_label: 'Biochar — la segunda línea',
     v_biochar_body:
       'Del residuo que no va al bloque —la fibra corta y el polvo— la pirólisis produce biochar: un carbón vegetal estable que mejora la retención de agua y nutrientes del suelo, y bloquea el carbono a escala milenaria. La misma hectárea produce dos activos: **el que construye y el que regenera**.',
@@ -415,6 +425,16 @@ const TXT = {
     v_ciclo_caption: 'Two destinations, one result: the carbon leaves the air and does not come back. And the improved soil grows the next harvest.',
     v_ciclo_credito:
       'That journey has a prize: every stored tonne is a **carbon credit** — certificates that companies around the world buy to offset what they emit. This chain makes it possible to **generate them here**, physically backed and traceable from seed to wall.',
+    v_viaje: [
+      { img: '/viaje/01-aire.jpg', title: 'The air', body: 'The air holds the carbon that is needed below. The journey begins on the steppe: available land, wind, and an invisible resource waiting to be captured.' },
+      { img: '/viaje/02-cultivo.jpg', title: 'The crop', body: 'Photosynthesis captures it as the plant grows — in months, not decades. Every planted hectare works in the open air, absorbing carbon every day.' },
+      { img: '/viaje/03-cosecha.jpg', title: 'The harvest', body: 'The whole plant is harvested. The stalk and the residue already have a destination: here the journey splits in two.' },
+      { img: '/viaje/04-canamiza.jpg', title: 'The hurd', body: 'The stalk opens and yields the hurd —its woody core— and the fiber. The raw material of the material that builds.' },
+      { img: '/viaje/05-bloque.jpg', title: 'The block', body: 'Hurd, lime and water, pressed. The block hardens by absorbing even more CO₂ from the air as it cures.' },
+      { img: '/viaje/06-casa.jpg', title: 'The house', body: 'The carbon stays stored in the wall for the entire life of the building. The first path ends in a roof: a home that shelters and locks carbon at once.', hito: '500+ years in the wall' },
+      { img: '/viaje/07-biochar.jpg', title: 'The biochar', body: 'The residue that did not go into the block enters pyrolysis: heat without oxygen that turns it into stable charcoal. Carbon that never returns to the air.' },
+      { img: '/viaje/08-suelo.jpg', title: 'The soil', body: 'The biochar is worked into the land: it retains water and nutrients, and improves the next harvest. The journey ends where it began — with the field more fertile than before.', hito: '1,000+ years in the soil' },
+    ] as readonly { img: string; title: string; body: string; hito?: string }[],
     v_biochar_label: 'Biochar — the second line',
     v_biochar_body:
       'From the residue that does not go into the block —the short fiber and dust— pyrolysis produces biochar: a stable charcoal that improves the soil\'s water and nutrient retention, and locks carbon on a millennial scale. The same hectare produces two assets: **the one that builds and the one that regenerates**.',
@@ -1163,8 +1183,26 @@ function Tesis({ t }: { t: T }) {
 
       {/* el viaje del carbono — primero el mapa, después las dos vías */}
       <VisionLabel>{t.v_ciclo_label}</VisionLabel>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.75rem, 3.5vw, 3rem)', margin: '0.5rem 0 0' }}>
+        {t.v_viaje.map((p, i) => (
+          <Reveal key={p.title}>
+            <div style={{ display: 'flex', flexDirection: i % 2 ? 'row-reverse' : 'row', flexWrap: 'wrap', gap: 'clamp(1.1rem, 2.8vw, 2.5rem)', alignItems: 'center' }}>
+              <div style={{ flex: '1 1 250px', maxWidth: '380px' }}>
+                <img src={p.img} alt={p.title} loading="lazy" style={{ display: 'block', width: '100%', height: 'auto', border: `1px solid ${LINE}` }} />
+              </div>
+              <div style={{ flex: '1 1 300px' }}>
+                <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2.4vw, 1.9rem)', color: INK, margin: '0 0 0.55rem' }}>{p.title}</h3>
+                <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem, 1.15vw, 1.02rem)', lineHeight: 1.75, color: 'rgba(7,26,56,0.78)', margin: 0, maxWidth: '52ch' }}>{p.body}</p>
+                {p.hito && (
+                  <span style={{ display: 'inline-block', marginTop: '0.9rem', ...sans, fontSize: '0.72rem', fontWeight: 700, color: GREEN_DK, background: 'rgba(47,143,58,0.07)', border: '1px solid rgba(47,143,58,0.4)', padding: '0.45rem 1rem', borderRadius: '999px' }}>{p.hito}</span>
+                )}
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
       <Reveal>
-        <CarbonCycle t={t} />
+        <p style={{ ...sans, fontSize: '0.78rem', fontStyle: 'italic', fontWeight: 400, color: MUTED, margin: '1.75rem 0 0', lineHeight: 1.6, maxWidth: '70ch' }}>{t.v_ciclo_caption}</p>
       </Reveal>
       <Reveal>
         <P max="74ch" style={{ marginTop: '1.4rem' }}>{rich(t.v_ciclo_credito, INK)}</P>
