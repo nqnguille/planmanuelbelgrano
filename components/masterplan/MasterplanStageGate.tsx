@@ -195,7 +195,7 @@ const TXT = {
           ['El mercado y su hueco de pionero', 'El material a batir identificado (hormigón celular curado en autoclave), los segmentos definidos —construcción privada, vivienda pública y la industria que necesita alojar a su gente— y una posición única: nadie construyó todavía con cáñamo en Argentina.'],
           ['El producto, especificado', 'Hempcrete: densidad objetivo 250–350 kg/m³, conductividad 0,06–0,12 W/mK, incombustible (Clase A), vida útil de más de 500 años — norma europea EN 16101, probado en más de 50 países. Dos líneas: ladrillo de cerramiento y bloque estructural.'],
           ['El marco legal, relevado', 'Ley 27.669 (cáñamo industrial, THC < 0,3%, autoridad ARICCAME en el Ministerio de Economía) y Decreto 405/2023. Ruta de certificación del sistema constructivo identificada junto al INTI: aptitud técnica, normas IRAM, reglamentos CIRSOC.'],
-          ['El consorcio y la gobernanza', 'Flora integra; Fundación GEN cultiva (titular de la licencia agrícola, con el primer antecedente de cáñamo industrial de Neuquén); EcoGaia certifica el carbono; INTI valida el material; Red Protierra transfiere el saber constructivo. Quien opera no es quien valida ni quien certifica.'],
+          ['El consorcio y la gobernanza', 'Flora Cáñamo Neuquino lidera e integra; Fundación GEN cultiva (titular de la licencia agrícola, con el primer antecedente de cáñamo industrial de Neuquén); EcoGaia certifica el carbono; INTI valida el material. Quien opera no es quien valida ni quien certifica.'],
         ],
         gate: 'Existe una base técnica, legal, comercial e institucional suficiente para justificar la inversión en viabilidad.',
         showClippings: true,
@@ -235,7 +235,7 @@ const TXT = {
           ['La vivienda demostrativa', 'Una obra real ejecutada de punta a punta con el sistema constructivo propio, documentada paso a paso — la primera casa de cáñamo de la Argentina.'],
           ['Desempeño medido en uso', 'Comportamiento térmico, humedad y confort monitoreados durante meses de habitación real, con etiqueta de eficiencia energética como referencia pública.'],
           ['Certificación de aptitud técnica', 'El expediente CAT en marcha: la llave que habilita obra pública y vivienda social — el mercado más grande del material.'],
-          ['Manual constructivo y aplicadores', 'El sistema documentado en manuales junto a Red Protierra y las primeras camadas de aplicadores formados: el saber deja de vivir en una sola cuadrilla.'],
+          ['Manual constructivo y aplicadores', 'El sistema documentado en manuales y las primeras camadas de aplicadores formados: el saber deja de vivir en una sola cuadrilla.'],
           ['Tracción comercial verificable', 'Expresiones formales de interés y primeros acuerdos a partir de la obra: constructoras, programas de vivienda y el offtake del carbono avanzado.'],
         ],
         gate: 'La obra funciona, el desempeño está medido y el mercado respondió: se justifica la inversión industrial.',
@@ -276,7 +276,7 @@ const TXT = {
     carriles: [
       ['A', 'Ciencia, evidencia y validación', 'Certificación de captura, análisis de ciclo de vida, desempeño térmico, estudios económicos.', 'EcoGaia · INTI'],
       ['B', 'Desarrollo industrial y productivo', 'Genéticas, semillas, biomasa, cañamiza, ladrillos y bloques, binders, proveedores.', 'Fundación GEN · Flora · INTI'],
-      ['C', 'Vivienda y hábitat', 'Vivienda demostrativa, vivienda social modular, manuales constructivos, modelos municipales.', 'Flora · Red Protierra'],
+      ['C', 'Vivienda y hábitat', 'Vivienda demostrativa, vivienda social modular, manuales constructivos, modelos municipales.', 'Flora'],
       ['D', 'Empleo y capital humano', 'Capacitación en producción y construcción, academia de empleo, certificación de competencias, inserción.', 'Consorcio'],
       ['E', 'Mercado, financiamiento y escalamiento', 'Créditos de carbono, modelos de negocio, fondos de impacto, estrategias de adopción.', 'Flora · EcoGaia'],
     ],
@@ -299,12 +299,13 @@ const TXT = {
     /* quiénes */
     quienes_k: 'Lo que sostiene el plan',
     quienes_t: 'Un consorcio con las piezas completas',
+    quienes_lider_label: 'Lidera el consorcio',
+    quienes_lider: ['Flora Cáñamo Neuquino', 'Diseña el plan, integra la cadena y conduce el consorcio. Vehículo operativo del proyecto; licencia industrial en gestión.'],
+    quienes_label: 'El consorcio',
     quienes: [
-      ['Flora Cáñamo Neuquino', 'Integra', 'Diseño del plan, coordinación del consorcio y vehículo operativo. Licencia industrial en gestión.'],
       ['Fundación GEN', 'Cultiva', 'Titular de la licencia agrícola. Maquinaria, conocimiento agronómico y el primer antecedente de cáñamo industrial de Neuquén.'],
       ['EcoGaia', 'Certifica', 'Desarrolladora y certificadora argentina de créditos de carbono, ciclo completo bajo Verra y Gold Standard, con experiencia en cáñamo en Canadá.'],
       ['INTI', 'Valida', 'Ensayos del material y ruta de certificación del sistema constructivo.'],
-      ['Red Protierra', 'Transfiere', 'Red argentina de construcción natural: manuales constructivos y formación de aplicadores.'],
       ['Renewabuild', 'Tecnología constructiva', 'Empresa canadiense que comercializa el primer bloque estructural de biomasa, con obras reales construidas. Partner tecnológico del plan; acuerdo en instancia de firma.'],
     ],
     founder_label: 'El fundador',
@@ -470,7 +471,7 @@ const TXT = {
           ['The market and its pioneer\'s gap', 'The material to beat identified (autoclaved aerated concrete), the segments defined —private construction, public housing and the industry that needs to house its people— and a unique position: no one has built with hemp in Argentina yet.'],
           ['The product, specified', 'Hempcrete: target density 250–350 kg/m³, conductivity 0.06–0.12 W/mK, non-combustible (Class A), service life over 500 years — European standard EN 16101, proven in more than 50 countries. Two lines: enclosure brick and structural block.'],
           ['The legal framework, mapped', 'Law 27,669 (industrial hemp, THC < 0.3%, ARICCAME as authority under the Ministry of Economy) and Decree 405/2023. Certification path for the construction system identified with INTI: technical aptitude, IRAM standards, CIRSOC regulations.'],
-          ['The consortium and its governance', 'Flora integrates; Fundación GEN cultivates (holder of the agricultural license, with Neuquén\'s first industrial hemp precedent); EcoGaia certifies the carbon; INTI validates the material; Red Protierra transfers the building know-how. The operator is not the validator nor the certifier.'],
+          ['The consortium and its governance', 'Flora Cáñamo Neuquino leads and integrates; Fundación GEN cultivates (holder of the agricultural license, with Neuquén\'s first industrial hemp precedent); EcoGaia certifies the carbon; INTI validates the material. The operator is not the validator nor the certifier.'],
         ],
         gate: 'There is a sufficient technical, legal, commercial and institutional base to justify investing in feasibility.',
         showClippings: true,
@@ -510,7 +511,7 @@ const TXT = {
           ['The demonstration house', 'A real build executed end to end with the plan\'s own construction system, documented step by step — Argentina\'s first hemp house.'],
           ['Performance measured in use', 'Thermal behavior, humidity and comfort monitored through months of real habitation, with an energy-efficiency label as public reference.'],
           ['Technical aptitude certification', 'The CAT file underway: the key that enables public works and social housing — the material\'s largest market.'],
-          ['Construction manual and applicators', 'The system documented in manuals with Red Protierra and the first cohorts of trained applicators: the know-how stops living in a single crew.'],
+          ['Construction manual and applicators', 'The system documented in manuals and the first cohorts of trained applicators: the know-how stops living in a single crew.'],
           ['Verifiable commercial traction', 'Formal expressions of interest and first agreements arising from the build: builders, housing programs and the carbon offtake advancing.'],
         ],
         gate: 'The build works, performance is measured and the market responded: industrial investment is justified.',
@@ -550,7 +551,7 @@ const TXT = {
     carriles: [
       ['A', 'Science, evidence and validation', 'Capture certification, life-cycle analysis, thermal performance, economic studies.', 'EcoGaia · INTI'],
       ['B', 'Industrial and productive development', 'Genetics, seeds, biomass, hemp hurd, bricks and blocks, binders, suppliers.', 'Fundación GEN · Flora · INTI'],
-      ['C', 'Housing and habitat', 'Demonstration house, modular social housing, construction manuals, municipal models.', 'Flora · Red Protierra'],
+      ['C', 'Housing and habitat', 'Demonstration house, modular social housing, construction manuals, municipal models.', 'Flora'],
       ['D', 'Employment and human capital', 'Training in production and construction, employment academy, skills certification, job placement.', 'Consortium'],
       ['E', 'Market, financing and scaling', 'Carbon credits, business models, impact funds, adoption strategies.', 'Flora · EcoGaia'],
     ],
@@ -571,12 +572,13 @@ const TXT = {
 
     quienes_k: 'What holds the plan up',
     quienes_t: 'A consortium with all the pieces',
+    quienes_lider_label: 'Leads the consortium',
+    quienes_lider: ['Flora Cáñamo Neuquino', 'Designs the plan, integrates the chain and leads the consortium. The project\'s operating vehicle; industrial license in process.'],
+    quienes_label: 'The consortium',
     quienes: [
-      ['Flora Cáñamo Neuquino', 'Integrates', 'Plan design, consortium coordination and operating vehicle. Industrial license in process.'],
       ['Fundación GEN', 'Cultivates', 'Holder of the agricultural license. Machinery, agronomic know-how and Neuquén\'s first industrial hemp precedent.'],
       ['EcoGaia', 'Certifies', 'An Argentine developer and certifier of carbon credits, full cycle under Verra and Gold Standard, with hemp experience in Canada.'],
       ['INTI', 'Validates', 'Material testing and the certification path for the construction system.'],
-      ['Red Protierra', 'Transfers', 'Argentina\'s natural building network: construction manuals and applicator training.'],
       ['Renewabuild', 'Construction technology', 'Canadian company commercializing the first structural biomass block, with real builds standing. The plan\'s technology partner; agreement at the signing stage.'],
     ],
     founder_label: 'The founder',
@@ -1366,6 +1368,16 @@ function Quienes({ t }: { t: T }) {
         <Eyebrow>{t.quienes_k}</Eyebrow>
         <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.9rem, 4vw, 3.2rem)', lineHeight: 1.08, color: INK, margin: '0 0 2.25rem', maxWidth: '24ch' }}>{t.quienes_t}</h2>
       </Reveal>
+
+      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '0 0 1.1rem' }}>{t.quienes_lider_label}</p>
+      <Reveal>
+        <div style={{ background: '#fff', border: '1px solid rgba(242,181,68,0.55)', borderTop: `3px solid ${GOLD}`, padding: 'clamp(1.5rem, 3vw, 2.1rem)', marginBottom: '2.25rem' }}>
+          <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)', color: INK, margin: '0 0 0.5rem' }}>{t.quienes_lider[0]}</h3>
+          <p style={{ ...sans, fontWeight: 300, fontSize: '0.92rem', lineHeight: 1.7, color: MUTED, margin: 0, maxWidth: '68ch' }}>{t.quienes_lider[1]}</p>
+        </div>
+      </Reveal>
+
+      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '0 0 1.1rem' }}>{t.quienes_label}</p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: 'clamp(0.9rem, 2vw, 1.3rem)' }}>
         {t.quienes.map(([name, role, d], i) => (
           <Reveal key={name} delay={0.06 * i}>

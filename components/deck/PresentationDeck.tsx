@@ -285,13 +285,14 @@ const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
       <Kicker>Las piezas completas</Kicker>
       <Title>Todas las piezas en la mesa. El que hace y el que controla, siempre distintos.</Title>
       <Lead max="56ch">
-        Cada pieza del plan está en manos de quien sabe hacerla.
+        Flora Cáñamo Neuquino lidera el consorcio; cada pieza del plan está en
+        manos de quien sabe hacerla.
       </Lead>
       <Bullets items={[
+        'El liderazgo: Flora Cáñamo Neuquino diseña el plan, integra la cadena y conduce el consorcio',
         'El campo: una fundación con licencia vigente para cultivar cáñamo y el primer cultivo industrial ya hecho en Neuquén',
-        'La fábrica: la empresa que diseñó el plan e integra la cadena',
         'El control: el material lo ensaya un laboratorio técnico del Estado y el carbono lo mide una certificadora independiente — cada afirmación la firma un tercero',
-        'El saber: una red que forma constructores y tecnología canadiense de referencia, con obras ya construidas',
+        'El saber: tecnología canadiense de referencia con obras ya construidas, y constructores locales formados en cada obra',
       ]} />
     </Shell>
   )},
