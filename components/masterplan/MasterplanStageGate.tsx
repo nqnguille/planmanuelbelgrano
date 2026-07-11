@@ -141,13 +141,24 @@ const TXT = {
       { img: '/viaje/00-emision.jpg', title: 'La emisión', body: 'De cada planta y cada pozo sube carbono al aire. Es la física de toda la energía, en cualquier país. La diferencia la hace lo que pasa después.' },
       { img: '/viaje/01-aire.jpg', title: 'El aire', body: 'Ese carbono queda arriba — sobre la misma estepa que tiene la tierra, el agua y el sol para recuperarlo. En el aire sobra lo que abajo hace falta.' },
       { img: '/viaje/02-cultivo.jpg', title: 'El cultivo', body: 'La fotosíntesis lo captura mientras la planta crece — en meses, no en décadas. Cada hectárea sembrada trabaja a cielo abierto, absorbiendo carbono todos los días.' },
-      { img: '/viaje/03-cosecha.jpg', title: 'La cosecha', body: 'La planta se cosecha entera. El tallo y el residuo ya tienen destino: acá el viaje se abre en dos caminos.' },
-      { img: '/viaje/04-canamiza.jpg', title: 'La cañamiza', body: 'El tallo se abre y entrega la cañamiza —su corazón leñoso— y la fibra. La materia prima del material que construye.' },
-      { img: '/viaje/05-bloque.jpg', title: 'El bloque', body: 'Cañamiza, cal y agua, prensadas. El bloque se endurece absorbiendo todavía más CO₂ del aire mientras cura.' },
-      { img: '/viaje/06-casa.jpg', title: 'La casa', body: 'El carbono queda guardado en la pared por toda la vida de la construcción. La primera vía termina en un techo: una vivienda que abriga y fija carbono a la vez.', hito: '+500 años en la pared' },
-      { img: '/viaje/07-biochar.jpg', title: 'El biochar', body: 'El residuo que no fue al bloque entra a la pirólisis: calor sin oxígeno que lo convierte en carbón estable. Carbono que ya no vuelve al aire.' },
-      { img: '/viaje/08-suelo.jpg', title: 'El suelo', body: 'El biochar se incorpora a la tierra: retiene agua y nutrientes, y mejora la próxima cosecha. El viaje termina donde empezó — con el campo más fértil que antes.', hito: '+1.000 años en el suelo' },
+      { img: '/viaje/03-cosecha.jpg', title: 'La cosecha', body: 'La planta se cosecha entera y viaja pocos kilómetros: del campo a la planta de procesamiento. Nada se descarta.' },
+      { img: '/viaje/04-canamiza.jpg', title: 'El procesamiento', body: 'El tallo se separa en sus partes: la cañamiza —el corazón leñoso—, la fibra y el residuo. Acá el viaje se abre en dos caminos que corren en paralelo.' },
     ] as readonly { img: string; title: string; body: string; hito?: string }[],
+    v_via_a_header: 'La vía de la pared',
+    v_via_a: [
+      { img: '/viaje/05-bloque.jpg', title: 'El bloque', body: 'Cañamiza, cal y agua, prensadas. El bloque se endurece absorbiendo todavía más CO₂ del aire mientras cura.' },
+      { img: '/viaje/06-casa.jpg', title: 'La casa', body: 'El carbono queda guardado en la pared por toda la vida de la construcción: una vivienda que abriga y fija carbono a la vez.', hito: '+500 años en la pared' },
+    ] as readonly { img: string; title: string; body: string; hito?: string }[],
+    v_via_b_header: 'La vía del suelo',
+    v_via_b: [
+      { img: '/viaje/07-biochar.jpg', title: 'El biochar', body: 'El residuo entra a la pirólisis: calor sin oxígeno que lo convierte en carbón estable. Carbono que ya no vuelve al aire.' },
+      { img: '/viaje/08-suelo.jpg', title: 'El suelo', body: 'El biochar se incorpora a la tierra: retiene agua y nutrientes, y mejora la próxima cosecha. El campo queda más fértil que antes.', hito: '+1.000 años en el suelo' },
+    ] as readonly { img: string; title: string; body: string; hito?: string }[],
+    v_credito: { img: '/viaje/09-credito.jpg', title: 'El crédito', body: 'Las dos vías se encuentran acá. Cada tonelada guardada —en la pared o en el suelo— se convierte en un **crédito de carbono**: certificados que las empresas del mundo compran para compensar lo que emiten. Esta cadena permite generarlos donde nacen: **la empresa que emite en la cuenca puede generar sus créditos en la cuenca**, con respaldo físico y trazables de la semilla al muro.', chip: 'Dos vías, un solo activo' },
+    v_agri_label: 'El agrihood — el barrio que produce',
+    v_agri_p1: 'Hay barrios que se organizan alrededor de una plaza. El **agrihood** se organiza alrededor de un campo productivo: un modelo de urbanismo documentado internacionalmente, donde la comunidad vive de lo que su tierra produce.',
+    v_agri_caption: 'El agrihood del cáñamo: las casas alrededor del campo que produce el material de la próxima manzana.',
+    v_agri_p2: 'La versión del cáñamo lo completa: el campo del centro produce el material que construye la siguiente etapa del barrio; las casas guardan carbono en las paredes, generan su energía en los techos y casi no gastan en calefacción; y el biochar de cada cosecha vuelve al mismo suelo. **Un barrio que produce el material de su propia expansión — con trabajo local en cada eslabón.**',
     v_biochar_label: 'Biochar — la segunda línea',
     v_biochar_body:
       'Del residuo que no va al bloque —la fibra corta y el polvo— la pirólisis produce biochar: un carbón vegetal estable que mejora la retención de agua y nutrientes del suelo, y bloquea el carbono a escala milenaria. La misma hectárea produce dos activos: **el que construye y el que regenera**.',
@@ -432,13 +443,24 @@ const TXT = {
       { img: '/viaje/00-emision.jpg', title: 'The emission', body: 'From every plant and every well, carbon rises into the air. It is the physics of all energy, in every country. The difference is made by what happens next.' },
       { img: '/viaje/01-aire.jpg', title: 'The air', body: 'That carbon stays above — over the very steppe that has the land, the water and the sun to recover it. The air holds in excess what is needed below.' },
       { img: '/viaje/02-cultivo.jpg', title: 'The crop', body: 'Photosynthesis captures it as the plant grows — in months, not decades. Every planted hectare works in the open air, absorbing carbon every day.' },
-      { img: '/viaje/03-cosecha.jpg', title: 'The harvest', body: 'The whole plant is harvested. The stalk and the residue already have a destination: here the journey splits in two.' },
-      { img: '/viaje/04-canamiza.jpg', title: 'The hurd', body: 'The stalk opens and yields the hurd —its woody core— and the fiber. The raw material of the material that builds.' },
-      { img: '/viaje/05-bloque.jpg', title: 'The block', body: 'Hurd, lime and water, pressed. The block hardens by absorbing even more CO₂ from the air as it cures.' },
-      { img: '/viaje/06-casa.jpg', title: 'The house', body: 'The carbon stays stored in the wall for the entire life of the building. The first path ends in a roof: a home that shelters and locks carbon at once.', hito: '500+ years in the wall' },
-      { img: '/viaje/07-biochar.jpg', title: 'The biochar', body: 'The residue that did not go into the block enters pyrolysis: heat without oxygen that turns it into stable charcoal. Carbon that never returns to the air.' },
-      { img: '/viaje/08-suelo.jpg', title: 'The soil', body: 'The biochar is worked into the land: it retains water and nutrients, and improves the next harvest. The journey ends where it began — with the field more fertile than before.', hito: '1,000+ years in the soil' },
+      { img: '/viaje/03-cosecha.jpg', title: 'The harvest', body: 'The whole plant is harvested and travels a few kilometers: from the field to the processing plant. Nothing is discarded.' },
+      { img: '/viaje/04-canamiza.jpg', title: 'The processing', body: 'The stalk is separated into its parts: the hurd —its woody core—, the fiber and the residue. Here the journey opens into two paths that run in parallel.' },
     ] as readonly { img: string; title: string; body: string; hito?: string }[],
+    v_via_a_header: 'The wall path',
+    v_via_a: [
+      { img: '/viaje/05-bloque.jpg', title: 'The block', body: 'Hurd, lime and water, pressed. The block hardens by absorbing even more CO₂ from the air as it cures.' },
+      { img: '/viaje/06-casa.jpg', title: 'The house', body: 'The carbon stays stored in the wall for the entire life of the building: a home that shelters and locks carbon at once.', hito: '500+ years in the wall' },
+    ] as readonly { img: string; title: string; body: string; hito?: string }[],
+    v_via_b_header: 'The soil path',
+    v_via_b: [
+      { img: '/viaje/07-biochar.jpg', title: 'The biochar', body: 'The residue enters pyrolysis: heat without oxygen that turns it into stable charcoal. Carbon that never returns to the air.' },
+      { img: '/viaje/08-suelo.jpg', title: 'The soil', body: 'The biochar is worked into the land: it retains water and nutrients, and improves the next harvest. The field ends up more fertile than before.', hito: '1,000+ years in the soil' },
+    ] as readonly { img: string; title: string; body: string; hito?: string }[],
+    v_credito: { img: '/viaje/09-credito.jpg', title: 'The credit', body: 'The two paths meet here. Every stored tonne —in the wall or in the soil— becomes a **carbon credit**: certificates that companies around the world buy to offset what they emit. This chain makes it possible to generate them where they are born: **the company that emits in the basin can generate its credits in the basin**, physically backed and traceable from seed to wall.', chip: 'Two paths, one asset' },
+    v_agri_label: 'The agrihood — the neighborhood that produces',
+    v_agri_p1: 'Some neighborhoods are organized around a square. The **agrihood** is organized around a productive field: an internationally documented urban model, where the community lives off what its land produces.',
+    v_agri_caption: 'The hemp agrihood: homes around the field that produces the material for the next block.',
+    v_agri_p2: 'The hemp version completes it: the central field produces the material that builds the neighborhood\'s next stage; the houses store carbon in their walls, generate their energy on their roofs and spend almost nothing on heating; and each harvest\'s biochar returns to the same soil. **A neighborhood that produces the material of its own expansion — with local work at every link.**',
     v_biochar_label: 'Biochar — the second line',
     v_biochar_body:
       'From the residue that does not go into the block —the short fiber and dust— pyrolysis produces biochar: a stable charcoal that improves the soil\'s water and nutrient retention, and locks carbon on a millennial scale. The same hectare produces two assets: **the one that builds and the one that regenerates**.',
@@ -1205,11 +1227,44 @@ function Tesis({ t }: { t: T }) {
           </Reveal>
         ))}
       </div>
+
+      {/* las dos vías, en paralelo */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: 'clamp(1.5rem, 3.5vw, 3rem)', marginTop: 'clamp(2rem, 4vw, 3.25rem)' }}>
+        {[
+          { header: t.v_via_a_header, pasos: t.v_via_a, color: GOLD },
+          { header: t.v_via_b_header, pasos: t.v_via_b, color: GREEN },
+        ].map(({ header, pasos, color }) => (
+          <div key={header} style={{ borderTop: `3px solid ${color}`, paddingTop: '1.1rem' }}>
+            <p style={{ ...sans, fontSize: '0.66rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: INK, margin: '0 0 1.25rem' }}>{header}</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {pasos.map((p) => (
+                <Reveal key={p.title}>
+                  <div>
+                    <img src={p.img} alt={p.title} loading="lazy" style={{ display: 'block', width: '100%', maxWidth: '340px', height: 'auto', border: `1px solid ${LINE}` }} />
+                    <h4 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.2rem, 2vw, 1.55rem)', color: INK, margin: '0.8rem 0 0.4rem' }}>{p.title}</h4>
+                    <p style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: 'rgba(7,26,56,0.78)', margin: 0, maxWidth: '46ch' }}>{p.body}</p>
+                    {p.hito && (
+                      <span style={{ display: 'inline-block', marginTop: '0.8rem', ...sans, fontSize: '0.7rem', fontWeight: 700, color: GREEN_DK, background: 'rgba(47,143,58,0.07)', border: '1px solid rgba(47,143,58,0.4)', padding: '0.4rem 0.95rem', borderRadius: '999px' }}>{p.hito}</span>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* la convergencia: el crédito */}
       <Reveal>
-        <p style={{ ...sans, fontSize: '0.78rem', fontStyle: 'italic', fontWeight: 400, color: MUTED, margin: '1.75rem 0 0', lineHeight: 1.6, maxWidth: '70ch' }}>{t.v_ciclo_caption}</p>
+        <div style={{ marginTop: 'clamp(2.25rem, 4.5vw, 3.5rem)', textAlign: 'center', maxWidth: '44rem', marginLeft: 'auto', marginRight: 'auto' }}>
+          <img src={t.v_credito.img} alt={t.v_credito.title} loading="lazy" style={{ display: 'block', width: '100%', maxWidth: '380px', height: 'auto', border: `1px solid ${LINE}`, margin: '0 auto' }} />
+          <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.6vw, 2.1rem)', color: INK, margin: '1.1rem 0 0.3rem' }}>{t.v_credito.title}</h3>
+          <span style={{ display: 'inline-block', margin: '0.2rem 0 0.9rem', ...sans, fontSize: '0.7rem', fontWeight: 700, color: '#8a6510', background: 'rgba(242,181,68,0.14)', border: '1px solid rgba(242,181,68,0.55)', padding: '0.4rem 1rem', borderRadius: '999px' }}>{t.v_credito.chip}</span>
+          <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.94rem, 1.15vw, 1.04rem)', lineHeight: 1.8, color: 'rgba(7,26,56,0.8)', margin: 0, textAlign: 'left' }}>{rich(t.v_credito.body, INK)}</p>
+        </div>
       </Reveal>
       <Reveal>
-        <P max="74ch" style={{ marginTop: '1.4rem' }}>{rich(t.v_ciclo_credito, INK)}</P>
+        <p style={{ ...sans, fontSize: '0.78rem', fontStyle: 'italic', fontWeight: 400, color: MUTED, margin: '1.75rem 0 0', lineHeight: 1.6, maxWidth: '70ch' }}>{t.v_ciclo_caption}</p>
       </Reveal>
 
       {/* vía 1: hempcrete, contado simple */}
@@ -1280,6 +1335,22 @@ function Tesis({ t }: { t: T }) {
       <Reveal>
         <P max="74ch">{t.v_ciudades}</P>
       </Reveal>
+
+      {/* el agrihood: el barrio que produce */}
+      <VisionLabel>{t.v_agri_label}</VisionLabel>
+      <Reveal>
+        <P max="74ch">{rich(t.v_agri_p1, INK)}</P>
+      </Reveal>
+      <Reveal>
+        <figure style={{ margin: 0 }}>
+          <img src="/diagramas/agrihood.jpg" alt={t.v_agri_caption} loading="lazy" style={{ display: 'block', width: '100%', height: 'auto', border: `1px solid ${LINE}` }} />
+          <figcaption style={{ ...sans, fontSize: '0.72rem', fontWeight: 400, color: MUTED, margin: '0.6rem 0 0', lineHeight: 1.5 }}>{t.v_agri_caption}</figcaption>
+        </figure>
+      </Reveal>
+      <Reveal>
+        <P max="74ch" style={{ marginTop: '1.4rem' }}>{rich(t.v_agri_p2, INK)}</P>
+      </Reveal>
+
       <Statement by={t.v_statement_by}>{t.v_statement}</Statement>
 
       {/* puente al método */}
