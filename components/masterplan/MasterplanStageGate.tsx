@@ -80,19 +80,61 @@ const TXT = {
       ['Hempcrete', 'El material de construcción de base biológica: ladrillos y bloques para vivienda accesible, aislante y de rápida ejecución. Probado en más de 50 países, con un diferencial único: el carbono que capturó el cultivo queda almacenado en la pared durante toda la vida de la construcción.'],
       ['Biochar', 'Del residuo de la planta, por pirólisis, un carbón vegetal estable que bloquea carbono por más de mil años y mejora el suelo. La segunda línea de valor de la misma hectárea — el residuo también es un activo.'],
     ] as readonly (readonly [string, string])[],
-    v_hemp_label: 'Hempcrete — el sistema constructivo, en imágenes',
-    v_hemp_feature: ['/renewabuild/bloque.jpg', 'El bloque estructural de biomasa: cáñamo prensado con insertos que portan la carga — el muro es la estructura.'],
-    v_hemp_gallery: [
-      ['/renewabuild/postensado.jpg', 'El sistema postensado — varillas que atan el muro, de la platea al techo.'],
-      ['/renewabuild/obra-sooke.jpg', 'La obra — los muros se levantan como piezas de encastre (Sooke, Canadá).'],
-      ['/renewabuild/interior.jpg', 'El interior terminado — revocado, aislante y sano.'],
-      ['/renewabuild/casa.jpg', 'La casa terminada — arquitectura premium con paredes que guardan carbono.'],
-    ] as readonly (readonly [string, string])[],
+    v_hemp_label: 'Hempcrete — qué es y por qué es superior',
+    v_hemp_body:
+      'La receta tiene tres ingredientes: **cañamiza** (la médula leñosa del tallo), **cal** y **agua**. Prensada en bloques, la mezcla mineraliza al curar: la cal absorbe CO₂ del aire y se endurece, sellando el carbono del cultivo dentro de la pared. El resultado es un material que hace, en una sola capa, lo que la construcción tradicional resuelve con varias: estructura, aislación térmica y acústica, resistencia al fuego y regulación natural de la humedad.',
+    v_wall_caption: 'El muro de hempcrete, en corte: una sola capa resuelve estructura, aislación y regulación de humedad.',
+    v_wall_ext: 'Exterior',
+    v_wall_int: 'Interior',
+    v_wall_l1: 'Revoque de cal',
+    v_wall_l2: 'Bloque de hempcrete',
+    v_wall_l3: 'Revoque interior',
+    v_wall_note1: 'El carbono del cultivo queda fijado acá',
+    v_wall_note2: 'por toda la vida de la construcción',
+    v_wall_frio: 'Frío patagónico',
+    v_wall_calor: 'Calor que no se escapa',
+    v_comp_label: 'El material, comparado',
+    v_comp_rows: [
+      {
+        metric: 'Conductividad térmica', unit: 'W/mK · menor aísla mejor', max: 0.5,
+        bars: [
+          ['Hempcrete', 0.09, '0,06–0,12'],
+          ['Hormigón celular', 0.135, '0,11–0,16'],
+          ['Ladrillo cerámico hueco', 0.4, '~0,40'],
+        ],
+      },
+      {
+        metric: 'Densidad', unit: 'kg/m³ · más liviano, obra más rápida', max: 900,
+        bars: [
+          ['Hempcrete', 300, '250–350'],
+          ['Hormigón celular', 500, '400–600'],
+          ['Ladrillo cerámico hueco', 800, '~800'],
+        ],
+      },
+    ],
+    v_comp_carbon_label: 'Huella de carbono · kg CO₂ por m³ de pared',
+    v_comp_carbon: [
+      ['Hempcrete', -120, 'fija 75–165'],
+      ['Hormigón celular', 150, 'emite ~150'],
+      ['Ladrillo cerámico hueco', 250, 'emite ~250'],
+    ],
+    v_comp_carbon_fija: 'fija carbono',
+    v_comp_carbon_emite: 'emite carbono',
+    v_comp_note: 'Valores de referencia sectoriales, a los fines de la comparación. Los del material propio se validan en los ensayos del Piloto (INTI · IRAM 11605).',
     v_hemp_partner:
       'Tecnología de referencia: **Renewabuild** (Columbia Británica, Canadá), partner tecnológico del plan — acuerdo en instancia de firma. Su bloque estructural de biomasa, postensado y de encastre, evita el esqueleto tradicional de hormigón y madera: la obra se levanta como piezas que encastran y se tensan, con obras reales ya construidas en Canadá.',
-    v_biochar_label: 'Biochar — la segunda línea, en imágenes',
-    v_biochar_img: '/cadena/10-biochar.jpg',
-    v_biochar_img_caption: 'Biochar: el carbón vegetal estable que nace del residuo de la planta.',
+    v_ciclo_label: 'El ciclo del carbono de la cadena',
+    v_ciclo_top: 'CO₂ del aire',
+    v_ciclo_cultivo: ['El cultivo', 'La fotosíntesis lo captura, en un ciclo de meses'],
+    v_ciclo_planta: 'La planta se aprovecha entera',
+    v_ciclo_rama1: [['La cañamiza', 'la médula del tallo'], ['El bloque', 'prensado con cal'], ['La pared', 'el carbono, fijado']],
+    v_ciclo_rama1_chip: '+500 años en la pared',
+    v_ciclo_rama2: [['El residuo', 'fibra corta y polvo'], ['La pirólisis', 'calor sin oxígeno'], ['El suelo', 'biochar que regenera']],
+    v_ciclo_rama2_chip: '+1.000 años en el suelo',
+    v_ciclo_caption: 'Dos destinos, un mismo resultado: el carbono sale del aire y no vuelve. Y el suelo mejorado produce la próxima cosecha.',
+    v_biochar_label: 'Biochar — la segunda línea',
+    v_biochar_body:
+      'Del residuo que no va al bloque —la fibra corta y el polvo— la pirólisis produce biochar: un carbón vegetal estable que mejora la retención de agua y nutrientes del suelo, y bloquea el carbono a escala milenaria. La misma hectárea produce dos activos: **el que construye y el que regenera**.',
     v_biochar_steps: [
       ['El residuo', 'La fibra corta y el polvo que no van al bloque.'],
       ['La pirólisis', 'Calor sin oxígeno: la biomasa se convierte en carbón estable.'],
@@ -312,19 +354,61 @@ const TXT = {
       ['Hempcrete', 'The bio-based construction material: bricks and blocks for affordable, well-insulated, quick-to-build housing. Proven in more than 50 countries, with a unique differentiator: the carbon captured by the crop stays stored in the wall for the entire life of the building.'],
       ['Biochar', 'From the plant\'s residues, through pyrolysis, a stable charcoal that locks carbon for more than a thousand years and improves the soil. The second value line from the same hectare — the residue is an asset too.'],
     ] as readonly (readonly [string, string])[],
-    v_hemp_label: 'Hempcrete — the construction system, in pictures',
-    v_hemp_feature: ['/renewabuild/bloque.jpg', 'The structural biomass block: pressed hemp with load-bearing inserts — the wall is the structure.'],
-    v_hemp_gallery: [
-      ['/renewabuild/postensado.jpg', 'The post-tensioned system — rods that tie the wall from slab to roof.'],
-      ['/renewabuild/obra-sooke.jpg', 'The build — walls rise like interlocking pieces (Sooke, Canada).'],
-      ['/renewabuild/interior.jpg', 'The finished interior — plastered, insulating and healthy.'],
-      ['/renewabuild/casa.jpg', 'The finished house — premium architecture with walls that store carbon.'],
-    ] as readonly (readonly [string, string])[],
+    v_hemp_label: 'Hempcrete — what it is and why it is superior',
+    v_hemp_body:
+      'The recipe has three ingredients: **hemp hurd** (the woody core of the stalk), **lime** and **water**. Pressed into blocks, the mix mineralizes as it cures: the lime absorbs CO₂ from the air and hardens, sealing the crop\'s carbon inside the wall. The result is a material that does in a single layer what traditional construction solves with several: structure, thermal and acoustic insulation, fire resistance and natural humidity regulation.',
+    v_wall_caption: 'The hempcrete wall, in section: a single layer solves structure, insulation and humidity regulation.',
+    v_wall_ext: 'Outside',
+    v_wall_int: 'Inside',
+    v_wall_l1: 'Lime render',
+    v_wall_l2: 'Hempcrete block',
+    v_wall_l3: 'Interior plaster',
+    v_wall_note1: 'The crop\'s carbon stays locked here',
+    v_wall_note2: 'for the entire life of the building',
+    v_wall_frio: 'Patagonian cold',
+    v_wall_calor: 'Heat that stays in',
+    v_comp_label: 'The material, compared',
+    v_comp_rows: [
+      {
+        metric: 'Thermal conductivity', unit: 'W/mK · lower insulates better', max: 0.5,
+        bars: [
+          ['Hempcrete', 0.09, '0.06–0.12'],
+          ['Aerated concrete', 0.135, '0.11–0.16'],
+          ['Hollow clay brick', 0.4, '~0.40'],
+        ],
+      },
+      {
+        metric: 'Density', unit: 'kg/m³ · lighter, faster build', max: 900,
+        bars: [
+          ['Hempcrete', 300, '250–350'],
+          ['Aerated concrete', 500, '400–600'],
+          ['Hollow clay brick', 800, '~800'],
+        ],
+      },
+    ],
+    v_comp_carbon_label: 'Carbon footprint · kg CO₂ per m³ of wall',
+    v_comp_carbon: [
+      ['Hempcrete', -120, 'locks 75–165'],
+      ['Aerated concrete', 150, 'emits ~150'],
+      ['Hollow clay brick', 250, 'emits ~250'],
+    ],
+    v_comp_carbon_fija: 'locks carbon',
+    v_comp_carbon_emite: 'emits carbon',
+    v_comp_note: 'Sector reference values, for comparison purposes. The plan\'s own values are validated in the Pilot\'s testing (INTI · IRAM 11605).',
     v_hemp_partner:
       'Reference technology: **Renewabuild** (British Columbia, Canada), the plan\'s technology partner — agreement at the signing stage. Its structural biomass block, post-tensioned and interlocking, avoids the traditional concrete-and-timber skeleton: the build rises as pieces that interlock and tension, with real builds already standing in Canada.',
-    v_biochar_label: 'Biochar — the second line, in pictures',
-    v_biochar_img: '/cadena/10-biochar.jpg',
-    v_biochar_img_caption: 'Biochar: the stable charcoal born from the plant\'s residue.',
+    v_ciclo_label: 'The carbon cycle of the chain',
+    v_ciclo_top: 'CO₂ from the air',
+    v_ciclo_cultivo: ['The crop', 'Photosynthesis captures it, in a cycle of months'],
+    v_ciclo_planta: 'The whole plant is used',
+    v_ciclo_rama1: [['The hurd', 'the stalk\'s woody core'], ['The block', 'pressed with lime'], ['The wall', 'the carbon, locked in']],
+    v_ciclo_rama1_chip: '500+ years in the wall',
+    v_ciclo_rama2: [['The residue', 'short fiber and dust'], ['Pyrolysis', 'heat without oxygen'], ['The soil', 'biochar that regenerates']],
+    v_ciclo_rama2_chip: '1,000+ years in the soil',
+    v_ciclo_caption: 'Two destinations, one result: the carbon leaves the air and does not come back. And the improved soil grows the next harvest.',
+    v_biochar_label: 'Biochar — the second line',
+    v_biochar_body:
+      'From the residue that does not go into the block —the short fiber and dust— pyrolysis produces biochar: a stable charcoal that improves the soil\'s water and nutrient retention, and locks carbon on a millennial scale. The same hectare produces two assets: **the one that builds and the one that regenerates**.',
     v_biochar_steps: [
       ['The residue', 'The short fiber and dust that do not go into the block.'],
       ['Pyrolysis', 'Heat without oxygen: biomass becomes stable charcoal.'],
@@ -825,6 +909,177 @@ function StageChapter({ t, idx, bg }: { t: T; idx: number; bg: string }) {
    SECCIONES
    ============================================================ */
 
+/* ---------- diagrama: el muro de hempcrete, en corte (SVG propio) ---------- */
+
+function WallSection({ t }: { t: T }) {
+  const sansF = 'var(--font-hanken), "Plus Jakarta Sans", sans-serif'
+  return (
+    <figure style={{ margin: 0 }}>
+      <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: 'clamp(0.75rem, 2vw, 1.5rem)', overflowX: 'auto' }}>
+        <svg viewBox="0 0 760 300" role="img" aria-label={t.v_wall_caption} style={{ width: '100%', minWidth: '560px', display: 'block' }}>
+          <defs>
+            <pattern id="hurd" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+              <rect width="14" height="14" fill="#E4D7B4" />
+              <rect x="2" y="5" width="7" height="2.4" rx="1.2" fill="#C9B583" />
+              <rect x="8" y="10" width="5" height="2" rx="1" fill="#D2C093" />
+            </pattern>
+            <marker id="arrowInk" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="rgba(7,26,56,0.55)" />
+            </marker>
+          </defs>
+
+          {/* capas del muro */}
+          <rect x="160" y="70" width="26" height="170" fill="#EFE9DA" stroke="rgba(7,26,56,0.35)" strokeWidth="1" />
+          <rect x="186" y="70" width="360" height="170" fill="url(#hurd)" stroke="rgba(7,26,56,0.45)" strokeWidth="1.2" />
+          <rect x="546" y="70" width="26" height="170" fill="#F6F2E7" stroke="rgba(7,26,56,0.35)" strokeWidth="1" />
+
+          {/* anotación central del carbono */}
+          <rect x="242" y="128" width="248" height="52" rx="4" fill="rgba(250,248,241,0.94)" stroke="rgba(47,143,58,0.5)" strokeWidth="1.2" />
+          <text x="366" y="150" textAnchor="middle" fontFamily={sansF} fontSize="13.5" fontWeight="600" fill={INK}>{t.v_wall_note1}</text>
+          <text x="366" y="168" textAnchor="middle" fontFamily={sansF} fontSize="11.5" fontWeight="400" fill="rgba(7,26,56,0.62)">{t.v_wall_note2}</text>
+
+          {/* labels de capas con guías */}
+          <line x1="173" y1="66" x2="173" y2="42" stroke="rgba(7,26,56,0.4)" strokeWidth="1" />
+          <text x="173" y="32" textAnchor="middle" fontFamily={sansF} fontSize="11.5" fontWeight="600" fill={INK}>{t.v_wall_l1}</text>
+          <line x1="366" y1="66" x2="366" y2="42" stroke="rgba(7,26,56,0.4)" strokeWidth="1" />
+          <text x="366" y="32" textAnchor="middle" fontFamily={sansF} fontSize="12.5" fontWeight="700" fill={INK}>{t.v_wall_l2}</text>
+          <line x1="559" y1="66" x2="559" y2="42" stroke="rgba(7,26,56,0.4)" strokeWidth="1" />
+          <text x="559" y="32" textAnchor="middle" fontFamily={sansF} fontSize="11.5" fontWeight="600" fill={INK}>{t.v_wall_l3}</text>
+
+          {/* cotas */}
+          <line x1="160" y1="258" x2="186" y2="258" stroke="rgba(7,26,56,0.45)" strokeWidth="1" />
+          <text x="173" y="276" textAnchor="middle" fontFamily={sansF} fontSize="10.5" fill="rgba(7,26,56,0.55)">2 cm</text>
+          <line x1="192" y1="258" x2="540" y2="258" stroke="rgba(7,26,56,0.45)" strokeWidth="1" />
+          <text x="366" y="276" textAnchor="middle" fontFamily={sansF} fontSize="10.5" fontWeight="600" fill="rgba(7,26,56,0.7)">30 cm</text>
+          <line x1="546" y1="258" x2="572" y2="258" stroke="rgba(7,26,56,0.45)" strokeWidth="1" />
+          <text x="559" y="276" textAnchor="middle" fontFamily={sansF} fontSize="10.5" fill="rgba(7,26,56,0.55)">2 cm</text>
+
+          {/* temperatura: frío afuera, calor adentro */}
+          <text x="75" y="118" textAnchor="middle" fontFamily={sansF} fontSize="11" fontWeight="600" fill={CELESTE}>{t.v_wall_ext}</text>
+          <text x="75" y="136" textAnchor="middle" fontFamily={sansF} fontSize="10" fill="rgba(7,26,56,0.55)">{t.v_wall_frio}</text>
+          <line x1="46" y1="155" x2="148" y2="155" stroke="rgba(7,26,56,0.55)" strokeWidth="1.4" markerEnd="url(#arrowInk)" strokeDasharray="5 4" />
+          <text x="666" y="118" textAnchor="middle" fontFamily={sansF} fontSize="11" fontWeight="600" fill={GREEN_DK}>{t.v_wall_int}</text>
+          <text x="666" y="136" textAnchor="middle" fontFamily={sansF} fontSize="10" fill="rgba(7,26,56,0.55)">{t.v_wall_calor}</text>
+          <path d="M 640 150 q 10 8 0 16 q -10 8 0 16" fill="none" stroke={GREEN_DK} strokeWidth="1.6" />
+          <path d="M 660 150 q 10 8 0 16 q -10 8 0 16" fill="none" stroke={GREEN_DK} strokeWidth="1.6" />
+          <path d="M 680 150 q 10 8 0 16 q -10 8 0 16" fill="none" stroke={GREEN_DK} strokeWidth="1.6" />
+        </svg>
+      </div>
+      <figcaption style={{ ...sans, fontSize: '0.72rem', fontWeight: 400, color: MUTED, margin: '0.6rem 0 0', lineHeight: 1.5 }}>{t.v_wall_caption}</figcaption>
+    </figure>
+  )
+}
+
+/* ---------- comparativa de barras + huella divergente ---------- */
+
+function CompareBars({ t }: { t: T }) {
+  const BAR_COLORS = [GREEN_DK, 'rgba(7,26,56,0.4)', 'rgba(7,26,56,0.22)']
+  return (
+    <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
+      {t.v_comp_rows.map((row) => (
+        <div key={row.metric} style={{ marginBottom: '1.9rem' }}>
+          <p style={{ ...sans, fontSize: '0.8rem', fontWeight: 700, color: INK, margin: '0 0 0.1rem' }}>{row.metric}</p>
+          <p style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: FAINT, margin: '0 0 0.7rem' }}>{row.unit}</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+            {row.bars.map(([name, val, label], i) => (
+              <div key={String(name)} style={{ display: 'grid', gridTemplateColumns: 'minmax(130px, 175px) 1fr', gap: '0.8rem', alignItems: 'center' }}>
+                <span style={{ ...sans, fontSize: '0.74rem', fontWeight: i === 0 ? 700 : 400, color: i === 0 ? GREEN_DK : 'rgba(7,26,56,0.7)' }}>{name}</span>
+                <div style={{ position: 'relative', height: '20px', background: 'rgba(7,26,56,0.05)', borderRadius: '2px' }}>
+                  <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${(Number(val) / row.max) * 100}%`, background: BAR_COLORS[i], borderRadius: '2px' }} />
+                  <span style={{ position: 'absolute', left: `calc(${(Number(val) / row.max) * 100}% + 8px)`, top: '50%', transform: 'translateY(-50%)', ...sans, fontSize: '0.68rem', fontWeight: 600, color: 'rgba(7,26,56,0.65)', whiteSpace: 'nowrap' }}>{label}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      {/* huella de carbono: barras divergentes desde el cero */}
+      <div>
+        <p style={{ ...sans, fontSize: '0.8rem', fontWeight: 700, color: INK, margin: '0 0 0.7rem' }}>{t.v_comp_carbon_label}</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0 0 0.35rem', paddingLeft: 'min(175px, 32%)' }}>
+          <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700, color: GREEN_DK }}>← {t.v_comp_carbon_fija}</span>
+          <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700, color: '#B4301C' }}>{t.v_comp_carbon_emite} →</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+          {t.v_comp_carbon.map(([name, val, label], i) => {
+            const v = Number(val)
+            const pct = (Math.abs(v) / 250) * 60
+            return (
+              <div key={String(name)} style={{ display: 'grid', gridTemplateColumns: 'minmax(130px, 175px) 1fr', gap: '0.8rem', alignItems: 'center' }}>
+                <span style={{ ...sans, fontSize: '0.74rem', fontWeight: i === 0 ? 700 : 400, color: i === 0 ? GREEN_DK : 'rgba(7,26,56,0.7)' }}>{name}</span>
+                <div style={{ position: 'relative', height: '20px', background: 'rgba(7,26,56,0.05)', borderRadius: '2px' }}>
+                  <div aria-hidden style={{ position: 'absolute', left: '38%', top: '-3px', bottom: '-3px', width: '1.5px', background: 'rgba(7,26,56,0.45)' }} />
+                  {v < 0 ? (
+                    <>
+                      <div style={{ position: 'absolute', right: '62%', top: 0, bottom: 0, width: `${pct}%`, background: GREEN_DK, borderRadius: '2px 0 0 2px' }} />
+                      <span style={{ position: 'absolute', right: `calc(62% + ${pct}% + 8px)`, top: '50%', transform: 'translateY(-50%)', ...sans, fontSize: '0.68rem', fontWeight: 700, color: GREEN_DK, whiteSpace: 'nowrap' }}>{label}</span>
+                    </>
+                  ) : (
+                    <>
+                      <div style={{ position: 'absolute', left: '38%', top: 0, bottom: 0, width: `${pct}%`, background: i === 1 ? 'rgba(180,48,28,0.55)' : 'rgba(180,48,28,0.8)', borderRadius: '0 2px 2px 0' }} />
+                      <span style={{ position: 'absolute', left: `calc(38% + ${pct}% + 8px)`, top: '50%', transform: 'translateY(-50%)', ...sans, fontSize: '0.68rem', fontWeight: 600, color: 'rgba(7,26,56,0.65)', whiteSpace: 'nowrap' }}>{label}</span>
+                    </>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+      <p style={{ ...sans, fontSize: '0.66rem', lineHeight: 1.6, color: FAINT, margin: '1.4rem 0 0', maxWidth: '74ch' }}>{t.v_comp_note}</p>
+    </div>
+  )
+}
+
+/* ---------- el ciclo del carbono: dos ramas, dos permanencias ---------- */
+
+function CarbonCycle({ t }: { t: T }) {
+  const node = (title: string, sub: string, emph = false) => (
+    <div style={{ background: '#fff', border: `1px solid ${emph ? 'rgba(47,143,58,0.45)' : LINE}`, padding: '0.75rem 1rem', textAlign: 'center' }}>
+      <p style={{ ...sans, fontSize: '0.8rem', fontWeight: 600, color: INK, margin: 0 }}>{title}</p>
+      <p style={{ ...sans, fontSize: '0.68rem', fontWeight: 300, color: MUTED, margin: '0.15rem 0 0' }}>{sub}</p>
+    </div>
+  )
+  const down = <span aria-hidden style={{ textAlign: 'center', color: 'rgba(7,26,56,0.45)', fontSize: '0.85rem', lineHeight: 1 }}>↓</span>
+  return (
+    <figure style={{ margin: 0 }}>
+      <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '30rem', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center' }}>
+            <span style={{ ...sans, fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: CELESTE, border: `1px solid rgba(47,111,176,0.35)`, background: 'rgba(47,111,176,0.06)', padding: '0.45rem 1rem', borderRadius: '999px', display: 'inline-block' }}>{t.v_ciclo_top}</span>
+          </div>
+          {down}
+          {node(t.v_ciclo_cultivo[0], t.v_ciclo_cultivo[1])}
+          {down}
+          <div style={{ textAlign: 'center' }}>
+            <span style={{ ...sans, fontSize: '0.66rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(7,26,56,0.6)' }}>{t.v_ciclo_planta}</span>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'clamp(1rem, 3vw, 2.5rem)', marginTop: '0.8rem', maxWidth: '46rem', marginLeft: 'auto', marginRight: 'auto' }}>
+          {[
+            { rama: t.v_ciclo_rama1, chip: t.v_ciclo_rama1_chip, color: GOLD, chipColor: '#8a6510', chipBg: 'rgba(242,181,68,0.14)', chipBorder: 'rgba(242,181,68,0.55)' },
+            { rama: t.v_ciclo_rama2, chip: t.v_ciclo_rama2_chip, color: GREEN, chipColor: GREEN_DK, chipBg: 'rgba(47,143,58,0.07)', chipBorder: 'rgba(47,143,58,0.4)' },
+          ].map(({ rama, chip, color, chipColor, chipBg, chipBorder }) => (
+            <div key={chip} style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', borderTop: `3px solid ${color}`, paddingTop: '0.8rem' }}>
+              {rama.map(([rt, rs], i) => (
+                <div key={rt} style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                  {node(rt, rs)}
+                  {i < rama.length - 1 && down}
+                </div>
+              ))}
+              <div style={{ textAlign: 'center', marginTop: '0.3rem' }}>
+                <span style={{ ...sans, fontSize: '0.72rem', fontWeight: 700, color: chipColor, background: chipBg, border: `1px solid ${chipBorder}`, padding: '0.45rem 1rem', borderRadius: '999px', display: 'inline-block' }}>{chip}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <figcaption style={{ ...sans, fontSize: '0.72rem', fontWeight: 400, fontStyle: 'italic', color: MUTED, margin: '0.6rem 0 0', lineHeight: 1.5 }}>{t.v_ciclo_caption}</figcaption>
+    </figure>
+  )
+}
+
 function VisionLabel({ children }: { children: ReactNode }) {
   return (
     <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '3.25rem 0 1.1rem' }}>
@@ -870,58 +1125,49 @@ function Tesis({ t }: { t: T }) {
         ))}
       </div>
 
-      {/* hempcrete en imágenes — sistema Renewabuild */}
+      {/* hempcrete: qué es + corte de pared + comparativa */}
       <VisionLabel>{t.v_hemp_label}</VisionLabel>
       <Reveal>
-        <figure style={{ margin: 0 }}>
-          <div style={{ position: 'relative', aspectRatio: '21/9', overflow: 'hidden', border: `1px solid ${LINE}` }}>
-            <img src={t.v_hemp_feature[0]} alt={t.v_hemp_feature[1]} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-          </div>
-          <figcaption style={{ ...sans, fontSize: '0.72rem', fontWeight: 500, color: MUTED, margin: '0.6rem 0 0', lineHeight: 1.5 }}>{t.v_hemp_feature[1]}</figcaption>
-        </figure>
+        <P max="74ch">{rich(t.v_hemp_body, INK)}</P>
       </Reveal>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '0.9rem', marginTop: '1.1rem' }}>
-        {t.v_hemp_gallery.map(([img, caption], i) => (
-          <Reveal key={img} delay={0.05 * i}>
-            <figure style={{ margin: 0 }}>
-              <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', border: `1px solid ${LINE}` }}>
-                <img src={img} alt={caption} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-              <figcaption style={{ ...sans, fontSize: '0.68rem', fontWeight: 400, color: MUTED, margin: '0.5rem 0 0', lineHeight: 1.5 }}>{caption}</figcaption>
-            </figure>
-          </Reveal>
-        ))}
-      </div>
       <Reveal>
-        <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${CELESTE}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)', marginTop: '1.4rem', maxWidth: '52rem' }}>
+        <WallSection t={t} />
+      </Reveal>
+
+      <VisionLabel>{t.v_comp_label}</VisionLabel>
+      <Reveal>
+        <CompareBars t={t} />
+      </Reveal>
+
+      <Reveal>
+        <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${CELESTE}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)', marginTop: '1.6rem', maxWidth: '52rem' }}>
           <p style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: 'rgba(7,26,56,0.78)', margin: 0 }}>{rich(t.v_hemp_partner, INK)}</p>
         </div>
       </Reveal>
 
-      {/* biochar en imágenes — macro + proceso */}
+      {/* el ciclo del carbono de la cadena */}
+      <VisionLabel>{t.v_ciclo_label}</VisionLabel>
+      <Reveal>
+        <CarbonCycle t={t} />
+      </Reveal>
+
+      {/* biochar: la segunda línea */}
       <VisionLabel>{t.v_biochar_label}</VisionLabel>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: 'clamp(1rem, 2.5vw, 1.75rem)', alignItems: 'stretch' }}>
-        <Reveal>
-          <figure style={{ margin: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ position: 'relative', flex: 1, minHeight: '260px', overflow: 'hidden', border: `1px solid ${LINE}` }}>
-              <img src={t.v_biochar_img} alt={t.v_biochar_img_caption} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      <Reveal>
+        <P max="74ch">{rich(t.v_biochar_body, INK)}</P>
+      </Reveal>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '0.55rem' }}>
+        {t.v_biochar_steps.map(([st, sd], i) => (
+          <Reveal key={st} delay={0.05 * i}>
+            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderTop: `3px solid ${GREEN}`, padding: '1rem 1.1rem', height: '100%', position: 'relative' }}>
+              {i < t.v_biochar_steps.length - 1 && (
+                <span aria-hidden style={{ position: 'absolute', right: '0.6rem', top: '0.7rem', color: GREEN_DK, ...serif, fontStyle: 'italic', fontSize: '1rem' }}>→</span>
+              )}
+              <h4 style={{ ...sans, fontSize: '0.82rem', fontWeight: 600, color: INK, margin: '0 0 0.25rem' }}>{st}</h4>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.55, color: MUTED, margin: 0 }}>{sd}</p>
             </div>
-            <figcaption style={{ ...sans, fontSize: '0.68rem', fontWeight: 400, color: MUTED, margin: '0.5rem 0 0', lineHeight: 1.5 }}>{t.v_biochar_img_caption}</figcaption>
-          </figure>
-        </Reveal>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
-          {t.v_biochar_steps.map(([st, sd], i) => (
-            <Reveal key={st} delay={0.05 * i}>
-              <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GREEN}`, padding: '0.9rem 1.1rem', display: 'flex', gap: '0.85rem', alignItems: 'baseline' }}>
-                <span aria-hidden style={{ ...serif, fontStyle: 'italic', fontSize: '1.05rem', color: GREEN_DK, lineHeight: 1 }}>{i < t.v_biochar_steps.length - 1 ? '↓' : '●'}</span>
-                <div>
-                  <h4 style={{ ...sans, fontSize: '0.82rem', fontWeight: 600, color: INK, margin: '0 0 0.15rem' }}>{st}</h4>
-                  <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.55, color: MUTED, margin: 0 }}>{sd}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+          </Reveal>
+        ))}
       </div>
       <Reveal>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1.1rem' }}>
