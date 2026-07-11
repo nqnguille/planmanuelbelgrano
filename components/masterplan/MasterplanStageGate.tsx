@@ -80,6 +80,26 @@ const TXT = {
       ['Hempcrete', 'El material de construcción de base biológica: ladrillos y bloques para vivienda accesible, aislante y de rápida ejecución. Probado en más de 50 países, con un diferencial único: el carbono que capturó el cultivo queda almacenado en la pared durante toda la vida de la construcción.'],
       ['Biochar', 'Del residuo de la planta, por pirólisis, un carbón vegetal estable que bloquea carbono por más de mil años y mejora el suelo. La segunda línea de valor de la misma hectárea — el residuo también es un activo.'],
     ] as readonly (readonly [string, string])[],
+    v_hemp_label: 'Hempcrete — el sistema constructivo, en imágenes',
+    v_hemp_feature: ['/renewabuild/bloque.jpg', 'El bloque estructural de biomasa: cáñamo prensado con insertos que portan la carga — el muro es la estructura.'],
+    v_hemp_gallery: [
+      ['/renewabuild/postensado.jpg', 'El sistema postensado — varillas que atan el muro, de la platea al techo.'],
+      ['/renewabuild/obra-sooke.jpg', 'La obra — los muros se levantan como piezas de encastre (Sooke, Canadá).'],
+      ['/renewabuild/interior.jpg', 'El interior terminado — revocado, aislante y sano.'],
+      ['/renewabuild/casa.jpg', 'La casa terminada — arquitectura premium con paredes que guardan carbono.'],
+    ] as readonly (readonly [string, string])[],
+    v_hemp_partner:
+      'Tecnología de referencia: **Renewabuild** (Columbia Británica, Canadá), partner tecnológico del plan — acuerdo en instancia de firma. Su bloque estructural de biomasa, postensado y de encastre, evita el esqueleto tradicional de hormigón y madera: la obra se levanta como piezas que encastran y se tensan, con obras reales ya construidas en Canadá.',
+    v_biochar_label: 'Biochar — la segunda línea, en imágenes',
+    v_biochar_img: '/cadena/10-biochar.jpg',
+    v_biochar_img_caption: 'Biochar: el carbón vegetal estable que nace del residuo de la planta.',
+    v_biochar_steps: [
+      ['El residuo', 'La fibra corta y el polvo que no van al bloque.'],
+      ['La pirólisis', 'Calor sin oxígeno: la biomasa se convierte en carbón estable.'],
+      ['El biochar', 'Carbono fijado en forma sólida, sin reversión.'],
+      ['El suelo', 'Mejora la tierra que produce la próxima cosecha — y fija el crédito.'],
+    ] as readonly (readonly [string, string])[],
+    v_biochar_chips: ['~2,5 t CO₂e fijadas por tonelada', '+1.000 años de permanencia', 'EBC · estándar internacional'],
     v_cadena_label: 'De la semilla a la llave',
     v_cadena:
       'Una sola planta abre una cadena industrial completa: cultivo, material de construcción y, del residuo, biochar. Cada paso ocurre en la misma cuenca y es empleo técnico — del campo a la vivienda.',
@@ -240,6 +260,7 @@ const TXT = {
       ['EcoGaia', 'Certifica', 'Desarrolladora y certificadora argentina de créditos de carbono, ciclo completo bajo Verra y Gold Standard, con experiencia en cáñamo en Canadá.'],
       ['INTI', 'Valida', 'Ensayos del material y ruta de certificación del sistema constructivo.'],
       ['Red Protierra', 'Transfiere', 'Red argentina de construcción natural: manuales constructivos y formación de aplicadores.'],
+      ['Renewabuild', 'Tecnología constructiva', 'Empresa canadiense que comercializa el primer bloque estructural de biomasa, con obras reales construidas. Partner tecnológico del plan; acuerdo en instancia de firma.'],
     ],
     founder_label: 'El fundador',
     founder:
@@ -291,6 +312,26 @@ const TXT = {
       ['Hempcrete', 'The bio-based construction material: bricks and blocks for affordable, well-insulated, quick-to-build housing. Proven in more than 50 countries, with a unique differentiator: the carbon captured by the crop stays stored in the wall for the entire life of the building.'],
       ['Biochar', 'From the plant\'s residues, through pyrolysis, a stable charcoal that locks carbon for more than a thousand years and improves the soil. The second value line from the same hectare — the residue is an asset too.'],
     ] as readonly (readonly [string, string])[],
+    v_hemp_label: 'Hempcrete — the construction system, in pictures',
+    v_hemp_feature: ['/renewabuild/bloque.jpg', 'The structural biomass block: pressed hemp with load-bearing inserts — the wall is the structure.'],
+    v_hemp_gallery: [
+      ['/renewabuild/postensado.jpg', 'The post-tensioned system — rods that tie the wall from slab to roof.'],
+      ['/renewabuild/obra-sooke.jpg', 'The build — walls rise like interlocking pieces (Sooke, Canada).'],
+      ['/renewabuild/interior.jpg', 'The finished interior — plastered, insulating and healthy.'],
+      ['/renewabuild/casa.jpg', 'The finished house — premium architecture with walls that store carbon.'],
+    ] as readonly (readonly [string, string])[],
+    v_hemp_partner:
+      'Reference technology: **Renewabuild** (British Columbia, Canada), the plan\'s technology partner — agreement at the signing stage. Its structural biomass block, post-tensioned and interlocking, avoids the traditional concrete-and-timber skeleton: the build rises as pieces that interlock and tension, with real builds already standing in Canada.',
+    v_biochar_label: 'Biochar — the second line, in pictures',
+    v_biochar_img: '/cadena/10-biochar.jpg',
+    v_biochar_img_caption: 'Biochar: the stable charcoal born from the plant\'s residue.',
+    v_biochar_steps: [
+      ['The residue', 'The short fiber and dust that do not go into the block.'],
+      ['Pyrolysis', 'Heat without oxygen: biomass becomes stable charcoal.'],
+      ['Biochar', 'Carbon fixed in solid form, without reversal.'],
+      ['The soil', 'It improves the land that grows the next harvest — and locks the credit.'],
+    ] as readonly (readonly [string, string])[],
+    v_biochar_chips: ['~2.5 t CO₂e locked per tonne', '1,000+ years of permanence', 'EBC · international standard'],
     v_cadena_label: 'From seed to key',
     v_cadena:
       'A single plant opens a complete industrial chain: cultivation, construction material and, from the residue, biochar. Every step happens in the same basin and is skilled employment — from the field to the home.',
@@ -447,6 +488,7 @@ const TXT = {
       ['EcoGaia', 'Certifies', 'An Argentine developer and certifier of carbon credits, full cycle under Verra and Gold Standard, with hemp experience in Canada.'],
       ['INTI', 'Validates', 'Material testing and the certification path for the construction system.'],
       ['Red Protierra', 'Transfers', 'Argentina\'s natural building network: construction manuals and applicator training.'],
+      ['Renewabuild', 'Construction technology', 'Canadian company commercializing the first structural biomass block, with real builds standing. The plan\'s technology partner; agreement at the signing stage.'],
     ],
     founder_label: 'The founder',
     founder:
@@ -827,6 +869,67 @@ function Tesis({ t }: { t: T }) {
           </Reveal>
         ))}
       </div>
+
+      {/* hempcrete en imágenes — sistema Renewabuild */}
+      <VisionLabel>{t.v_hemp_label}</VisionLabel>
+      <Reveal>
+        <figure style={{ margin: 0 }}>
+          <div style={{ position: 'relative', aspectRatio: '21/9', overflow: 'hidden', border: `1px solid ${LINE}` }}>
+            <img src={t.v_hemp_feature[0]} alt={t.v_hemp_feature[1]} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+          <figcaption style={{ ...sans, fontSize: '0.72rem', fontWeight: 500, color: MUTED, margin: '0.6rem 0 0', lineHeight: 1.5 }}>{t.v_hemp_feature[1]}</figcaption>
+        </figure>
+      </Reveal>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '0.9rem', marginTop: '1.1rem' }}>
+        {t.v_hemp_gallery.map(([img, caption], i) => (
+          <Reveal key={img} delay={0.05 * i}>
+            <figure style={{ margin: 0 }}>
+              <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden', border: `1px solid ${LINE}` }}>
+                <img src={img} alt={caption} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <figcaption style={{ ...sans, fontSize: '0.68rem', fontWeight: 400, color: MUTED, margin: '0.5rem 0 0', lineHeight: 1.5 }}>{caption}</figcaption>
+            </figure>
+          </Reveal>
+        ))}
+      </div>
+      <Reveal>
+        <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${CELESTE}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)', marginTop: '1.4rem', maxWidth: '52rem' }}>
+          <p style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: 'rgba(7,26,56,0.78)', margin: 0 }}>{rich(t.v_hemp_partner, INK)}</p>
+        </div>
+      </Reveal>
+
+      {/* biochar en imágenes — macro + proceso */}
+      <VisionLabel>{t.v_biochar_label}</VisionLabel>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: 'clamp(1rem, 2.5vw, 1.75rem)', alignItems: 'stretch' }}>
+        <Reveal>
+          <figure style={{ margin: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ position: 'relative', flex: 1, minHeight: '260px', overflow: 'hidden', border: `1px solid ${LINE}` }}>
+              <img src={t.v_biochar_img} alt={t.v_biochar_img_caption} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+            <figcaption style={{ ...sans, fontSize: '0.68rem', fontWeight: 400, color: MUTED, margin: '0.5rem 0 0', lineHeight: 1.5 }}>{t.v_biochar_img_caption}</figcaption>
+          </figure>
+        </Reveal>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+          {t.v_biochar_steps.map(([st, sd], i) => (
+            <Reveal key={st} delay={0.05 * i}>
+              <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GREEN}`, padding: '0.9rem 1.1rem', display: 'flex', gap: '0.85rem', alignItems: 'baseline' }}>
+                <span aria-hidden style={{ ...serif, fontStyle: 'italic', fontSize: '1.05rem', color: GREEN_DK, lineHeight: 1 }}>{i < t.v_biochar_steps.length - 1 ? '↓' : '●'}</span>
+                <div>
+                  <h4 style={{ ...sans, fontSize: '0.82rem', fontWeight: 600, color: INK, margin: '0 0 0.15rem' }}>{st}</h4>
+                  <p style={{ ...sans, fontWeight: 300, fontSize: '0.78rem', lineHeight: 1.55, color: MUTED, margin: 0 }}>{sd}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+      <Reveal>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1.1rem' }}>
+          {t.v_biochar_chips.map((c) => (
+            <span key={c} style={{ ...sans, fontSize: '0.7rem', fontWeight: 600, color: GREEN_DK, border: '1px solid rgba(47,143,58,0.35)', background: 'rgba(47,143,58,0.06)', padding: '0.45rem 0.9rem', borderRadius: '999px' }}>{c}</span>
+          ))}
+        </div>
+      </Reveal>
 
       {/* la cadena: de la semilla a la llave */}
       <VisionLabel>{t.v_cadena_label}</VisionLabel>
