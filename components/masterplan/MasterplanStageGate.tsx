@@ -134,6 +134,8 @@ const TXT = {
     v_ciclo_rama2: [['Al suelo', 'como biochar']] as readonly (readonly [string, string])[],
     v_ciclo_rama2_chip: '+1.000 años en el suelo',
     v_ciclo_caption: 'Dos destinos, un mismo resultado: el carbono sale del aire y no vuelve. Y el suelo mejorado produce la próxima cosecha.',
+    v_ciclo_credito:
+      'Ese viaje tiene un premio: cada tonelada guardada es un **crédito de carbono** — certificados que las empresas del mundo compran para compensar lo que contaminan. Esta cadena permite **generarlos acá**, con respaldo físico y trazables de la semilla al muro.',
     v_biochar_label: 'Biochar — la segunda línea',
     v_biochar_body:
       'Del residuo que no va al bloque —la fibra corta y el polvo— la pirólisis produce biochar: un carbón vegetal estable que mejora la retención de agua y nutrientes del suelo, y bloquea el carbono a escala milenaria. La misma hectárea produce dos activos: **el que construye y el que regenera**.',
@@ -411,6 +413,8 @@ const TXT = {
     v_ciclo_rama2: [['To the soil', 'as biochar']] as readonly (readonly [string, string])[],
     v_ciclo_rama2_chip: '1,000+ years in the soil',
     v_ciclo_caption: 'Two destinations, one result: the carbon leaves the air and does not come back. And the improved soil grows the next harvest.',
+    v_ciclo_credito:
+      'That journey has a prize: every stored tonne is a **carbon credit** — certificates that companies around the world buy to offset what they emit. This chain makes it possible to **generate them here**, physically backed and traceable from seed to wall.',
     v_biochar_label: 'Biochar — the second line',
     v_biochar_body:
       'From the residue that does not go into the block —the short fiber and dust— pyrolysis produces biochar: a stable charcoal that improves the soil\'s water and nutrient retention, and locks carbon on a millennial scale. The same hectare produces two assets: **the one that builds and the one that regenerates**.',
@@ -1157,7 +1161,16 @@ function Tesis({ t }: { t: T }) {
         ))}
       </div>
 
-      {/* hempcrete, contado simple */}
+      {/* el viaje del carbono — primero el mapa, después las dos vías */}
+      <VisionLabel>{t.v_ciclo_label}</VisionLabel>
+      <Reveal>
+        <CarbonCycle t={t} />
+      </Reveal>
+      <Reveal>
+        <P max="74ch" style={{ marginTop: '1.4rem' }}>{rich(t.v_ciclo_credito, INK)}</P>
+      </Reveal>
+
+      {/* vía 1: hempcrete, contado simple */}
       <VisionLabel>{t.v_hemp_label}</VisionLabel>
       <Reveal>
         <P max="74ch">{rich(t.v_hemp_body, INK)}</P>
@@ -1168,13 +1181,7 @@ function Tesis({ t }: { t: T }) {
         <CarbonSimple t={t} />
       </Reveal>
 
-      {/* el viaje del carbono */}
-      <VisionLabel>{t.v_ciclo_label}</VisionLabel>
-      <Reveal>
-        <CarbonCycle t={t} />
-      </Reveal>
-
-      {/* biochar, contado simple */}
+      {/* vía 2: biochar, contado simple */}
       <VisionLabel>{t.v_biochar_label}</VisionLabel>
       <Reveal>
         <P max="74ch">{rich(t.v_biochar_body, INK)}</P>
