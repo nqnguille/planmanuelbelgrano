@@ -69,7 +69,7 @@ const TXT = {
     tesis_k: 'La visión',
     tesis_lead: 'Podemos convertir Vaca Muerta en Vaca Verde.',
     tesis_body:
-      'Debajo de Neuquén está la energía que hoy mueve al país. En la superficie hay tierra, agua y sol para producir lo que puede sostenerlo para siempre. **Vaca Muerta no es eterna — lo que construyamos con lo que genera puede serlo.**',
+      'Debajo de Neuquén está la energía que hoy mueve al país. Cuando esa energía crece, crece la provincia entera — y en la superficie hay tierra, agua y sol para convertir ese crecimiento en algo que eche raíces. **Vaca Muerta no es eterna — lo que construyamos con lo que genera puede serlo.**',
     v_belgrano_label: 'Una industria interrumpida hace 230 años',
     v_belgrano:
       'En 1796, Manuel Belgrano propuso desde el Consulado el cultivo del lino y del cáñamo como una de las primeras industrias del país: **producir y agregar valor, en lugar de solo extraer**. Se adelantó más de dos siglos. El cáñamo construyó durante siglos en Europa, Asia y América —la estructura más antigua documentada tiene mil quinientos años y sigue en pie—, hasta que la prohibición del siglo XX lo interrumpió: una decisión regulatoria, no técnica ni económica. El marco vigente vuelve a habilitarlo. **Y la industria todavía no tiene dueño.**',
@@ -251,7 +251,7 @@ const TXT = {
     inv_d:
       'Un socio no compra la visión entera: entra por el gate que tiene adelante, con compromisos acotados contra entregables verificables — sin subsidios y sin organismos nuevos.',
     inv_items: [
-      ['01', 'La industria', 'Financia etapas acotadas y queda fundadora de la cadena: **la capacidad de generar sus propios créditos de carbono** —en lugar de comprarlos a terceros— y preferencia sobre la vivienda para sus propias operaciones, con la opción —nunca la obligación— de acompañar cada etapa siguiente.'],
+      ['01', 'La industria', 'Financia etapas acotadas y queda fundadora de la cadena: **la capacidad de generar sus propios créditos de carbono** —en lugar de comprarlos a terceros— y preferencia sobre la vivienda para sus propias operaciones, con la opción —nunca la obligación— de acompañar cada etapa siguiente. Y una verdad simple: **cuando la empresa ancla crece, crece toda la cadena** — el campo que la abastece, la obra que la construye y el pueblo que la habita.'],
       ['02', 'El Estado', 'Reglas claras y articulación. El plan avanza con el marco vigente y capital privado; del Estado necesita lo que mejor puede dar: destrabar, simplificar y acompañar sin poner trabas.'],
       ['03', 'La ciencia', 'Ensayos, normas y certificación en cada etapa del camino: INTI, universidades y laboratorios acreditados. Toda afirmación del plan la firma un tercero.'],
     ],
@@ -280,7 +280,7 @@ const TXT = {
     tesis_k: 'The vision',
     tesis_lead: 'We can turn Vaca Muerta into Vaca Verde.',
     tesis_body:
-      'Beneath Neuquén lies the energy that powers the country today. On the surface, there is land, water and sun to produce what can sustain it forever. **Vaca Muerta is not eternal — what we build with what it generates can be.**',
+      'Beneath Neuquén lies the energy that powers the country today. When that energy grows, the whole province grows — and on the surface there is land, water and sun to turn that growth into something that takes root. **Vaca Muerta is not eternal — what we build with what it generates can be.**',
     v_belgrano_label: 'An industry interrupted 230 years ago',
     v_belgrano:
       'In 1796, Manuel Belgrano proposed from the Consulate the cultivation of flax and hemp as one of the country\'s first industries: **producing and adding value, rather than only extracting**. He was more than two centuries ahead. Hemp built across Europe, Asia and America for centuries —the oldest documented structure is fifteen hundred years old and still standing— until the 20th-century prohibition interrupted it: a regulatory decision, not a technical or economic one. The current framework enables it once again. **And the industry still has no owner.**',
@@ -457,7 +457,7 @@ const TXT = {
     inv_d:
       'A partner does not buy the whole vision: they enter through the gate in front of them, with bounded commitments against verifiable deliverables — no subsidies and no new agencies.',
     inv_items: [
-      ['01', 'Industry', 'Finances bounded stages and becomes a founder of the chain: **the capacity to generate its own carbon credits** —instead of buying them from third parties— and preference over housing for its own operations, with the option —never the obligation— to accompany each following stage.'],
+      ['01', 'Industry', 'Finances bounded stages and becomes a founder of the chain: **the capacity to generate its own carbon credits** —instead of buying them from third parties— and preference over housing for its own operations, with the option —never the obligation— to accompany each following stage. And one simple truth: **when the anchor company grows, the whole chain grows** — the field that supplies it, the works that build it and the town that inhabits it.'],
       ['02', 'The State', 'Clear rules and coordination. The plan advances under the current framework with private capital; from the State it needs what it does best: unblock, simplify and support without adding hurdles.'],
       ['03', 'Science', 'Testing, standards and certification at every stage of the path: INTI, universities and accredited laboratories. Every claim in the plan is signed by a third party.'],
     ],
