@@ -4,13 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useCallback, type CSSProperties, type ReactNode } from 'react'
 
 /* ============================================================
-   PLAN MANUEL BELGRANO — DECK DE PRESENTACIÓN (universal)
-   Deck navegable a pantalla completa para presentar EN VIVO.
-   Arco: visión (Vaca Muerta → Vaca Verde) → territorio →
-   la planta → la cadena → el plan (5 programas + método por
-   gates) → quiénes → la invitación → horizonte → cierre.
-   Sin destinatario nombrado; sin nombres de empresas energéticas.
-   Material reusado de la biblioteca/masterplan del sitio.
+   PLAN MANUEL BELGRANO — DECK DE PRESENTACIÓN (para un político)
+   Generado con fan-out multi-agente (jul 2026): 3 perspectivas
+   (comunicación política, simplificación radical, territorio) →
+   síntesis → verificación adversarial (claridad de político,
+   precisión vs masterplan, reglas de tono) → fixes aplicados.
+   Arco: apertura Vaca Verde → la deuda del boom → la ventana →
+   la tierra (160.000 ha) → Belgrano 1796 → la planta → el
+   material → la cadena → el carbono (crédito propio, bitcoin
+   2010) → la regla (etapas/gates) → quiénes → la invitación →
+   el horizonte → cierre "Belgrano tenía razón".
+   Sin montos, sin empresas nombradas, sin estado de etapas,
+   sin jerga. Español AR. Navegable a pantalla completa.
    ============================================================ */
 
 const INK = '#071A38'
@@ -42,18 +47,18 @@ function Title({ children, size = 'lg', color = CREAM }: { children: ReactNode; 
   return (
     <motion.h2
       initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.18, ease }}
-      style={{ ...serif, fontSize: size === 'xl' ? 'clamp(3rem,7vw,6.5rem)' : 'clamp(2.1rem,4.6vw,4.4rem)', lineHeight: 1.04, color, margin: 0, maxWidth: '20ch' }}
+      style={{ ...serif, fontSize: size === 'xl' ? 'clamp(3rem,7vw,6.5rem)' : 'clamp(2rem,4.4vw,4.2rem)', lineHeight: 1.05, color, margin: 0, maxWidth: '22ch' }}
     >
       {children}
     </motion.h2>
   )
 }
 
-function Lead({ children, max = '56ch', color = 'rgba(243,241,231,0.62)' }: { children: ReactNode; max?: string; color?: string }) {
+function Lead({ children, max = '58ch', color = 'rgba(243,241,231,0.65)' }: { children: ReactNode; max?: string; color?: string }) {
   return (
     <motion.p
       initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3, ease }}
-      style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.95rem,1.5vw,1.2rem)', lineHeight: 1.6, color, maxWidth: max, marginTop: '1.6rem' }}
+      style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.98rem,1.5vw,1.24rem)', lineHeight: 1.62, color, maxWidth: max, marginTop: '1.6rem' }}
     >
       {children}
     </motion.p>
@@ -86,8 +91,30 @@ function Stat({ n, l, color = GOLD }: { n: string; l: string; color?: string }) 
   return (
     <div>
       <div style={{ ...serif, fontSize: 'clamp(2.2rem,4.5vw,3.6rem)', color, lineHeight: 1 }}>{n}</div>
-      <div style={{ ...sans, fontSize: 'clamp(0.68rem,1vw,0.8rem)', color: 'rgba(243,241,231,0.55)', marginTop: '0.5rem', lineHeight: 1.4, maxWidth: '22ch' }}>{l}</div>
+      <div style={{ ...sans, fontSize: 'clamp(0.68rem,1vw,0.8rem)', color: 'rgba(243,241,231,0.55)', marginTop: '0.5rem', lineHeight: 1.4, maxWidth: '24ch' }}>{l}</div>
     </div>
+  )
+}
+
+function Stats({ items }: { items: readonly (readonly [string, string])[] }) {
+  return (
+    <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45, ease }}
+      style={{ display: 'flex', gap: 'clamp(1.5rem,4vw,3.5rem)', marginTop: '2.4rem', flexWrap: 'wrap' }}>
+      {items.map(([n, l], i) => <Stat key={n + i} n={n} l={l} color={i === 0 ? GOLD : i === 1 ? GREEN : CELESTE} />)}
+    </motion.div>
+  )
+}
+
+function Bullets({ items }: { items: readonly string[] }) {
+  return (
+    <motion.ul initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.42, ease }}
+      style={{ listStyle: 'none', padding: 0, margin: '2rem 0 0', display: 'flex', flexDirection: 'column', gap: '0.85rem', maxWidth: '62ch' }}>
+      {items.map((b) => (
+        <li key={b} style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.92rem,1.35vw,1.1rem)', lineHeight: 1.55, color: 'rgba(243,241,231,0.72)', paddingLeft: '1.4rem', position: 'relative' }}>
+          <span aria-hidden style={{ position: 'absolute', left: 0, top: '0.05em', color: GOLD, ...serif }}>—</span>{b}
+        </li>
+      ))}
+    </motion.ul>
   )
 }
 
@@ -97,299 +124,222 @@ function Stat({ n, l, color = GOLD }: { n: string; l: string; color?: string }) 
 
 const SLIDES: { id: string; tag: string; render: () => ReactNode }[] = [
 
-  /* 01 — Portada */
-  { id: 'cover', tag: 'Portada', render: () => (
-    <Shell image="/hero/relato/etapa1.jpg" overlay="linear-gradient(180deg, rgba(7,26,56,0.7) 0%, rgba(7,26,56,0.82) 100%)">
-      <Kicker>Flora Cáñamo Neuquino · Documento confidencial</Kicker>
-      <Title size="xl">Plan Manuel Belgrano</Title>
-      <Lead max="46ch" color="rgba(243,241,231,0.7)">
-        Podemos convertir Vaca Muerta en Vaca Verde: vivienda, empleo y una
-        industria nueva, desde la misma tierra que hoy le da energía al país.
+  /* 01 — Apertura */
+  { id: 'apertura', tag: 'Apertura', render: () => (
+    <Shell image="/hero/vision-city.jpg" overlay="linear-gradient(180deg, rgba(7,26,56,0.72) 0%, rgba(7,26,56,0.85) 100%)">
+      <Kicker>Plan Manuel Belgrano · Documento confidencial</Kicker>
+      <Title size="xl">Convertir Vaca Muerta en Vaca Verde.</Title>
+      <Lead max="50ch" color="rgba(243,241,231,0.72)">
+        Debajo de Neuquén está la energía que hoy mueve al país. Cuando esa
+        energía crece, crece la provincia entera. Y sobre esa misma tierra hay
+        lugar para una industria que planta, construye y se queda.
       </Lead>
     </Shell>
   )},
 
-  /* 02 — La premisa */
-  { id: 'premisa', tag: 'La premisa', render: () => (
-    <Shell>
-      <Kicker color={CELESTE}>La premisa</Kicker>
-      <Title>Vaca Muerta no es eterna.<br />Lo que construyamos con lo que genera puede serlo.</Title>
-      <Lead>
-        La cuenca da recursos por algunas décadas. La pregunta es qué queda
-        cuando el ciclo madure: qué industria, qué empleo y qué arraigo va a
-        sostener a Neuquén el día después.
-      </Lead>
-    </Shell>
-  )},
-
-  /* 03 — El territorio, hoy */
-  { id: 'territorio', tag: 'El territorio', render: () => (
+  /* 02 — La deuda */
+  { id: 'deuda', tag: 'La deuda', render: () => (
     <Shell bg={DUSK}>
-      <Kicker>Neuquén, hoy</Kicker>
-      <Title size="lg">La riqueza llega más rápido que el techo y el trabajo.</Title>
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45, ease }}
-        style={{ display: 'flex', gap: 'clamp(1.5rem,4vw,3.5rem)', marginTop: '2.6rem', flexWrap: 'wrap' }}>
-        <Stat n="+140%" l="creció Añelo, el epicentro del yacimiento" />
-        <Stat n="~60%" l="de déficit habitacional en la zona" color={GREEN} />
-        <Stat n="Los más caros" l="alquileres del país, a precios petroleros" color={CELESTE} />
-      </motion.div>
-      <Lead max="60ch" color="rgba(243,241,231,0.5)">
-        Y buena parte de la obra la toman empresas de fuera de la provincia,
-        mientras la mano de obra local queda afuera. El potencial existe;
-        falta quién lo ordene y lo ponga en marcha.
+      <Kicker>Lo que el boom no resolvió</Kicker>
+      <Title>El sueldo ya queda acá. El techo y la obra son el próximo paso.</Title>
+      <Lead max="60ch">
+        En la zona de Vaca Muerta faltan casas para los que llegan y para los
+        que ya estaban. Los alquileres están entre los más caros del país, y
+        buena parte de la obra se contrata a empresas de afuera de la
+        provincia. La riqueza pasa por el territorio; falta que se quede.
       </Lead>
+      <Stats items={[['~60%', 'de las familias de la zona no tienen la vivienda que necesitan'], ['+140%', 'creció Añelo en pocos años']]} />
     </Shell>
   )},
 
-  /* 04 — La superficie */
-  { id: 'superficie', tag: 'La superficie', render: () => (
-    <Shell image="/hero/relato/etapa2.jpg" overlay="linear-gradient(90deg, rgba(7,26,56,0.9) 0%, rgba(7,26,56,0.6) 60%, rgba(7,26,56,0.25) 100%)">
-      <Kicker>La segunda riqueza</Kicker>
-      <Title size="lg">Debajo está la energía. En la superficie, la tierra, el agua y el sol.</Title>
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45, ease }}
-        style={{ display: 'flex', gap: 'clamp(1.5rem,4vw,3.5rem)', marginTop: '2.4rem', flexWrap: 'wrap' }}>
-        <Stat n="160.000 ha" l="de potencial estimado para poner bajo riego en Neuquén" color={GREEN} />
-      </motion.div>
-      <Lead max="52ch" color="rgba(243,241,231,0.72)">
-        Esa superficie puede producir el material, el empleo y el arraigo que
-        el subsuelo no da. Falta el cultivo que la convierta en industria.
-      </Lead>
-    </Shell>
-  )},
-
-  /* 05 — La planta */
-  { id: 'planta', tag: 'La planta', render: () => (
+  /* 03 — La ventana */
+  { id: 'ventana', tag: 'La ventana', render: () => (
     <Shell>
-      <Kicker>El cultivo</Kicker>
-      <Title size="lg">Cáñamo industrial: un cultivo agrícola, casi sin desperdicio.</Title>
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45, ease }}
-        style={{ display: 'flex', gap: 'clamp(1.5rem,4vw,3.5rem)', marginTop: '2.4rem', flexWrap: 'wrap' }}>
-        <Stat n="< 0,3%" l="de THC · regulado por la Ley 27.669 (Ministerio de Economía)" />
-        <Stat n="Ciclo corto" l="crece rápido, en suelo árido y con poca agua" color={GREEN} />
-        <Stat n=">90%" l="de la planta se aprovecha: material + biochar" color={CELESTE} />
-      </motion.div>
-      <Lead max="58ch" color="rgba(243,241,231,0.5)">
-        De la misma hectárea salen el material de construcción (hempcrete) y el
-        mejorador de suelos (biochar). Belgrano ya lo había escrito en 1796.
+      <Kicker color={CELESTE}>La ventana está abierta</Kicker>
+      <Title>Vaca Muerta no es eterna.<br />Lo que construyamos con lo que genera puede serlo.</Title>
+      <Lead max="58ch">
+        La provincia se prepara para recibir un millón y medio de personas en
+        treinta años. Van a necesitar dónde dormir y, sobre todo, una economía
+        que las sostenga. Ese futuro se construye ahora, con lo que la energía
+        genera hoy.
+      </Lead>
+      <Stats items={[['1,5 M', 'de personas proyectadas en 30 años']]} />
+    </Shell>
+  )},
+
+  /* 04 — La tierra */
+  { id: 'tierra', tag: 'La tierra', render: () => (
+    <Shell bg={DUSK}>
+      <Kicker>El otro yacimiento</Kicker>
+      <Title>160.000 hectáreas esperan el agua.</Title>
+      <Lead max="56ch">
+        Arriba de la roca hay otro recurso dormido: tierra, sol y ríos que
+        bajan de la cordillera. Neuquén tiene 160.000 hectáreas con potencial
+        de riego. Lo que falta es un cultivo que justifique abrir la compuerta.
+      </Lead>
+      <Stats items={[['160.000', 'hectáreas de potencial de riego en Neuquén']]} />
+    </Shell>
+  )},
+
+  /* 05 — La historia */
+  { id: 'historia', tag: 'La historia', render: () => (
+    <Shell image="/hero/relato/etapa1.jpg" overlay="linear-gradient(90deg, rgba(7,26,56,0.9) 0%, rgba(7,26,56,0.65) 60%, rgba(7,26,56,0.35) 100%)">
+      <Kicker>Una idea de 1796</Kicker>
+      <Title>Belgrano propuso esta industria hace 230 años.</Title>
+      <Lead max="54ch" color="rgba(243,241,231,0.75)">
+        En 1796, desde el Consulado, Manuel Belgrano propuso cultivar cáñamo:
+        producir y agregar valor, en lugar de solo extraer. Una prohibición
+        del siglo veinte lo frenó de un plumazo — una decisión de escritorio
+        que hoy ya está corregida: volvió a ser legal. La industria está
+        esperando a sus fundadores.
       </Lead>
     </Shell>
   )},
 
-  /* 06 — La cadena */
-  { id: 'cadena', tag: 'La cadena', render: () => {
-    const cadena = [
-      { img: '/cadena/02-cultivo.jpg', t: 'Cultivo' },
-      { img: '/cadena/03-cosecha.jpg', t: 'Biomasa' },
-      { img: '/cadena/06-material.jpg', t: 'Material' },
-      { img: '/cadena/07-construccion.jpg', t: 'Construcción' },
-      { img: '/cadena/08-vivienda.jpg', t: 'Vivienda' },
-    ]
-    return (
-      <Shell bg={DUSK} style={{ justifyContent: 'center' }}>
-        <Kicker>De la semilla a la llave</Kicker>
-        <Title size="lg">Una sola cadena de valor. Todo lo demás es consecuencia.</Title>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35, ease }}
-          style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.4rem,1.2vw,1rem)', marginTop: '2.6rem', flexWrap: 'wrap' }}>
-          {cadena.map((c, i) => (
-            <div key={c.t} style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.4rem,1.2vw,1rem)' }}>
-              <div style={{ textAlign: 'center', width: 'clamp(88px,12vw,140px)' }}>
-                <div style={{ width: '100%', aspectRatio: '1', borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(242,181,68,0.25)' }}>
-                  <img src={c.img} alt={c.t} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <div style={{ ...sans, fontSize: 'clamp(0.62rem,0.95vw,0.78rem)', color: CREAM, marginTop: '0.6rem', lineHeight: 1.25 }}>{c.t}</div>
-              </div>
-              {i < cadena.length - 1 && <span style={{ color: GOLD, fontSize: '1.1rem', opacity: 0.6 }}>→</span>}
-            </div>
-          ))}
-        </motion.div>
-        <Lead max="62ch" color="rgba(243,241,231,0.5)">
-          La vivienda tracciona la producción; el empleo, la industria y el
-          carbono certificable se desprenden de la misma cadena.
-        </Lead>
-      </Shell>
-    )
-  }},
+  /* 06 — La planta */
+  { id: 'planta', tag: 'La planta', render: () => (
+    <Shell image="/hero/relato/etapa2.jpg" overlay="linear-gradient(90deg, rgba(7,26,56,0.9) 0%, rgba(7,26,56,0.6) 60%, rgba(7,26,56,0.28) 100%)">
+      <Kicker>Hecha para esta tierra</Kicker>
+      <Title>Una planta que crece en tierra árida y se convierte en casas.</Title>
+      <Lead max="54ch" color="rgba(243,241,231,0.75)">
+        El cáñamo industrial madura en pocos meses, pide poca agua y se adapta
+        a los suelos duros de la meseta. Del tallo sale un material para
+        construir; del resto, un mejorador que le devuelve vida al suelo y
+        rinde la próxima cosecha. La planta se aprovecha entera.
+      </Lead>
+    </Shell>
+  )},
 
   /* 07 — El material */
   { id: 'material', tag: 'El material', render: () => (
     <Shell image="/cadena/06-material.jpg" overlay="linear-gradient(90deg, rgba(7,26,56,0.94) 0%, rgba(7,26,56,0.7) 55%, rgba(7,26,56,0.35) 100%)">
-      <Kicker>Hempcrete</Kicker>
-      <Title size="lg">Aislante, incombustible y probado en más de 50 países.</Title>
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45, ease }}
-        style={{ display: 'flex', gap: 'clamp(1.5rem,4vw,3.5rem)', marginTop: '2.4rem', flexWrap: 'wrap' }}>
-        <Stat n="0,06–0,12" l="W/mK — el desempeño térmico que pide el frío patagónico" color={GREEN} />
-        <Stat n="Clase A" l="al fuego: material incombustible" />
-        <Stat n="+500 años" l="de vida útil · norma europea EN 16101" color={CELESTE} />
-      </motion.div>
-      <Lead max="52ch" color="rgba(243,241,231,0.72)">
-        Y con un diferencial único: el carbono que capturó el cultivo queda
-        almacenado en la pared, durante toda la vida de la construcción.
+      <Kicker>La pared que abriga</Kicker>
+      <Title>Bloques que abrigan, resisten el fuego y guardan carbono.</Title>
+      <Lead max="52ch" color="rgba(243,241,231,0.75)">
+        La receta es simple: tallo, cal y agua. Una sola capa aísla del frío
+        patagónico, resiste el fuego y deja respirar la casa. Y el carbono que
+        capturó el cultivo queda guardado en la pared por más de quinientos
+        años.
       </Lead>
+      <Stats items={[['+50', 'países ya construyen con este material'], ['+500', 'años queda el carbono en la pared']]} />
     </Shell>
   )},
 
-  /* 08 — Los cinco programas */
-  { id: 'programas', tag: 'El plan', render: () => {
-    const progs = [
-      { l: 'A', t: 'Ciencia y validación', d: 'Evidencia técnica, ambiental y económica.' },
-      { l: 'B', t: 'Desarrollo industrial', d: 'Genéticas, biomasa, ladrillos y bloques.' },
-      { l: 'C', t: 'Vivienda y hábitat', d: 'Vivienda demostrativa, social y municipal.' },
-      { l: 'D', t: 'Empleo y capital humano', d: 'Capacitación, certificación e inserción.' },
-      { l: 'E', t: 'Mercado y financiamiento', d: 'Carbono, modelos de negocio, escala.' },
-    ]
-    return (
-      <Shell>
-        <Kicker>El plan</Kicker>
-        <Title size="lg">Cinco programas, una plataforma.</Title>
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: '0.9rem', marginTop: '2.4rem', maxWidth: 1000 }}>
-          {progs.map((p) => (
-            <div key={p.l} style={{ background: 'rgba(243,241,231,0.03)', border: '1px solid rgba(242,181,68,0.25)', borderRadius: 14, padding: '1.3rem' }}>
-              <div style={{ ...serif, color: GOLD, fontSize: '1.7rem', marginBottom: '0.5rem' }}>{p.l}</div>
-              <div style={{ ...sans, fontWeight: 500, color: CREAM, fontSize: '0.94rem', marginBottom: '0.45rem', lineHeight: 1.3 }}>{p.t}</div>
-              <div style={{ ...sans, fontWeight: 300, color: 'rgba(243,241,231,0.55)', fontSize: '0.8rem', lineHeight: 1.5 }}>{p.d}</div>
-            </div>
-          ))}
-        </motion.div>
-        <Lead max="60ch" color="rgba(243,241,231,0.5)">
-          Cada programa genera evidencia, producto o capacidad que los demás
-          usan. Juntos forman una plataforma de desarrollo regenerativo.
-        </Lead>
-      </Shell>
-    )
-  }},
-
-  /* 09 — El método */
-  { id: 'metodo', tag: 'El método', render: () => {
-    const etapas = ['Formulación', 'Viabilidad', 'Piloto', 'Demostración', 'Escalamiento', 'Plataforma']
-    return (
-      <Shell bg={DUSK}>
-        <Kicker color={CELESTE}>El método</Kicker>
-        <Title size="lg">El capital entra por etapas y solo avanza con evidencia.</Title>
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease }}
-          style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.4rem,1.1vw,0.9rem)', marginTop: '2.6rem', flexWrap: 'wrap' }}>
-          {etapas.map((p, i) => (
-            <div key={p} style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.4rem,1.1vw,0.9rem)' }}>
-              <span style={{ ...sans, fontSize: 'clamp(0.78rem,1.3vw,1.05rem)', fontWeight: 500, color: i === etapas.length - 1 ? GREEN : CREAM, border: `1px solid ${i === etapas.length - 1 ? GREEN : 'rgba(243,241,231,0.2)'}`, borderRadius: 999, padding: '0.5rem 1.1rem', whiteSpace: 'nowrap' }}>
-                <span style={{ ...serif, color: GOLD, marginRight: '0.45rem' }}>{i}</span>{p}
-              </span>
-              {i < etapas.length - 1 && <span style={{ ...sans, color: GOLD, opacity: 0.7, fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase' }}>gate →</span>}
-            </div>
-          ))}
-        </motion.div>
-        <Lead max="62ch">
-          Seis etapas de madurez, evaluadas en paralelo en cinco dimensiones:
-          técnica, regulatoria, comercial, financiera e institucional. Entre
-          etapa y etapa hay un gate: nadie invierte en la siguiente sin la
-          evidencia de la anterior.
-        </Lead>
-      </Shell>
-    )
-  }},
-
-  /* 10 — Quiénes */
-  { id: 'quienes', tag: 'Quiénes', render: () => {
-    const consorcio = [
-      { q: 'Flora Cáñamo Neuquino', a: 'Integra', n: 'Diseño del plan, coordinación del consorcio y vehículo operativo.' },
-      { q: 'Fundación GEN', a: 'Cultiva', n: 'Licencia agrícola, maquinaria y el primer antecedente de cáñamo industrial de Neuquén.' },
-      { q: 'EcoGaia', a: 'Certifica', n: 'Créditos de carbono bajo Verra / Gold Standard; experiencia en cáñamo en Canadá.' },
-      { q: 'INTI · Red Protierra', a: 'Valida y transfiere', n: 'Ensayos y certificación del material; manuales y formación de aplicadores.' },
-    ]
-    return (
-      <Shell>
-        <Kicker>Quiénes lo hacen</Kicker>
-        <Title size="lg">Un consorcio con las piezas completas.</Title>
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '1rem', marginTop: '2.4rem', maxWidth: 1000 }}>
-          {consorcio.map((c) => (
-            <div key={c.q} style={{ background: DUSK, border: '1px solid rgba(116,172,223,0.25)', borderRadius: 14, padding: '1.4rem' }}>
-              <div style={{ ...sans, fontSize: '0.64rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(243,241,231,0.45)', marginBottom: '0.6rem' }}>{c.a}</div>
-              <div style={{ ...serif, color: GOLD, fontSize: '1.2rem', lineHeight: 1.15, marginBottom: '0.6rem' }}>{c.q}</div>
-              <div style={{ ...sans, fontWeight: 300, color: 'rgba(243,241,231,0.55)', fontSize: '0.82rem', lineHeight: 1.5 }}>{c.n}</div>
-            </div>
-          ))}
-        </motion.div>
-        <Lead max="62ch" color="rgba(243,241,231,0.5)">
-          Fundador: Guillermo Sandoval — operación real de cultivo y producción
-          en Neuquén desde 2023, al frente de Flora Cáñamo Neuquino SRL.
-        </Lead>
-      </Shell>
-    )
-  }},
-
-  /* 11 — La invitación */
-  { id: 'invitacion', tag: 'La invitación', render: () => {
-    const asientos = [
-      { n: '01', t: 'La industria', d: 'Ancla la demanda: compromisos de compra sobre el carbono certificado y la vivienda para sus operaciones. Por etapas, contra hitos.' },
-      { n: '02', t: 'El Estado', d: 'Reglas claras y articulación: destrabar, simplificar y acompañar sin poner trabas. Sin subsidios ni organismos nuevos.' },
-      { n: '03', t: 'La ciencia', d: 'Validación independiente: ensayos, normas y certificación. Toda afirmación del plan la firma un tercero.' },
-    ]
-    return (
-      <Shell bg={DUSK}>
-        <Kicker>La invitación</Kicker>
-        <Title size="lg">Tres asientos en la mesa fundadora.</Title>
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(230px,1fr))', gap: '1rem', marginTop: '2.4rem', maxWidth: 960 }}>
-          {asientos.map((c) => (
-            <div key={c.n} style={{ background: 'rgba(243,241,231,0.03)', border: '1px solid rgba(242,181,68,0.25)', borderRadius: 14, padding: '1.5rem' }}>
-              <div style={{ ...serif, color: GOLD, fontSize: '1.6rem', marginBottom: '0.6rem' }}>{c.n}</div>
-              <div style={{ ...sans, fontWeight: 500, color: CREAM, fontSize: '0.98rem', marginBottom: '0.6rem', lineHeight: 1.3 }}>{c.t}</div>
-              <div style={{ ...sans, fontWeight: 300, color: 'rgba(243,241,231,0.55)', fontSize: '0.84rem', lineHeight: 1.55 }}>{c.d}</div>
-            </div>
-          ))}
-        </motion.div>
-        <Lead max="60ch" color="rgba(243,241,231,0.5)">
-          El proyecto avanza con el marco legal vigente y capital privado.
-          Los fundadores quedan en la historia de la industria — y con
-          preferencia sobre lo que produce.
-        </Lead>
-      </Shell>
-    )
-  }},
-
-  /* 12 — El horizonte */
-  { id: 'horizonte', tag: 'El horizonte', render: () => (
-    <Shell image="/hero/vision-city.jpg" overlay="linear-gradient(180deg, rgba(7,26,56,0.6) 0%, rgba(7,26,56,0.85) 100%)">
-      <Kicker>La oportunidad ampliada</Kicker>
-      <Title size="lg">Una industria interrumpida hace 230 años.</Title>
-      <Lead max="56ch" color="rgba(243,241,231,0.72)">
-        Cultivar cáñamo a escala reactiva una cadena de la que se desprenden
-        alimentos, textiles, bioplásticos, papel y cosmética: valor agregado
-        en origen, empleo de calidad y empresas regionales — de punta a punta
-        del país.
+  /* 08 — La cadena */
+  { id: 'cadena', tag: 'La cadena', render: () => (
+    <Shell bg={DUSK}>
+      <Kicker>De la semilla a la llave</Kicker>
+      <Title>Cada eslabón ocurre acá — y cada eslabón es trabajo local.</Title>
+      <Lead max="58ch">
+        Una sola planta abre una cadena completa dentro de la provincia:
+        cultivo, cosecha, material, obra y vivienda. Valor agregado en origen,
+        con materia prima del campo de al lado y manos formadas acá. La obra
+        se hace acá.
       </Lead>
+      <Bullets items={[
+        'Vivienda accesible y abrigada, allí donde más falta',
+        'Empleo técnico y local en cada eslabón, del campo a la llave',
+        'Una industria que enciende otras cadenas: alimentos, textiles, bioplásticos, papel',
+      ]} />
     </Shell>
   )},
 
-  /* 13 — Por qué ahora */
-  { id: 'ahora', tag: 'Por qué ahora', render: () => (
+  /* 09 — El carbono */
+  { id: 'carbono', tag: 'El carbono', render: () => (
     <Shell>
-      <Kicker color={CELESTE}>Por qué ahora</Kicker>
-      <Title size="lg">Todo lo que hacía falta ya está sobre la mesa.</Title>
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45, ease }}
-        style={{ display: 'flex', gap: 'clamp(1.5rem,4vw,3.5rem)', marginTop: '2.6rem', flexWrap: 'wrap' }}>
-        <Stat n="Marco legal" l="vigente y nacional: Ley 27.669 y Decreto 405/2023" />
-        <Stat n="Demanda" l="urgente de vivienda y empleo en el corazón de Vaca Muerta" color={GREEN} />
-        <Stat n="Consorcio" l="con licencias, tierra, tecnología y certificación" color={CELESTE} />
-      </motion.div>
-      <Lead max="58ch" color="rgba(243,241,231,0.5)">
-        Nadie construyó todavía con cáñamo en Argentina. La posición de
-        pionero se toma una sola vez.
+      <Kicker>Un activo propio</Kicker>
+      <Title>Generar créditos de carbono propios, en lugar de comprarlos.</Title>
+      <Lead max="60ch">
+        Cada pared y cada suelo mejorado sacan carbono del aire y lo guardan
+        por siglos. Eso genera créditos de carbono: certificados que las
+        empresas del mundo compran para compensar lo que contaminan. Acá
+        podemos generarlos en lugar de comprarlos — y solo puede hacerlo quien
+        tiene la cadena entera. Entrar temprano es como minar bitcoin en 2010:
+        el que llega primero fija su costo de entrada.
+      </Lead>
+      <Stats items={[['+500', 'años guardado en la pared'], ['+1.000', 'años guardado en el suelo']]} />
+    </Shell>
+  )},
+
+  /* 10 — La regla */
+  { id: 'regla', tag: 'La regla', render: () => (
+    <Shell bg={DUSK}>
+      <Kicker color={CELESTE}>Cero saltos al vacío</Kicker>
+      <Title>El riesgo no se asume: se elimina etapa por etapa.</Title>
+      <Lead max="56ch">
+        Seis etapas, cada una acotada y verificable. Como en una casa: nadie
+        techa antes de los cimientos. El capital entra por etapas y solo
+        avanza con evidencia.
+      </Lead>
+      <Bullets items={[
+        'Cada etapa responde una pregunta antes de invertir en la siguiente',
+        'Cada afirmación la firma un tercero: ensayos, normas, certificaciones',
+        'El capital de una etapa nunca compromete el de la próxima',
+      ]} />
+    </Shell>
+  )},
+
+  /* 11 — Quiénes */
+  { id: 'quienes', tag: 'Quiénes', render: () => (
+    <Shell>
+      <Kicker>Las piezas completas</Kicker>
+      <Title>Todas las piezas en la mesa. El que hace y el que controla, siempre distintos.</Title>
+      <Lead max="56ch">
+        Cada pieza del plan está en manos de quien sabe hacerla.
+      </Lead>
+      <Bullets items={[
+        'El campo: una fundación con licencia vigente para cultivar cáñamo y el primer cultivo industrial ya hecho en Neuquén',
+        'La fábrica: la empresa que diseñó el plan e integra la cadena',
+        'El control: el material lo ensaya un laboratorio técnico del Estado y el carbono lo mide una certificadora independiente — cada afirmación la firma un tercero',
+        'El saber: una red que forma constructores y tecnología canadiense de referencia, con obras ya construidas',
+      ]} />
+    </Shell>
+  )},
+
+  /* 12 — La invitación */
+  { id: 'invitacion', tag: 'La invitación', render: () => (
+    <Shell bg={DUSK}>
+      <Kicker>Tres asientos fundadores</Kicker>
+      <Title>Tres asientos en la mesa fundadora.</Title>
+      <Lead max="58ch">
+        El plan avanza con capital privado y reglas claras: sin subsidios y
+        sin organismos nuevos. Cada socio entra por la etapa que tiene
+        adelante, con compromisos acotados y resultados verificables.
+      </Lead>
+      <Bullets items={[
+        'La industria: financia etapas cortas y queda como socia fundadora — cuando la empresa ancla crece, crece toda la cadena',
+        'El Estado: destrabar y simplificar. Reglas claras, nada más',
+        'La ciencia: ensayos y certificación en cada paso del camino',
+      ]} />
+    </Shell>
+  )},
+
+  /* 13 — El horizonte */
+  { id: 'horizonte', tag: 'El horizonte', render: () => (
+    <Shell image="/hero/relato/etapa4.jpg" overlay="linear-gradient(180deg, rgba(7,26,56,0.6) 0%, rgba(7,26,56,0.85) 100%)">
+      <Kicker>Ciudades de cáñamo</Kicker>
+      <Title>Trabajo, techo y futuro, desde la tierra.</Title>
+      <Lead max="54ch" color="rgba(243,241,231,0.75)">
+        El día que el pozo empiece a dar menos, algo va a quedar en pie: la
+        tierra bajo riego, las casas construidas, la gente formada y una
+        industria que se replica en cualquier provincia con tierra, agua y
+        sol.
       </Lead>
     </Shell>
   )},
 
   /* 14 — Cierre */
   { id: 'cierre', tag: 'Cierre', render: () => (
-    <Shell image="/hero/relato/etapa4.jpg" overlay="linear-gradient(180deg, rgba(7,26,56,0.55) 0%, rgba(7,26,56,0.82) 100%)" align="center" style={{ alignItems: 'center', textAlign: 'center' }}>
-      <Kicker>Vaca Muerta → Vaca Verde</Kicker>
+    <Shell image="/cadena/08-vivienda.jpg" overlay="linear-gradient(180deg, rgba(7,26,56,0.6) 0%, rgba(7,26,56,0.85) 100%)" align="center" style={{ alignItems: 'center', textAlign: 'center' }}>
+      <Kicker>230 años después</Kicker>
       <motion.h2 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease }}
-        style={{ ...serif, fontSize: 'clamp(2.4rem,5.5vw,5rem)', lineHeight: 1.06, color: CREAM, margin: 0, maxWidth: '18ch' }}>
+        style={{ ...serif, fontSize: 'clamp(2.6rem,6vw,5.5rem)', lineHeight: 1.04, color: CREAM, margin: 0, maxWidth: '16ch' }}>
         Belgrano tenía razón.
       </motion.h2>
-      <Lead max="50ch" color="rgba(243,241,231,0.72)">
-        Doscientos treinta años después, su sueño vuelve a ser el plan más
-        moderno que tenemos: trabajo, techo y futuro, desde la tierra.
+      <Lead max="50ch" color="rgba(243,241,231,0.75)">
+        Su idea de 1796 vuelve a ser el plan más moderno que tenemos: riqueza
+        que se queda, que regenera y que da orgullo. Vaca Muerta le dio
+        energía al país. Vaca Verde le deja raíces.
       </Lead>
     </Shell>
   )},
