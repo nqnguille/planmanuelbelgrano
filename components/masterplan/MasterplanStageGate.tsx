@@ -133,11 +133,13 @@ const TXT = {
     v_ciclo_rama1_chip: '+500 años en la pared',
     v_ciclo_rama2: [['Al suelo', 'como biochar']] as readonly (readonly [string, string])[],
     v_ciclo_rama2_chip: '+1.000 años en el suelo',
-    v_ciclo_caption: 'Dos destinos, un mismo resultado: el carbono sale del aire y no vuelve. Y el suelo mejorado produce la próxima cosecha.',
+    v_ciclo_caption: 'El círculo completo: el carbono que la cuenca emite vuelve a la cuenca — guardado en paredes y suelos, con el campo más fértil que antes.',
     v_ciclo_credito:
-      'Ese viaje tiene un premio: cada tonelada guardada es un **crédito de carbono** — certificados que las empresas del mundo compran para compensar lo que contaminan. Esta cadena permite **generarlos acá**, con respaldo físico y trazables de la semilla al muro.',
+      'Ese viaje tiene un premio: cada tonelada guardada es un **crédito de carbono** — certificados que las empresas del mundo compran para compensar lo que emiten. Esta cadena permite generarlos acá: **la empresa que emite en la cuenca puede generar sus créditos en la cuenca**, con respaldo físico y trazables de la semilla al muro.',
     v_viaje: [
-      { img: '/viaje/01-aire.jpg', title: 'El aire', body: 'En el aire sobra el carbono que abajo hace falta. El viaje empieza en la estepa: tierra disponible, viento, y un recurso invisible esperando ser capturado.' },
+      { img: '/viaje/00-cuenca.jpg', title: 'La cuenca', body: 'El viaje empieza donde trabaja la energía que mueve al país y sostiene a la provincia. Como toda energía del mundo, deja una estela: carbono.' },
+      { img: '/viaje/00-emision.jpg', title: 'La emisión', body: 'De cada planta y cada pozo sube carbono al aire. Es la física de toda la energía, en cualquier país. La diferencia la hace lo que pasa después.' },
+      { img: '/viaje/01-aire.jpg', title: 'El aire', body: 'Ese carbono queda arriba — sobre la misma estepa que tiene la tierra, el agua y el sol para recuperarlo. En el aire sobra lo que abajo hace falta.' },
       { img: '/viaje/02-cultivo.jpg', title: 'El cultivo', body: 'La fotosíntesis lo captura mientras la planta crece — en meses, no en décadas. Cada hectárea sembrada trabaja a cielo abierto, absorbiendo carbono todos los días.' },
       { img: '/viaje/03-cosecha.jpg', title: 'La cosecha', body: 'La planta se cosecha entera. El tallo y el residuo ya tienen destino: acá el viaje se abre en dos caminos.' },
       { img: '/viaje/04-canamiza.jpg', title: 'La cañamiza', body: 'El tallo se abre y entrega la cañamiza —su corazón leñoso— y la fibra. La materia prima del material que construye.' },
@@ -422,11 +424,13 @@ const TXT = {
     v_ciclo_rama1_chip: '500+ years in the wall',
     v_ciclo_rama2: [['To the soil', 'as biochar']] as readonly (readonly [string, string])[],
     v_ciclo_rama2_chip: '1,000+ years in the soil',
-    v_ciclo_caption: 'Two destinations, one result: the carbon leaves the air and does not come back. And the improved soil grows the next harvest.',
+    v_ciclo_caption: 'The full circle: the carbon the basin emits returns to the basin — stored in walls and soils, with the field more fertile than before.',
     v_ciclo_credito:
-      'That journey has a prize: every stored tonne is a **carbon credit** — certificates that companies around the world buy to offset what they emit. This chain makes it possible to **generate them here**, physically backed and traceable from seed to wall.',
+      'That journey has a prize: every stored tonne is a **carbon credit** — certificates that companies around the world buy to offset what they emit. This chain makes it possible to generate them here: **the company that emits in the basin can generate its credits in the basin**, physically backed and traceable from seed to wall.',
     v_viaje: [
-      { img: '/viaje/01-aire.jpg', title: 'The air', body: 'The air holds the carbon that is needed below. The journey begins on the steppe: available land, wind, and an invisible resource waiting to be captured.' },
+      { img: '/viaje/00-cuenca.jpg', title: 'The basin', body: 'The journey begins where the energy that powers the country and sustains the province is at work. Like all energy in the world, it leaves a trail: carbon.' },
+      { img: '/viaje/00-emision.jpg', title: 'The emission', body: 'From every plant and every well, carbon rises into the air. It is the physics of all energy, in every country. The difference is made by what happens next.' },
+      { img: '/viaje/01-aire.jpg', title: 'The air', body: 'That carbon stays above — over the very steppe that has the land, the water and the sun to recover it. The air holds in excess what is needed below.' },
       { img: '/viaje/02-cultivo.jpg', title: 'The crop', body: 'Photosynthesis captures it as the plant grows — in months, not decades. Every planted hectare works in the open air, absorbing carbon every day.' },
       { img: '/viaje/03-cosecha.jpg', title: 'The harvest', body: 'The whole plant is harvested. The stalk and the residue already have a destination: here the journey splits in two.' },
       { img: '/viaje/04-canamiza.jpg', title: 'The hurd', body: 'The stalk opens and yields the hurd —its woody core— and the fiber. The raw material of the material that builds.' },
