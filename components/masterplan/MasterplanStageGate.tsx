@@ -85,7 +85,7 @@ const TXT = {
     v_hemp_body:
       'La receta es simple: la parte leñosa del tallo, cal y agua. Prensada en bloques, la mezcla se endurece absorbiendo CO₂ del aire — y **el carbono del cultivo queda guardado dentro de la pared**. Una sola capa aísla del frío patagónico, resiste el fuego y deja respirar la casa.',
     v_huella_title: '¿La pared fija carbono, o lo emite?',
-    v_wall_caption: 'El muro de hempcrete, en corte: una sola capa resuelve estructura, aislación y regulación de humedad.',
+    v_wall_caption: 'La casa de hempcrete, en corte: los bloques a la vista, el carbono guardado en las paredes y el detalle del muro en la lupa.',
     v_wall_ext: 'Exterior',
     v_wall_int: 'Interior',
     v_wall_l1: 'Revoque de cal',
@@ -362,7 +362,7 @@ const TXT = {
     v_hemp_body:
       'The recipe is simple: the woody part of the stalk, lime and water. Pressed into blocks, the mix hardens by absorbing CO₂ from the air — and **the crop\'s carbon stays stored inside the wall**. A single layer insulates from the Patagonian cold, resists fire and lets the house breathe.',
     v_huella_title: 'Does the wall lock carbon, or emit it?',
-    v_wall_caption: 'The hempcrete wall, in section: a single layer solves structure, insulation and humidity regulation.',
+    v_wall_caption: 'The hempcrete house, in cutaway: blocks in sight, carbon stored in the walls and the wall detail under the lens.',
     v_wall_ext: 'Outside',
     v_wall_int: 'Inside',
     v_wall_l1: 'Lime render',
@@ -927,60 +927,141 @@ function StageChapter({ t, idx, bg }: { t: T; idx: number; bg: string }) {
    SECCIONES
    ============================================================ */
 
-/* ---------- diagrama: el muro de hempcrete, en corte (SVG propio) ---------- */
+/* ---------- diagrama: la casa de hempcrete, en corte isométrico ---------- */
 
 function WallSection({ t }: { t: T }) {
   const sansF = 'var(--font-hanken), "Plus Jakarta Sans", sans-serif'
+
+  /* geometría isométrica: F esquina frontal inferior; ejes iso
+     derecha (0.866,-0.5), izquierda (-0.866,-0.5), vertical (0,-1) */
+  const F: [number, number] = [470, 470]
+  const iso = (o: [number, number], dl: number, dr: number, dv: number): [number, number] =>
+    [o[0] - 0.866 * dl + 0.866 * dr, o[1] - 0.5 * dl - 0.5 * dr - dv]
+  const pts = (...ps: [number, number][]) => ps.map((p) => p.join(',')).join(' ')
+
+  const H = 120 // altura del muro
+  const B = 230 // largo del frente (eje izquierdo)
+  const A = 190 // profundidad lateral (eje derecho)
+
+  const L = iso(F, B, 0, 0)          // esquina izquierda inferior
+  const D = iso(F, 0, A, 0)          // esquina derecha inferior
+  const Ft = iso(F, 0, 0, H)
+  const Lt = iso(F, B, 0, H)
+  const Dt = iso(F, 0, A, H)
+  const R1 = iso(F, 0, A / 2, H + 62) // cumbrera frontal
+  const R2 = iso(F, B, A / 2, H + 62) // cumbrera trasera
+
+  // mitad izquierda del frente = pared "pelada" (bloques a la vista)
+  const Mb = iso(F, B / 2, 0, 0)
+  const Mt = iso(F, B / 2, 0, H)
+
+  // juntas de bloques: 5 bandas de 24, líneas horizontales + verticales trabadas
+  const rowLines = [1, 2, 3, 4].map((k) => [iso(F, B / 2, 0, 24 * k), iso(F, B, 0, 24 * k)])
+  const studs: [number, number][][] = []
+  for (let j = 0; j < 5; j++) {
+    const fr = j % 2 === 0 ? [0.5] : [0.28, 0.72]
+    fr.forEach((f) => {
+      const base = iso(F, B / 2 + (B / 2) * f, 0, 24 * j)
+      studs.push([base, [base[0], base[1] - 24]])
+    })
+  }
+
+  // ventana (cara frontal revocada) y puerta (cara lateral)
+  const W0 = iso(F, 42, 0, 76)
+  const win = [W0, iso(F, 42 + 40, 0, 76), iso(F, 42 + 40, 0, 76 + 32), iso(F, 42, 0, 76 + 32)] as [number, number][]
+  const P0 = iso(F, 0, 44, 0)
+  const door = [P0, iso(F, 0, 44 + 34, 0), iso(F, 0, 44 + 34, 58), iso(F, 0, 44, 58)] as [number, number][]
+
+  // chimenea sobre el faldón
+  const C0 = iso(F, 62, A / 2 - 8, H + 46)
+  const chim = {
+    front: [C0, iso(F, 62 + 18, A / 2 - 8, H + 46), iso(F, 62 + 18, A / 2 - 8, H + 82), iso(F, 62, A / 2 - 8, H + 82)] as [number, number][],
+    side: [C0, iso(F, 62, A / 2 - 8 + 14, H + 46), iso(F, 62, A / 2 - 8 + 14, H + 82), iso(F, 62, A / 2 - 8, H + 82)] as [number, number][],
+    top: [iso(F, 62, A / 2 - 8, H + 82), iso(F, 62 + 18, A / 2 - 8, H + 82), iso(F, 62 + 18, A / 2 - 8 + 14, H + 82), iso(F, 62, A / 2 - 8 + 14, H + 82)] as [number, number][],
+  }
+  const smokeAt = iso(F, 71, A / 2 - 1, H + 86)
+
   return (
     <figure style={{ margin: 0 }}>
       <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: 'clamp(0.75rem, 2vw, 1.5rem)', overflowX: 'auto' }}>
-        <svg viewBox="0 0 760 300" role="img" aria-label={t.v_wall_caption} style={{ width: '100%', minWidth: '560px', display: 'block' }}>
+        <svg viewBox="0 0 920 560" role="img" aria-label={t.v_wall_caption} style={{ width: '100%', minWidth: '640px', display: 'block' }}>
           <defs>
             <pattern id="hurd" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
               <rect width="14" height="14" fill="#E4D7B4" />
               <rect x="2" y="5" width="7" height="2.4" rx="1.2" fill="#C9B583" />
               <rect x="8" y="10" width="5" height="2" rx="1" fill="#D2C093" />
             </pattern>
-            <marker id="arrowInk" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
-              <path d="M0,0 L8,4 L0,8 z" fill="rgba(7,26,56,0.55)" />
-            </marker>
+            <radialGradient id="warmGlow">
+              <stop offset="0%" stopColor="rgba(242,181,68,0.85)" />
+              <stop offset="60%" stopColor="rgba(242,181,68,0.28)" />
+              <stop offset="100%" stopColor="rgba(242,181,68,0)" />
+            </radialGradient>
+            <clipPath id="lupaClip"><circle cx="800" cy="420" r="76" /></clipPath>
           </defs>
 
-          {/* capas del muro */}
-          <rect x="160" y="70" width="26" height="170" fill="#EFE9DA" stroke="rgba(7,26,56,0.35)" strokeWidth="1" />
-          <rect x="186" y="70" width="360" height="170" fill="url(#hurd)" stroke="rgba(7,26,56,0.45)" strokeWidth="1.2" />
-          <rect x="546" y="70" width="26" height="170" fill="#F6F2E7" stroke="rgba(7,26,56,0.35)" strokeWidth="1" />
+          {/* sombra del terreno */}
+          <ellipse cx="455" cy="480" rx="240" ry="26" fill="rgba(7,26,56,0.06)" />
 
-          {/* anotación central del carbono */}
-          <rect x="242" y="128" width="248" height="52" rx="4" fill="rgba(250,248,241,0.94)" stroke="rgba(47,143,58,0.5)" strokeWidth="1.2" />
-          <text x="366" y="150" textAnchor="middle" fontFamily={sansF} fontSize="13.5" fontWeight="600" fill={INK}>{t.v_wall_note1}</text>
-          <text x="366" y="168" textAnchor="middle" fontFamily={sansF} fontSize="11.5" fontWeight="400" fill="rgba(7,26,56,0.62)">{t.v_wall_note2}</text>
+          {/* frío afuera (izquierda) */}
+          <text x="112" y="232" textAnchor="middle" fontFamily={sansF} fontSize="11.5" fontWeight="700" fill={CELESTE}>{t.v_wall_ext}</text>
+          <text x="112" y="249" textAnchor="middle" fontFamily={sansF} fontSize="10" fill="rgba(7,26,56,0.55)">{t.v_wall_frio}</text>
+          {[272, 302, 332].map((y, i) => (
+            <path key={y} d={`M ${58 + i * 8} ${y} q 22 -11 44 0 q 22 11 44 0`} fill="none" stroke={CELESTE} strokeWidth="2" strokeLinecap="round" opacity={0.55 - i * 0.1} />
+          ))}
 
-          {/* labels de capas con guías */}
-          <line x1="173" y1="66" x2="173" y2="42" stroke="rgba(7,26,56,0.4)" strokeWidth="1" />
-          <text x="173" y="32" textAnchor="middle" fontFamily={sansF} fontSize="11.5" fontWeight="600" fill={INK}>{t.v_wall_l1}</text>
-          <line x1="366" y1="66" x2="366" y2="42" stroke="rgba(7,26,56,0.4)" strokeWidth="1" />
-          <text x="366" y="32" textAnchor="middle" fontFamily={sansF} fontSize="12.5" fontWeight="700" fill={INK}>{t.v_wall_l2}</text>
-          <line x1="559" y1="66" x2="559" y2="42" stroke="rgba(7,26,56,0.4)" strokeWidth="1" />
-          <text x="559" y="32" textAnchor="middle" fontFamily={sansF} fontSize="11.5" fontWeight="600" fill={INK}>{t.v_wall_l3}</text>
+          {/* CASA — cara frontal: mitad revocada + mitad de bloques a la vista */}
+          <polygon points={pts(F, Mb, Mt, Ft)} fill="#F6F2E7" stroke="rgba(7,26,56,0.45)" strokeWidth="1.2" />
+          <polygon points={pts(Mb, L, Lt, Mt)} fill="url(#hurd)" stroke="rgba(7,26,56,0.45)" strokeWidth="1.2" />
+          {rowLines.map(([a, b], i) => (
+            <line key={`r${i}`} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke="rgba(7,26,56,0.32)" strokeWidth="1" />
+          ))}
+          {studs.map(([a, b], i) => (
+            <line key={`s${i}`} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke="rgba(7,26,56,0.32)" strokeWidth="1" />
+          ))}
 
-          {/* cotas */}
-          <line x1="160" y1="258" x2="186" y2="258" stroke="rgba(7,26,56,0.45)" strokeWidth="1" />
-          <text x="173" y="276" textAnchor="middle" fontFamily={sansF} fontSize="10.5" fill="rgba(7,26,56,0.55)">2 cm</text>
-          <line x1="192" y1="258" x2="540" y2="258" stroke="rgba(7,26,56,0.45)" strokeWidth="1" />
-          <text x="366" y="276" textAnchor="middle" fontFamily={sansF} fontSize="10.5" fontWeight="600" fill="rgba(7,26,56,0.7)">30 cm</text>
-          <line x1="546" y1="258" x2="572" y2="258" stroke="rgba(7,26,56,0.45)" strokeWidth="1" />
-          <text x="559" y="276" textAnchor="middle" fontFamily={sansF} fontSize="10.5" fill="rgba(7,26,56,0.55)">2 cm</text>
+          {/* cara lateral derecha (revocada, más luz) */}
+          <polygon points={pts(F, D, Dt, Ft)} fill="#EFE9DA" stroke="rgba(7,26,56,0.45)" strokeWidth="1.2" />
 
-          {/* temperatura: frío afuera, calor adentro */}
-          <text x="75" y="118" textAnchor="middle" fontFamily={sansF} fontSize="11" fontWeight="600" fill={CELESTE}>{t.v_wall_ext}</text>
-          <text x="75" y="136" textAnchor="middle" fontFamily={sansF} fontSize="10" fill="rgba(7,26,56,0.55)">{t.v_wall_frio}</text>
-          <line x1="46" y1="155" x2="148" y2="155" stroke="rgba(7,26,56,0.55)" strokeWidth="1.4" markerEnd="url(#arrowInk)" strokeDasharray="5 4" />
-          <text x="666" y="118" textAnchor="middle" fontFamily={sansF} fontSize="11" fontWeight="600" fill={GREEN_DK}>{t.v_wall_int}</text>
-          <text x="666" y="136" textAnchor="middle" fontFamily={sansF} fontSize="10" fill="rgba(7,26,56,0.55)">{t.v_wall_calor}</text>
-          <path d="M 640 150 q 10 8 0 16 q -10 8 0 16" fill="none" stroke={GREEN_DK} strokeWidth="1.6" />
-          <path d="M 660 150 q 10 8 0 16 q -10 8 0 16" fill="none" stroke={GREEN_DK} strokeWidth="1.6" />
-          <path d="M 680 150 q 10 8 0 16 q -10 8 0 16" fill="none" stroke={GREEN_DK} strokeWidth="1.6" />
+          {/* techo: faldón frontal + gable derecho */}
+          <polygon points={pts(Ft, Lt, R2, R1)} fill="#31507A" stroke="rgba(7,26,56,0.6)" strokeWidth="1.2" />
+          <polygon points={pts(Ft, Dt, R1)} fill="#F6F2E7" stroke="rgba(7,26,56,0.45)" strokeWidth="1.2" />
+
+          {/* chimenea + humo */}
+          <polygon points={pts(...chim.front)} fill="#5b7290" stroke="rgba(7,26,56,0.5)" strokeWidth="1" />
+          <polygon points={pts(...chim.side)} fill="#47607f" stroke="rgba(7,26,56,0.5)" strokeWidth="1" />
+          <polygon points={pts(...chim.top)} fill="#6e83a0" stroke="rgba(7,26,56,0.5)" strokeWidth="1" />
+          <path d={`M ${smokeAt[0]} ${smokeAt[1]} q -8 -14 2 -24 q 10 -10 4 -22`} fill="none" stroke="rgba(7,26,56,0.28)" strokeWidth="2.4" strokeLinecap="round" />
+          <path d={`M ${smokeAt[0] + 9} ${smokeAt[1] - 6} q 8 -12 0 -22`} fill="none" stroke="rgba(7,26,56,0.18)" strokeWidth="2.2" strokeLinecap="round" />
+
+          {/* ventana cálida + calor adentro */}
+          <circle cx={(win[0][0] + win[2][0]) / 2} cy={(win[0][1] + win[2][1]) / 2} r="42" fill="url(#warmGlow)" />
+          <polygon points={pts(...win)} fill={GOLD} stroke="rgba(7,26,56,0.55)" strokeWidth="1.2" />
+          <line x1={(win[0][0] + win[1][0]) / 2} y1={(win[0][1] + win[1][1]) / 2} x2={(win[3][0] + win[2][0]) / 2} y2={(win[3][1] + win[2][1]) / 2} stroke="rgba(7,26,56,0.4)" strokeWidth="0.9" />
+          <rect x="368" y="404" width="126" height="36" rx="3" fill="rgba(255,255,255,0.78)" />
+          <text x="431" y="419" textAnchor="middle" fontFamily={sansF} fontSize="11" fontWeight="700" fill={GREEN_DK}>{t.v_wall_int}</text>
+          <text x="431" y="434" textAnchor="middle" fontFamily={sansF} fontSize="9.5" fill="rgba(7,26,56,0.6)">{t.v_wall_calor}</text>
+
+          {/* puerta */}
+          <polygon points={pts(...door)} fill="#8a6510" stroke="rgba(7,26,56,0.5)" strokeWidth="1" opacity="0.85" />
+
+          {/* callout: el carbono guardado en las paredes */}
+          <rect x="36" y="42" width="300" height="84" rx="4" fill="rgba(250,248,241,0.96)" stroke="rgba(47,143,58,0.5)" strokeWidth="1.2" />
+          <text x="186" y="68" textAnchor="middle" fontFamily={sansF} fontSize="13" fontWeight="600" fill={INK}>{t.v_wall_note1}</text>
+          <text x="186" y="86" textAnchor="middle" fontFamily={sansF} fontSize="11" fill="rgba(7,26,56,0.62)">{t.v_wall_note2}</text>
+          <text x="186" y="110" textAnchor="middle" fontFamily={sansF} fontSize="11.5" fontWeight="700" fill={GREEN_DK}>{t.v_ciclo_rama1_chip}</text>
+          <path d={`M 230 126 Q 270 220 ${(Mb[0] + Lt[0]) / 2 - 4} ${(Mb[1] + Lt[1]) / 2 - 10}`} fill="none" stroke="rgba(47,143,58,0.55)" strokeWidth="1.4" strokeDasharray="5 4" />
+
+          {/* lupa: el detalle del muro (tres capas) */}
+          <line x1="726" y1="418" x2={(F[0] + Mb[0]) / 2} y2={(F[1] + Mt[1]) / 2 + 20} stroke="rgba(7,26,56,0.4)" strokeWidth="1.3" strokeDasharray="5 4" />
+          <circle cx="800" cy="420" r="76" fill="#fff" stroke="rgba(7,26,56,0.55)" strokeWidth="1.6" />
+          <g clipPath="url(#lupaClip)">
+            <rect x="724" y="344" width="26" height="152" fill="#EFE9DA" stroke="rgba(7,26,56,0.35)" strokeWidth="1" />
+            <rect x="750" y="344" width="100" height="152" fill="url(#hurd)" stroke="rgba(7,26,56,0.4)" strokeWidth="1" />
+            <rect x="850" y="344" width="26" height="152" fill="#F6F2E7" stroke="rgba(7,26,56,0.35)" strokeWidth="1" />
+          </g>
+          <text x="726" y="330" textAnchor="middle" fontFamily={sansF} fontSize="9.5" fontWeight="600" fill="rgba(7,26,56,0.65)">{t.v_wall_l1}</text>
+          <text x="800" y="522" textAnchor="middle" fontFamily={sansF} fontSize="11" fontWeight="700" fill={INK}>{t.v_wall_l2}</text>
+          <text x="874" y="330" textAnchor="middle" fontFamily={sansF} fontSize="9.5" fontWeight="600" fill="rgba(7,26,56,0.65)">{t.v_wall_l3}</text>
         </svg>
       </div>
       <figcaption style={{ ...sans, fontSize: '0.72rem', fontWeight: 400, color: MUTED, margin: '0.6rem 0 0', lineHeight: 1.5 }}>{t.v_wall_caption}</figcaption>
