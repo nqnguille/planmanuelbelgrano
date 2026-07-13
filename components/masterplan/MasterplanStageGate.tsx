@@ -15,7 +15,7 @@
    ============================================================ */
 
 import { motion, useScroll } from 'framer-motion'
-import { useState, useEffect, type CSSProperties, type ReactNode } from 'react'
+import { useState, useEffect, useRef, useLayoutEffect, type CSSProperties, type ReactNode } from 'react'
 import { useLang } from '@/lib/i18n'
 
 const INK = '#071A38'
@@ -986,107 +986,168 @@ function ReglaIntro({ t }: { t: T }) {
   )
 }
 
-/* ---------- la tranquera: el gate que se levanta y habilita el paso ---------- */
+/* ---------- la tranquera: SVG del gate de campo que se levanta ---------- */
 
-function Tranquera({ open, verdict, enables }: { open: boolean; verdict: string; enables: string }) {
+function Tranquera({ open }: { open: boolean }) {
   const WOOD = '#8a6510'
   return (
-    <div style={{ display: 'flex', gap: 'clamp(1rem, 2.5vw, 2rem)', alignItems: 'center', flexWrap: 'wrap' }}>
-      <svg viewBox="0 0 150 90" width="130" height="78" role="img" aria-label="Tranquera de campo" style={{ flexShrink: 0 }}>
-        <rect x="14" y="26" width="9" height="60" rx="2" fill={WOOD} />
-        <rect x="127" y="26" width="9" height="60" rx="2" fill={WOOD} />
-        <line x1="6" y1="86" x2="144" y2="86" stroke="rgba(7,26,56,0.25)" strokeWidth="1.5" />
-        <g style={{ transformOrigin: '19px 40px', transform: open ? 'rotate(-62deg)' : 'rotate(0deg)', transition: 'transform 0.7s cubic-bezier(0.34,1.3,0.5,1)' }}>
-          <rect x="19" y="36" width="112" height="8" rx="4" fill={open ? GREEN_DK : GOLD} />
-          <rect x="19" y="52" width="112" height="6" rx="3" fill={open ? 'rgba(47,143,58,0.5)' : 'rgba(242,181,68,0.55)'} />
-        </g>
-        {open && <circle cx="135" cy="40" r="6" fill="rgba(47,143,58,0.25)" />}
-      </svg>
-      <div style={{ flex: '1 1 300px' }}>
-        <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', margin: '0 0 0.4rem' }}>{enables}</p>
-        <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.02rem, 1.6vw, 1.3rem)', lineHeight: 1.4, color: INK, margin: 0 }}>{verdict}</p>
+    <svg viewBox="0 0 160 96" width="100%" height="96" role="img" aria-label="Tranquera de campo" style={{ display: 'block' }}>
+      <rect x="16" y="26" width="10" height="64" rx="2" fill={WOOD} />
+      <rect x="134" y="26" width="10" height="64" rx="2" fill={WOOD} />
+      <circle cx="21" cy="22" r="4" fill={WOOD} />
+      <circle cx="139" cy="22" r="4" fill={WOOD} />
+      <line x1="6" y1="90" x2="154" y2="90" stroke="rgba(7,26,56,0.22)" strokeWidth="1.5" />
+      <g style={{ transformOrigin: '21px 42px', transform: open ? 'rotate(-64deg)' : 'rotate(0deg)', transition: 'transform 0.9s cubic-bezier(0.34,1.3,0.5,1)' }}>
+        <rect x="21" y="38" width="118" height="8" rx="4" fill={open ? GREEN_DK : GOLD} />
+        <rect x="21" y="54" width="118" height="6" rx="3" fill={open ? 'rgba(47,143,58,0.5)' : 'rgba(242,181,68,0.55)'} />
+      </g>
+      {open && <circle cx="144" cy="42" r="7" fill="rgba(47,143,58,0.22)" style={{ animation: 'mpFade 0.5s ease' }} />}
+    </svg>
+  )
+}
+
+/* ---------- el gate como panel de diseño (columna derecha, fijo) ---------- */
+
+function GatePanel({ t, isIntro, verdict, enables, crossing, canCross, onCross, onPrev, canPrev, prevLabel, ctaLabel }: {
+  t: T; isIntro: boolean; verdict: string; enables: string; crossing: boolean
+  canCross: boolean; onCross: () => void; onPrev: () => void; canPrev: boolean; prevLabel: string; ctaLabel: string
+}) {
+  return (
+    <div style={{
+      background: crossing ? 'rgba(47,143,58,0.06)' : '#fff',
+      border: `1px solid ${crossing ? 'rgba(47,143,58,0.4)' : LINE}`,
+      borderTop: `3px solid ${crossing ? GREEN_DK : GOLD}`,
+      padding: 'clamp(1.4rem, 2vw, 1.9rem)', transition: 'all 0.4s',
+    }}>
+      <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', margin: '0 0 1.2rem' }}>{t.gate_label}</p>
+
+      <Tranquera open={isIntro || crossing} />
+
+      <p style={{ ...sans, fontSize: '0.56rem', letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', margin: '1.3rem 0 0.5rem' }}>{enables}</p>
+      <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.1rem, 1.5vw, 1.35rem)', lineHeight: 1.38, color: INK, margin: 0 }}>{verdict}</p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginTop: '1.6rem' }}>
+        {canCross && (
+          <button onClick={onCross} style={{
+            ...sans, fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase',
+            background: GREEN, color: INK, border: 'none', padding: '0.85rem 1.4rem', borderRadius: '3px', cursor: 'pointer', width: '100%',
+          }}>{ctaLabel} →</button>
+        )}
+        {canPrev && (
+          <button onClick={onPrev} style={{
+            ...sans, fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.04em',
+            background: 'transparent', border: `1px solid ${LINE}`, color: INK, padding: '0.7rem 1.2rem', borderRadius: '3px', cursor: 'pointer', width: '100%',
+          }}>← {prevLabel}</button>
+        )}
       </div>
     </div>
   )
 }
 
-/* ---------- el carrusel de etapas: la regla + las 6 etapas, una por vez ---------- */
+/* ---------- el carrusel: track horizontal (izq) + panel de gate fijo (der) ---------- */
 
 function StageCarousel({ t }: { t: T }) {
   const total = t.stages.length + 1
   const [i, setI] = useState(0)
   const [crossing, setCrossing] = useState(false)
+  const [h, setH] = useState<number | undefined>(undefined)
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  // el viewport toma la altura de la slide activa (incluso si cargan imágenes)
+  useLayoutEffect(() => {
+    const el = slideRefs.current[i]
+    if (!el) return
+    const measure = () => setH(el.offsetHeight)
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [i])
 
   const go = (next: number) => {
     if (next < 0 || next >= total) return
     setCrossing(false)
     setI(next)
-    document.getElementById('plan')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
   const cross = () => {
     if (i >= total - 1) return
     setCrossing(true)
-    setTimeout(() => go(i + 1), 620)
+    setTimeout(() => go(i + 1), 950)
   }
 
   const isIntro = i === 0
   const stageIdx = i - 1
-  const s = isIntro ? null : t.stages[stageIdx]
   const isLastStage = i === total - 1
-  const enablesLabel = isLastStage
-    ? t.gate_enables_last
-    : `${t.gate_enables_pre} ${t.stage_word} ${t.stages[stageIdx + 1].n} · ${t.stages[stageIdx + 1].name}`
+  const enablesLabel = isIntro
+    ? t.plan_intro_name
+    : isLastStage
+      ? t.gate_enables_last
+      : `${t.gate_enables_pre} ${t.stage_word} ${t.stages[stageIdx + 1].n} · ${t.stages[stageIdx + 1].name}`
+  const verdictLabel = isIntro ? t.regla_statement : t.stages[stageIdx].gate
+  const prevLabel = i <= 1 ? t.gate_back_start : `${t.stage_word} ${t.stages[stageIdx - 1].n}`
 
   return (
-    <section id="plan" style={{ background: PAPER, padding: 'clamp(2.25rem, 4vw, 3.5rem) clamp(1.5rem, 6vw, 5rem)', scrollMarginTop: '3.4rem' }}>
-    <div style={{ maxWidth: '1020px', margin: '0 auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.8rem' }}>
-        <Eyebrow>{t.plan_k}</Eyebrow>
-        <span style={{ ...sans, fontSize: '0.68rem', fontWeight: 600, color: FAINT }}>{i + 1} {t.gate_step_of} {total}</span>
-      </div>
-
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.1rem' }}>
-        {Array.from({ length: total }).map((_, k) => {
-          const on = k === i
-          const glyph = k === 0 ? 'R' : t.stages[k - 1].n
-          return (
-            <button key={k} onClick={() => go(k)} aria-label={`${k + 1}`} style={{
-              width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer',
-              border: `1px solid ${on ? GOLD : LINE}`, background: on ? 'rgba(242,181,68,0.16)' : '#fff',
-              ...serif, fontStyle: 'italic', fontSize: '0.92rem', color: on ? '#8a6510' : 'rgba(7,26,56,0.5)',
-              transition: 'all 0.2s', padding: 0,
-            }}>{glyph}</button>
-          )
-        })}
-      </div>
-
-      <div key={i} style={{ animation: 'mpFade 0.4s ease' }}>
-        {isIntro ? <ReglaIntro t={t} /> : <StageBody t={t} idx={stageIdx} />}
-      </div>
-
-      {!isIntro && s && (
-        <div style={{ marginTop: '1.4rem', border: `1px solid ${crossing ? 'rgba(47,143,58,0.4)' : 'rgba(242,181,68,0.5)'}`, borderLeft: `4px solid ${crossing ? GREEN_DK : GOLD}`, background: crossing ? 'rgba(47,143,58,0.05)' : 'rgba(242,181,68,0.07)', padding: 'clamp(1.25rem, 2.5vw, 1.8rem)', transition: 'all 0.4s' }}>
-          <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', margin: '0 0 1rem' }}>{t.gate_label}</p>
-          <Tranquera open={crossing} verdict={s.gate} enables={enablesLabel} />
+    <section id="plan" style={{ background: PAPER, padding: 'clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 5vw, 4.5rem)', scrollMarginTop: '3.4rem' }}>
+      <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '0.5rem', marginBottom: '0.9rem' }}>
+          <Eyebrow>{t.plan_k}</Eyebrow>
+          <span style={{ ...sans, fontSize: '0.68rem', fontWeight: 600, color: FAINT }}>{i + 1} {t.gate_step_of} {total}</span>
         </div>
-      )}
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.8rem', marginTop: '1.1rem' }}>
-        <button onClick={() => (i === 0 ? null : go(i - 1))} disabled={i === 0} style={{
-          ...sans, fontSize: '0.74rem', fontWeight: 600, letterSpacing: '0.04em',
-          background: 'transparent', border: `1px solid ${LINE}`, color: i === 0 ? 'rgba(7,26,56,0.3)' : INK,
-          padding: '0.7rem 1.3rem', borderRadius: '3px', cursor: i === 0 ? 'default' : 'pointer',
-        }}>← {i <= 1 ? t.gate_back_start : `${t.stage_word} ${t.stages[stageIdx - 1].n}`}</button>
+        {/* rail de puntos */}
+        <div style={{ display: 'flex', gap: '0.4rem', marginBottom: '1.4rem' }}>
+          {Array.from({ length: total }).map((_, k) => {
+            const on = k === i
+            const done = k < i
+            const glyph = k === 0 ? 'R' : t.stages[k - 1].n
+            return (
+              <button key={k} onClick={() => go(k)} aria-label={`${k + 1}`} style={{
+                width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer', flexShrink: 0,
+                border: `1px solid ${on ? GOLD : done ? 'rgba(47,143,58,0.4)' : LINE}`,
+                background: on ? 'rgba(242,181,68,0.16)' : done ? 'rgba(47,143,58,0.08)' : '#fff',
+                ...serif, fontStyle: 'italic', fontSize: '0.92rem',
+                color: on ? '#8a6510' : done ? GREEN_DK : 'rgba(7,26,56,0.45)',
+                transition: 'all 0.25s', padding: 0,
+              }}>{glyph}</button>
+            )
+          })}
+        </div>
 
-        {i < total - 1 && (
-          <button onClick={i === 0 ? () => go(1) : cross} style={{
-            ...sans, fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase',
-            background: GREEN, color: INK, border: 'none',
-            padding: '0.8rem 1.7rem', borderRadius: '3px', cursor: 'pointer',
-          }}>{i === 0 ? t.gate_start : t.gate_cross} →</button>
-        )}
+        {/* layout 2 columnas: track (izq) + gate fijo (der) */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 340px', gap: 'clamp(1.5rem, 3vw, 3rem)', alignItems: 'start' }}>
+          {/* IZQUIERDA — viewport con el track que corre a la izquierda */}
+          <div style={{ overflow: 'hidden', height: h, transition: 'height 0.9s cubic-bezier(0.22,1,0.36,1)' }}>
+            <motion.div
+              style={{ display: 'flex', alignItems: 'flex-start' }}
+              animate={{ x: `-${i * 100}%` }}
+              transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {Array.from({ length: total }).map((_, k) => (
+                <div key={k} ref={(el) => { slideRefs.current[k] = el }} aria-hidden={k !== i} style={{ width: '100%', flexShrink: 0, paddingRight: '2px', opacity: k === i ? 1 : 0.35, transition: 'opacity 0.5s' }}>
+                  {k === 0 ? <ReglaIntro t={t} /> : <StageBody t={t} idx={k - 1} />}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* DERECHA — el gate como panel de diseño fijo */}
+          <aside style={{ position: 'sticky', top: 'clamp(4rem, 8vh, 6rem)' }}>
+            <GatePanel
+              t={t}
+              isIntro={isIntro}
+              verdict={verdictLabel}
+              enables={enablesLabel}
+              crossing={crossing}
+              canCross={i < total - 1}
+              onCross={isIntro ? () => go(1) : cross}
+              onPrev={() => go(i - 1)}
+              canPrev={i > 0}
+              prevLabel={prevLabel}
+              ctaLabel={isIntro ? t.gate_start : t.gate_cross}
+            />
+          </aside>
+        </div>
       </div>
-    </div>
     </section>
   )
 }
