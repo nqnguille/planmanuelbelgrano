@@ -146,9 +146,9 @@ const TXT = {
     ] as readonly { img: string; title: string; body: string; hito?: string }[],
     v_via_a_header: 'La vía de la pared',
     v_via_a: [
-      { img: '/viaje/05-bloque.jpg', title: 'El bloque', body: 'Cañamiza, cal y agua, prensadas. El bloque se endurece absorbiendo todavía más CO₂ del aire mientras cura.' },
-      { img: '/viaje/05b-obra.jpg', title: 'La obra', body: 'Los bloques se levantan como piezas que encastran. Es construcción rápida y trabajo local: cada muro es empleo en la zona, y el carbono ya viaja adentro de la pared.' },
-      { img: '/viaje/06b-barrio.jpg', title: 'El barrio', body: 'Casa por casa, la vía de la pared se vuelve barrio. El carbono queda guardado por toda la vida de cada construcción — y el campo del medio ya produce el material de la próxima manzana.', hito: '+500 años en la pared' },
+      { img: '/viaje/05a-canamiza.jpg', title: 'La cañamiza', body: 'El corazón leñoso del tallo, separado y limpio: la materia prima que va a la pared. Liviana, aislante y llena del carbono que la planta capturó.' },
+      { img: '/viaje/05-bloque.jpg', title: 'El bloque', body: 'Cañamiza, cal y agua, prensadas. El bloque se endurece absorbiendo todavía más CO₂ del aire mientras cura — y se levanta como pieza que encastra, con trabajo local en cada obra.' },
+      { img: '/viaje/06-casa.jpg', title: 'La casa', body: 'Muro por muro, los bloques se vuelven vivienda. El carbono queda guardado en la pared por toda la vida de la construcción: una casa que abriga y fija carbono a la vez.', hito: '+500 años en la pared' },
     ] as readonly { img: string; title: string; body: string; hito?: string }[],
     v_via_b_header: 'La vía del suelo',
     v_via_b: [
@@ -450,9 +450,9 @@ const TXT = {
     ] as readonly { img: string; title: string; body: string; hito?: string }[],
     v_via_a_header: 'The wall path',
     v_via_a: [
-      { img: '/viaje/05-bloque.jpg', title: 'The block', body: 'Hurd, lime and water, pressed. The block hardens by absorbing even more CO₂ from the air as it cures.' },
-      { img: '/viaje/05b-obra.jpg', title: 'The build', body: 'The blocks rise as interlocking pieces. It is fast construction and local work: every wall is jobs in the area, and the carbon already travels inside the wall.' },
-      { img: '/viaje/06b-barrio.jpg', title: 'The neighborhood', body: 'House by house, the wall path becomes a neighborhood. The carbon stays stored for the entire life of each building — and the central field already produces the material for the next block.', hito: '500+ years in the wall' },
+      { img: '/viaje/05a-canamiza.jpg', title: 'The hurd', body: 'The woody core of the stalk, separated and clean: the raw material that goes to the wall. Light, insulating and full of the carbon the plant captured.' },
+      { img: '/viaje/05-bloque.jpg', title: 'The block', body: 'Hurd, lime and water, pressed. The block hardens by absorbing even more CO₂ from the air as it cures — and rises as an interlocking piece, with local work at every build.' },
+      { img: '/viaje/06-casa.jpg', title: 'The house', body: 'Wall by wall, the blocks become a home. The carbon stays stored in the wall for the entire life of the building: a house that shelters and locks carbon at once.', hito: '500+ years in the wall' },
     ] as readonly { img: string; title: string; body: string; hito?: string }[],
     v_via_b_header: 'The soil path',
     v_via_b: [
