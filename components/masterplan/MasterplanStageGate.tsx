@@ -218,7 +218,16 @@ const TXT = {
     stage_word: 'Etapa',
     gate_label: 'El gate',
     fronts_label: 'Los frentes de trabajo de la etapa',
-    nav_top: [['vision', 'La visión', 'V'], ['regla', 'La regla', 'R']] as readonly (readonly [string, string, string])[],
+    plan_nav: ['plan', 'El plan', 'P'] as readonly [string, string, string],
+    plan_k: 'El plan por etapas',
+    plan_intro_name: 'La regla del juego',
+    gate_cross: 'Cruzar el gate',
+    gate_enables_pre: 'Cumplido, habilita la',
+    gate_enables_last: 'El modelo vive solo, replicable en todo el país',
+    gate_start: 'Empezar el recorrido',
+    gate_step_of: 'de',
+    gate_back_start: 'Volver a la regla',
+    nav_top: [['vision', 'La visión', 'V'], ['plan', 'El plan', 'P']] as readonly (readonly [string, string, string])[],
     nav_bottom: [['carriles', 'Los carriles', 'C'], ['carbono', 'El carbono', 'CO₂'], ['quienes', 'Quiénes', 'Q'], ['invitacion', 'La invitación', 'I']] as readonly (readonly [string, string, string])[],
 
     stages: [
@@ -530,7 +539,16 @@ const TXT = {
     stage_word: 'Stage',
     gate_label: 'The gate',
     fronts_label: 'The work fronts of the stage',
-    nav_top: [['vision', 'The vision', 'V'], ['regla', 'The rule', 'R']] as readonly (readonly [string, string, string])[],
+    plan_nav: ['plan', 'The plan', 'P'] as readonly [string, string, string],
+    plan_k: 'The staged plan',
+    plan_intro_name: 'The rule of the game',
+    gate_cross: 'Cross the gate',
+    gate_enables_pre: 'Met, it unlocks',
+    gate_enables_last: 'The model lives on its own, replicable across the country',
+    gate_start: 'Start the walkthrough',
+    gate_step_of: 'of',
+    gate_back_start: 'Back to the rule',
+    nav_top: [['vision', 'The vision', 'V'], ['plan', 'The plan', 'P']] as readonly (readonly [string, string, string])[],
     nav_bottom: [['carriles', 'The lanes', 'L'], ['carbono', 'The carbon', 'CO₂'], ['quienes', 'Who', 'W'], ['invitacion', 'The invitation', 'I']] as readonly (readonly [string, string, string])[],
 
     stages: [
@@ -751,7 +769,7 @@ function ProgressBar() {
 
 /* ---------- navegación por etapas: scrollspy + sidebar/barra ---------- */
 
-const NAV_IDS = ['vision', 'regla', 'e0', 'e1', 'e2', 'e3', 'e4', 'e5', 'carriles', 'carbono', 'quienes', 'invitacion'] as const
+const NAV_IDS = ['vision', 'plan', 'carriles', 'carbono', 'quienes', 'invitacion'] as const
 
 function useScrollSpy(): string {
   const [active, setActive] = useState<string>('vision')
@@ -795,10 +813,9 @@ function StageNav({ t }: { t: T }) {
     return () => observer.disconnect()
   }, [])
 
-  /* menú completo, en el orden del documento: V · R · 0-5 · C · CO₂ · Q · I */
+  /* menú del documento: V · P · C · CO₂ · Q · I (las etapas viven dentro del carrusel del plan) */
   const items: { id: string; label: string; glyph: string }[] = [
     ...t.nav_top.map(([id, label, glyph]) => ({ id, label, glyph })),
-    ...t.stages.map((s) => ({ id: `e${s.n}`, label: `${s.name}`, glyph: s.n })),
     ...t.nav_bottom.map(([id, label, glyph]) => ({ id, label, glyph })),
   ]
 
@@ -890,107 +907,184 @@ function StageRail({ t }: { t: T }) {
 
 /* ---------- capítulo de etapa (template idéntico para las 6) ---------- */
 
-function GateBlock({ t, verdict }: { t: T; verdict: string }) {
-  return (
-    <Reveal>
-      <div style={{
-        marginTop: '2.5rem',
-        border: '1px solid rgba(242,181,68,0.55)',
-        borderLeft: `4px solid ${GOLD}`,
-        background: 'rgba(242,181,68,0.08)',
-        padding: 'clamp(1.25rem, 2.5vw, 1.8rem)',
-        display: 'flex', gap: '1.25rem', alignItems: 'flex-start', flexWrap: 'wrap',
-      }}>
-        <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', whiteSpace: 'nowrap', paddingTop: '0.2rem' }}>
-          {t.gate_label}
-        </span>
-        <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.05rem, 1.7vw, 1.35rem)', lineHeight: 1.4, color: INK, margin: 0, flex: '1 1 320px' }}>
-          {verdict}
-        </p>
-      </div>
-    </Reveal>
-  )
-}
-
 const CADENA_IMG = ['01-semilla', '02-cultivo', '03-cosecha', '04-decorticacion', '05-mezclado', '06-material', '07-construccion', '08-vivienda'] as const
 
-function StageChapter({ t, idx, bg }: { t: T; idx: number; bg: string }) {
+/* ---------- cuerpo de una etapa (sin gate; el gate va en la tranquera) ---------- */
+
+function StageBody({ t, idx }: { t: T; idx: number }) {
   const s = t.stages[idx]
   return (
-    <Doc bg={bg} id={`e${s.n}`}>
-      <Reveal>
-        <header style={{ marginBottom: '2.5rem', scrollMarginTop: '4rem' }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 'clamp(1rem, 2.5vw, 1.75rem)', flexWrap: 'wrap' }}>
-            <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(3.4rem, 8vw, 6rem)', color: GOLD, lineHeight: 0.8, flexShrink: 0 }}>{s.n}</span>
-            <div style={{ flex: '1 1 300px' }}>
-              <Eyebrow>{t.stage_word} {s.n} · {s.name}</Eyebrow>
-              <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 3.6vw, 2.9rem)', lineHeight: 1.12, color: INK, margin: 0, maxWidth: '26ch' }}>
-                {s.q}
-              </h2>
-            </div>
+    <div>
+      <header style={{ marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 'clamp(1rem, 2.5vw, 1.75rem)', flexWrap: 'wrap' }}>
+          <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(3.4rem, 8vw, 6rem)', color: GOLD, lineHeight: 0.8, flexShrink: 0 }}>{s.n}</span>
+          <div style={{ flex: '1 1 300px' }}>
+            <Eyebrow>{t.stage_word} {s.n} · {s.name}</Eyebrow>
+            <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 3.6vw, 2.9rem)', lineHeight: 1.12, color: INK, margin: 0, maxWidth: '26ch' }}>{s.q}</h2>
           </div>
-          <div style={{ height: '1px', background: LINE, marginTop: '1.9rem' }} />
-        </header>
-      </Reveal>
+        </div>
+        <div style={{ height: '1px', background: LINE, marginTop: '1.6rem' }} />
+      </header>
 
-      <Reveal><P max="74ch">{s.intro}</P></Reveal>
+      <P max="74ch">{s.intro}</P>
 
-      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2.25rem 0 1.1rem' }}>{t.fronts_label}</p>
+      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2rem 0 1.1rem' }}>{t.fronts_label}</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
-        {s.fronts.map(([title, d], i) => (
-          <Reveal key={title} delay={0.04 * i}>
-            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GOLD}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)' }}>
-              <h3 style={{ ...sans, fontSize: '0.98rem', fontWeight: 600, color: INK, margin: '0 0 0.4rem' }}>{title}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.65, color: MUTED, margin: 0, maxWidth: '76ch' }}>{d}</p>
-            </div>
-          </Reveal>
+        {s.fronts.map(([title, d]) => (
+          <div key={title} style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GOLD}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)' }}>
+            <h3 style={{ ...sans, fontSize: '0.98rem', fontWeight: 600, color: INK, margin: '0 0 0.4rem' }}>{title}</h3>
+            <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.65, color: MUTED, margin: 0, maxWidth: '76ch' }}>{d}</p>
+          </div>
         ))}
       </div>
 
-      {/* material de apoyo específico de algunas etapas */}
       {s.showClippings && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(232px, 1fr))', gap: '0.7rem', marginTop: '0.7rem' }}>
-          {t.clippings.map((c, i) => (
-            <Reveal key={c.quote} delay={0.05 * i}>
-              <article style={{ background: '#fff', border: `1px solid ${LINE}`, borderTop: `2px solid ${c.alarm ? '#B4301C' : 'rgba(7,26,56,0.5)'}`, padding: '0.8rem 1rem 0.9rem', height: '100%', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                <span style={{ ...serif, fontWeight: 600, fontSize: '0.74rem', color: INK, borderBottom: '1px solid rgba(7,26,56,0.1)', paddingBottom: '0.35rem' }}>{c.medium}</span>
-                <p style={{ ...serif, fontStyle: 'italic', fontSize: '0.88rem', lineHeight: 1.3, color: INK, margin: 0 }}>“{c.quote}”</p>
-                <p style={{ ...sans, fontSize: '0.55rem', letterSpacing: '0.03em', color: FAINT, margin: 'auto 0 0', lineHeight: 1.4 }}>{c.who}</p>
-              </article>
-            </Reveal>
+          {t.clippings.map((c) => (
+            <article key={c.quote} style={{ background: '#fff', border: `1px solid ${LINE}`, borderTop: `2px solid ${c.alarm ? '#B4301C' : 'rgba(7,26,56,0.5)'}`, padding: '0.8rem 1rem 0.9rem', height: '100%', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+              <span style={{ ...serif, fontWeight: 600, fontSize: '0.74rem', color: INK, borderBottom: '1px solid rgba(7,26,56,0.1)', paddingBottom: '0.35rem' }}>{c.medium}</span>
+              <p style={{ ...serif, fontStyle: 'italic', fontSize: '0.88rem', lineHeight: 1.3, color: INK, margin: 0 }}>“{c.quote}”</p>
+              <p style={{ ...sans, fontSize: '0.55rem', letterSpacing: '0.03em', color: FAINT, margin: 'auto 0 0', lineHeight: 1.4 }}>{c.who}</p>
+            </article>
           ))}
         </div>
       )}
 
       {s.showMaterial && (
         <div style={{ marginTop: '1.4rem', display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
-          <Reveal>
-            <WallSection t={t} />
-          </Reveal>
-          <Reveal>
-            <CompareBars t={t} />
-          </Reveal>
+          <WallSection t={t} />
+          <CompareBars t={t} />
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ---------- la regla del juego (slide 0 del carrusel) ---------- */
+
+function ReglaIntro({ t }: { t: T }) {
+  return (
+    <div>
+      <Eyebrow>{t.regla_k}</Eyebrow>
+      <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.9rem, 4vw, 3.2rem)', lineHeight: 1.08, color: INK, margin: '0 0 1.4rem', maxWidth: '24ch' }}>{t.regla_t}</h2>
+      <P max="72ch" style={{ fontSize: 'clamp(1rem, 1.3vw, 1.14rem)' }}>{t.regla_d}</P>
+
+      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2.25rem 0 1rem' }}>{t.rail_label}</p>
+      <StageRail t={t} />
+
+      <P max="74ch" style={{ marginTop: '1.75rem' }}>{rich(t.regla_body, INK)}</P>
+
+      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2rem 0 1rem' }}>{t.regla_dims_label}</p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
+        {t.dims.map((d) => (
+          <span key={d} style={{ ...sans, fontSize: '0.74rem', fontWeight: 600, color: INK, border: '1px solid rgba(7,26,56,0.3)', padding: '0.5rem 1rem', borderRadius: '2px', background: '#fff' }}>{d}</span>
+        ))}
+      </div>
+
+      <Statement by={t.regla_statement_by}>{t.regla_statement}</Statement>
+    </div>
+  )
+}
+
+/* ---------- la tranquera: el gate que se levanta y habilita el paso ---------- */
+
+function Tranquera({ open, verdict, enables }: { open: boolean; verdict: string; enables: string }) {
+  const WOOD = '#8a6510'
+  return (
+    <div style={{ display: 'flex', gap: 'clamp(1rem, 2.5vw, 2rem)', alignItems: 'center', flexWrap: 'wrap' }}>
+      <svg viewBox="0 0 150 90" width="130" height="78" role="img" aria-label="Tranquera de campo" style={{ flexShrink: 0 }}>
+        <rect x="14" y="26" width="9" height="60" rx="2" fill={WOOD} />
+        <rect x="127" y="26" width="9" height="60" rx="2" fill={WOOD} />
+        <line x1="6" y1="86" x2="144" y2="86" stroke="rgba(7,26,56,0.25)" strokeWidth="1.5" />
+        <g style={{ transformOrigin: '19px 40px', transform: open ? 'rotate(-62deg)' : 'rotate(0deg)', transition: 'transform 0.7s cubic-bezier(0.34,1.3,0.5,1)' }}>
+          <rect x="19" y="36" width="112" height="8" rx="4" fill={open ? GREEN_DK : GOLD} />
+          <rect x="19" y="52" width="112" height="6" rx="3" fill={open ? 'rgba(47,143,58,0.5)' : 'rgba(242,181,68,0.55)'} />
+        </g>
+        {open && <circle cx="135" cy="40" r="6" fill="rgba(47,143,58,0.25)" />}
+      </svg>
+      <div style={{ flex: '1 1 300px' }}>
+        <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', margin: '0 0 0.4rem' }}>{enables}</p>
+        <p style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.02rem, 1.6vw, 1.3rem)', lineHeight: 1.4, color: INK, margin: 0 }}>{verdict}</p>
+      </div>
+    </div>
+  )
+}
+
+/* ---------- el carrusel de etapas: la regla + las 6 etapas, una por vez ---------- */
+
+function StageCarousel({ t }: { t: T }) {
+  const total = t.stages.length + 1
+  const [i, setI] = useState(0)
+  const [crossing, setCrossing] = useState(false)
+
+  const go = (next: number) => {
+    if (next < 0 || next >= total) return
+    setCrossing(false)
+    setI(next)
+    document.getElementById('plan')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+  const cross = () => {
+    if (i >= total - 1) return
+    setCrossing(true)
+    setTimeout(() => go(i + 1), 620)
+  }
+
+  const isIntro = i === 0
+  const stageIdx = i - 1
+  const s = isIntro ? null : t.stages[stageIdx]
+  const isLastStage = i === total - 1
+  const enablesLabel = isLastStage
+    ? t.gate_enables_last
+    : `${t.gate_enables_pre} ${t.stage_word} ${t.stages[stageIdx + 1].n} · ${t.stages[stageIdx + 1].name}`
+
+  return (
+    <Doc id="plan">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.1rem' }}>
+        <Eyebrow>{t.plan_k}</Eyebrow>
+        <span style={{ ...sans, fontSize: '0.68rem', fontWeight: 600, color: FAINT }}>{i + 1} {t.gate_step_of} {total}</span>
+      </div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.75rem' }}>
+        {Array.from({ length: total }).map((_, k) => {
+          const on = k === i
+          const glyph = k === 0 ? 'R' : t.stages[k - 1].n
+          return (
+            <button key={k} onClick={() => go(k)} aria-label={`${k + 1}`} style={{
+              width: '30px', height: '30px', borderRadius: '50%', cursor: 'pointer',
+              border: `1px solid ${on ? GOLD : LINE}`, background: on ? 'rgba(242,181,68,0.16)' : '#fff',
+              ...serif, fontStyle: 'italic', fontSize: '0.92rem', color: on ? '#8a6510' : 'rgba(7,26,56,0.5)',
+              transition: 'all 0.2s', padding: 0,
+            }}>{glyph}</button>
+          )
+        })}
+      </div>
+
+      <div key={i} style={{ animation: 'mpFade 0.4s ease' }}>
+        {isIntro ? <ReglaIntro t={t} /> : <StageBody t={t} idx={stageIdx} />}
+      </div>
+
+      {!isIntro && s && (
+        <div style={{ marginTop: '2.25rem', border: `1px solid ${crossing ? 'rgba(47,143,58,0.4)' : 'rgba(242,181,68,0.5)'}`, borderLeft: `4px solid ${crossing ? GREEN_DK : GOLD}`, background: crossing ? 'rgba(47,143,58,0.05)' : 'rgba(242,181,68,0.07)', padding: 'clamp(1.25rem, 2.5vw, 1.8rem)', transition: 'all 0.4s' }}>
+          <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', margin: '0 0 1rem' }}>{t.gate_label}</p>
+          <Tranquera open={crossing} verdict={s.gate} enables={enablesLabel} />
         </div>
       )}
 
-      {s.showCadena && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(105px, 1fr))', gap: '0.5rem', marginTop: '1.5rem' }}>
-          {CADENA_IMG.map((img, i) => {
-            const name = t.cadena[i]
-            return (
-              <Reveal key={img} delay={0.04 * i}>
-                <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', border: `1px solid ${LINE}` }}>
-                  <img src={`/cadena/${img}.jpg`} alt={name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,56,0.9), transparent 55%)' }} />
-                  <span style={{ position: 'absolute', left: '0.5rem', bottom: '0.45rem', ...sans, fontSize: '0.62rem', fontWeight: 600, color: CREAM }}>{name}</span>
-                </div>
-              </Reveal>
-            )
-          })}
-        </div>
-      )}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.8rem', marginTop: '1.75rem' }}>
+        <button onClick={() => (i === 0 ? null : go(i - 1))} disabled={i === 0} style={{
+          ...sans, fontSize: '0.74rem', fontWeight: 600, letterSpacing: '0.04em',
+          background: 'transparent', border: `1px solid ${LINE}`, color: i === 0 ? 'rgba(7,26,56,0.3)' : INK,
+          padding: '0.7rem 1.3rem', borderRadius: '3px', cursor: i === 0 ? 'default' : 'pointer',
+        }}>← {i <= 1 ? t.gate_back_start : `${t.stage_word} ${t.stages[stageIdx - 1].n}`}</button>
 
-      <GateBlock t={t} verdict={s.gate} />
+        {i < total - 1 && (
+          <button onClick={i === 0 ? () => go(1) : cross} style={{
+            ...sans, fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase',
+            background: GREEN, color: INK, border: 'none',
+            padding: '0.8rem 1.7rem', borderRadius: '3px', cursor: 'pointer',
+          }}>{i === 0 ? t.gate_start : t.gate_cross} →</button>
+        )}
+      </div>
     </Doc>
   )
 }
@@ -1338,37 +1432,6 @@ function Tesis({ t }: { t: T }) {
   )
 }
 
-function Regla({ t }: { t: T }) {
-  return (
-    <Doc id="regla">
-      <Reveal>
-        <Eyebrow>{t.regla_k}</Eyebrow>
-        <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.9rem, 4vw, 3.2rem)', lineHeight: 1.08, color: INK, margin: '0 0 1.4rem', maxWidth: '24ch' }}>{t.regla_t}</h2>
-        <P max="72ch" style={{ fontSize: 'clamp(1rem, 1.3vw, 1.14rem)' }}>{t.regla_d}</P>
-      </Reveal>
-
-      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2.25rem 0 1rem' }}>{t.rail_label}</p>
-      <Reveal>
-        <StageRail t={t} />
-      </Reveal>
-
-      <Reveal delay={0.08}>
-        <P max="74ch" style={{ marginTop: '1.75rem' }}>{rich(t.regla_body, INK)}</P>
-      </Reveal>
-
-      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2rem 0 1rem' }}>{t.regla_dims_label}</p>
-      <Reveal>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
-          {t.dims.map((d) => (
-            <span key={d} style={{ ...sans, fontSize: '0.74rem', fontWeight: 600, color: INK, border: '1px solid rgba(7,26,56,0.3)', padding: '0.5rem 1rem', borderRadius: '2px', background: '#fff' }}>{d}</span>
-          ))}
-        </div>
-      </Reveal>
-
-      <Statement by={t.regla_statement_by}>{t.regla_statement}</Statement>
-    </Doc>
-  )
-}
 
 function Carriles({ t }: { t: T }) {
   return (
@@ -1583,10 +1646,7 @@ export function MasterplanStageGate({ showCover = false }: { showCover?: boolean
       {showCover && <ProgressBar />}
       <StageNav t={t} />
       <Tesis t={t} />
-      <Regla t={t} />
-      {t.stages.map((s, i) => (
-        <StageChapter key={s.n} t={t} idx={i} bg={i % 2 === 0 ? CREAM : PAPER} />
-      ))}
+      <StageCarousel t={t} />
       <Carriles t={t} />
       <Carbono t={t} />
       <Quienes t={t} />

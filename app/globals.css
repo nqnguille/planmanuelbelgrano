@@ -153,3 +153,9 @@ h1, h2, h3, h4 {
 .mp-stagebar::-webkit-scrollbar {
   display: none;
 }
+
+/* Carrusel de etapas del masterplan: fade al cambiar de slide */
+@keyframes mpFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
