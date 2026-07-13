@@ -179,12 +179,21 @@ const TXT = {
       'Casi cualquier cultivo captura carbono; lo excepcional es retenerlo por siglos y con **una única cadena de custodia**. Ese respaldo físico y esa trazabilidad le dan al crédito un valor que el mercado paga — y que muy pocos pueden ofrecer.',
     v_dif_statement: 'El carbono se captura en el campo y queda guardado en la pared: un crédito que solo puede generar quien tiene la cadena entera.',
     v_dif_by: 'Fijación durable + custodia única',
-    v_impacto_label: 'Tres resultados de la misma cadena',
-    v_cards: [
-      ['Vivienda', 'accesible, aislante y de rápida ejecución, con materia prima y mano de obra locales — allí donde más falta.'],
-      ['Empleo', 'técnico y local en cada eslabón: cultivo, industria y construcción. La fuente de trabajo crece con cada hectárea y con cada obra.'],
-      ['Industria', 'valor agregado en origen que multiplica empresas regionales — y reactiva las cadenas que se desprenden del cáñamo: alimentos, textiles, bioplásticos, papel, cosmética.'],
+    v_impacto_label: 'El triple impacto',
+    v_impacto_eq: ['Ambiental', 'Social', 'Económico'],
+    v_impacto_lead: 'Este plan persigue dos objetivos —cuidar el ambiente y transformar la vida de la gente—. El tercero, el económico, no es la meta: es lo que **resulta** cuando los otros dos se cumplen. Ambiental más social igual económico.',
+    v_amb_label: 'El impacto ambiental',
+    v_amb: 'Cada hectárea saca carbono del aire y lo guarda por siglos, en las paredes y en el suelo. El material reemplaza al cemento, la tierra queda más fértil, y la huella de construir se da vuelta: de emitir, a fijar.',
+    v_soc_label: 'El impacto social',
+    v_soc_lead: 'Es el corazón del plan — y donde más se nota en Neuquén.',
+    v_soc_cards: [
+      ['Empleo y oficio', 'Trabajo técnico neuquino en cada eslabón, del campo a la obra, con formación y certificación de competencias. La mano de obra local que hoy queda afuera de Vaca Muerta encuentra su lugar.'],
+      ['Vivienda y arraigo', 'Techo accesible para los que llegan y para los que ya estaban. Descomprimir el hacinamiento y los alquileres imposibles de la cuenca: que la gente pueda quedarse a vivir donde nace el trabajo.'],
+      ['Comunidad y territorio', 'Barrios que producen su propio material —el agrihood— y un desarrollo co-construido con los municipios y las comunidades, con lugar para las cooperativas y la economía social en la cadena.'],
+      ['Dignidad y futuro', 'Devolver oficio y horizonte, con el esfuerzo como camino y sin asistencialismo. Fábricas hoy paradas que el cáñamo puede volver a poner de pie, y trabajadores que se reconvierten con un oficio nuevo.'],
     ] as readonly (readonly [string, string])[],
+    v_eco_label: 'El resultado económico',
+    v_eco: 'De esas dos patas nace la tercera: empresas regionales que se crean, valor agregado que se queda en la provincia, y una industria nueva que **diversifica la matriz productiva** más allá del hidrocarburo — con el crédito de carbono financiando el ciclo. La riqueza deja de extraerse y marcharse: se produce y se queda.',
     v_ciudades_label: 'Ciudades de cáñamo',
     v_ciudades:
       'Si a Neuquén llegan un millón y medio de personas en treinta años, la provincia va a necesitar dónde alojarlas y con qué economía sostenerlas. El hempcrete convierte hectáreas cultivables en viviendas, barrios y ciudades enteras — y en trabajo local en cada eslabón de la cadena, del campo a la llave.',
@@ -483,12 +492,21 @@ const TXT = {
       'Almost any crop captures carbon; what is exceptional is holding it for centuries with **a single chain of custody**. That physical backing and traceability give the credit a value the market pays for — and that very few can offer.',
     v_dif_statement: 'The carbon is captured in the field and stays stored in the wall: a credit that only whoever holds the entire chain can generate.',
     v_dif_by: 'Durable fixation + single custody',
-    v_impacto_label: 'Three outcomes from the same chain',
-    v_cards: [
-      ['Housing', 'affordable, well-insulated and quick to build, with local raw materials and labor — where it is needed most.'],
-      ['Employment', 'skilled and local at every link: farming, industry and construction. The source of work grows with every hectare and every build.'],
-      ['Industry', 'value added at the source that multiplies regional companies — and revives the chains that branch off hemp: food, textiles, bioplastics, paper, cosmetics.'],
+    v_impacto_label: 'The triple impact',
+    v_impacto_eq: ['Environmental', 'Social', 'Economic'],
+    v_impacto_lead: 'This plan pursues two goals —caring for the environment and transforming people\'s lives—. The third, the economic one, is not the target: it is what **results** when the other two are met. Environmental plus social equals economic.',
+    v_amb_label: 'The environmental impact',
+    v_amb: 'Every hectare pulls carbon from the air and stores it for centuries, in the walls and in the soil. The material replaces cement, the land ends up more fertile, and the footprint of building is flipped: from emitting, to fixing.',
+    v_soc_label: 'The social impact',
+    v_soc_lead: 'It is the heart of the plan — and where it shows most in Neuquén.',
+    v_soc_cards: [
+      ['Jobs and craft', 'Skilled Neuquén labor at every link, from the field to the build, with training and skills certification. The local workforce left out of Vaca Muerta today finds its place.'],
+      ['Housing and roots', 'Affordable shelter for those who arrive and those already here. Easing the overcrowding and impossible rents of the basin: letting people stay and live where the work is born.'],
+      ['Community and territory', 'Neighborhoods that produce their own material —the agrihood— and development co-built with municipalities and communities, with a place for cooperatives and the social economy in the chain.'],
+      ['Dignity and future', 'Restoring craft and horizon, with effort as the path and no handouts. Idle factories that hemp can put back on their feet, and workers who retrain with a new trade.'],
     ] as readonly (readonly [string, string])[],
+    v_eco_label: 'The economic result',
+    v_eco: 'From those two pillars the third is born: regional companies created, value added that stays in the province, and a new industry that **diversifies the productive base** beyond hydrocarbons — with the carbon credit financing the cycle. Wealth stops being extracted and leaving: it is produced and it stays.',
     v_ciudades_label: 'Hemp cities',
     v_ciudades:
       'If a million and a half people arrive in Neuquén over thirty years, the province will need places to house them and an economy to sustain them. Hempcrete turns arable hectares into homes, neighborhoods and entire cities — and into local work at every link of the chain, from the field to the key.',
@@ -1228,18 +1246,64 @@ function Tesis({ t }: { t: T }) {
         </div>
       </Reveal>
 
-      {/* triple impacto */}
+      {/* triple impacto — la ecuación ambiental + social = económico */}
       <VisionLabel>{t.v_impacto_label}</VisionLabel>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1px', background: LINE, border: `1px solid ${LINE}` }}>
-        {t.v_cards.map(([title, d], i) => (
-          <Reveal key={title} delay={0.06 * i}>
-            <div style={{ background: CREAM, padding: 'clamp(1.5rem, 2.5vw, 2rem)', height: '100%' }}>
-              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.4vw, 2rem)', color: GREEN_DK, margin: '0 0 0.6rem' }}>{title}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.85rem', lineHeight: 1.6, color: MUTED, margin: 0 }}>{d}</p>
+
+      {/* la ecuación, destacada */}
+      <Reveal>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 'clamp(0.5rem, 2vw, 1.25rem)', margin: '0 0 1.75rem' }}>
+          {[
+            { t: t.v_impacto_eq[0], c: GREEN_DK, op: '+' },
+            { t: t.v_impacto_eq[1], c: CELESTE, op: '=' },
+            { t: t.v_impacto_eq[2], c: '#8a6510', op: null },
+          ].map(({ t: label, c, op }) => (
+            <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.5rem, 2vw, 1.25rem)' }}>
+              <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.3rem, 3vw, 2.2rem)', color: c }}>{label}</span>
+              {op && <span aria-hidden style={{ ...sans, fontWeight: 300, fontSize: 'clamp(1.3rem, 3vw, 2.2rem)', color: 'rgba(7,26,56,0.4)' }}>{op}</span>}
+            </div>
+          ))}
+        </div>
+      </Reveal>
+      <Reveal>
+        <P max="74ch">{rich(t.v_impacto_lead, INK)}</P>
+      </Reveal>
+
+      {/* motor 1: ambiental */}
+      <Reveal>
+        <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GREEN}`, padding: 'clamp(1.4rem, 2.8vw, 1.9rem)', margin: '1.5rem 0 0', maxWidth: '60rem' }}>
+          <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2.4vw, 1.85rem)', color: GREEN_DK, margin: '0 0 0.6rem' }}>{t.v_amb_label}</h3>
+          <p style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: MUTED, margin: 0, maxWidth: '68ch' }}>{t.v_amb}</p>
+        </div>
+      </Reveal>
+
+      {/* motor 2: social — desarrollado, 4 dimensiones */}
+      <Reveal>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.85rem', flexWrap: 'wrap', margin: '2rem 0 0.4rem' }}>
+          <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.5rem, 2.6vw, 2.1rem)', color: CELESTE, margin: 0 }}>{t.v_soc_label}</h3>
+          <span style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', color: MUTED }}>{t.v_soc_lead}</span>
+        </div>
+      </Reveal>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.7rem', marginTop: '1rem' }}>
+        {t.v_soc_cards.map(([title, d], i) => (
+          <Reveal key={title} delay={0.05 * i}>
+            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderTop: `2px solid ${CELESTE}`, padding: 'clamp(1.3rem, 2.4vw, 1.6rem)', height: '100%' }}>
+              <h4 style={{ ...sans, fontSize: '0.94rem', fontWeight: 700, color: INK, margin: '0 0 0.45rem' }}>{title}</h4>
+              <p style={{ ...sans, fontWeight: 300, fontSize: '0.83rem', lineHeight: 1.65, color: MUTED, margin: 0 }}>{d}</p>
             </div>
           </Reveal>
         ))}
       </div>
+
+      {/* = resultado: económico */}
+      <Reveal>
+        <div style={{ background: DUSK, borderLeft: `3px solid ${GOLD}`, padding: 'clamp(1.5rem, 3vw, 2.1rem)', margin: '2rem 0 0', maxWidth: '60rem' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.7rem', marginBottom: '0.6rem' }}>
+            <span aria-hidden style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.6rem, 3vw, 2.3rem)', color: 'rgba(242,181,68,0.7)', lineHeight: 1 }}>=</span>
+            <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.4rem, 2.4vw, 1.85rem)', color: GOLD, margin: 0 }}>{t.v_eco_label}</h3>
+          </div>
+          <p style={{ ...sans, fontWeight: 300, fontSize: '0.92rem', lineHeight: 1.75, color: CREAM_MUTED, margin: 0, maxWidth: '68ch' }}>{rich(t.v_eco, CREAM)}</p>
+        </div>
+      </Reveal>
 
       {/* ciudades de cáñamo */}
       <VisionLabel>{t.v_ciudades_label}</VisionLabel>
