@@ -1,0 +1,13 @@
+name = "planmanuelbelgrano"
+compatibility_date = "2025-06-01"
+pages_build_output_dir = "out"
+
+# Base de analítica de gates (D1)
+[[d1_databases]]
+binding = "DB"
+database_name = "pmb-analytics"
+database_id = "20041c82-2714-46f7-95e8-537fbcf5ebb5"
+
+# Token para ver las estadísticas (se puede sobreescribir como secret en el dashboard)
+[vars]
+STATS_TOKEN = "belgrano-stats-2026"

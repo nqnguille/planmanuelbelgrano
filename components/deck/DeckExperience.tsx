@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { trackGate } from '@/lib/gateTrack'
 import { PresentationDeck } from './PresentationDeck'
 
 const PASSWORD = 'belgrano2026'
@@ -16,7 +17,7 @@ export function DeckExperience() {
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    try { if (sessionStorage.getItem(STORAGE_KEY) === '1') setUnlocked(true) } catch {}
+    try { if (sessionStorage.getItem(STORAGE_KEY) === '1') setUnlocked(true); else trackGate('view', 'deck') } catch {}
     setChecked(true)
   }, [])
 
@@ -24,10 +25,13 @@ export function DeckExperience() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (value === PASSWORD) {
+    const key = value.trim()
+    if (key === PASSWORD) {
       try { sessionStorage.setItem(STORAGE_KEY, '1') } catch {}
+      trackGate('unlock', 'deck', key)
       setUnlocked(true)
     } else {
+      trackGate('fail', 'deck', key)
       setError(true)
       setValue('')
       setTimeout(() => setError(false), 1200)

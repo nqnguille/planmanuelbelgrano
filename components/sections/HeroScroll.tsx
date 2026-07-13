@@ -10,13 +10,16 @@ const FRAME_SRCS = Array.from({ length: FRAME_COUNT }, (_, i) =>
 )
 const HERO_POSTER = '/hero/seqv/f001.jpg'
 
-// Cuánto scroll dura el hero, en múltiplos de la altura del viewport (~5 = ~500vh).
-// Más distancia = el video avanza más lento y fluido por cuadro al scrollear.
-const SCROLL_MULTIPLIER = 5
+// Cuánto scroll dura el hero, en múltiplos de la altura del viewport (~3.6 = ~360vh).
+// Como el video avanza SOLO con el scroll (scrub), este número es la "duración" real:
+// más alto = más scroll para recorrer toda la secuencia. Acortado de 5 → 3.6 para que
+// el relato no exija tanto desplazamiento antes de llegar al gate.
+const SCROLL_MULTIPLIER = 3.6
 // Fracción del timeline (0→1) en la que corre toda la secuencia y entran los textos.
 // El resto (1 - SEQ) es un HOLD explícito: frame final + "Vaca Verde" congelados,
 // con la pantalla pinneada, para que dé tiempo de leer antes de pasar al gate.
-const SEQ = 0.70
+// Subido de 0.70 → 0.84: el HOLD muerto baja de ~30% (~150vh) a ~16% (~58vh) del scroll.
+const SEQ = 0.84
 
 function coverGeo(srcW: number, srcH: number, dstW: number, dstH: number) {
   const sAR = srcW / srcH
@@ -110,15 +113,16 @@ const COPY: Record<'es' | 'en', { states: HeroState[]; scrollCue: string }> = {
 }
 
 // Posiciones sobre el eje del timeline (0→1). Frames y textos comparten este eje,
-// así que la sincronía es exacta. Escenas reales (verificadas en los cuadros):
-// f001 árido · f030 campo · f058 construcción · f104 ciudad verde.
-// Los frames corren de 0 a SEQ (0.62); cada texto entra junto a su escena.
-// Transiciones SECUENCIALES (in = out anterior + D): sin solape de títulos ni baches.
+// así que la sincronía es exacta. Como los frames corren de 0 a SEQ (0.84), cada
+// posición t equivale al cuadro f = (t/SEQ)*103 + 1. Escenas reales verificadas:
+// árido f1-25 · campo de cáñamo f28-52 · obra→barrio f59-90 · ciudad verde f91-104.
+// Recalculado para el nuevo SEQ=0.84 y acortado: cada texto entra/sale más seco,
+// justo sobre su escena. Transiciones SECUENCIALES (in = out anterior + D): sin solape.
 const TIMING = [
-  { out: 0.135 },                // S0 árido + industria
-  { in: 0.192, out: 0.361 },     // S1 campo de cáñamo
-  { in: 0.418, out: 0.587 },     // S2 construcción
-  { in: 0.644 },                 // S3 ciudad verde — entra antes del frame final y se sostiene en el HOLD
+  { out: 0.155 },                // S0 árido — sale en ~f25, cuando aparece el verde
+  { in: 0.220, out: 0.420 },     // S1 campo de cáñamo (f28→f57)
+  { in: 0.475, out: 0.685 },     // S2 obra→barrio (f59→f90)
+  { in: 0.735 },                 // S3 ciudad verde (f91) — se sostiene en el HOLD final
 ]
 
 export function HeroScroll() {
@@ -211,7 +215,7 @@ export function HeroScroll() {
       const { gsap } = await import('@/lib/gsap')
       gsapCtx = gsap.context(() => {
         const frameState = { f: 0 }
-        const D = 0.05
+        const D = 0.04
 
         const tl = gsap.timeline({
           scrollTrigger: {

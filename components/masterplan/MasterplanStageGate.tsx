@@ -70,13 +70,13 @@ const TXT = {
     tesis_k: 'La visión',
     tesis_lead: 'Podemos convertir Vaca Muerta en Vaca Verde.',
     tesis_body:
-      'Debajo de Neuquén está la energía que hoy mueve al país. Cuando esa energía crece, crece la provincia entera — y en la superficie hay tierra, agua y sol para convertir ese crecimiento en algo que eche raíces. **Vaca Muerta no es eterna — lo que construyamos con lo que genera puede serlo.**',
+      'Debajo de Neuquén está la energía que hoy mueve al país. Cuando esa energía crece, crece la provincia entera — y en la superficie hay tierra, agua y sol para una industria nueva: **cultivar cáñamo y convertirlo en casas que guardan carbono**, con trabajo local en cada paso. **Vaca Muerta no es eterna — lo que construyamos con lo que genera puede serlo.**',
     v_belgrano_label: 'Una industria interrumpida hace 230 años',
     v_belgrano:
       'En 1796, Manuel Belgrano propuso desde el Consulado el cultivo del lino y del cáñamo como una de las primeras industrias del país: **producir y agregar valor, en lugar de solo extraer**. Se adelantó más de dos siglos. El cáñamo construyó durante siglos en Europa, Asia y América —la estructura más antigua documentada tiene mil quinientos años y sigue en pie—, hasta que la prohibición del siglo XX lo interrumpió: una decisión regulatoria, no técnica ni económica. El marco vigente vuelve a habilitarlo. **Y la industria todavía no tiene dueño.**',
     v_planta_label: 'La planta',
     v_planta:
-      'El cáñamo industrial crece rápido, en suelo árido y con poca agua: madura en pocos meses y prospera donde otros cultivos no llegan. De una sola siembra entrega fibra, materiales y energía — casi sin desperdicio.',
+      'El cáñamo industrial es un cultivo agrícola legal, sin efecto psicoactivo: crece rápido, en suelo árido y con poca agua, y prospera donde otros cultivos no llegan. De una sola siembra entrega fibra y materiales — casi sin desperdicio.',
     v_products: [
       ['Hempcrete', 'El material de construcción de base biológica: ladrillos y bloques para vivienda accesible, aislante y de rápida ejecución. Probado en más de 50 países, con un diferencial único: el carbono que capturó el cultivo queda almacenado en la pared durante toda la vida de la construcción.'],
       ['Biochar', 'Del residuo de la planta, por pirólisis, un carbón vegetal estable que bloquea carbono por más de mil años y mejora el suelo. La segunda línea de valor de la misma hectárea — el residuo también es un activo.'],
@@ -124,7 +124,7 @@ const TXT = {
     v_comp_carbon_emite: 'emite carbono',
     v_comp_note: 'Valores de referencia sectoriales, a los fines de la comparación. Los del material propio se validan en los ensayos del Piloto (INTI · IRAM 11605).',
     v_hemp_partner:
-      'Tecnología de referencia: **Renewabuild** (Columbia Británica, Canadá), partner tecnológico del plan — acuerdo en instancia de firma. Su bloque estructural de biomasa, postensado y de encastre, evita el esqueleto tradicional de hormigón y madera: la obra se levanta como piezas que encastran y se tensan, con obras reales ya construidas en Canadá.',
+      'Tecnología de referencia: **Renewabuild** (Columbia Británica, Canadá), partner tecnológico del plan — acuerdo en instancia de firma. Su bloque estructural de biomasa evita el esqueleto tradicional de hormigón y madera: la obra se levanta con piezas que encastran, con obras reales ya construidas en Canadá.',
     v_ciclo_label: 'El viaje del carbono',
     v_ciclo_top: 'CO₂ del aire',
     v_ciclo_cultivo: ['El cultivo', 'lo captura mientras crece'],
@@ -174,7 +174,7 @@ const TXT = {
       'Una sola planta abre una cadena industrial completa: cultivo, material de construcción y, del residuo, biochar. Cada paso ocurre en la misma cuenca y es empleo técnico — del campo a la vivienda.',
     v_dif_label: 'El diferencial',
     v_dif:
-      'Casi cualquier cultivo captura carbono; lo excepcional es retenerlo. Este proyecto fija el carbono capturado en materia que lo guarda por décadas y siglos —**en la pared, como ladrillo; en el suelo, como biochar**— y, porque la cadena es una sola, cada crédito nace con **una única cadena de custodia**, trazable de la semilla al muro. Respaldo físico y custodia única le dan al crédito un valor que el mercado paga, y que muy pocos pueden ofrecer.',
+      'Casi cualquier cultivo captura carbono; lo excepcional es retenerlo por siglos y con **una única cadena de custodia**. Ese respaldo físico y esa trazabilidad le dan al crédito un valor que el mercado paga — y que muy pocos pueden ofrecer.',
     v_dif_statement: 'El carbono se captura en el campo y queda guardado en la pared: un crédito que solo puede generar quien tiene la cadena entera.',
     v_dif_by: 'Fijación durable + custodia única',
     v_impacto_label: 'Tres resultados de la misma cadena',
@@ -185,7 +185,7 @@ const TXT = {
     ] as readonly (readonly [string, string])[],
     v_ciudades_label: 'Ciudades de cáñamo',
     v_ciudades:
-      'Si a Neuquén llega un millón de personas, la pregunta no es solo dónde duermen: es qué construye su economía. El hempcrete convierte cualquier hectárea cultivable de la Argentina en viviendas, barrios y ciudades enteras — y en una fuente de trabajo inagotable, en cada eslabón de la cadena, del campo a la llave.',
+      'Si a Neuquén llegan un millón y medio de personas en treinta años, la provincia va a necesitar dónde alojarlas y con qué economía sostenerlas. El hempcrete convierte hectáreas cultivables en viviendas, barrios y ciudades enteras — y en trabajo local en cada eslabón de la cadena, del campo a la llave.',
     v_statement: 'Vaca Muerta le dio a Neuquén energía, trabajo y escala. Sobre esa misma tierra, el cáñamo suma una industria que planta, construye y regenera.',
     v_statement_by: 'Vaca Muerta → Vaca Verde',
     v_puente:
@@ -218,11 +218,11 @@ const TXT = {
         fronts: [
           ['El problema, caracterizado y documentado', 'Déficit habitacional cercano al 60% en la zona de Vaca Muerta, Añelo creció más del 140%, los alquileres más caros del país y obra que se contrata a empresas de fuera de la provincia. La prensa lo cuenta sola:'],
           ['El mercado y su hueco de pionero', 'El material a batir identificado (hormigón celular curado en autoclave), los segmentos definidos —construcción privada, vivienda pública y la industria que necesita alojar a su gente— y una posición única: nadie construyó todavía con cáñamo en Argentina.'],
-          ['El producto, especificado', 'Hempcrete: densidad objetivo 250–350 kg/m³, conductividad 0,06–0,12 W/mK, incombustible (Clase A), vida útil de más de 500 años — norma europea EN 16101, probado en más de 50 países. Dos líneas: ladrillo de cerramiento y bloque estructural.'],
+          ['El producto, especificado', 'Hempcrete: densidad objetivo 250–350 kg/m³, conductividad 0,06–0,12 W/mK, buen comportamiento al fuego (objetivo Clase A, a validar en ensayos), vida útil de más de 500 años — un sistema probado en más de 50 países. Dos líneas: ladrillo de cerramiento y bloque estructural.'],
           ['El marco legal, relevado', 'Ley 27.669 (cáñamo industrial, THC < 0,3%, autoridad ARICCAME en el Ministerio de Economía) y Decreto 405/2023. Ruta de certificación del sistema constructivo identificada junto al INTI: aptitud técnica, normas IRAM, reglamentos CIRSOC.'],
           ['El consorcio y la gobernanza', 'Flora Cáñamo Neuquino lidera e integra; Fundación GEN cultiva (titular de la licencia agrícola, con el primer antecedente de cáñamo industrial de Neuquén); EcoGaia certifica el carbono; INTI valida el material. Quien opera no es quien valida ni quien certifica.'],
         ],
-        gate: 'Existe una base técnica, legal, comercial e institucional suficiente para justificar la inversión en viabilidad.',
+        gate: 'Existe una base técnica, regulatoria, comercial, financiera e institucional suficiente para justificar la inversión en viabilidad.',
         showClippings: true,
         showMaterial: true,
       },
@@ -310,14 +310,14 @@ const TXT = {
     carbono_k: 'El activo que madura con el plan',
     carbono_t: 'Carbono medido, verificado y de un solo dueño',
     carbono_body1:
-      'El diferencial del cáñamo construido es la permanencia: el carbono que captura el cultivo queda fijado en la pared durante toda la vida de la construcción, y en el suelo por siglos vía biochar. Al controlar la cadena completa —semilla, cultivo, material, construcción y residuos— el crédito tiene **un único hilo de custodia**: se mide con el MRV propio, lo certifica EcoGaia bajo estándares internacionales, y cada tonelada se registra una sola vez, a nombre de un único titular.',
+      'El diferencial del cáñamo construido es la permanencia: el carbono que captura el cultivo queda fijado en la pared durante toda la vida de la construcción, y en el suelo por siglos vía biochar. Al controlar la cadena completa —semilla, cultivo, material, construcción y residuos— el crédito tiene **un único hilo de custodia**: se mide con el MRV propio y se certifica bajo estándares internacionales (Verra, Gold Standard) con verificación de un tercero independiente, y cada tonelada se registra una sola vez, a nombre de un único titular.',
     carbono_moat_label: 'La oportunidad para quien entra primero',
     carbono_moat1:
       'Toda empresa con una meta ambiental enfrenta la misma disyuntiva: comprar créditos de terceros —a precio de mercado, con la integridad de otro— o **generar los propios**. Este plan ofrece lo segundo: la capacidad de producir créditos de remoción durable, verificados y trazables, en el mismo territorio donde la empresa opera. Un activo que nadie más puede reclamar, a costo de productor — **una ventaja que no se puede comprar hecha**.',
     carbono_moat_statement: 'Generar créditos de carbono hoy es como minar bitcoin en 2010: el que entra temprano fija su costo para siempre, y la posición de pionero se toma una sola vez.',
     carbono_moat_by: 'El diferencial para el socio fundador',
     carbono_moat2:
-      'La ventana de primer entrante ya pasó por los ferrocarriles, el petróleo y el shale. Ahora está abierta para la remoción biológica verificable — y en la Argentina ese activo todavía no tiene dueño. La empresa que ayude a arrancar y validar el modelo queda, para siempre, como la que lo hizo posible: **fundadora de la cadena y primera en la fila de todo lo que produce**.',
+      'La ventana de primer entrante ya pasó por los ferrocarriles, el petróleo y el shale. Ahora está abierta para la remoción biológica verificable — y en la Argentina, la construcción con cáñamo todavía no tiene quién la lidere. La empresa que ayude a arrancar y validar el modelo queda, para siempre, como la que lo hizo posible: **fundadora de la cadena y primera en la fila de todo lo que produce**.',
     carbono_body2:
       'Su dimensión económica se cuantifica cuando el plan la valida — la primera medición real es un entregable del Piloto, y la escala comercial llega con el Escalamiento. **Como todo en este documento, el activo no se promete: se demuestra.**',
 
@@ -331,7 +331,7 @@ const TXT = {
       ['Fundación GEN', 'Cultiva', 'Titular de la licencia agrícola. Maquinaria, conocimiento agronómico y el primer antecedente de cáñamo industrial de Neuquén.'],
       ['EcoGaia', 'Certifica', 'Desarrolladora y certificadora argentina de créditos de carbono, ciclo completo bajo Verra y Gold Standard, con experiencia en cáñamo en Canadá.'],
       ['INTI', 'Valida', 'Ensayos del material y ruta de certificación del sistema constructivo.'],
-      ['Renewabuild', 'Tecnología constructiva', 'Empresa canadiense que comercializa el primer bloque estructural de biomasa, con obras reales construidas. Partner tecnológico del plan; acuerdo en instancia de firma.'],
+      ['Renewabuild', 'Tecnología constructiva', 'Empresa canadiense que comercializa un bloque estructural de biomasa, con obras reales construidas. Partner tecnológico del plan; acuerdo en instancia de firma.'],
     ],
     founder_label: 'El fundador',
     founder:
@@ -361,8 +361,8 @@ const TXT = {
     footer: 'Flora Cáñamo Neuquino SRL · Julio 2026 · Documento confidencial',
 
     clippings: [
-      { medium: 'Río Negro', quote: 'Neuquén va a tener, en 30 años, 1 millón y medio de personas.', who: 'F. Sturzenegger · Ministro de Desregulación', alarm: false },
-      { medium: 'Infobae', quote: 'No se vengan con la familia.', who: 'F. Banderet · Intendente de Añelo', alarm: true },
+      { medium: 'Río Negro', quote: 'Neuquén va a tener, en 30 años, 1 millón y medio de personas.', who: 'Ministro nacional de Desregulación', alarm: false },
+      { medium: 'Infobae', quote: 'No se vengan con la familia.', who: 'Intendente de Añelo', alarm: true },
       { medium: 'LM Neuquén', quote: 'Contratan empresas de afuera para obras que podrían hacer las empresas locales.', who: 'UOCRA Neuquén · +100 sin trabajo', alarm: true },
     ],
     cadena: ['Semilla', 'Cultivo', 'Cosecha', 'Decortización', 'Mezclado', 'Hempcrete', 'Construcción', 'Vivienda'],
@@ -372,13 +372,13 @@ const TXT = {
     tesis_k: 'The vision',
     tesis_lead: 'We can turn Vaca Muerta into Vaca Verde.',
     tesis_body:
-      'Beneath Neuquén lies the energy that powers the country today. When that energy grows, the whole province grows — and on the surface there is land, water and sun to turn that growth into something that takes root. **Vaca Muerta is not eternal — what we build with what it generates can be.**',
+      'Beneath Neuquén lies the energy that powers the country today. When that energy grows, the whole province grows — and on the surface there is land, water and sun for a new industry: **growing hemp and turning it into houses that store carbon**, with local work at every step. **Vaca Muerta is not eternal — what we build with what it generates can be.**',
     v_belgrano_label: 'An industry interrupted 230 years ago',
     v_belgrano:
       'In 1796, Manuel Belgrano proposed from the Consulate the cultivation of flax and hemp as one of the country\'s first industries: **producing and adding value, rather than only extracting**. He was more than two centuries ahead. Hemp built across Europe, Asia and America for centuries —the oldest documented structure is fifteen hundred years old and still standing— until the 20th-century prohibition interrupted it: a regulatory decision, not a technical or economic one. The current framework enables it once again. **And the industry still has no owner.**',
     v_planta_label: 'The plant',
     v_planta:
-      'Industrial hemp grows fast, in arid soil and with little water: it matures in a few months and thrives where other crops cannot. A single sowing delivers fiber, materials and energy — with almost zero waste.',
+      'Industrial hemp is a legal agricultural crop with no psychoactive effect: it grows fast, in arid soil and with little water, and thrives where other crops cannot. A single sowing delivers fiber and materials — with almost zero waste.',
     v_products: [
       ['Hempcrete', 'The bio-based construction material: bricks and blocks for affordable, well-insulated, quick-to-build housing. Proven in more than 50 countries, with a unique differentiator: the carbon captured by the crop stays stored in the wall for the entire life of the building.'],
       ['Biochar', 'From the plant\'s residues, through pyrolysis, a stable charcoal that locks carbon for more than a thousand years and improves the soil. The second value line from the same hectare — the residue is an asset too.'],
@@ -426,7 +426,7 @@ const TXT = {
     v_comp_carbon_emite: 'emits carbon',
     v_comp_note: 'Sector reference values, for comparison purposes. The plan\'s own values are validated in the Pilot\'s testing (INTI · IRAM 11605).',
     v_hemp_partner:
-      'Reference technology: **Renewabuild** (British Columbia, Canada), the plan\'s technology partner — agreement at the signing stage. Its structural biomass block, post-tensioned and interlocking, avoids the traditional concrete-and-timber skeleton: the build rises as pieces that interlock and tension, with real builds already standing in Canada.',
+      'Reference technology: **Renewabuild** (British Columbia, Canada), the plan\'s technology partner — agreement at the signing stage. Its structural biomass block avoids the traditional concrete-and-timber skeleton: the build rises with interlocking pieces, with real builds already standing in Canada.',
     v_ciclo_label: 'The carbon\'s journey',
     v_ciclo_top: 'CO₂ from the air',
     v_ciclo_cultivo: ['The crop', 'captures it as it grows'],
@@ -476,7 +476,7 @@ const TXT = {
       'A single plant opens a complete industrial chain: cultivation, construction material and, from the residue, biochar. Every step happens in the same basin and is skilled employment — from the field to the home.',
     v_dif_label: 'The differentiator',
     v_dif:
-      'Almost any crop captures carbon; what is exceptional is holding onto it. This project locks the captured carbon into matter that keeps it for decades and centuries —**in the wall, as brick; in the soil, as biochar**— and, because the chain is one, every credit is born with **a single chain of custody**, traceable from seed to wall. Physical backing and single custody give the credit a value the market pays for, and that very few can offer.',
+      'Almost any crop captures carbon; what is exceptional is holding it for centuries with **a single chain of custody**. That physical backing and traceability give the credit a value the market pays for — and that very few can offer.',
     v_dif_statement: 'The carbon is captured in the field and stays stored in the wall: a credit that only whoever holds the entire chain can generate.',
     v_dif_by: 'Durable fixation + single custody',
     v_impacto_label: 'Three outcomes from the same chain',
@@ -487,7 +487,7 @@ const TXT = {
     ] as readonly (readonly [string, string])[],
     v_ciudades_label: 'Hemp cities',
     v_ciudades:
-      'If a million people arrive in Neuquén, the question is not only where they sleep: it is what builds their economy. Hempcrete turns any arable hectare of Argentina into homes, neighborhoods and entire cities — and into an inexhaustible source of work, at every link of the chain, from the field to the key.',
+      'If a million and a half people arrive in Neuquén over thirty years, the province will need places to house them and an economy to sustain them. Hempcrete turns arable hectares into homes, neighborhoods and entire cities — and into local work at every link of the chain, from the field to the key.',
     v_statement: 'Vaca Muerta gave Neuquén energy, work and scale. On that same land, hemp adds an industry that plants, builds and regenerates.',
     v_statement_by: 'Vaca Muerta → Vaca Verde',
     v_puente:
@@ -519,11 +519,11 @@ const TXT = {
         fronts: [
           ['The problem, characterized and documented', 'A housing deficit close to 60% in the Vaca Muerta region, Añelo grew more than 140%, the most expensive rents in the country and construction contracted to companies from outside the province. The press tells it on its own:'],
           ['The market and its pioneer\'s gap', 'The material to beat identified (autoclaved aerated concrete), the segments defined —private construction, public housing and the industry that needs to house its people— and a unique position: no one has built with hemp in Argentina yet.'],
-          ['The product, specified', 'Hempcrete: target density 250–350 kg/m³, conductivity 0.06–0.12 W/mK, non-combustible (Class A), service life over 500 years — European standard EN 16101, proven in more than 50 countries. Two lines: enclosure brick and structural block.'],
+          ['The product, specified', 'Hempcrete: target density 250–350 kg/m³, conductivity 0.06–0.12 W/mK, good fire behavior (target Class A, to be validated in testing), service life over 500 years — a system proven in more than 50 countries. Two lines: enclosure brick and structural block.'],
           ['The legal framework, mapped', 'Law 27,669 (industrial hemp, THC < 0.3%, ARICCAME as authority under the Ministry of Economy) and Decree 405/2023. Certification path for the construction system identified with INTI: technical aptitude, IRAM standards, CIRSOC regulations.'],
           ['The consortium and its governance', 'Flora Cáñamo Neuquino leads and integrates; Fundación GEN cultivates (holder of the agricultural license, with Neuquén\'s first industrial hemp precedent); EcoGaia certifies the carbon; INTI validates the material. The operator is not the validator nor the certifier.'],
         ],
-        gate: 'There is a sufficient technical, legal, commercial and institutional base to justify investing in feasibility.',
+        gate: 'There is a sufficient technical, regulatory, commercial, financial and institutional base to justify investing in feasibility.',
         showClippings: true,
         showMaterial: true,
       },
@@ -609,14 +609,14 @@ const TXT = {
     carbono_k: 'The asset that matures with the plan',
     carbono_t: 'Carbon measured, verified, with a single owner',
     carbono_body1:
-      'The differentiator of built hemp is permanence: the carbon captured by the crop stays locked in the wall for the entire life of the building, and in the soil for centuries via biochar. By controlling the full chain —seed, cultivation, material, construction and residues— the credit has **a single chain of custody**: measured with the plan\'s own MRV, certified by EcoGaia under international standards, and each tonne registered only once, in the name of a single holder.',
+      'The differentiator of built hemp is permanence: the carbon captured by the crop stays locked in the wall for the entire life of the building, and in the soil for centuries via biochar. By controlling the full chain —seed, cultivation, material, construction and residues— the credit has **a single chain of custody**: measured with the plan\'s own MRV and certified under international standards (Verra, Gold Standard) with independent third-party verification, and each tonne registered only once, in the name of a single holder.',
     carbono_moat_label: 'The opportunity for whoever enters first',
     carbono_moat1:
       'Every company with an environmental target faces the same dilemma: buying credits from third parties —at market price, on someone else\'s integrity— or **generating its own**. This plan offers the latter: the capacity to produce durable-removal credits, verified and traceable, in the very territory where the company operates. An asset no one else can claim, at producer cost — **an advantage that cannot be bought ready-made**.',
     carbono_moat_statement: 'Generating carbon credits today is like mining bitcoin in 2010: whoever enters early locks in their cost forever, and the pioneer\'s position is taken only once.',
     carbono_moat_by: 'The differentiator for the founding partner',
     carbono_moat2:
-      'The first-mover window already passed with railroads, oil and shale. It is now open for verifiable biological removal — and in Argentina that asset still has no owner. The company that helps start and validate the model remains, forever, the one that made it possible: **a founder of the chain, first in line for everything it produces**.',
+      'The first-mover window already passed with railroads, oil and shale. It is now open for verifiable biological removal — and in Argentina, building with hemp still has no one leading it. The company that helps start and validate the model remains, forever, the one that made it possible: **a founder of the chain, first in line for everything it produces**.',
     carbono_body2:
       'Its economic dimension is quantified when the plan validates it — the first real measurement is a Pilot deliverable, and commercial scale arrives with Scale-up. **Like everything in this document, the asset is not promised: it is demonstrated.**',
 
@@ -629,7 +629,7 @@ const TXT = {
       ['Fundación GEN', 'Cultivates', 'Holder of the agricultural license. Machinery, agronomic know-how and Neuquén\'s first industrial hemp precedent.'],
       ['EcoGaia', 'Certifies', 'An Argentine developer and certifier of carbon credits, full cycle under Verra and Gold Standard, with hemp experience in Canada.'],
       ['INTI', 'Validates', 'Material testing and the certification path for the construction system.'],
-      ['Renewabuild', 'Construction technology', 'Canadian company commercializing the first structural biomass block, with real builds standing. The plan\'s technology partner; agreement at the signing stage.'],
+      ['Renewabuild', 'Construction technology', 'Canadian company commercializing a structural biomass block, with real builds standing. The plan\'s technology partner; agreement at the signing stage.'],
     ],
     founder_label: 'The founder',
     founder:
@@ -640,7 +640,7 @@ const TXT = {
     inv_d:
       'A partner does not buy the whole vision: they enter through the gate in front of them, with bounded commitments against verifiable deliverables — no subsidies and no new agencies.',
     inv_items: [
-      ['01', 'Industry', 'Finances bounded stages and becomes a founder of the chain: **the capacity to generate its own carbon credits** —instead of buying them from third parties— and preference over housing for its own operations, with the option —never the obligation— to accompany each following stage. And one simple truth: **when the anchor company grows, the whole chain grows** — the field that supplies it, the works that build it and the town that inhabits it.'],
+      ['01', 'Industry', 'Finances bounded stages and becomes a founder of the chain: **the capacity to generate its own carbon credits** —instead of buying them from third parties— and priority access to housing for its own operations, with the option —never the obligation— to accompany each following stage. And one simple truth: **when the anchor company grows, the whole chain grows** — the field that supplies it, the works that build it and the town that inhabits it.'],
       ['02', 'The State', 'Clear rules and coordination. The plan advances under the current framework with private capital; from the State it needs what it does best: unblock, simplify and support without adding hurdles.'],
       ['03', 'Science', 'Testing, standards and certification at every stage of the path: INTI, universities and accredited laboratories. Every claim in the plan is signed by a third party.'],
     ],
@@ -657,8 +657,8 @@ const TXT = {
     footer: 'Flora Cáñamo Neuquino SRL · July 2026 · Confidential document',
 
     clippings: [
-      { medium: 'Río Negro', quote: 'In 30 years, Neuquén will have one and a half million people.', who: 'F. Sturzenegger · Minister of Deregulation', alarm: false },
-      { medium: 'Infobae', quote: 'Don\'t come with your family.', who: 'F. Banderet · Mayor of Añelo', alarm: true },
+      { medium: 'Río Negro', quote: 'In 30 years, Neuquén will have one and a half million people.', who: 'National Minister of Deregulation', alarm: false },
+      { medium: 'Infobae', quote: 'Don\'t come with your family.', who: 'Mayor of Añelo', alarm: true },
       { medium: 'LM Neuquén', quote: 'They hire outside companies for work that local firms could do.', who: 'UOCRA Neuquén · 100+ out of work', alarm: true },
     ],
     cadena: ['Seed', 'Cultivation', 'Harvest', 'Decortication', 'Mixing', 'Hempcrete', 'Construction', 'Housing'],
@@ -1023,20 +1023,21 @@ function WallSection({ t }: { t: T }) {
 
 function CompareBars({ t }: { t: T }) {
   const BAR_COLORS = [GREEN_DK, 'rgba(7,26,56,0.4)', 'rgba(7,26,56,0.22)']
+  const GRID = 'minmax(96px, 130px) 1fr auto'
   return (
     <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
       {t.v_comp_rows.map((row) => (
         <div key={row.metric} style={{ marginBottom: '1.9rem' }}>
           <p style={{ ...sans, fontSize: '0.8rem', fontWeight: 700, color: INK, margin: '0 0 0.1rem' }}>{row.metric}</p>
           <p style={{ ...sans, fontSize: '0.62rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: FAINT, margin: '0 0 0.7rem' }}>{row.unit}</p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {row.bars.map(([name, val, label], i) => (
-              <div key={String(name)} style={{ display: 'grid', gridTemplateColumns: 'minmax(130px, 175px) 1fr', gap: '0.8rem', alignItems: 'center' }}>
-                <span style={{ ...sans, fontSize: '0.74rem', fontWeight: i === 0 ? 700 : 400, color: i === 0 ? GREEN_DK : 'rgba(7,26,56,0.7)' }}>{name}</span>
+              <div key={String(name)} style={{ display: 'grid', gridTemplateColumns: GRID, gap: '0.7rem', alignItems: 'center' }}>
+                <span style={{ ...sans, fontSize: '0.72rem', fontWeight: i === 0 ? 700 : 400, color: i === 0 ? GREEN_DK : 'rgba(7,26,56,0.7)' }}>{name}</span>
                 <div style={{ position: 'relative', height: '20px', background: 'rgba(7,26,56,0.05)', borderRadius: '2px' }}>
                   <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${(Number(val) / row.max) * 100}%`, background: BAR_COLORS[i], borderRadius: '2px' }} />
-                  <span style={{ position: 'absolute', left: `calc(${(Number(val) / row.max) * 100}% + 8px)`, top: '50%', transform: 'translateY(-50%)', ...sans, fontSize: '0.68rem', fontWeight: 600, color: 'rgba(7,26,56,0.65)', whiteSpace: 'nowrap' }}>{label}</span>
                 </div>
+                <span style={{ ...sans, fontSize: '0.68rem', fontWeight: 600, color: 'rgba(7,26,56,0.65)', whiteSpace: 'nowrap' }}>{label}</span>
               </div>
             ))}
           </div>
@@ -1046,31 +1047,30 @@ function CompareBars({ t }: { t: T }) {
       {/* huella de carbono: barras divergentes desde el cero */}
       <div>
         <p style={{ ...sans, fontSize: '0.8rem', fontWeight: 700, color: INK, margin: '0 0 0.7rem' }}>{t.v_comp_carbon_label}</p>
-        <div style={{ display: 'flex', justifyContent: 'space-between', margin: '0 0 0.35rem', paddingLeft: 'min(175px, 32%)' }}>
-          <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700, color: GREEN_DK }}>← {t.v_comp_carbon_fija}</span>
-          <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700, color: '#B4301C' }}>{t.v_comp_carbon_emite} →</span>
+        <div style={{ display: 'grid', gridTemplateColumns: GRID, gap: '0.7rem', margin: '0 0 0.35rem' }}>
+          <span />
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700, color: GREEN_DK }}>← {t.v_comp_carbon_fija}</span>
+            <span style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700, color: '#B4301C' }}>{t.v_comp_carbon_emite} →</span>
+          </div>
+          <span />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           {t.v_comp_carbon.map(([name, val, label], i) => {
             const v = Number(val)
-            const pct = (Math.abs(v) / 250) * 60
+            const pct = (Math.abs(v) / 250) * 55
             return (
-              <div key={String(name)} style={{ display: 'grid', gridTemplateColumns: 'minmax(130px, 175px) 1fr', gap: '0.8rem', alignItems: 'center' }}>
-                <span style={{ ...sans, fontSize: '0.74rem', fontWeight: i === 0 ? 700 : 400, color: i === 0 ? GREEN_DK : 'rgba(7,26,56,0.7)' }}>{name}</span>
+              <div key={String(name)} style={{ display: 'grid', gridTemplateColumns: GRID, gap: '0.7rem', alignItems: 'center' }}>
+                <span style={{ ...sans, fontSize: '0.72rem', fontWeight: i === 0 ? 700 : 400, color: i === 0 ? GREEN_DK : 'rgba(7,26,56,0.7)' }}>{name}</span>
                 <div style={{ position: 'relative', height: '20px', background: 'rgba(7,26,56,0.05)', borderRadius: '2px' }}>
-                  <div aria-hidden style={{ position: 'absolute', left: '38%', top: '-3px', bottom: '-3px', width: '1.5px', background: 'rgba(7,26,56,0.45)' }} />
+                  <div aria-hidden style={{ position: 'absolute', left: '40%', top: '-3px', bottom: '-3px', width: '1.5px', background: 'rgba(7,26,56,0.45)' }} />
                   {v < 0 ? (
-                    <>
-                      <div style={{ position: 'absolute', right: '62%', top: 0, bottom: 0, width: `${pct}%`, background: GREEN_DK, borderRadius: '2px 0 0 2px' }} />
-                      <span style={{ position: 'absolute', right: `calc(62% + ${pct}% + 8px)`, top: '50%', transform: 'translateY(-50%)', ...sans, fontSize: '0.68rem', fontWeight: 700, color: GREEN_DK, whiteSpace: 'nowrap' }}>{label}</span>
-                    </>
+                    <div style={{ position: 'absolute', right: '60%', top: 0, bottom: 0, width: `${pct}%`, background: GREEN_DK, borderRadius: '2px 0 0 2px' }} />
                   ) : (
-                    <>
-                      <div style={{ position: 'absolute', left: '38%', top: 0, bottom: 0, width: `${pct}%`, background: i === 1 ? 'rgba(180,48,28,0.55)' : 'rgba(180,48,28,0.8)', borderRadius: '0 2px 2px 0' }} />
-                      <span style={{ position: 'absolute', left: `calc(38% + ${pct}% + 8px)`, top: '50%', transform: 'translateY(-50%)', ...sans, fontSize: '0.68rem', fontWeight: 600, color: 'rgba(7,26,56,0.65)', whiteSpace: 'nowrap' }}>{label}</span>
-                    </>
+                    <div style={{ position: 'absolute', left: '40%', top: 0, bottom: 0, width: `${pct}%`, background: i === 1 ? 'rgba(180,48,28,0.55)' : 'rgba(180,48,28,0.8)', borderRadius: '0 2px 2px 0' }} />
                   )}
                 </div>
+                <span style={{ ...sans, fontSize: '0.68rem', fontWeight: v < 0 ? 700 : 600, color: v < 0 ? GREEN_DK : 'rgba(7,26,56,0.65)', whiteSpace: 'nowrap' }}>{label}</span>
               </div>
             )
           })}
@@ -1114,54 +1114,6 @@ function CarbonSimple({ t }: { t: T }) {
   )
 }
 
-/* ---------- el ciclo del carbono: dos ramas, dos permanencias ---------- */
-
-function CarbonCycle({ t }: { t: T }) {
-  const node = (title: string, sub: string, emph = false) => (
-    <div style={{ background: '#fff', border: `1px solid ${emph ? 'rgba(47,143,58,0.45)' : LINE}`, padding: '0.75rem 1rem', textAlign: 'center' }}>
-      <p style={{ ...sans, fontSize: '0.8rem', fontWeight: 600, color: INK, margin: 0 }}>{title}</p>
-      <p style={{ ...sans, fontSize: '0.68rem', fontWeight: 300, color: MUTED, margin: '0.15rem 0 0' }}>{sub}</p>
-    </div>
-  )
-  const down = <span aria-hidden style={{ textAlign: 'center', color: 'rgba(7,26,56,0.45)', fontSize: '0.85rem', lineHeight: 1 }}>↓</span>
-  return (
-    <figure style={{ margin: 0 }}>
-      <div style={{ background: '#fff', border: `1px solid ${LINE}`, padding: 'clamp(1.25rem, 2.5vw, 2rem)' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '30rem', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center' }}>
-            <span style={{ ...sans, fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: CELESTE, border: `1px solid rgba(47,111,176,0.35)`, background: 'rgba(47,111,176,0.06)', padding: '0.45rem 1rem', borderRadius: '999px', display: 'inline-block' }}>{t.v_ciclo_top}</span>
-          </div>
-          {down}
-          {node(t.v_ciclo_cultivo[0], t.v_ciclo_cultivo[1])}
-          {down}
-          <div style={{ textAlign: 'center' }}>
-            <span style={{ ...sans, fontSize: '0.66rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(7,26,56,0.6)' }}>{t.v_ciclo_planta}</span>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'clamp(1rem, 3vw, 2.5rem)', marginTop: '0.8rem', maxWidth: '46rem', marginLeft: 'auto', marginRight: 'auto' }}>
-          {[
-            { rama: t.v_ciclo_rama1, chip: t.v_ciclo_rama1_chip, color: GOLD, chipColor: '#8a6510', chipBg: 'rgba(242,181,68,0.14)', chipBorder: 'rgba(242,181,68,0.55)' },
-            { rama: t.v_ciclo_rama2, chip: t.v_ciclo_rama2_chip, color: GREEN, chipColor: GREEN_DK, chipBg: 'rgba(47,143,58,0.07)', chipBorder: 'rgba(47,143,58,0.4)' },
-          ].map(({ rama, chip, color, chipColor, chipBg, chipBorder }) => (
-            <div key={chip} style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', borderTop: `3px solid ${color}`, paddingTop: '0.8rem' }}>
-              {rama.map(([rt, rs], i) => (
-                <div key={rt} style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                  {node(rt, rs)}
-                  {i < rama.length - 1 && down}
-                </div>
-              ))}
-              <div style={{ textAlign: 'center', marginTop: '0.3rem' }}>
-                <span style={{ ...sans, fontSize: '0.72rem', fontWeight: 700, color: chipColor, background: chipBg, border: `1px solid ${chipBorder}`, padding: '0.45rem 1rem', borderRadius: '999px', display: 'inline-block' }}>{chip}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <figcaption style={{ ...sans, fontSize: '0.72rem', fontWeight: 400, fontStyle: 'italic', color: MUTED, margin: '0.6rem 0 0', lineHeight: 1.5 }}>{t.v_ciclo_caption}</figcaption>
-    </figure>
-  )
-}
-
 function VisionLabel({ children }: { children: ReactNode }) {
   return (
     <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '3.25rem 0 1.1rem' }}>
@@ -1196,16 +1148,6 @@ function Tesis({ t }: { t: T }) {
       <Reveal>
         <P max="74ch">{t.v_planta}</P>
       </Reveal>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(1rem, 2.5vw, 1.75rem)' }}>
-        {t.v_products.map(([pt, pd], i) => (
-          <Reveal key={pt} delay={0.08 * i}>
-            <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderTop: `2px solid ${GREEN}`, padding: 'clamp(1.6rem, 3vw, 2.2rem)', height: '100%' }}>
-              <h3 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 2.6vw, 2.2rem)', color: INK, margin: '0 0 0.85rem' }}>{pt}</h3>
-              <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.7, color: MUTED, margin: 0 }}>{pd}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
 
       {/* el viaje del carbono — primero el mapa, después las dos vías */}
       <VisionLabel>{t.v_ciclo_label}</VisionLabel>
@@ -1263,59 +1205,24 @@ function Tesis({ t }: { t: T }) {
           <p style={{ ...sans, fontWeight: 300, fontSize: 'clamp(0.94rem, 1.15vw, 1.04rem)', lineHeight: 1.8, color: 'rgba(7,26,56,0.8)', margin: 0, textAlign: 'left' }}>{rich(t.v_credito.body, INK)}</p>
         </div>
       </Reveal>
+      {/* el diferencial: continúa el argumento del crédito */}
+      <VisionLabel>{t.v_dif_label}</VisionLabel>
       <Reveal>
-        <p style={{ ...sans, fontSize: '0.78rem', fontStyle: 'italic', fontWeight: 400, color: MUTED, margin: '1.75rem 0 0', lineHeight: 1.6, maxWidth: '70ch' }}>{t.v_ciclo_caption}</p>
+        <P max="74ch">{rich(t.v_dif, INK)}</P>
       </Reveal>
-
-      {/* vía 1: hempcrete, contado simple */}
-      <VisionLabel>{t.v_hemp_label}</VisionLabel>
-      <Reveal>
-        <P max="74ch">{rich(t.v_hemp_body, INK)}</P>
-      </Reveal>
+      <Statement by={t.v_dif_by}>{t.v_dif_statement}</Statement>
 
       {/* la huella: fija vs emite, sin números */}
       <Reveal>
         <CarbonSimple t={t} />
       </Reveal>
 
-      {/* vía 2: biochar, contado simple */}
-      <VisionLabel>{t.v_biochar_label}</VisionLabel>
-      <Reveal>
-        <P max="74ch">{rich(t.v_biochar_body, INK)}</P>
-      </Reveal>
-
+      {/* el material, en obra: partner tecnológico */}
       <Reveal>
         <div style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${CELESTE}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)', marginTop: '1.6rem', maxWidth: '52rem' }}>
           <p style={{ ...sans, fontWeight: 300, fontSize: '0.9rem', lineHeight: 1.7, color: 'rgba(7,26,56,0.78)', margin: 0 }}>{rich(t.v_hemp_partner, INK)}</p>
         </div>
       </Reveal>
-
-      {/* la cadena: de la semilla a la llave */}
-      <VisionLabel>{t.v_cadena_label}</VisionLabel>
-      <Reveal>
-        <P max="74ch">{t.v_cadena}</P>
-      </Reveal>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(105px, 1fr))', gap: '0.5rem' }}>
-        {CADENA_IMG.map((img, i) => {
-          const name = t.cadena[i]
-          return (
-            <Reveal key={img} delay={0.04 * i}>
-              <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', border: `1px solid ${LINE}` }}>
-                <img src={`/cadena/${img}.jpg`} alt={name} loading="lazy" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,56,0.9), transparent 55%)' }} />
-                <span style={{ position: 'absolute', left: '0.5rem', bottom: '0.45rem', ...sans, fontSize: '0.62rem', fontWeight: 600, color: CREAM }}>{name}</span>
-              </div>
-            </Reveal>
-          )
-        })}
-      </div>
-
-      {/* el diferencial: fijación durable + custodia única */}
-      <VisionLabel>{t.v_dif_label}</VisionLabel>
-      <Reveal>
-        <P max="74ch">{rich(t.v_dif, INK)}</P>
-      </Reveal>
-      <Statement by={t.v_dif_by}>{t.v_dif_statement}</Statement>
 
       {/* triple impacto */}
       <VisionLabel>{t.v_impacto_label}</VisionLabel>

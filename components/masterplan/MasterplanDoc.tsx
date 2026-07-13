@@ -688,7 +688,7 @@ function Strong({ children, color = INK }: { children: ReactNode; color?: string
 function DocTable({ head, rows, emphFirst = true }: { head: readonly string[]; rows: readonly (readonly ReactNode[])[]; emphFirst?: boolean }) {
   return (
     <div style={{ overflowX: 'auto', margin: '0.5rem 0 0.5rem' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: head.length > 2 ? '640px' : '480px' }}>
+      <table className="mp-doc-table" style={{ width: '100%', borderCollapse: 'collapse', minWidth: head.length > 2 ? '640px' : '480px' }}>
         <thead>
           <tr>
             {head.map((h, i) => (
@@ -700,7 +700,7 @@ function DocTable({ head, rows, emphFirst = true }: { head: readonly string[]; r
           {rows.map((r, ri) => (
             <tr key={ri}>
               {r.map((cell, ci) => (
-                <td key={ci} style={{
+                <td key={ci} data-label={ci === 0 ? '' : head[ci]} style={{
                   ...sans,
                   fontWeight: ci === 0 && emphFirst ? 500 : 300,
                   fontSize: ci === 0 && emphFirst ? '0.92rem' : '0.88rem',
