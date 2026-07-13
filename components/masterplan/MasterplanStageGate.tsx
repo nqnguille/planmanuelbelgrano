@@ -915,25 +915,25 @@ function StageBody({ t, idx }: { t: T; idx: number }) {
   const s = t.stages[idx]
   return (
     <div>
-      <header style={{ marginBottom: '2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 'clamp(1rem, 2.5vw, 1.75rem)', flexWrap: 'wrap' }}>
-          <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(3.4rem, 8vw, 6rem)', color: GOLD, lineHeight: 0.8, flexShrink: 0 }}>{s.n}</span>
+      <header style={{ marginBottom: '1.2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 'clamp(0.85rem, 2vw, 1.4rem)', flexWrap: 'wrap' }}>
+          <span style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(2.3rem, 5vw, 3.6rem)', color: GOLD, lineHeight: 0.8, flexShrink: 0 }}>{s.n}</span>
           <div style={{ flex: '1 1 300px' }}>
             <Eyebrow>{t.stage_word} {s.n} · {s.name}</Eyebrow>
             <h2 style={{ ...serif, fontStyle: 'italic', fontSize: 'clamp(1.7rem, 3.6vw, 2.9rem)', lineHeight: 1.12, color: INK, margin: 0, maxWidth: '26ch' }}>{s.q}</h2>
           </div>
         </div>
-        <div style={{ height: '1px', background: LINE, marginTop: '1.6rem' }} />
+        <div style={{ height: '1px', background: LINE, marginTop: '1rem' }} />
       </header>
 
-      <P max="74ch">{s.intro}</P>
+      <P max="74ch" style={{ marginBottom: '0.4rem' }}>{s.intro}</P>
 
-      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '2rem 0 1.1rem' }}>{t.fronts_label}</p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem' }}>
+      <p style={{ ...sans, fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: CELESTE, fontWeight: 600, margin: '1.3rem 0 0.7rem' }}>{t.fronts_label}</p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.5rem' }}>
         {s.fronts.map(([title, d]) => (
-          <div key={title} style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GOLD}`, padding: 'clamp(1.25rem, 2.5vw, 1.75rem)' }}>
-            <h3 style={{ ...sans, fontSize: '0.98rem', fontWeight: 600, color: INK, margin: '0 0 0.4rem' }}>{title}</h3>
-            <p style={{ ...sans, fontWeight: 300, fontSize: '0.86rem', lineHeight: 1.65, color: MUTED, margin: 0, maxWidth: '76ch' }}>{d}</p>
+          <div key={title} style={{ background: '#fff', border: `1px solid ${LINE}`, borderLeft: `3px solid ${GOLD}`, padding: '0.85rem 1rem' }}>
+            <h3 style={{ ...sans, fontSize: '0.9rem', fontWeight: 600, color: INK, margin: '0 0 0.25rem' }}>{title}</h3>
+            <p style={{ ...sans, fontWeight: 300, fontSize: '0.82rem', lineHeight: 1.5, color: MUTED, margin: 0 }}>{d}</p>
           </div>
         ))}
       </div>
@@ -1038,13 +1038,14 @@ function StageCarousel({ t }: { t: T }) {
     : `${t.gate_enables_pre} ${t.stage_word} ${t.stages[stageIdx + 1].n} · ${t.stages[stageIdx + 1].name}`
 
   return (
-    <Doc id="plan">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.1rem' }}>
+    <section id="plan" style={{ background: PAPER, padding: 'clamp(2.25rem, 4vw, 3.5rem) clamp(1.5rem, 6vw, 5rem)', scrollMarginTop: '3.4rem' }}>
+    <div style={{ maxWidth: '1020px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.8rem' }}>
         <Eyebrow>{t.plan_k}</Eyebrow>
         <span style={{ ...sans, fontSize: '0.68rem', fontWeight: 600, color: FAINT }}>{i + 1} {t.gate_step_of} {total}</span>
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.75rem' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.1rem' }}>
         {Array.from({ length: total }).map((_, k) => {
           const on = k === i
           const glyph = k === 0 ? 'R' : t.stages[k - 1].n
@@ -1064,13 +1065,13 @@ function StageCarousel({ t }: { t: T }) {
       </div>
 
       {!isIntro && s && (
-        <div style={{ marginTop: '2.25rem', border: `1px solid ${crossing ? 'rgba(47,143,58,0.4)' : 'rgba(242,181,68,0.5)'}`, borderLeft: `4px solid ${crossing ? GREEN_DK : GOLD}`, background: crossing ? 'rgba(47,143,58,0.05)' : 'rgba(242,181,68,0.07)', padding: 'clamp(1.25rem, 2.5vw, 1.8rem)', transition: 'all 0.4s' }}>
+        <div style={{ marginTop: '1.4rem', border: `1px solid ${crossing ? 'rgba(47,143,58,0.4)' : 'rgba(242,181,68,0.5)'}`, borderLeft: `4px solid ${crossing ? GREEN_DK : GOLD}`, background: crossing ? 'rgba(47,143,58,0.05)' : 'rgba(242,181,68,0.07)', padding: 'clamp(1.25rem, 2.5vw, 1.8rem)', transition: 'all 0.4s' }}>
           <p style={{ ...sans, fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#8a6510', margin: '0 0 1rem' }}>{t.gate_label}</p>
           <Tranquera open={crossing} verdict={s.gate} enables={enablesLabel} />
         </div>
       )}
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.8rem', marginTop: '1.75rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.8rem', marginTop: '1.1rem' }}>
         <button onClick={() => (i === 0 ? null : go(i - 1))} disabled={i === 0} style={{
           ...sans, fontSize: '0.74rem', fontWeight: 600, letterSpacing: '0.04em',
           background: 'transparent', border: `1px solid ${LINE}`, color: i === 0 ? 'rgba(7,26,56,0.3)' : INK,
@@ -1085,7 +1086,8 @@ function StageCarousel({ t }: { t: T }) {
           }}>{i === 0 ? t.gate_start : t.gate_cross} →</button>
         )}
       </div>
-    </Doc>
+    </div>
+    </section>
   )
 }
 
