@@ -888,14 +888,14 @@ function StageRail({ t }: { t: T }) {
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem 0', alignItems: 'stretch', margin: '0.5rem 0 0.5rem' }}>
       {t.stages.map((s, i) => (
         <div key={s.n} style={{ display: 'flex', alignItems: 'center' }}>
-          <a href={`#e${s.n}`} style={{
+          <div style={{
             display: 'flex', alignItems: 'center', gap: '0.55rem',
             border: `1px solid ${LINE}`, background: '#fff',
-            padding: '0.5rem 0.85rem', borderRadius: '3px', textDecoration: 'none',
+            padding: '0.5rem 0.85rem', borderRadius: '3px',
           }}>
             <span style={{ ...serif, fontStyle: 'italic', fontSize: '1.15rem', lineHeight: 1, color: GOLD, minWidth: '0.8rem', textAlign: 'center' }}>{s.n}</span>
             <span style={{ ...sans, fontSize: '0.68rem', fontWeight: 600, color: INK, whiteSpace: 'nowrap' }}>{s.name}</span>
-          </a>
+          </div>
           {i < t.stages.length - 1 && (
             <span aria-hidden style={{ width: 'clamp(0.5rem, 1.4vw, 1.1rem)', height: '1px', background: 'rgba(7,26,56,0.25)', display: 'inline-block' }} />
           )}
