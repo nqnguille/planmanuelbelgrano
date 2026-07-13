@@ -142,7 +142,7 @@ const TXT = {
       { img: '/viaje/01-aire.jpg', title: 'El aire', body: 'Ese carbono queda arriba — sobre la misma estepa que tiene la tierra, el agua y el sol para recuperarlo. En el aire sobra lo que abajo hace falta.' },
       { img: '/viaje/02-cultivo.jpg', title: 'El cultivo', body: 'La fotosíntesis lo captura mientras la planta crece — en meses, no en décadas. Cada hectárea sembrada trabaja a cielo abierto, absorbiendo carbono todos los días.' },
       { img: '/viaje/03-cosecha.jpg', title: 'La cosecha', body: 'La planta se cosecha entera y viaja pocos kilómetros: del campo a la planta de procesamiento. Nada se descarta.' },
-      { img: '/viaje/04-canamiza.jpg', title: 'El procesamiento', body: 'El tallo se separa en sus partes: la cañamiza —el corazón leñoso—, la fibra y el residuo. Acá el viaje se abre en dos caminos que corren en paralelo.' },
+      { img: '/viaje/04-canamiza.jpg', title: 'El procesamiento', body: 'El tallo pasa por la máquina y se separa en dos: la cañamiza —los trozos leñosos, sólidos y livianos, que van a la pared— y el residuo —el polvo y las fibras cortas, que van al suelo—. Acá el viaje se abre en dos caminos que corren en paralelo.' },
     ] as readonly { img: string; title: string; body: string; hito?: string }[],
     v_via_a_header: 'La vía de la pared',
     v_via_a: [
@@ -446,7 +446,7 @@ const TXT = {
       { img: '/viaje/01-aire.jpg', title: 'The air', body: 'That carbon stays above — over the very steppe that has the land, the water and the sun to recover it. The air holds in excess what is needed below.' },
       { img: '/viaje/02-cultivo.jpg', title: 'The crop', body: 'Photosynthesis captures it as the plant grows — in months, not decades. Every planted hectare works in the open air, absorbing carbon every day.' },
       { img: '/viaje/03-cosecha.jpg', title: 'The harvest', body: 'The whole plant is harvested and travels a few kilometers: from the field to the processing plant. Nothing is discarded.' },
-      { img: '/viaje/04-canamiza.jpg', title: 'The processing', body: 'The stalk is separated into its parts: the hurd —its woody core—, the fiber and the residue. Here the journey opens into two paths that run in parallel.' },
+      { img: '/viaje/04-canamiza.jpg', title: 'The processing', body: 'The stalk goes through the machine and separates into two: the hurd —the woody, solid, light chips that go to the wall— and the residue —the dust and short fibers that go to the soil—. Here the journey opens into two paths that run in parallel.' },
     ] as readonly { img: string; title: string; body: string; hito?: string }[],
     v_via_a_header: 'The wall path',
     v_via_a: [
